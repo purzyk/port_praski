@@ -1,0 +1,45 @@
+.home__widok3d {
+  overflow: hidden;
+
+  @include breakpoint($md) {
+    margin-bottom: 90px;
+  }
+
+  picture {
+    width: 100%;
+
+    img,
+    source {
+      object-fit: cover;
+      min-height: 650px;
+      width: 100%;
+
+      @include breakpoint($md) {
+        height: 800px;
+      }
+    }
+  }
+
+  &__buttons {
+    position: relative;
+    bottom: 100px;
+
+    left: 100px;
+
+    &__wrapp {
+      background: $white;
+      padding: 6px;
+      border-radius: 100px;
+      display: inline-block;
+    }
+  }
+
+  .l-wrapper {
+    text-align: center;
+
+    @include breakpoint($md) {
+      text-align: left;
+
+    }
+  }
+}

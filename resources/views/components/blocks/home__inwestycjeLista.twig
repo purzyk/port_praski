@@ -1,0 +1,73 @@
+<section class="home__inwestycjeLista">
+	<div class="l-wrapper">
+		<h3 data-aos="fade-up" data-aos-duration="800" class="fnt20 home__inwestycjeLista__title">{{media_item.title}}</h3>
+	</div>
+	<div class="home__inwestycjeLista__wrapper">
+		{% for item in media_item.inwestycje %}
+			<div class="home__inwestycjeLista__item__outsite">
+				<div class="home__inwestycjeLista__item__footer">
+					<div class="l-wrapper">
+						<div class="home__inwestycjeLista__item__footer__wrapper">
+							<div data-aos="fade-up" data-aos-duration="800">
+								<h5 class="fnt82 home__inwestycjeLista__item__footer__title">{{item.title}}</h5>
+							</div>
+
+							<a href="#" class="home__inwestycjeLista__item__footer__link ">
+								<svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M40 20.7366H3.05176e-05" stroke="white" stroke-width="3.5" stroke-miterlimit="10"/>
+									<path d="M20.3967 40L20.3967 0" stroke="white" stroke-width="3.5" stroke-miterlimit="10"/>
+								</svg>
+
+							</a>
+							<div class="footer__modal">
+								<div class="home__inwestycjeLista__item__modal__wrapp">
+
+									<p>{{item.copy}}</p>
+									<a class="home__inwestycjeLista__item__modal__link" href="">Przejdź do oferty</a>
+
+								</div>
+							</div>
+						</div>
+						<p data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" class="fnt20 home__inwestycjeLista__item__footer__subtitle --mobile">{{item.slogan}}</p>
+					</div>
+				</div>
+				<div class="home__inwestycjeLista__item">
+					<div class="l-wrapper">
+						<div class="home__inwestycjeLista__item__wrap">
+
+							<div class="home__inwestycjeLista__item__copy">
+								<p data-aos="fade-up" data-aos-duration="800" class="fnt20 --number">0{{loop.index}}</p>
+								<p data-aos="fade-up" data-aos-duration="800" data-aos-delay="200" class="fnt20">{{item.slogan}}</p>
+							</div>
+							<div class="home__inwestycjeLista__item__images">
+								<div class="js-imagesHome2">
+									<div class="splide">
+										<div class="splide__track">
+											<ul class="splide__list">
+												{% for image in item.images %}
+													<li class="splide__slide">
+														<img data-splide-lazy="{{Image(image.image).src}}">
+													</li>
+												{% endfor %}
+											</ul>
+										</div>
+										<div class="splide__progress">
+											<div class="splide__progress__bar"></div>
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		{% endfor %}
+
+
+	</div>
+</section>

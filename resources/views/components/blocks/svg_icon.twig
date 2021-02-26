@@ -1,0 +1,7 @@
+{% set image = media_item.svg_icon %}
+{% set ext = image.url|split('.')|last %}
+{% if ext == "svg" %}
+	{{ function('file_get_contents', image.url) }}
+{% else %}
+	{% include 'components/generic/image.twig'  with { img_src:image.url } %}
+{% endif %}

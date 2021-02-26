@@ -1,0 +1,115 @@
+.backToTop {
+  font-size: 40px;
+  position: fixed;
+  right: 100px;
+  bottom: 50px;
+  cursor: pointer;
+}
+
+.footer {
+  &__top {
+    display: flex;
+
+    padding-bottom: 50px;
+    flex-direction: column;
+    padding-top: 55px;
+
+    @include breakpoint($md) {
+      padding-bottom: 80px;
+      padding-top: 80px;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: flex-start;
+    }
+
+
+
+    nav {
+      margin-right: auto;
+
+      flex-direction: column;
+      display: none;
+
+      @include breakpoint($md) {
+        display: flex;
+      }
+
+      a {
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 30px;
+        text-transform: uppercase;
+        color: $darkBlue;
+        transition: 0.2s all;
+
+        &:hover {
+          padding-left: 6px;
+        }
+      }
+    }
+
+
+  }
+
+  &__biuro {
+    p {
+      color: $darkBlue;
+      text-transform: uppercase;
+
+      span {
+        text-transform: initial;
+        font-size: 15px;
+        line-height: 22px;
+        color: #8F8F8F;
+      }
+
+      @include breakpoint($md) {
+        line-height: 26px;
+      }
+    }
+
+  }
+
+  &__socials {
+    display: flex;
+    flex-wrap: nowrap;
+
+    @include breakpoint($md) {
+      margin-left: 140px;
+    }
+
+    figure {
+      margin-right: 10px;
+
+      @include breakpoint($md) {
+        margin-right: initial;
+        margin-left: 10px;
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+
+    padding-top: 42px;
+    padding-bottom: 35px;
+    flex-direction: column;
+
+    @include breakpoint($md) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    position: relative;
+
+
+
+    p {
+      font-size: 15px;
+      line-height: 20px;
+      margin-bottom: 10px;
+      color: $black;
+    }
+  }
+}

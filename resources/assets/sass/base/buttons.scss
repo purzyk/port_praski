@@ -1,0 +1,102 @@
+.btn,
+.wpcf7 input.btn {
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    width: inherit;
+    color: $white;
+    background: $darkBlue;
+    padding: 12px 48px;
+    display: inline-block;
+    align-self: baseline;
+    margin-top: 27px;
+    position: relative;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+
+    @include breakpoint($md) {
+        padding: 16px 48px;
+    }
+
+    transition: all 0.2s;
+
+    &:hover {
+        background: #030306;
+    }
+
+    &:disabled {
+        background: $grey;
+        border: 0;
+    }
+
+    &:before {
+        transform-origin: 100% 50%;
+        transform: scale3d(0, 1, 1);
+        transition: transform 0.3s;
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background: $darkBlue;
+        bottom: -5px;
+        left: 0;
+        pointer-events: none;
+        content: '';
+    }
+
+    &:hover:before {
+        transform-origin: 0% 50%;
+        transform: scale3d(1, 1, 1);
+    }
+
+
+
+
+}
+
+.circle {
+    border: 1px solid #DADADA;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &.--white {
+        background: #fff;
+    }
+
+
+    a {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.2s all;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}
+
+.btnRound {
+    background: #FFFFFF;
+    border: 1px solid #DADADA;
+    box-sizing: border-box;
+    border-radius: 100px;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 16px;
+    color: $black;
+    padding: 14px 20px;
+    display: inline-block;
+
+    position: relative;
+
+    &.--blue {
+        background-color: $darkBlue;
+        color: $white;
+    }
+}

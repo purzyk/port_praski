@@ -1,0 +1,22 @@
+/* Breakpoints */
+$sm: 760px;
+$md: 1180px;
+$xl: 1460px;
+$xxl: 1640px;
+
+@mixin breakpoint($size) {
+  @media (min-width: $size) {
+    @content;
+  }
+}
+
+/* Colors*/
+$black: #000000;
+$white:#ffffff;
+$grey:#E5E5E5;
+$darkBlue:#262359;
+$lightBlue:#E9ECF3;
+$darkGrey:#DADADA;
+
+$headerHeight: 88px;
+$headerFixedHeight: 88px;

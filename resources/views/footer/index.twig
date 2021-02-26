@@ -1,0 +1,40 @@
+<footer class="footer">
+	<div class="l-wrapper">
+		<div class="footer__top">
+			<nav data-aos="fade-up" data-aos-duration="800">
+				{% include 'footer/footerMenu.twig' %}
+			</nav>
+			<div class="footer__biuro" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+				<p>{{options.biuro_sprzedazy}}</p>
+			</div>
+			<div class="footer__socials" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+				{% for item in options.socials %}
+					<figure class="circle">
+						<a target="_blank" href="{{item.social.url}}">
+							<img src="{{Image(item.social.icon).src}}">
+						</a>
+					</figure>
+				{% endfor %}
+				<figure class="circle">
+					<a id="ToTop" href="{{item.social.url}}">
+						<img src="{{Image(options.arrow_up).src}}">
+					</a>
+				</figure>
+			</div>
+
+		</div>
+		<div class="line double" data-aos="width" data-aos-duration="800"></div>
+		<div class="footer__bottom">
+			<p>
+				{{ options.copyright }}
+			</p>
+			<p>
+				{{ options.website_by }}
+			</p>
+		</div>
+
+	</div>
+</footer>
+{# end <div id="app"> #}
+
+{{ function('wp_footer') }}</body></html>

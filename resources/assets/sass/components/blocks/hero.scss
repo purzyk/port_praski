@@ -1,0 +1,127 @@
+.hero {
+  min-height: 50vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 52px;
+  height: calc(100vh - 80px);
+  position: relative;
+
+  @include breakpoint($md) {
+    margin-bottom: 100px;
+  }
+
+  picture {
+    width: 100%;
+    height: calc(100vh - 80px);
+
+    source,
+    img {
+      width: 100%;
+      height: calc(100vh - 80px);
+      object-fit: cover;
+    }
+  }
+
+  &__slide {
+    position: relative;
+    height: calc(100vh - 80px);
+    background-position: center top;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+
+    &__inside {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      h1 {
+        font-weight: 800;
+
+        text-transform: uppercase;
+        color: #FFFFFF;
+        font-size: 80px;
+        line-height: 80px;
+
+        @include breakpoint($md) {
+          font-size: 130px;
+          line-height: 177px;
+        }
+      }
+    }
+
+    &__title {
+      font-weight: 800;
+      font-size: 130px;
+      line-height: 177px;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      text-align: center;
+      margin-bottom: 24px;
+
+      @include breakpoint($md) {
+        text-align: left;
+      }
+    }
+
+    &__copy {
+
+      font-size: 20px;
+      line-height: 27px;
+      color: #FFFFFF;
+      text-align: center;
+
+      @include breakpoint($md) {
+        text-align: left;
+
+        font-size: 30px;
+        line-height: 41px;
+      }
+    }
+
+
+  }
+
+  &__start {
+    margin: 0 auto;
+
+    position: relative;
+    bottom: 100px;
+    background-color: $white;
+
+    img {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.slick-dots {
+  bottom: 120px;
+}
+
+.slick-dots li.slick-active button:before {
+  color: $white;
+  opacity: 0.75;
+}
+
+.slick-dots li button:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "•";
+  width: 20px;
+  height: 20px;
+  font-family: "slick";
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  color: $white;
+  opacity: 0.25;
+}

@@ -1,0 +1,25 @@
+{% for media_item in post.meta('blocks_builder') %}
+	{% if media_item.acf_fc_layout == 'full_width_text' %}
+		{% include 'components/blocks/full_width_text.twig' %}
+
+	{% elseif media_item.acf_fc_layout == 'hero' %}
+		{% include 'components/blocks/hero.twig' %}
+
+	{% elseif media_item.acf_fc_layout == 'w_sprawie_oferty' %}
+		{% include 'components/blocks/w_sprawie_oferty.twig' %}
+
+	{% elseif media_item.acf_fc_layout == 'home_image_with_video' %}
+		{% include 'components/blocks/home_image_with_video.twig' %}
+
+	{% elseif media_item.acf_fc_layout == 'home__widok3d' %}
+		{% include 'components/blocks/home__widok3d.twig' %}
+
+	{% elseif media_item.acf_fc_layout == 'home__inwestycjeLista' %}
+		{% include 'components/blocks/home__inwestycjeLista.twig' %}
+
+	{% elseif media_item.acf_fc_layout == 'home__noweInwestycje' %}
+		{% include 'components/blocks/home__noweInwestycje.twig' %}
+	{% elseif media_item.acf_fc_layout == 'gallery' %}
+		{% include 'components/blocks/gallery.twig' %}
+	{% endif %}
+{% endfor %}

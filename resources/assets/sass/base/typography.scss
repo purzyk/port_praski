@@ -1,0 +1,86 @@
+/* Typography */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;800&display=swap");
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  color: $darkBlue;
+}
+
+p {
+  font-size: 1.6rem;
+  margin-bottom: 2.4rem;
+  line-height: 2.4rem;
+}
+
+strong {
+  font-weight: 800;
+}
+
+
+
+
+
+
+.fnt12 {
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+.fnt20 {
+  font-size: 15px;
+  line-height: 20px;
+  text-transform: uppercase;
+  font-weight: 800;
+
+  @include breakpoint($md) {
+    font-size: 20px;
+    line-height: 27px;
+  }
+}
+
+.fnt30 {
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 41px;
+  text-transform: uppercase;
+}
+
+.fnt50 {
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 35px;
+  text-transform: uppercase;
+  color: $darkBlue;
+
+  @include breakpoint($md) {
+    font-size: 40px;
+    line-height: 50px;
+  }
+
+  @include breakpoint($xl) {
+    font-size: 50px;
+    line-height: 60px;
+  }
+}
+
+.fnt82 {
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  color: #262359;
+
+  @include breakpoint($md) {
+    font-size: 50px;
+    line-height: 60px;
+  }
+
+  @include breakpoint($xl) {
+    font-size: 82px;
+    line-height: 112px;
+  }
+}

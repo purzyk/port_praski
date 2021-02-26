@@ -1,0 +1,13 @@
+<section class="wSprawieOferty">
+	<div class="l-wrapper">
+		<div class="wSprawieOferty__wrap">
+			<h3 data-aos="fade-up" data-aos-duration="800" class="wSprawieOferty__title fnt50">{{media_item.title}}
+			</h3>
+			<div data-aos="fade-up" data-aos-duration="800" data-aos-delay="300" class="wSprawieOferty__form">
+				{% filter shortcodes %}
+					{{media_item.form_shortcode}}
+				{% endfilter %}
+			</div>
+		</div>
+	</div>
+</section>

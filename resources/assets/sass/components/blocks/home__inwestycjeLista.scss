@@ -1,0 +1,470 @@
+.home__inwestycjeLista {
+    margin-bottom: 100px;
+
+    &__title {
+        border-top: 1px solid #262359;
+        padding-top: 12px;
+        margin-bottom: 40px;
+
+        @include breakpoint($md) {
+            padding-top: 17px;
+            margin-bottom: 73px;
+        }
+    }
+
+    &__item {
+        background: linear-gradient(180deg, #FFF 50%, #E9ECF3 50%);
+        padding-bottom: 120px;
+
+        &__wrap {
+            display: flex;
+            justify-content: space-between;
+
+            flex-wrap: wrap;
+            position: relative;
+
+            @include breakpoint($md) {
+                &:before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100px;
+                    height: 12px;
+                    background: url('../images/lines.svg') center no-repeat;
+                }
+            }
+        }
+
+        &__copy {
+            padding-top: 25%;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            width: 20%;
+
+            @include breakpoint($md) {
+                display: flex;
+            }
+
+            .--number {
+                position: relative;
+
+                &:before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: 30px;
+                    left: 0;
+                    width: 100%;
+                    height: 12px;
+                    background: url('../images/lines.svg') center repeat-x;
+                    opacity: 0.15;
+                }
+            }
+
+        }
+
+        &__images {
+            .splide__slide {
+                position: relative;
+                overflow: hidden;
+
+                img {
+                    position: relative;
+                    transition: all 0.1s;
+                }
+            }
+
+            img {
+                transition: all 0.2s;
+            }
+
+            width: 100%;
+
+            .slick-dots {
+                bottom: 10px;
+            }
+
+            @include breakpoint($md) {
+                max-width: 80%;
+            }
+        }
+
+        &__footer {
+            background-color: #fff;
+            padding-bottom: 22px;
+            padding-top: 20px;
+            height: inherit;
+            z-index: 100;
+            position: relative;
+
+            @include breakpoint($md) {
+                padding-top: 40px;
+                padding-bottom: 40px;
+            }
+
+            &__title {
+                transition: all 0.8s;
+            }
+
+            &__wrapper {
+
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+
+
+
+                @include breakpoint($md) {
+                    transition: all 0.8s ease;
+                    margin-left: auto;
+                    max-width: 80%;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    transform: scale(1);
+
+                }
+            }
+
+            &__link {
+                position: relative;
+
+                width: 50px;
+                height: 50px;
+                background: $darkBlue;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                transform: scale(1);
+                transition: 0.2s all;
+
+
+
+                &.--mobile {
+                    display: none;
+                }
+
+                svg {
+                    width: 25px;
+                    height: 25px;
+                    transition: 0.2s all;
+
+                    @include breakpoint($md) {
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+
+                @include breakpoint($md) {
+                    margin-bottom: 40px;
+                    width: 75px;
+                    height: 75px;
+                }
+
+                @include breakpoint($xl) {
+                    width: 100px;
+                    height: 100px;
+                }
+
+                &:hover {
+                    border-radius: 0;
+
+                }
+
+
+            }
+
+            &__subtitle {
+                color: #8F8F8F;
+                margin-bottom: 0;
+            }
+        }
+
+
+    }
+}
+
+.home__inwestycjeLista__item__outsite {
+    position: relative;
+
+    &.active {
+        &:nth-child(even) .home__inwestycjeLista__item__footer__wrapper {
+
+            margin-left: 20%;
+        }
+
+        .home__inwestycjeLista__item__modal__wrapp {
+            opacity: 1;
+            transition-delay: 1s;
+        }
+
+        .footer__modal {
+            transform: scale(1);
+
+        }
+
+        .home__inwestycjeLista__item__footer__wrapper {
+            max-width: 60%;
+
+            .footer__modal {
+                .home__inwestycjeLista__item__modal__wrapp {
+                    padding: 0 0 0 50px;
+                }
+
+            }
+
+            .home__inwestycjeLista__item__footer__title {
+                padding-left: 50px;
+
+            }
+        }
+
+        .home__inwestycjeLista__item__footer__link {
+            border-radius: 0;
+
+            &:hover {
+                transform: scale(1);
+            }
+        }
+
+        .home__inwestycjeLista__item__footer__link svg {
+            transform: rotate(45deg);
+        }
+
+        .home__inwestycjeLista__item__modal {
+            transform: scale(1);
+            height: initial;
+            position: relative;
+
+            @include breakpoint($md) {
+                position: absolute;
+            }
+
+        }
+
+        .--close {
+
+            transform: scale(1);
+
+            @include breakpoint($md) {
+
+                transition-delay: 0.65s;
+            }
+        }
+
+        .home__inwestycjeLista__item__images .splide__slide img {
+            position: relative;
+            transform: scale(1.2);
+            /*
+            -webkit-filter: blur(3px);
+            transform-origin: 0 50%;
+            
+            filter: blur(3px);
+            object-fit: cover;
+            transform: scale(1, 1.2); */
+        }
+
+        .home__inwestycjeLista__item__footer {
+            .home__inwestycjeLista__item__footer__title {
+                font-size: 50px;
+                line-height: 60px;
+            }
+        }
+
+        .home__inwestycjeLista__item__footer__wrapper {}
+    }
+}
+
+.home__inwestycjeLista__item__modal {
+
+    width: 100%;
+    position: absolute;
+
+    background: #FFFFFF;
+    padding: 90px 15px 50px;
+    z-index: 1;
+    top: 50px;
+    box-shadow: 1px 1px 10px 0px #ccc;
+    transform: scale(0);
+
+    height: 0;
+
+
+    @include breakpoint($md) {
+        transition: all 0.5s ease;
+        transition-delay: 0.25s;
+        padding: 90px 60px;
+        position: absolute;
+        width: 780px;
+        height: 580px;
+        right: 90px;
+    }
+
+    .--close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: scale(1);
+
+        @include breakpoint($md) {
+            transition: all 0.2s ease-in-out;
+        }
+
+        svg {
+            width: 50px;
+            height: 50px;
+
+            @include breakpoint($md) {
+                width: 100px;
+                height: 100px;
+            }
+
+            transition: 0.2s all;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+
+
+        }
+    }
+
+    &__link {
+        min-width: 220px;
+        font-weight: 800;
+        font-size: 12px;
+        line-height: 16px;
+        text-transform: uppercase;
+        border: 1px solid #262359;
+        box-sizing: border-box;
+        align-self: baseline;
+        text-align: center;
+        padding: 20px 0;
+        width: 100%;
+
+        @include breakpoint($md) {
+            max-width: 220px;
+        }
+
+        transition: all 0.2s;
+
+        &:hover {
+            background: $darkBlue;
+            color: #fff;
+
+        }
+
+    }
+
+    &__wrapp {
+        display: flex;
+
+        flex-direction: column;
+        margin-top: 16px;
+        transition: all 0.3s;
+        opacity: 0;
+
+        @include breakpoint($md) {
+            justify-content: space-between;
+            margin-top: 50px;
+            flex-direction: row;
+        }
+
+        p {
+
+            font-weight: 300;
+            font-size: 18px;
+            line-height: 30px;
+            text-align: left;
+
+            @include breakpoint($md) {
+                max-width: 350px;
+            }
+        }
+    }
+}
+
+.home__inwestycjeLista__item__outsite:nth-child(even) {
+
+    .home__inwestycjeLista__item {
+        background: linear-gradient(180deg, #E9ECF3 50%, #FFF 50%);
+    }
+
+    .home__inwestycjeLista__item__footer {
+        background-color: #E9ECF3;
+        text-align: right;
+
+
+        svg {
+
+
+            @include breakpoint($md) {
+                margin-left: initial;
+            }
+        }
+    }
+
+    .home__inwestycjeLista__item__copy {
+        order: 2;
+        text-align: right;
+    }
+
+    .home__inwestycjeLista__item__images {
+        order: 1;
+    }
+
+    .home__inwestycjeLista__item__copy .--number:before {
+        right: 0;
+        left: unset;
+
+    }
+
+    .home__inwestycjeLista__item__footer__wrapper {
+        align-items: flex-end;
+
+        @include breakpoint($md) {
+            align-items: flex-start;
+            margin-left: 0;
+
+        }
+    }
+
+    .home__inwestycjeLista__item__wrap:before {
+        left: unset;
+        right: 0;
+    }
+
+    .home__inwestycjeLista__item__modal {
+        @include breakpoint($md) {
+            left: 90px;
+            right: initial;
+        }
+
+    }
+
+}
+
+.footer__modal {
+    position: absolute;
+    width: 100%;
+    padding-top: 100px;
+    top: 0;
+    z-index: -1;
+    background: #fff;
+    /*transform: matrix(0, 0, 0, 0, 0, 0)*/
+    transform: scale(0);
+    transform-origin: right top;
+
+    transition-property: all;
+    transition-duration: 0.6s;
+    transition-timing-function: ease-in-out;
+
+    transition-delay: 0.3s;
+}

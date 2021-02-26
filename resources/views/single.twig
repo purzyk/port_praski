@@ -1,0 +1,17 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<article class="main-article">
+		<h1 class="title is-2">{{ post.title }}</h1>
+		<h5 class="subtitle is-5">
+			<time class="timestamp">
+				<small>{{ post.date }}
+					{{ post.time }}</small>
+			</time>
+		</h5>
+		<p>
+			{{ post.content }}
+		</p>
+
+	</article>
+{% endblock %}

@@ -1,0 +1,17 @@
+<section class="hero">
+	<div class="js-hero">
+		{% for item in media_item.slider %}
+			<div class="hero__slide">
+				{% include 'components/generic/image.twig'  with { img_src:Image(item.background_image).src, width:1600, height:780 } %}
+				<div class="hero__slide__inside">
+					<h1 class="hero__slide__title">{{item.title}}</h1>
+					<h2 class="hero__slide__copy">{{item.copy}}</h2>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+	<figure class="circle hero__start">
+		<a href="#start"><img src="{{Image(options.arrow_up).src}}"></a>
+	</figure>
+</section>
+<div id="start" class="offset"></div>
