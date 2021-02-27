@@ -109,9 +109,6 @@ a {
   overflow: hidden;
 }
 
-.slick-dotted.slick-slider {
-  margin-bottom: 0;
-}
 
 .pageDarken {
   position: fixed;
@@ -132,20 +129,6 @@ a {
   }
 }
 
-.slick-dots li button {
-  width: 12px;
-  height: 12px;
-  border: 1.5px solid $white;
-  border-radius: 50%;
-}
-
-.slick-dots li button:before {
-  display: none;
-}
-
-.slick-dots li.slick-active button {
-  background-color: $white;
-}
 
 .offset {
   padding-top: 80px;
@@ -164,107 +147,7 @@ a {
   }
 }
 
-.os-scrollbar-horizontal {
-  opacity: 1;
-  transition: all 0.2s;
-  position: relative;
-  bottom: -10px;
 
-  &:focus,
-  &:hover {
-    opacity: 1;
-
-    .os-scrollbar-handle {
-      opacity: 1;
-    }
-  }
-}
-
-.os-theme-dark>.os-scrollbar>.os-scrollbar-track>.os-scrollbar-handle {
-  background: $darkBlue;
-  opacity: 0.6;
-  transition: 0.2s all;
-  cursor: pointer;
-}
-
-.os-scrollbar-handle.active {
-  opacity: 1 !important;
-  background: $darkBlue !important;
-}
-
-.os-theme-dark>.os-scrollbar:hover>.os-scrollbar-track>.os-scrollbar-handle {
-  background: $darkBlue;
-  opacity: 1;
-}
-
-.slider-progress {
-  width: 100%;
-  height: 3px;
-  background: red;
-  max-width: 768px;
-  margin: 0 auto;
-}
-
-.slider-progress .progress {
-  width: 0%;
-  height: 3px;
-  background: #000;
-}
-
-.splide__progress {
-  position: relative;
-  top: -8px;
-}
-
-.splide__progress__bar {
-  background: $darkBlue;
-  display: block;
-  height: 8px;
-}
-
-
-.splide__pagination {
-  position: absolute;
-  display: inline-flex;
-  align-items: center;
-  width: 95%;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 0;
-  margin: .5rem 0;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-
-  li {
-    list-style-type: none;
-    display: inline-block;
-    line-height: 1;
-    margin: 0;
-  }
-}
-
-.splide__pagination__page {
-  padding: 0;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: transparent;
-  margin: .2em;
-  cursor: pointer;
-  display: block;
-  border: 0;
-  border: 1.5px solid #fff;
-}
-
-.splide__pagination__page.is-active {
-  background: #fff;
-}
-
-.splide__slide img {
-  vertical-align: bottom;
-  width: 100%;
-}
 
 .wrapFullWidth {
   width: calc(100% - 20px);
@@ -306,61 +189,4 @@ a {
 [data-aos="width"].aos-animate {
   transform: scale(1, 1);
   /* Equal to scaleX(2) scaleY(0.5) */
-}
-
-.--CustomButtons {
-  .slick-slide {
-    margin: 0 20px;
-  }
-
-  /* the parent */
-  .slick-list {
-    margin: 0;
-  }
-}
-
-.slider__header {
-  display: flex;
-  justify-content: space-between;
-
-
-  &__buttons {
-    padding-top: 17px;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    align-self: baseline;
-    align-items: center;
-
-    p {
-      margin-bottom: 0;
-
-    }
-  }
-
-  &__button {
-    margin-left: 15px;
-
-    img {
-      transition: all 0.2s;
-    }
-
-    &:hover {
-      img {
-        transform: scale(1.1);
-      }
-    }
-
-    &.arrow__left {
-      transform: rotate(-90deg);
-
-
-    }
-
-    &.arrow__right {
-      transform: rotate(90deg);
-
-
-    }
-  }
 }

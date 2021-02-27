@@ -104,8 +104,6 @@
     .fnt20 {
         text-transform: uppercase;
     }
-
-    .video {}
 }
 
 .video__copy {
@@ -116,8 +114,6 @@
 }
 
 
-/* */
-
 
 
 .youtube-player {
@@ -126,7 +122,7 @@
     height: 0;
     overflow: hidden;
     max-width: 100%;
-    background: #000;
+    background: $black;
     margin: 5px;
 }
 

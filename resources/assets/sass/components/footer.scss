@@ -9,7 +9,6 @@
 .footer {
   &__top {
     display: flex;
-
     padding-bottom: 50px;
     flex-direction: column;
     padding-top: 55px;
@@ -22,11 +21,8 @@
       align-items: flex-start;
     }
 
-
-
     nav {
       margin-right: auto;
-
       flex-direction: column;
       display: none;
 
@@ -60,7 +56,7 @@
         text-transform: initial;
         font-size: 15px;
         line-height: 22px;
-        color: #8F8F8F;
+        color: $darkGrey2;
       }
 
       @include breakpoint($md) {
@@ -102,8 +98,6 @@
     }
 
     position: relative;
-
-
 
     p {
       font-size: 15px;

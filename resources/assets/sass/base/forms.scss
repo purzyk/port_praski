@@ -16,7 +16,6 @@
         color: $darkBlue;
 
         padding-bottom: 10px;
-        //margin-bottom: 34px;
         font-family: 'Open Sans', sans-serif;
 
 
@@ -42,7 +41,7 @@
     .wpcf7-list-item-label {
         font-size: 12px;
         line-height: 16px;
-        color: #8F8F8F;
+        color: $darkGrey2;
         display: block;
 
         a {
@@ -65,7 +64,7 @@
         font-weight: normal;
         font-size: 22px;
         line-height: 22px;
-        color: #A9ACB2;
+        color: $darkGrey2;
         background-size: 22px;
         padding-left: 6px;
         position: absolute;
@@ -82,7 +81,7 @@
         font-weight: normal;
         font-size: 22px;
         line-height: 22px;
-        color: #A9ACB2;
+        color: $darkGrey2;
         background-size: 22px;
         padding-left: 6px;
         position: absolute;
@@ -156,7 +155,7 @@
         transition: all 0.2s ease;
         font-size: 18px;
         line-height: 25px;
-        color: #262359;
+        color: $darkBlue;
         padding-bottom: 10px;
         font-family: 'Open Sans', sans-serif;
         pointer-events: none;
@@ -178,7 +177,7 @@ input[type="email"].form-control {
 
 .form-group.active>label {
     transform: translateY(-160%);
-    color: #9b9b9b;
+    color: $darkGrey2;
     font-size: 12px;
     z-index: -1;
 }

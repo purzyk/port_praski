@@ -46,7 +46,7 @@
         font-weight: 800;
 
         text-transform: uppercase;
-        color: #FFFFFF;
+        color: $white;
         font-size: 80px;
         line-height: 80px;
 
@@ -62,7 +62,7 @@
       font-size: 130px;
       line-height: 177px;
       text-transform: uppercase;
-      color: #FFFFFF;
+      color: $white;
       text-align: center;
       margin-bottom: 24px;
 
@@ -75,7 +75,7 @@
 
       font-size: 20px;
       line-height: 27px;
-      color: #FFFFFF;
+      color: $white;
       text-align: center;
 
       @include breakpoint($md) {
@@ -100,28 +100,4 @@
       transform: rotate(180deg);
     }
   }
-}
-
-.slick-dots {
-  bottom: 120px;
-}
-
-.slick-dots li.slick-active button:before {
-  color: $white;
-  opacity: 0.75;
-}
-
-.slick-dots li button:before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  content: "•";
-  width: 20px;
-  height: 20px;
-  font-family: "slick";
-  font-size: 12px;
-  line-height: 20px;
-  text-align: center;
-  color: $white;
-  opacity: 0.25;
 }

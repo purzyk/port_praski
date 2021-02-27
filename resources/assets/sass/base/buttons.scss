@@ -56,16 +56,15 @@
 }
 
 .circle {
-    border: 1px solid #DADADA;
+    border: 1px solid $darkGrey;
     width: 48px;
     height: 48px;
     border-radius: 50%;
     cursor: pointer;
 
     &.--white {
-        background: #fff;
+        background: $white;
     }
-
 
     a {
         width: 100%;
@@ -82,8 +81,8 @@
 }
 
 .btnRound {
-    background: #FFFFFF;
-    border: 1px solid #DADADA;
+    background: $white;
+    border: 1px solid $darkGrey;
     box-sizing: border-box;
     border-radius: 100px;
     font-weight: 800;

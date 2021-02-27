@@ -2,7 +2,7 @@
     margin-bottom: 100px;
 
     &__title {
-        border-top: 1px solid #262359;
+        border-top: 1px solid $darkBlue;
         padding-top: 12px;
         margin-bottom: 40px;
 
@@ -13,7 +13,7 @@
     }
 
     &__item {
-        background: linear-gradient(180deg, #FFF 50%, #E9ECF3 50%);
+        background: linear-gradient(180deg, $white 50%, $lightBlue 50%);
         padding-bottom: 120px;
 
         &__wrap {
@@ -93,7 +93,7 @@
         }
 
         &__footer {
-            background-color: #fff;
+            background-color: $white;
             padding-bottom: 22px;
             padding-top: 20px;
             height: inherit;
@@ -182,7 +182,7 @@
             }
 
             &__subtitle {
-                color: #8F8F8F;
+                color: $darkGrey2;
                 margin-bottom: 0;
             }
         }
@@ -191,109 +191,16 @@
     }
 }
 
-.home__inwestycjeLista__item__outsite {
-    position: relative;
-
-    &.active {
-        &:nth-child(even) .home__inwestycjeLista__item__footer__wrapper {
-
-            margin-left: 20%;
-        }
-
-        .home__inwestycjeLista__item__modal__wrapp {
-            opacity: 1;
-            transition-delay: 1s;
-        }
-
-        .footer__modal {
-            transform: scale(1);
-
-        }
-
-        .home__inwestycjeLista__item__footer__wrapper {
-            max-width: 60%;
-
-            .footer__modal {
-                .home__inwestycjeLista__item__modal__wrapp {
-                    padding: 0 0 0 50px;
-                }
-
-            }
-
-            .home__inwestycjeLista__item__footer__title {
-                padding-left: 50px;
-
-            }
-        }
-
-        .home__inwestycjeLista__item__footer__link {
-            border-radius: 0;
-
-            &:hover {
-                transform: scale(1);
-            }
-        }
-
-        .home__inwestycjeLista__item__footer__link svg {
-            transform: rotate(45deg);
-        }
-
-        .home__inwestycjeLista__item__modal {
-            transform: scale(1);
-            height: initial;
-            position: relative;
-
-            @include breakpoint($md) {
-                position: absolute;
-            }
-
-        }
-
-        .--close {
-
-            transform: scale(1);
-
-            @include breakpoint($md) {
-
-                transition-delay: 0.65s;
-            }
-        }
-
-        .home__inwestycjeLista__item__images .splide__slide img {
-            position: relative;
-            transform: scale(1.2);
-            /*
-            -webkit-filter: blur(3px);
-            transform-origin: 0 50%;
-            
-            filter: blur(3px);
-            object-fit: cover;
-            transform: scale(1, 1.2); */
-        }
-
-        .home__inwestycjeLista__item__footer {
-            .home__inwestycjeLista__item__footer__title {
-                font-size: 50px;
-                line-height: 60px;
-            }
-        }
-
-        .home__inwestycjeLista__item__footer__wrapper {}
-    }
-}
-
+/* Modal styling */
 .home__inwestycjeLista__item__modal {
-
     width: 100%;
     position: absolute;
-
-    background: #FFFFFF;
+    background: $white;
     padding: 90px 15px 50px;
     z-index: 1;
     top: 50px;
-    box-shadow: 1px 1px 10px 0px #ccc;
+    box-shadow: 1px 1px 10px 0px $grey;
     transform: scale(0);
-
     height: 0;
 
 
@@ -307,34 +214,6 @@
         right: 90px;
     }
 
-    .--close {
-        position: absolute;
-        right: 0;
-        top: 0;
-        transform: scale(1);
-
-        @include breakpoint($md) {
-            transition: all 0.2s ease-in-out;
-        }
-
-        svg {
-            width: 50px;
-            height: 50px;
-
-            @include breakpoint($md) {
-                width: 100px;
-                height: 100px;
-            }
-
-            transition: 0.2s all;
-
-            &:hover {
-                transform: scale(1.1);
-            }
-
-
-        }
-    }
 
     &__link {
         min-width: 220px;
@@ -342,7 +221,7 @@
         font-size: 12px;
         line-height: 16px;
         text-transform: uppercase;
-        border: 1px solid #262359;
+        border: 1px solid $darkBlue;
         box-sizing: border-box;
         align-self: baseline;
         text-align: center;
@@ -357,7 +236,7 @@
 
         &:hover {
             background: $darkBlue;
-            color: #fff;
+            color: $white;
 
         }
 
@@ -391,14 +270,15 @@
     }
 }
 
+/* Style for every 2nd item*/
 .home__inwestycjeLista__item__outsite:nth-child(even) {
 
     .home__inwestycjeLista__item {
-        background: linear-gradient(180deg, #E9ECF3 50%, #FFF 50%);
+        background: linear-gradient(180deg, $lightBlue 50%, $white 50%);
     }
 
     .home__inwestycjeLista__item__footer {
-        background-color: #E9ECF3;
+        background-color: $lightBlue;
         text-align: right;
 
 
@@ -457,14 +337,86 @@
     padding-top: 100px;
     top: 0;
     z-index: -1;
-    background: #fff;
-    /*transform: matrix(0, 0, 0, 0, 0, 0)*/
+    background: $white;
     transform: scale(0);
     transform-origin: right top;
-
     transition-property: all;
     transition-duration: 0.6s;
     transition-timing-function: ease-in-out;
-
     transition-delay: 0.3s;
+}
+
+
+/* Style for active modal*/
+.home__inwestycjeLista__item__outsite {
+    position: relative;
+
+    &.active {
+        &:nth-child(even) .home__inwestycjeLista__item__footer__wrapper {
+
+            margin-left: 20%;
+        }
+
+        .home__inwestycjeLista__item__modal__wrapp {
+            opacity: 1;
+            transition-delay: 1s;
+        }
+
+        .footer__modal {
+            transform: scale(1);
+
+        }
+
+        .home__inwestycjeLista__item__footer__wrapper {
+            max-width: 60%;
+
+            .footer__modal {
+                .home__inwestycjeLista__item__modal__wrapp {
+                    padding: 0 0 0 50px;
+                }
+
+            }
+
+            .home__inwestycjeLista__item__footer__title {
+                padding-left: 50px;
+
+            }
+        }
+
+        .home__inwestycjeLista__item__footer__link {
+            border-radius: 0;
+
+            &:hover {
+                transform: scale(1);
+            }
+        }
+
+        .home__inwestycjeLista__item__footer__link svg {
+            transform: rotate(45deg);
+        }
+
+        .home__inwestycjeLista__item__modal {
+            transform: scale(1);
+            height: initial;
+            position: relative;
+
+            @include breakpoint($md) {
+                position: absolute;
+            }
+
+        }
+
+        .home__inwestycjeLista__item__images .splide__slide img {
+            position: relative;
+            transform: scale(1.2);
+        }
+
+        .home__inwestycjeLista__item__footer {
+            .home__inwestycjeLista__item__footer__title {
+                font-size: 50px;
+                line-height: 60px;
+            }
+        }
+
+    }
 }
