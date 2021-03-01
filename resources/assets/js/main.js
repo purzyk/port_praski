@@ -81,8 +81,7 @@ $(document).ready(function () {
 
 $(function () {
 
-  /*Slick  Sliders */
-  $('.js-hero').slick({
+    $('.js-hero').slick({
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -97,9 +96,9 @@ $(function () {
     variableWidth: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-    arrows: true,
-    dots: false,
+        dots: false,
     autoplay: false,
+    arrows: true,
     nextArrow: '.arrow__right',
     prevArrow: '.arrow__left',
     responsive: [{
