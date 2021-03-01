@@ -1,6 +1,6 @@
 {
     "key": "group_5e6205635ad66",
-    "title": "Blocks Builder",
+    "title": "Page - home",
     "fields": [
         {
             "key": "field_5e62056a45f42",
@@ -68,37 +68,6 @@
                             },
                             "clone": [
                                 "group_5ea2a42ee4242"
-                            ],
-                            "display": "seamless",
-                            "layout": "block",
-                            "prefix_label": 0,
-                            "prefix_name": 0
-                        }
-                    ],
-                    "min": "",
-                    "max": ""
-                },
-                "layout_602e306d0435e": {
-                    "key": "layout_602e306d0435e",
-                    "name": "w_sprawie_oferty",
-                    "label": "w sprawie oferty",
-                    "display": "row",
-                    "sub_fields": [
-                        {
-                            "key": "field_602e306d0435f",
-                            "label": "w_sprawie_oferty",
-                            "name": "w_sprawie_oferty",
-                            "type": "clone",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "clone": [
-                                "group_602e30376a74e"
                             ],
                             "display": "seamless",
                             "layout": "block",
@@ -232,37 +201,6 @@
                     ],
                     "min": "",
                     "max": ""
-                },
-                "layout_6033af2b34762": {
-                    "key": "layout_6033af2b34762",
-                    "name": "gallery",
-                    "label": "gallery",
-                    "display": "row",
-                    "sub_fields": [
-                        {
-                            "key": "field_6033af2b34763",
-                            "label": "gallery",
-                            "name": "gallery",
-                            "type": "clone",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "clone": [
-                                "field_6033af2b34763"
-                            ],
-                            "display": "seamless",
-                            "layout": "block",
-                            "prefix_label": 0,
-                            "prefix_name": 0
-                        }
-                    ],
-                    "min": "",
-                    "max": ""
                 }
             },
             "button_label": "Dodaj nowy blok",
@@ -273,9 +211,9 @@
     "location": [
         [
             {
-                "param": "post_type",
+                "param": "post_template",
                 "operator": "==",
-                "value": "page"
+                "value": "template-home.php"
             }
         ]
     ],
@@ -287,5 +225,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1613999934
+    "modified": 1614597658
 }

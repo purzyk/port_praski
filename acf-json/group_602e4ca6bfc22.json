@@ -106,9 +106,9 @@
     "location": [
         [
             {
-                "param": "post_type",
+                "param": "post_status",
                 "operator": "==",
-                "value": "post"
+                "value": "acf-disabled"
             }
         ]
     ],
@@ -120,5 +120,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1613648155
+    "modified": 1614591542
 }

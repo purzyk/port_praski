@@ -3,6 +3,44 @@
     "title": "Options Footer",
     "fields": [
         {
+            "key": "field_603cae5d22eda",
+            "label": "w sprawie oferty",
+            "name": "w_sprawie_oferty",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_603cae6822edb",
+            "label": "contact form shordcode",
+            "name": "contact_form_shordcode",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5e620f0a505e3",
             "label": "copyright",
             "name": "copyright",
@@ -158,5 +196,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1613639463
+    "modified": 1614589577
 }

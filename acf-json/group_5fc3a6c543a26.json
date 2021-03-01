@@ -30,9 +30,9 @@
     "location": [
         [
             {
-                "param": "post_type",
+                "param": "post_status",
                 "operator": "==",
-                "value": "post"
+                "value": "acf-disabled"
             }
         ]
     ],
@@ -42,7 +42,7 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1606657753
+    "modified": 1614591549
 }
