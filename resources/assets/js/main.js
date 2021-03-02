@@ -49,7 +49,28 @@ document.addEventListener("DOMContentLoaded", initYouTubeVideos);
 
 
 $(document).ready(function () {
+/* Go back */
 
+$(".goBack").click(function() {
+  window.history.back();
+});
+  $(".filter-simple-button").click(function() {
+    var value = $(this).attr('data-filter');
+    if(value === "all") {
+      $('.filter-simple-item').show('1000');
+    } else {
+      $(".filter-simple-item").not('.'+value).hide('3000');
+      $('.filter-simple-item').filter('.'+value).show('3000');
+    }
+  });
+  
+  // changes active class on filter buttons
+  $('.filter-simple-button').click(function () {
+    $(this).siblings().removeClass('is-active');
+    $(this).addClass('is-active');
+  });
+
+  
   /* Contact form sticky labels functionality */
   $(".wpcf7 .form-control").focus(function () {
     $(this).parent().parent().addClass('active');
@@ -81,7 +102,64 @@ $(document).ready(function () {
 
 $(function () {
 
-    $('.js-hero').slick({
+  $('.slider').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: false,
+    asNavFor: '.slider-nav-thumbnails',
+  });
+
+  $('.slider-nav-thumbnails').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    asNavFor: '.slider',
+    dots: false,
+    arrows: true,
+    focusOnSelect: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          arrows: false,
+        }
+      }
+      // You can unslick at a given breakpoint now by adding:
+      // settings: "unslick"
+      // instead of a settings object
+    ]
+  });
+
+  // Remove active class from all thumbnail slides
+  $('.slider-nav-thumbnails .slick-slide').removeClass('slick-active');
+
+  // Set active class to first thumbnail slides
+  $('.slider-nav-thumbnails .slick-slide').eq(0).addClass('slick-active');
+
+  // On before slide change match active thumbnail to current slide
+  $('.slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+    var mySlideNumber = nextSlide;
+    $('.slider-nav-thumbnails .slick-slide').removeClass('slick-active');
+    $('.slider-nav-thumbnails .slick-slide').eq(mySlideNumber).addClass('slick-active');
+  });
+
+  $('.js-hero').slick({
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -96,7 +174,7 @@ $(function () {
     variableWidth: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-        dots: false,
+    dots: false,
     autoplay: false,
     arrows: true,
     nextArrow: '.arrow__right',
@@ -183,6 +261,7 @@ $('a#back-top').click(() => {
 
 
 
+
 /* Toggle modal */
 $('.home__inwestycjeLista__item__footer__link__close').click(function (event) {
   $(this).closest('.home__inwestycjeLista__item__outsite').removeClass('active');
@@ -214,6 +293,10 @@ $('.gallery').each(function () {
   });
 });
 
+$('.image-link').magnificPopup({
+  type: 'image'
+});
+
 /* Open and close nav */
 $('.openNav').click(function (event) {
   event.preventDefault();
@@ -240,3 +323,4 @@ $(() => {
   new BackToTop();
   new SmoothScroll();
 });
+

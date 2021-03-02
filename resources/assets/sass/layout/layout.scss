@@ -5,6 +5,9 @@
   padding: 0 20px;
   position: relative;
 
+  @include breakpoint($xl) {
+    max-width: $xl;
+  }
 
   @include breakpoint(1920px) {
     max-width: $xxl;

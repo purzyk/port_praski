@@ -177,6 +177,11 @@ a {
     background: url('../images/lines.svg') top left repeat-x;
     display: block;
   }
+
+  &.--grey {
+    background: url('../images/lines_grey.svg') top left repeat-x;
+
+  }
 }
 
 [data-aos="width"] {

@@ -50,6 +50,16 @@
         transform: scale3d(1, 1, 1);
     }
 
+    &.--lightGrey {
+        background: #F6F6F6;
+        color: #262359;
+
+        &:hover {
+            background: $darkBlue;
+            color: #fff;
+        }
+    }
+
 
 
 
@@ -91,11 +101,42 @@
     color: $black;
     padding: 14px 20px;
     display: inline-block;
-
     position: relative;
+    cursor: pointer;
 
-    &.--blue {
+    &.--blue,
+    &.is-active {
         background-color: $darkBlue;
         color: $white;
+    }
+}
+
+.goBack {
+    border: 0;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    cursor: pointer;
+    ;
+
+    /* DARK GREY */
+
+    color: #8F8F8F;
+    background: transparent;
+    padding-left: 20px;
+    position: relative;
+
+    &:before {
+        content: '';
+        width: 5px;
+        height: 9px;
+        display: inline-block;
+        background: url('../images/goBack.svg') center no-repeat;
+        position: absolute;
+        left: 0;
+        top: calc(50% - 4px);
     }
 }

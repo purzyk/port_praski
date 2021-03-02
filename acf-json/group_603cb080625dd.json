@@ -3,6 +3,32 @@
     "title": "Single - lokale",
     "fields": [
         {
+            "key": "field_603cb0b192de7",
+            "label": "Status",
+            "name": "status",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Wolne": "Wolne",
+                "Zajęte": "Zajęte",
+                "Zarezerwowane": "Zarezerwowane"
+            },
+            "default_value": "Wolne",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_603cb08692de4",
             "label": "powierzchnia",
             "name": "powierzchnia",
@@ -66,32 +92,6 @@
             "step": ""
         },
         {
-            "key": "field_603cb0b192de7",
-            "label": "Status",
-            "name": "status",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "Wolne": "Wolne",
-                "Zajęte": "Zajęte",
-                "Zarezerwowane": "Zarezerwowane"
-            },
-            "default_value": "Wolne",
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
-            "return_format": "value",
-            "ajax": 0,
-            "placeholder": ""
-        },
-        {
             "key": "field_603cb17e3fb43",
             "label": "Dodatkowo",
             "name": "dodatkowo",
@@ -105,13 +105,77 @@
                 "id": ""
             },
             "taxonomy": "dodatkowo",
-            "field_type": "checkbox",
+            "field_type": "multi_select",
+            "allow_null": 0,
             "add_term": 1,
-            "save_terms": 0,
+            "save_terms": 1,
             "load_terms": 0,
-            "return_format": "id",
-            "multiple": 0,
-            "allow_null": 0
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_603d041b22d0e",
+            "label": "PDF",
+            "name": "pdf",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "pdf"
+        },
+        {
+            "key": "field_603d043b22d0f",
+            "label": "galeria",
+            "name": "galeria",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_603d044422d10",
+                    "label": "zdjecie",
+                    "name": "zdjecie",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                }
+            ]
         }
     ],
     "location": [
@@ -131,5 +195,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1614590364
+    "modified": 1614719175
 }

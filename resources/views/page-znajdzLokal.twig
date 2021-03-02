@@ -2,7 +2,18 @@
 {% block content %}
 	<article class="znajdzLokal">
 		<div class="l-wrapper">
-			<p>{{post.title}}</p>
+			<h1 class="fnt50">{{post.title}}</h1>
+			<div class="line" data-aos="width" data-aos-duration="800"></div>
+			<div class="znajdzLokal__wrapper">
+				<aside class="znajdzLokal__filters">Filtry</aside>
+				<main>
+					{% for item in postsLoop %}
+						<article>
+							{{item.title}}
+						</article>
+					{% endfor %}
+				</main>
+			</div>
 		</div>
 	</article>
 {% endblock %}

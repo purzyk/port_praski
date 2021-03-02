@@ -1,27 +1,81 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<article class="main-article single__article">
+	<article class="main-article lokal">
 		<div class="l-wrapper">
-			<p>Lokale</p>
-			<div class="line" data-aos="width" data-aos-duration="800"></div>
-			<h5 class="fnt20">
-				{{ post.date | date('d.m.Y') }}
+			<button class="goBack">Wróć do listy</button>
+			<div class="lokal__wrapper">
+				<div class="lokal__left">
+					<div class="lokal__status">{{post.meta('status')}}</div>
+					<h1 class="lokal__inwestycja">
+						{% for item in inwestycja %}
+							{{item.name}}
+						{% endfor %}
+					</h1>
+					<h2 class="lokal__mieszkanie">{{post.name}}</h2>
+					<div class="line double --grey"></div>
+					{% if post.powierzchnia %}
+						<div class="lokal__twoColumns">
+							<h3>Powierzchnia:</h3>
+							<p>{{post.powierzchnia}}
+								m²</p>
+						</div>
+					{% endif %}
+					{% if post.liczba_pokoi %}
+						<div class="lokal__twoColumns">
+							<h3>Liczba pokoi:</h3>
+							<p>{{post.liczba_pokoi}}</p>
+						</div>
+					{% endif %}
 
-			</h5>
-			<div class="single__article__wrap">
+					<div class="lokal__twoColumns">
+						<h3>Piętro:</h3>
+						<p>{{post.pietro}}</p>
+					</div>
 
-				<h1 class="fnt50">{{ post.title }}</h1>
-				<p>{{post.lead}}</p>
+					{% if post.meta('status') %}
+						<div class="lokal__twoColumns">
+							<h3>Status:</h3>
+							<p>{{post.meta('status')}}</p>
+						</div>
+					{% endif %}
+					{% if dodatkowo %}
+						<div class="lokal__twoColumns --last --dodatkowo">
+							<h3>dodatkowo:</h3>
+							<p>
+								{% for item in dodatkowo %}
+									<span>{{item.name}}</span>
+								{% endfor %}
+							</p>
+						</div>
+					{% endif %}
+					<div class="line double --grey"></div>
+					<div class="lokal__btns">
+						<button class="btn">prośba o kontakt</button>
+						<a target="_blank" href="{{pdf}}" class="btn --lightGrey">pobierz PDF</a>
+					</div>
+				</div>
+
+				<div class="lokal__right">
+					<div class="slider">
+						{% for item in post.meta('galeria') %}
+							<a class="image-link" href="{{Image(item.zdjecie).src}}">
+								<img src="{{Image(item.zdjecie).src}}">
+							</a>
+						{% endfor %}
+
+					</div>
+
+					<!-- THUMBNAILS -->
+					<div class="slider-nav-thumbnails">
+						{% for item in post.meta('galeria') %}
+							<div><img src="{{Image(item.zdjecie).src}}"></div>
+						{% endfor %}
+
+					</div>
+				</div>
+
 			</div>
-			<figure class="single__article__figure">
-				<img src="{{post.thumbnail}}">
-			</figure>
-			<div class="single__article__wrap">
+		</article>
 
-				{{ post.content }}
-
-			</div>
-		</div>
-	</article>
-{% endblock %}
+	{% endblock %}

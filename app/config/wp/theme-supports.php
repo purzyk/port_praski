@@ -598,3 +598,89 @@ function cptui_register_my_taxes_dodatkowo() {
 	register_taxonomy( "dodatkowo", [ "lokale" ], $args );
 }
 add_action( 'init', 'cptui_register_my_taxes_dodatkowo' );
+
+
+function wptp_add_categories_to_attachments() {
+    register_taxonomy_for_object_type( 'category', 'attachment' );
+}
+add_action( 'init' , 'wptp_add_categories_to_attachments' );
+
+
+function cptui_register_my_cpts_galeria() {
+
+	/**
+	 * Post Type: Galeria.
+	 */
+
+	$labels = [
+		"name" => __( "Galeria", "custom-post-type-ui" ),
+		"singular_name" => __( "Galeria", "custom-post-type-ui" ),
+		"all_items" => __( "Wszystkie zdjęcia", "custom-post-type-ui" ),
+		"add_new" => __( "Dodaj nowe", "custom-post-type-ui" ),
+		"add_new_item" => __( "Dodaj nowe zdjęcie", "custom-post-type-ui" ),
+		"edit_item" => __( "Edytuj zdjęcie", "custom-post-type-ui" ),
+		"new_item" => __( "Nowe zdjęcie", "custom-post-type-ui" ),
+		"view_item" => __( "Zobacz", "custom-post-type-ui" ),
+	];
+
+	$args = [
+		"label" => __( "Galeria", "custom-post-type-ui" ),
+		"labels" => $labels,
+		"description" => "",
+		"public" => true,
+		"publicly_queryable" => true,
+		"show_ui" => true,
+		"show_in_rest" => true,
+		"rest_base" => "",
+		"rest_controller_class" => "WP_REST_Posts_Controller",
+		"has_archive" => false,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"delete_with_user" => false,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"rewrite" => [ "slug" => "galeria", "with_front" => true ],
+		"query_var" => true,
+		"menu_icon" => "dashicons-format-gallery",
+		"supports" => [ "title", "thumbnail" ],
+	];
+
+	register_post_type( "galeria", $args );
+}
+
+add_action( 'init', 'cptui_register_my_cpts_galeria' );
+
+
+function cptui_register_my_taxes_kategoria_zdjec() {
+
+	/**
+	 * Taxonomy: Kategorie zdjęć.
+	 */
+
+	$labels = [
+		"name" => __( "Kategorie zdjęć", "custom-post-type-ui" ),
+		"singular_name" => __( "Kategoria zdjęć", "custom-post-type-ui" ),
+	];
+
+	$args = [
+		"label" => __( "Kategorie zdjęć", "custom-post-type-ui" ),
+		"labels" => $labels,
+		"public" => true,
+		"publicly_queryable" => true,
+		"hierarchical" => false,
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => [ 'slug' => 'kategoria_zdjec', 'with_front' => true, ],
+		"show_admin_column" => true,
+		"show_in_rest" => true,
+		"rest_base" => "kategoria_zdjec",
+		"rest_controller_class" => "WP_REST_Terms_Controller",
+		"show_in_quick_edit" => true,
+			];
+	register_taxonomy( "kategoria_zdjec", [ "galeria" ], $args );
+}
+add_action( 'init', 'cptui_register_my_taxes_kategoria_zdjec' );

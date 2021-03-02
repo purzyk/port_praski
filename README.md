@@ -1,4 +1,3 @@
-## About Base Camp
 ## Requirements
 
 - [Wordpress](https://wordpress.org/) >= v4.9.6

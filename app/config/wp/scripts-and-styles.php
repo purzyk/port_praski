@@ -13,7 +13,7 @@ function base_camp_scripts_and_styles()
         // Register scripts
     wp_register_script('wptheme-vendor', assets('vendor.js'), [], '', true);
     wp_register_script('wptheme-scripts', assets('scripts.js') . $suffix, ['wptheme-vendor'], '', true);
-    
+       
 
     // Enqueue scripts and styles
     wp_enqueue_script('wptheme-scripts');

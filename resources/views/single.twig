@@ -4,18 +4,21 @@
 	<article class="main-article single__article">
 		<div class="l-wrapper">
 			<div class="line" data-aos="width" data-aos-duration="800"></div>
-			<h5 class="fnt20">
+			<h5 class="fnt20 single__date">
 				{{ post.date | date('d.m.Y') }}
 
 			</h5>
 			<div class="single__article__wrap">
 
-				<h1 class="fnt50">{{ post.title }}</h1>
-				<p>{{post.lead}}</p>
+				<h1 class="fnt50 single__title">{{ post.title }}</h1>
+				<p class="single__lead">{{post.lead}}</p>
 			</div>
-			<figure class="single__article__figure">
-				<img src="{{post.thumbnail}}">
-			</figure>
+		</div>
+		<figure class="single__article__figure">
+			<img src="{{post.thumbnail | resize(1420, 750)}}">
+		</figure>
+		<div class="l-wrapper">
+
 			<div class="single__article__wrap">
 
 				{{ post.content }}

@@ -3,6 +3,13 @@
 $context                = Timber::get_context();
 $post                   = new TimberPost();
 $context['post']        = $post;
+
+$dodatkowo = get_field('dodatkowo');
+$inwestycja = get_the_terms( $post->ID, 'inwestycja' );
+$context['inwestycja'] = $inwestycja;
+$context['dodatkowo'] = $dodatkowo;
+$pdf = get_field('pdf');
+$context['pdf'] = $pdf;
 $context['cancel_link'] = get_cancel_comment_reply_link(__('Cancel reply', 'wptheme'));
 
 if (post_password_required($post->ID)) {

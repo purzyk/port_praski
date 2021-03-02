@@ -2,59 +2,39 @@
 {% block content %}
 	<article class="galeria">
 		<div class="l-wrapper">
-			<p>{{post.title}}</p>
-		</div>
-		<section class="gallery">
-			<div class="l-wrapper">
-				<div class="grid">
-					<div class="item">
-						<img src="//placebear.com/g/320/510" alt=""/>
-					</div>
-					<div class="item">
-						<img src="//placebear.com/g/320/510" alt=""/>
-					</div>
-					<div class="item">
-						<img src="//placebear.com/g/320/510" alt=""/>
-					</div>
-					<div class="item">
-						<img src="//placebear.com/g/320/510" alt=""/>
-					</div>
-					<div class="item">
-						<img src="//placebear.com/g/320/510" alt=""/>
-					</div>
-					<div class="item">
-						<img src="//placebear.com/g/320/510" alt=""/>
-					</div>
-					<div class="item">
-						<img src="//placebear.com/g/320/510" alt=""/>
-					</div>
-					<div class="item">
-						<img src="//placebear.com/g/320/510" alt=""/>
-					</div>
-					<div class="item">
-						<img src="//placebear.com/g/320/510" alt=""/>
-					</div>
-					<div class="item">
-						<img src="//placebear.com/g/320/510" alt=""/>
-					</div>
-					<div class="item">
-						<img src="//placebear.com/g/320/510" alt=""/>
-					</div>
-					<div class="item">
-						<img src="//placebear.com/g/320/510" alt=""/>
-					</div>
-					<div class="item">
-						<img src="//placebear.com/g/320/510" alt=""/>
-					</div>
-					<div class="item">
-						<img src="//placebear.com/g/320/510" alt=""/>
-					</div>
-					<div class="item">
-						<img src="//placebear.com/g/320/510" alt=""/>
-					</div>
+			<div class="galeria__title__wrap">
+				<h1 class="fnt50">{{post.title}}</h1>
+				<div class="home__widok3d__buttons__wrapp" id="myBtnContainer">
+					<li class="btnRound filter-simple-button  is-active" data-filter="all">Wszystkie</li>
+					{% for termname in terms2 %}
+						<li class="filter-simple-button btnRound" data-filter="{{termname.slug}}">{{termname.name}}</li>
+					{% endfor %}
 				</div>
+
 			</div>
-		</section>
+			<div class="gallery row">
+				{% for item in galeriaLoop %}
+					{% if (loop.index == 2) or (loop.index == 4) %}
+						<div class="grid-item bigger filter-simple-item {% for termname in item.terms('kategoria_zdjec') %}{{termname.slug}}  {% endfor %}">
+							<a href="{{item.thumbnail}}">
+								{% include 'components/generic/image.twig'  with { img_src:Image(item.thumbnail).src, width:976, height:644 } %}
+							</a>
+						</div>
+					{% else %}
+						<div class="grid-item filter-simple-item {% for termname in item.terms('kategoria_zdjec') %}{{termname.slug}}  {% endfor %}">
+							<a href="{{item.thumbnail}}">
+								{% include 'components/generic/image.twig'  with { img_src:Image(item.thumbnail).src, width:440, height:290 } %}
+							</a>
+						</div>
+					{% endif %}
+
+
+				{% endfor %}
+
+			</div>
+		</div>
+
 
 	</article>
+
 {% endblock %}

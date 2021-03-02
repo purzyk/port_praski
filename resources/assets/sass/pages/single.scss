@@ -1,18 +1,92 @@
 .single {
+
+
     &__article {
         padding-top: 100px;
+        margin-bottom: 100px;
+
+        @include breakpoint($md) {
+
+            margin-bottom: 150px;
+            padding-top: 120px;
+        }
+
+
+
+        .line {
+            margin-bottom: 10px;
+
+            @include breakpoint($md) {
+
+                margin-bottom: 20px;
+            }
+
+        }
 
         &__figure {
             width: 100%;
+            max-width: $xxl;
+            position: relative;
+            margin: 0 auto;
+            margin-bottom: 60px;
+
+            @include breakpoint($md) {
+
+                margin-bottom: 90px;
+            }
 
             img {
                 width: 100%;
+            }
+
+
+            @include breakpoint($xl) {
+                max-width: $xl;
+                padding: 0 20px;
+            }
+
+            @include breakpoint(1920px) {
+                max-width: $xxl;
             }
         }
 
         &__wrap {
             max-width: 800px;
             margin: 0 auto;
+
+            p {
+                font-size: 18px;
+                line-height: 30px;
+
+                font-weight: 300;
+                margin-bottom: 30px;
+
+                @include breakpoint($md) {
+                    font-size: 20px;
+                    line-height: 32px;
+                }
+            }
         }
+    }
+
+    &__date {
+        margin-bottom: 40px;
+
+        @include breakpoint($md) {
+            margin-bottom: 88px;
+        }
+    }
+
+    &__title {
+        margin-bottom: 40px;
+        text-align: left;
+    }
+
+    &__lead {
+        margin-bottom: 60px;
+        font-size: 20px;
+        line-height: 32px;
+        font-weight: 300;
+
     }
 }
