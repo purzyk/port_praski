@@ -40,48 +40,6 @@ add_theme_support('html5', [
     'search-form',
 ]);
 
-// Enables Custom_Backgrounds support for a theme
-//add_theme_support('custom-background', [
-//    'default-image'          => '',
-//    'default-preset'         => 'default',
-//    'default-position-x'     => 'left',
-//    'default-position-y'     => 'top',
-//    'default-size'           => 'auto',
-//    'default-repeat'         => 'repeat',
-//    'default-attachment'     => 'scroll',
-//    'default-color'          => '',
-//    'wp-head-callback'       => '_custom_background_cb',
-//    'admin-head-callback'    => '',
-//    'admin-preview-callback' => '',
-//]);
-
-// Enables Custom_Headers support for a theme
-//add_theme_support('custom-header', [
-//    'default-image'          => '',
-//    'random-default'         => false,
-//    'width'                  => 0,
-//    'height'                 => 0,
-//    'flex-height'            => false,
-//    'flex-width'             => false,
-//    'default-text-color'     => '',
-//    'header-text'            => true,
-//    'uploads'                => true,
-//    'wp-head-callback'       => '',
-//    'admin-head-callback'    => '',
-//    'admin-preview-callback' => '',
-//    'video'                  => false,
-//    'video-active-callback'  => 'is_front_page',
-//]);
-
-// Enables Theme_Logo support for a theme
-//add_theme_support('custom-logo', [
-//    'height'      => 100,
-//    'width'       => 400,
-//    'flex-height' => true,
-//    'flex-width'  => true,
-//    'header-text' => ['site-title', 'site-description'],
-//]);
-
 function cptui_register_my_cpts() {
 
 	/**
@@ -154,46 +112,12 @@ function cptui_register_my_cpts() {
 		"hierarchical" => false,
 		"rewrite" => [ "slug" => "dni_otwarte", "with_front" => true ],
 		"query_var" => true,
-		"supports" => [ "title", "editor", "thumbnail" ],
+		"supports" => [ "title", "editor", "thumbnail", "excerpt" ],
 	];
 
 	register_post_type( "dni_otwarte", $args );
 
-	/**
-	 * Post Type: Wydarzenia.
-	 */
-
-	$labels = [
-		"name" => __( "Wydarzenia", "custom-post-type-ui" ),
-		"singular_name" => __( "Wydarzenie", "custom-post-type-ui" ),
-	];
-
-	$args = [
-		"label" => __( "Wydarzenia", "custom-post-type-ui" ),
-		"labels" => $labels,
-		"description" => "",
-		"public" => true,
-		"publicly_queryable" => true,
-		"show_ui" => true,
-		"show_in_rest" => true,
-		"rest_base" => "",
-		"rest_controller_class" => "WP_REST_Posts_Controller",
-		"has_archive" => false,
-		"show_in_menu" => true,
-		"show_in_nav_menus" => true,
-		"delete_with_user" => false,
-		"exclude_from_search" => false,
-		"capability_type" => "post",
-		"map_meta_cap" => true,
-		"hierarchical" => false,
-		"rewrite" => [ "slug" => "wydarzeni", "with_front" => true ],
-		"query_var" => true,
-		"supports" => [ "title", "editor", "thumbnail" ],
-	];
-
-	register_post_type( "wydarzeni", $args );
-
-	/**
+		/**
 	 * Post Type: Wydarzenia.
 	 */
 
@@ -222,7 +146,7 @@ function cptui_register_my_cpts() {
 		"hierarchical" => false,
 		"rewrite" => [ "slug" => "wydarzenia", "with_front" => true ],
 		"query_var" => true,
-		"supports" => [ "title", "editor", "thumbnail" ],
+		"supports" => [ "title", "editor", "excerpt" ],
 	];
 
 	register_post_type( "wydarzenia", $args );
@@ -265,212 +189,6 @@ function cptui_register_my_cpts() {
 add_action( 'init', 'cptui_register_my_cpts' );
 
 
-function cptui_register_my_cpts_lokale() {
-
-	/**
-	 * Post Type: Lokale.
-	 */
-
-	$labels = [
-		"name" => __( "Lokale", "custom-post-type-ui" ),
-		"singular_name" => __( "Lokal", "custom-post-type-ui" ),
-		"all_items" => __( "Wszystkie lokale", "custom-post-type-ui" ),
-		"add_new" => __( "Dodaj lokal", "custom-post-type-ui" ),
-		"add_new_item" => __( "Dodaj nowy lokal", "custom-post-type-ui" ),
-		"edit_item" => __( "Edytuj lokal", "custom-post-type-ui" ),
-		"new_item" => __( "Nowy lokal", "custom-post-type-ui" ),
-		"view_item" => __( "Zobacz lokal", "custom-post-type-ui" ),
-		"view_items" => __( "Zobacz lokale", "custom-post-type-ui" ),
-	];
-
-	$args = [
-		"label" => __( "Lokale", "custom-post-type-ui" ),
-		"labels" => $labels,
-		"description" => "",
-		"public" => true,
-		"publicly_queryable" => true,
-		"show_ui" => true,
-		"show_in_rest" => true,
-		"rest_base" => "",
-		"rest_controller_class" => "WP_REST_Posts_Controller",
-		"has_archive" => false,
-		"show_in_menu" => true,
-		"show_in_nav_menus" => true,
-		"delete_with_user" => false,
-		"exclude_from_search" => false,
-		"capability_type" => "post",
-		"map_meta_cap" => true,
-		"hierarchical" => false,
-		"rewrite" => [ "slug" => "lokale", "with_front" => true ],
-		"query_var" => true,
-		"supports" => [ "title", "thumbnail" ],
-	];
-
-	register_post_type( "lokale", $args );
-}
-
-add_action( 'init', 'cptui_register_my_cpts_lokale' );
-
-
-function cptui_register_my_cpts_dni_otwarte() {
-
-	/**
-	 * Post Type: Dni otwarte.
-	 */
-
-	$labels = [
-		"name" => __( "Dni otwarte", "custom-post-type-ui" ),
-		"singular_name" => __( "Dzień otwarty", "custom-post-type-ui" ),
-	];
-
-	$args = [
-		"label" => __( "Dni otwarte", "custom-post-type-ui" ),
-		"labels" => $labels,
-		"description" => "",
-		"public" => true,
-		"publicly_queryable" => true,
-		"show_ui" => true,
-		"show_in_rest" => true,
-		"rest_base" => "",
-		"rest_controller_class" => "WP_REST_Posts_Controller",
-		"has_archive" => false,
-		"show_in_menu" => true,
-		"show_in_nav_menus" => true,
-		"delete_with_user" => false,
-		"exclude_from_search" => false,
-		"capability_type" => "post",
-		"map_meta_cap" => true,
-		"hierarchical" => false,
-		"rewrite" => [ "slug" => "dni_otwarte", "with_front" => true ],
-		"query_var" => true,
-		"supports" => [ "title", "editor", "thumbnail" ],
-	];
-
-	register_post_type( "dni_otwarte", $args );
-}
-
-add_action( 'init', 'cptui_register_my_cpts_dni_otwarte' );
-
-
-
-function cptui_register_my_cpts_wydarzeni() {
-
-	/**
-	 * Post Type: Wydarzenia.
-	 */
-
-	$labels = [
-		"name" => __( "Wydarzenia", "custom-post-type-ui" ),
-		"singular_name" => __( "Wydarzenie", "custom-post-type-ui" ),
-	];
-
-	$args = [
-		"label" => __( "Wydarzenia", "custom-post-type-ui" ),
-		"labels" => $labels,
-		"description" => "",
-		"public" => true,
-		"publicly_queryable" => true,
-		"show_ui" => true,
-		"show_in_rest" => true,
-		"rest_base" => "",
-		"rest_controller_class" => "WP_REST_Posts_Controller",
-		"has_archive" => false,
-		"show_in_menu" => true,
-		"show_in_nav_menus" => true,
-		"delete_with_user" => false,
-		"exclude_from_search" => false,
-		"capability_type" => "post",
-		"map_meta_cap" => true,
-		"hierarchical" => false,
-		"rewrite" => [ "slug" => "wydarzeni", "with_front" => true ],
-		"query_var" => true,
-		"supports" => [ "title", "editor", "thumbnail" ],
-	];
-
-	register_post_type( "wydarzeni", $args );
-}
-
-add_action( 'init', 'cptui_register_my_cpts_wydarzeni' );
-
-
-function cptui_register_my_cpts_wydarzenia() {
-
-	/**
-	 * Post Type: Wydarzenia.
-	 */
-
-	$labels = [
-		"name" => __( "Wydarzenia", "custom-post-type-ui" ),
-		"singular_name" => __( "Wydarzenie", "custom-post-type-ui" ),
-	];
-
-	$args = [
-		"label" => __( "Wydarzenia", "custom-post-type-ui" ),
-		"labels" => $labels,
-		"description" => "",
-		"public" => true,
-		"publicly_queryable" => true,
-		"show_ui" => true,
-		"show_in_rest" => true,
-		"rest_base" => "",
-		"rest_controller_class" => "WP_REST_Posts_Controller",
-		"has_archive" => false,
-		"show_in_menu" => true,
-		"show_in_nav_menus" => true,
-		"delete_with_user" => false,
-		"exclude_from_search" => false,
-		"capability_type" => "post",
-		"map_meta_cap" => true,
-		"hierarchical" => false,
-		"rewrite" => [ "slug" => "wydarzenia", "with_front" => true ],
-		"query_var" => true,
-		"supports" => [ "title", "editor", "thumbnail" ],
-	];
-
-	register_post_type( "wydarzenia", $args );
-}
-
-add_action( 'init', 'cptui_register_my_cpts_wydarzenia' );
-
-
-function cptui_register_my_cpts_komunikaty() {
-
-	/**
-	 * Post Type: Komunikaty.
-	 */
-
-	$labels = [
-		"name" => __( "Komunikaty", "custom-post-type-ui" ),
-		"singular_name" => __( "Komunikat", "custom-post-type-ui" ),
-	];
-
-	$args = [
-		"label" => __( "Komunikaty", "custom-post-type-ui" ),
-		"labels" => $labels,
-		"description" => "",
-		"public" => true,
-		"publicly_queryable" => true,
-		"show_ui" => true,
-		"show_in_rest" => true,
-		"rest_base" => "",
-		"rest_controller_class" => "WP_REST_Posts_Controller",
-		"has_archive" => false,
-		"show_in_menu" => true,
-		"show_in_nav_menus" => true,
-		"delete_with_user" => false,
-		"exclude_from_search" => false,
-		"capability_type" => "post",
-		"map_meta_cap" => true,
-		"hierarchical" => false,
-		"rewrite" => [ "slug" => "komunikaty", "with_front" => true ],
-		"query_var" => true,
-		"supports" => [ "title", "editor", "thumbnail" ],
-	];
-
-	register_post_type( "komunikaty", $args );
-}
-
-add_action( 'init', 'cptui_register_my_cpts_komunikaty' );
 
 
 function cptui_register_my_taxes() {
@@ -533,71 +251,6 @@ function cptui_register_my_taxes() {
 }
 add_action( 'init', 'cptui_register_my_taxes' );
 
-
-function cptui_register_my_taxes_inwestycja() {
-
-	/**
-	 * Taxonomy: Inwestycje.
-	 */
-
-	$labels = [
-		"name" => __( "Inwestycje", "custom-post-type-ui" ),
-		"singular_name" => __( "Inwestycja", "custom-post-type-ui" ),
-	];
-
-	$args = [
-		"label" => __( "Inwestycje", "custom-post-type-ui" ),
-		"labels" => $labels,
-		"public" => true,
-		"publicly_queryable" => true,
-		"hierarchical" => true,
-		"show_ui" => true,
-		"show_in_menu" => true,
-		"show_in_nav_menus" => true,
-		"query_var" => true,
-		"rewrite" => [ 'slug' => 'inwestycja', 'with_front' => true, ],
-		"show_admin_column" => true,
-		"show_in_rest" => true,
-		"rest_base" => "inwestycja",
-		"rest_controller_class" => "WP_REST_Terms_Controller",
-		"show_in_quick_edit" => true,
-			];
-	register_taxonomy( "inwestycja", [ "lokale" ], $args );
-}
-add_action( 'init', 'cptui_register_my_taxes_inwestycja' );
-
-
-function cptui_register_my_taxes_dodatkowo() {
-
-	/**
-	 * Taxonomy: dodatkowo.
-	 */
-
-	$labels = [
-		"name" => __( "dodatkowo", "custom-post-type-ui" ),
-		"singular_name" => __( "dodatkowo", "custom-post-type-ui" ),
-	];
-
-	$args = [
-		"label" => __( "dodatkowo", "custom-post-type-ui" ),
-		"labels" => $labels,
-		"public" => true,
-		"publicly_queryable" => false,
-		"hierarchical" => false,
-		"show_ui" => false,
-		"show_in_menu" => true,
-		"show_in_nav_menus" => true,
-		"query_var" => true,
-		"rewrite" => [ 'slug' => 'dodatkowo', 'with_front' => true, ],
-		"show_admin_column" => false,
-		"show_in_rest" => true,
-		"rest_base" => "dodatkowo",
-		"rest_controller_class" => "WP_REST_Terms_Controller",
-		"show_in_quick_edit" => true,
-			];
-	register_taxonomy( "dodatkowo", [ "lokale" ], $args );
-}
-add_action( 'init', 'cptui_register_my_taxes_dodatkowo' );
 
 
 function wptp_add_categories_to_attachments() {
@@ -684,3 +337,50 @@ function cptui_register_my_taxes_kategoria_zdjec() {
 	register_taxonomy( "kategoria_zdjec", [ "galeria" ], $args );
 }
 add_action( 'init', 'cptui_register_my_taxes_kategoria_zdjec' );
+
+
+function posts_columns($defaults){
+    $defaults['riv_post_thumbs'] = __('Thumbs');
+    return $defaults;
+}
+ 
+function posts_custom_columns($column_name, $id){
+        if($column_name === 'riv_post_thumbs'){
+        echo the_post_thumbnail( 'thumbnail');
+    }
+}
+add_filter('manage_posts_columns', 'posts_columns', 5);
+add_action('manage_posts_custom_column', 'posts_custom_columns', 5, 2);
+
+
+add_action('restrict_manage_posts', 'tsm_filter_post_type_by_taxonomy');
+function tsm_filter_post_type_by_taxonomy() {
+	global $typenow;
+	$post_type = 'lokale'; // change to your post type
+	$taxonomy  = 'inwestycja'; // change to your taxonomy
+	if ($typenow == $post_type) {
+		$selected      = isset($_GET[$taxonomy]) ? $_GET[$taxonomy] : '';
+		$info_taxonomy = get_taxonomy($taxonomy);
+		wp_dropdown_categories(array(
+			'show_option_all' => sprintf( __( 'Pokaż wszystkie %s', 'textdomain' ), $info_taxonomy->label ),
+			'taxonomy'        => $taxonomy,
+			'name'            => $taxonomy,
+			'orderby'         => 'name',
+			'selected'        => $selected,
+			'show_count'      => true,
+			'hide_empty'      => true,
+		));
+	};
+}
+
+add_filter('parse_query', 'tsm_convert_id_to_term_in_query');
+function tsm_convert_id_to_term_in_query($query) {
+	global $pagenow;
+	$post_type = 'lokale'; // change to your post type
+	$taxonomy  = 'inwestycja'; // change to your taxonomy
+	$q_vars    = &$query->query_vars;
+	if ( $pagenow == 'edit.php' && isset($q_vars['post_type']) && $q_vars['post_type'] == $post_type && isset($q_vars[$taxonomy]) && is_numeric($q_vars[$taxonomy]) && $q_vars[$taxonomy] != 0 ) {
+		$term = get_term_by('id', $q_vars[$taxonomy], $taxonomy);
+		$q_vars[$taxonomy] = $term->slug;
+	}
+}

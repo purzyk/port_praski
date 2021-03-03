@@ -187,6 +187,42 @@ $(function () {
     ]
   });
 
+  $('.js-dniotwarte').slick({
+    infinite: true,
+    variableWidth: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    dots: false,
+    autoplay: false,
+    arrows: true,
+    nextArrow: '.arrow__right__dni',
+    prevArrow: '.arrow__left__dni',
+    responsive: [{
+        breakpoint: 760,
+        settings: "unslick"
+      }
+
+    ]
+  });
+
+  $('.js-wydarzenia').slick({
+    infinite: true,
+    variableWidth: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    dots: false,
+    autoplay: false,
+    arrows: true,
+    nextArrow: '.arrow__right__wyd',
+    prevArrow: '.arrow__left__wyd',
+    responsive: [{
+        breakpoint: 760,
+        settings: "unslick"
+      }
+
+    ]
+  });
+
   /* Splide slider for each secton */
   var elms = document.getElementsByClassName('splide');
   for (var i = 0, len = elms.length; i < len; i++) {

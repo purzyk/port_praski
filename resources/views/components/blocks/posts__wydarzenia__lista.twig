@@ -1,0 +1,29 @@
+<section class="home__noweInwestycje --wydarzenia">
+	<div class="l-wrapper">
+		<div class="slider__header">
+			<h3 data-aos="fade-up" data-aos-duration="800" class="fnt20 home__noweInwestycje__title">Wydarzenia</h3>
+			<div class="slider__header__buttons">
+				<p class="fnt12">zobacz więcej</p>
+				<button class="circle --white slider__header__button arrow__left__wyd"><img src="{{Image(options.arrow_up).src}}"></button>
+				<button class="circle --white slider__header__button arrow__right__wyd"><img src="{{Image(options.arrow_up).src}}"></button>
+			</div>
+		</div>
+	</div>
+	<div class="wrapFullWidth --right" data-aos="fade-up" data-aos-delay="140">
+		<div class="home__noweInwestycje__wrapp js-wydarzenia --CustomButtons">
+			{% for item in wydarzeniaLoop %}
+				<div class="home__noweInwestycje__item">
+					<div class="home__noweInwestycje__item__inside">
+						<h4 class="fnt12">
+							{{item.date | date('d.m.Y')}}
+						</h4>
+						<h5 class="fnt30">{{item.title}}</h5>
+						<p>{{item.preview.read_more('')}}</p>
+
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		<a class="btn --mobile" href="">Zobacz więcej</a>
+	</div>
+</section>

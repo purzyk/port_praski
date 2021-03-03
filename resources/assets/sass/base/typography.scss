@@ -37,11 +37,26 @@ strong {
   }
 }
 
-.fnt30 {
+.fnt24 {
   font-weight: 800;
-  font-size: 30px;
-  line-height: 41px;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 800;
   text-transform: uppercase;
+
+}
+
+.fnt30 {
+  font-size: 28px;
+  line-height: 38px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  @include breakpoint($md) {
+    font-size: 30px;
+    line-height: 41px;
+  }
 }
 
 .fnt50 {

@@ -1,1 +1,45 @@
-.aktualnosci {}
+.aktualnosci {
+    margin-top: 47px;
+    margin-bottom: 47px;
+
+    @include breakpoint($md) {
+        margin-top: 100px;
+
+    }
+
+    .home__noweInwestycje__title {
+        margin-bottom: 23px;
+
+        @include breakpoint($md) {
+            font-size: 50px;
+            line-height: 60px;
+            margin-bottom: 38px;
+        }
+    }
+
+
+
+    .home__noweInwestycje__item:last-child {
+        margin-bottom: 20px;
+
+        @include breakpoint($md) {
+            margin-bottom: 72px;
+        }
+    }
+
+    .btn {
+        text-align: center;
+        width: 100%;
+
+        @include breakpoint($md) {
+            display: none !important;
+        }
+    }
+
+    .home__noweInwestycje {
+        padding-bottom: 46px;
+
+    }
+}
+
+.--dniotwarte {}

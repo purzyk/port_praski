@@ -11,12 +11,18 @@
 			<div class="single__article__wrap">
 
 				<h1 class="fnt50 single__title">{{ post.title }}</h1>
-				<p class="single__lead">{{post.lead}}</p>
+				{% if post.lead %}
+
+					<p class="single__lead">{{post.lead}}</p>
+				{% endif %}
 			</div>
 		</div>
-		<figure class="single__article__figure">
-			<img src="{{post.thumbnail | resize(1420, 750)}}">
-		</figure>
+		{% if post.thumbnail %}
+
+			<figure class="single__article__figure">
+				<img src="{{post.thumbnail | resize(1420, 750)}}">
+			</figure>
+		{% endif %}
 		<div class="l-wrapper">
 
 			<div class="single__article__wrap">

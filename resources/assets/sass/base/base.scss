@@ -152,8 +152,28 @@ a {
 .wrapFullWidth {
   width: calc(100% - 20px);
 
+  &.--left {
+    margin: 0 auto;
+
+    @include breakpoint($md) {
+
+      margin: 0 auto 0 0;
+    }
+
+    .home__noweInwestycje__wrapp {
+      @include breakpoint($md) {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+
   &.--right {
-    margin-left: auto;
+    margin: 0 auto;
+
+    @include breakpoint($md) {
+
+      margin: 0 0 0 auto;
+    }
   }
 
   @include breakpoint($xl) {

@@ -115,7 +115,7 @@
 
 .--CustomButtons {
   .slick-slide {
-    margin: 0 20px;
+    margin: 0 0;
   }
 
   /* the parent */
@@ -130,12 +130,17 @@
 
 
   &__buttons {
-    padding-top: 17px;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    align-self: baseline;
-    align-items: center;
+    display: none;
+
+    @include breakpoint($md) {
+      padding-top: 17px;
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      align-self: baseline;
+      align-items: center;
+    }
+
 
     p {
       margin-bottom: 0;
@@ -156,13 +161,17 @@
       }
     }
 
-    &.arrow__left {
+    &.arrow__left,
+    &.arrow__left__dni,
+    &.arrow__left__wyd {
       transform: rotate(-90deg);
 
 
     }
 
-    &.arrow__right {
+    &.arrow__right,
+    &.arrow__right__dni,
+    &.arrow__right__wyd {
       transform: rotate(90deg);
 
 
