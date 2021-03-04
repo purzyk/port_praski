@@ -1,8 +1,63 @@
 {% extends "base.twig" %}
 {% block content %}
 	<article class="kontakt">
-		<div class="l-wrapper">
-			<p>{{post.title}}</p>
+		<header class="inwestycja__header">
+			<img class="inwestycja__header__img" src="{{Image(post.glowne_zdjecie).src}}">
+			<div class="l-wrapper">
+				<div class="inwestycja__header__title">
+					<figure class="circle">
+						<a href="#start">
+							<svg width="12" height="17" viewbox="0 0 12 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M6.02261 1.01516L6.02261 17" stroke="#fff" stroke-width="1.5" stroke-miterlimit="10"/>
+								<path d="M0 6.58545C3.30565 6.58545 6.02261 3.91376 6.02261 0.562835" stroke="#fff" stroke-width="1.5" stroke-miterlimit="10"/>
+								<path d="M6.02261 0.562835C6.02261 3.86848 8.6943 6.58545 11.9999 6.58545" stroke="#fff" stroke-width="1.5" stroke-miterlimit="10"/>
+							</svg>
+
+						</a>
+					</figure>
+					<div class="inwestycja__header__title__copy">
+						<h1 class="fnt50 inwestycja__header__title__title">{{ post.meta('title')}}</h1>
+						<h2 class="inwestycja__header__title__slogan">{{ post.meta('subtitle')}}</h2>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="l-wrapper --noPadding">
+			<div class="kontakt__address">
+				<div class="kontakt__address__left kontakt__grey">
+					<div class="line double --grey"></div>
+					<p class="kontakt__address__godziny">{{post.meta('godziny_otwarcia')}}</p>
+					<div class="line double --grey"></div>
+					<figure class="--desktop"><img src="{{Image(post.logo_desktop).src}}"></figure>
+					<figure class="--mobile"><img src="{{Image(post.logo_mobile).src}}"></figure>
+				</div>
+				<div class="kontakt__address__right">
+					<p>{{post.meta('copy')}}</p>
+				</div>
+			</div>
+
 		</div>
+		<div class="l-wrapper --noPadding">
+			<figure class="kontakt__map"><img src="{{Image(post.mapa).src}}"></figure>
+		</div>
+		<div class="l-wrapper">
+			<div class="line" data-aos="width" data-aos-duration="800"></div>
+		</div>
+		{% include 'components/blocks/posts__komunikaty__lista.twig' %}
+		<div class="l-wrapper --noPadding">
+			<div class="kontakt__pliki">
+				{% for item in post.meta('pliki_do_pobrania') %}
+					<div class="kontakt__plik">
+						<p class="index">
+							0{{loop.index}}</p>
+						<p>{{item.plik.name}}</p>
+						<a class="btn" href="{{item.plik.url}}">Pobierz plik</a>
+					</div>
+				{% endfor %}
+
+
+			</div>
+		</div>
+
 	</article>
 {% endblock %}

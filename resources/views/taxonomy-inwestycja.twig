@@ -44,7 +44,7 @@
 							<ul class="splide__list">
 								{% for image in slider %}
 									<li class="splide__slide">
-										<img data-splide-lazy="{{Image(image.zdjecie).src}}">
+										<img data-splide-lazy="{{Image(image.zdjecie).src | resize(1600,1000)}}">
 									</li>
 								{% endfor %}
 							</ul>

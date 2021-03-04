@@ -1,6 +1,6 @@
 {
     "key": "group_603e0e7b77aa6",
-    "title": "page - galeria",
+    "title": "Page - Galeria",
     "fields": [
         {
             "key": "field_603e0e86f9f17",
@@ -47,5 +47,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1614680223
+    "modified": 1614856647
 }

@@ -1,1 +1,114 @@
-.kontakt {}
+.kontakt {
+    .home__noweInwestycje__title {
+        font-size: 20px;
+        line-height: 27px;
+
+    }
+
+    .home__noweInwestycje {
+        .btn {
+            text-align: center;
+        }
+    }
+
+    &__grey {
+        background: #E9ECF3;
+    }
+
+    .inwestycja__header {
+        height: 700px;
+    }
+
+    margin-bottom: 100px;
+
+    &__address {
+        display: flex;
+
+        flex-direction: column;
+
+
+        .line.--grey {
+            margin-bottom: 20px;
+        }
+
+        &__godziny {
+            font-weight: 800;
+        }
+
+        &__left {
+            padding: 60px 20px 54px;
+
+        }
+
+        &__right {
+
+            padding: 54px 20px 42px;
+
+            p {
+                font-size: 18px;
+                line-height: 30px;
+                color: $black;
+                font-weight: 300;
+            }
+        }
+
+    }
+
+    &__map {
+        width: 100%;
+        margin-bottom: 98px;
+
+        img {
+            min-height: 380px;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__pliki {
+        display: flex;
+        flex-direction: column;
+        margin-top: 50px;
+    }
+
+    &__plik {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 35px 13px;
+
+        background: #F6F6F6;
+        margin-bottom: 10px;
+        flex-direction: column;
+
+        @include breakpoint($md) {
+            padding: 35px 45px;
+        }
+
+        p {
+            margin: 0;
+            font-size: 18px;
+            line-height: 25px;
+            margin-bottom: 25px;
+
+            &.index {
+                font-weight: 800;
+                margin-right: 20px;
+                margin-bottom: 5px;
+            }
+
+        }
+
+
+
+        .btn {
+            margin: 0;
+            margin-left: 0;
+
+            @include breakpoint($md) {
+                margin-left: auto;
+
+            }
+        }
+    }
+}

@@ -180,7 +180,7 @@ function cptui_register_my_cpts() {
 		"hierarchical" => false,
 		"rewrite" => [ "slug" => "komunikaty", "with_front" => true ],
 		"query_var" => true,
-		"supports" => [ "title", "editor", "thumbnail" ],
+		"supports" => [ "title", "editor", "excerpt" ],
 	];
 
 	register_post_type( "komunikaty", $args );
@@ -236,7 +236,7 @@ function cptui_register_my_taxes() {
 		"public" => true,
 		"publicly_queryable" => false,
 		"hierarchical" => false,
-		"show_ui" => false,
+		"show_ui" => true,
 		"show_in_menu" => true,
 		"show_in_nav_menus" => true,
 		"query_var" => true,

@@ -6,6 +6,7 @@ import LazyLoad from "vanilla-lazyload"
 import BackToTop from './jq-components/backToTop';
 import SmoothScroll from './jq-components/smoothScroll';
 import Splide from '@splidejs/splide';
+import noUiSlider from "nouislider";
 
 
 /* Replace image vidth youtube content */
@@ -49,6 +50,60 @@ document.addEventListener("DOMContentLoaded", initYouTubeVideos);
 
 
 $(document).ready(function () {
+  var pokoiSlider = document.getElementById('pokoiSlider');
+  var powierzchniaSlider = document.getElementById('powierzchniaSlider');
+  var pietroSlider = document.getElementById('pietroSlider');
+
+  noUiSlider.create(pokoiSlider, {
+      start: [1, 10],
+      connect: true,
+      step: 1,
+      range: {
+          'min': 1,
+          'max': 10
+      }
+  });
+  noUiSlider.create(powierzchniaSlider, {
+    start: [0, 200],
+    connect: true,
+    step: 1,
+    range: {
+        'min': 0,
+        'max': 200
+    }
+});
+noUiSlider.create(pietroSlider, {
+  start: [0, 10],
+  connect: true,
+  step: 1,
+  range: {
+      'min': 0,
+      'max': 10
+  }
+});
+  var nodes = [
+    document.getElementById('pokoi-from'), // 0
+    document.getElementById('pokoi-to')  // 1
+];
+var nodes2 = [
+  document.getElementById('powierzchnia-from'), // 0
+  document.getElementById('powierzchnia-to')  // 1
+];
+var nodes3 = [
+  document.getElementById('pietro-from'), // 0
+  document.getElementById('pietro-to')  // 1
+];
+// Display the slider value and how far the handle moved
+// from the left edge of the slider.
+pokoiSlider.noUiSlider.on('update', function (values, handle, unencoded, isTap, positions) {
+    nodes[handle].innerHTML = values[handle];
+});
+powierzchniaSlider.noUiSlider.on('update', function (values, handle, unencoded, isTap, positions) {
+  nodes2[handle].innerHTML = values[handle];
+});
+pietroSlider.noUiSlider.on('update', function (values, handle, unencoded, isTap, positions) {
+  nodes3[handle].innerHTML = values[handle];
+});
 /* Go back */
 
 $(".goBack").click(function() {
@@ -101,6 +156,8 @@ $(".goBack").click(function() {
 });
 
 $(function () {
+
+
 
   $('.slider').slick({
     slidesToShow: 1,

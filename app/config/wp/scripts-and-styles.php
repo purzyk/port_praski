@@ -16,10 +16,10 @@ function base_camp_scripts_and_styles()
        
 
     // Enqueue scripts and styles
+    
     wp_enqueue_script('wptheme-scripts');
     wp_enqueue_script('wptheme-vendor');
     wp_enqueue_style('wptheme-styles');
-
 
     // comment reply script for threaded comments
     if (is_singular() && comments_open() && (get_option('thread_comments') == 1)) {

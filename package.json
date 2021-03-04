@@ -49,6 +49,7 @@
     "aos": "^2.3.4",
     "jquery": "^3.4.1",
     "magnific-popup": "^1.1.0",
+    "nouislider": "^14.6.3",
     "slick-carousel": "^1.8.1",
     "vanilla-lazyload": "^17.3.1"
   }
