@@ -382,8 +382,22 @@ $('.home__inwestycjeLista__item__footer__link__close').click(function (event) {
 });
 
 $('.home__inwestycjeLista__item__footer__link').click(function (event) {
-  event.preventDefault();
-  $(this).closest('.home__inwestycjeLista__item__outsite').toggleClass('active');
+    event.preventDefault();
+
+    const button = $(this);
+    const wrapper = button.closest(".home__inwestycjeLista__item__outsite");
+
+    wrapper.toggleClass("active");
+
+    // code for proper handling modal buttons animation so hover animation and the one
+    // from closing modal doesn't interfere with each other
+    if (!wrapper.hasClass("active")) {
+        button.addClass("delayed-animation");
+
+        setTimeout(() => {
+            button.removeClass("delayed-animation");
+        }, 1200);
+    }
 });
 
 /*Lang switcher */
