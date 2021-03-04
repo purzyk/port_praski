@@ -484,19 +484,20 @@ function set3DViewButtonsPostition() {
   const windowWidth = window.innerWidth
   const jeff = document.querySelector("#wyszukiwarka3d")
   let height;
-
+  let top;
   if(windowWidth < 1600) {
     height = windowWidth / 16 * 9;
+    top = height - 136;
   } else {
     height = 900
+    top = height - 126
   }
 
   if(windowWidth >= 848 && windowWidth <= 1640) {
-    const top = height - 14 - 110;
     buttons.style.top = `${top}px`
   }else if (windowWidth > 1640) {
     buttons.style.top = 'auto';
-    buttons.style.bottom = '40px';
+    buttons.style.bottom = '48px';
     buttons.style.left = `42px`
   } 
   else if (windowWidth < 849) {
