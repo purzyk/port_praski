@@ -10,11 +10,12 @@
 			</div>
 		</div>
 	</div>
-	<div class="wrapFullWidth --right" data-aos="fade-up" data-aos-delay="140">
-		<div class="home__noweInwestycje__wrapp js-sliderNew --CustomButtons">
+	<div class="wrapFullWidth --right" data-aos="fade-up" data-aos-delay="140">			
+	<div class="home__noweInwestycje__wrapp js-sliderNew --CustomButtons"  data-aos="fade-up" data-aos-delay="140">
+
 			{% for item in media_item.inwestycje %}
-				<div class="home__noweInwestycje__item">
-					{% include 'components/generic/image.twig'  with { img_src:Image(item.image).src, width:580, height:440 } %}
+				<div class="home__noweInwestycje__item" data-aos="no-real-animation">
+					{% include 'components/generic/image.twig'  with { img_src:Image(item.image).src } %}
 					<div class="home__noweInwestycje__item__inside">
 						<h4 class="fnt12">{{item.subtitle}}</h4>
 						<h5 class="fnt30">{{item.title}}</h5>
@@ -40,6 +41,6 @@
 					</div>
 				</div>
 			{% endfor %}
-		</div>
+			</div>
 	</div>
 </section>

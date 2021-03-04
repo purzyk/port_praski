@@ -29,8 +29,10 @@
 			</ul>
 		</ul>
 	{% else %}
-		<a class="navbar-item {{ item.class }}" href="{{ item.link }}">
+		<div class="footer-menu-item">	
+			<a class="navbar-item {{ item.class }}" href="{{ item.link }}">
 			{{ item.title }}
-		</a>
+			</a>
+		</div>
 	{% endif %}
 {% endfor %}

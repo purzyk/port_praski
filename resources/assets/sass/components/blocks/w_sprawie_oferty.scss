@@ -1,4 +1,7 @@
 .wSprawieOferty {
+    margin-top: 10rem;
+
+    
     &__wrap {
         background: $lightBlue;
         min-height: 580px;
@@ -44,4 +47,5 @@
             max-width: 620px;
         }
     }
+
 }
