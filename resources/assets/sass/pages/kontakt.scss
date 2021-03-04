@@ -8,15 +8,37 @@
     .home__noweInwestycje {
         .btn {
             text-align: center;
+
+            @include breakpoint($md) {
+                display: none;
+            }
         }
+    }
+
+    .home__noweInwestycje__item:after {
+        width: 100%;
     }
 
     &__grey {
         background: #E9ECF3;
+
+        @include breakpoint($md) {
+            background: $darkBlue;
+
+            p {
+                color: #fff;
+                margin-bottom: 72px;
+            }
+        }
     }
 
     .inwestycja__header {
         height: 700px;
+
+        @include breakpoint($md) {
+            height: 510px;
+            margin-bottom: 90px;
+        }
     }
 
     margin-bottom: 100px;
@@ -26,9 +48,19 @@
 
         flex-direction: column;
 
+        @include breakpoint($md) {
+            flex-direction: row;
+            align-items: flex-start;
+            margin-bottom: 54px
+        }
+
 
         .line.--grey {
             margin-bottom: 20px;
+
+            @include breakpoint($md) {
+                display: none;
+            }
         }
 
         &__godziny {
@@ -38,17 +70,34 @@
         &__left {
             padding: 60px 20px 54px;
 
+            @include breakpoint($md) {
+                min-width: 420px;
+                margin-right: 60px;
+                padding: 34px;
+
+            }
+
         }
 
         &__right {
 
             padding: 54px 20px 42px;
 
+            @include breakpoint($md) {
+                padding: 0;
+
+            }
+
             p {
                 font-size: 18px;
                 line-height: 30px;
                 color: $black;
                 font-weight: 300;
+
+                @include breakpoint($md) {
+                    font-size: 20px;
+                    line-height: 32px;
+                }
             }
         }
 
@@ -57,6 +106,11 @@
     &__map {
         width: 100%;
         margin-bottom: 98px;
+
+        @include breakpoint($md) {
+            margin-bottom: 146px;
+
+        }
 
         img {
             min-height: 380px;
@@ -69,6 +123,10 @@
         display: flex;
         flex-direction: column;
         margin-top: 50px;
+
+        @include breakpoint($md) {
+            margin-top: 14px;
+        }
     }
 
     &__plik {
@@ -82,7 +140,9 @@
         flex-direction: column;
 
         @include breakpoint($md) {
-            padding: 35px 45px;
+            padding: 35px;
+            flex-direction: row;
+            align-items: center;
         }
 
         p {
@@ -91,10 +151,21 @@
             line-height: 25px;
             margin-bottom: 25px;
 
+            @include breakpoint($md) {
+                font-size: 20px;
+                line-height: 27px;
+                margin-bottom: 0;
+            }
+
             &.index {
                 font-weight: 800;
                 margin-right: 20px;
                 margin-bottom: 5px;
+
+                @include breakpoint($md) {
+                    margin-right: 36px;
+                    margin-bottom: 0;
+                }
             }
 
         }

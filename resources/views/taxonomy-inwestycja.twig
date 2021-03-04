@@ -23,11 +23,12 @@
 				</div>
 			</div>
 		</header>
-
+		<div id="start" class="offset"></div>
+		{% include 'components/blocks/znajdz_lokal.twig' %}
 		<section class="inwestycja__section">
 			<div class="l-wrapper">
 				<div class="line" data-aos="width" data-aos-duration="800"></div>
-				<div id="start" class="offset"></div>
+
 				<h5 class="fnt20 inwestycja__section__title">
 					{{ title}}
 
@@ -65,11 +66,4 @@
 			</div>
 		</section>
 	</article>
-	<div class="inwestycja__znajdz">
-		<div class="l-wrapper">
-			<h2 class="fnt50 inwestycja__znajdz__title">
-				znajdź lokal
-			</h2>
-		</div>
-	</div>
 {% endblock %}

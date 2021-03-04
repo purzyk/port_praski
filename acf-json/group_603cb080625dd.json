@@ -114,6 +114,30 @@
             "multiple": 0
         },
         {
+            "key": "field_6041402e0a591",
+            "label": "typ",
+            "name": "typ",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Mieszkanie lub Apartament": "Mieszkanie lub Apartament",
+                "Usługi": "Usługi"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "Mieszkanie lub Apartament",
+            "layout": "vertical",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
             "key": "field_603d041b22d0e",
             "label": "PDF",
             "name": "pdf",
@@ -195,5 +219,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1614719175
+    "modified": 1614889047
 }

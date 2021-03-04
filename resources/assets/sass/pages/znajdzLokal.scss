@@ -1,11 +1,18 @@
 .znajdzLokal {
     background: #E5E5E5;
-    padding-top: 100px;
+    padding-top: 60px;
     padding-bottom: 100px;
 
     &__title {
         text-align: left;
-        margin-bottom: 20px;
+        font-size: 32px;
+        line-height: 44px;
+
+        @include breakpoint($md) {
+            font-size: 50px;
+            line-height: 60px;
+            margin-bottom: 35px;
+        }
     }
 
     &__line {
@@ -15,6 +22,12 @@
 
     &__wrapper {
         display: flex;
+        flex-direction: column;
+
+        @include breakpoint($md) {
+            flex-direction: row;
+            margin-top: 50px;
+        }
     }
 
     &__item {
@@ -22,14 +35,197 @@
         display: flex;
         margin-bottom: 20px;
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+        flex-direction: column;
+        padding: 27px 20px 0;
+
+        @include breakpoint($md) {
+            flex-direction: row;
+            padding: 38px 38px 38px 80px;
+        }
 
         .lokal__btns {
             flex-direction: column;
-            margin-left: auto;
+
+            @include breakpoint($md) {
+                margin-left: auto;
+                order: 3;
+                justify-content: flex-start;
+
+                .btn {
+                    width: 100%;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        &__title {
+            font-size: 28px;
+            line-height: 38px;
+            text-transform: uppercase;
+            color: #262359;
+            display: block;
+            font-weight: 800;
+
+            @include breakpoint($md) {
+                color: #8F8F8F;
+                margin-right: 20px;
+            }
+        }
+
+        &__inwestycja {
+            font-weight: 800;
+            font-size: 15px;
+            line-height: 32px;
+            display: block;
+            text-transform: uppercase;
+
+            color: #8F8F8F;
+            margin-bottom: 10px;
+
+            @include breakpoint($md) {
+                font-size: 28px;
+                line-height: 38px;
+                color: #262359;
+            }
+        }
+
+        &__copy {
+            margin-bottom: 24px;
+
+            @include breakpoint($md) {
+                margin-bottom: 0;
+                order: 2;
+
+                &__title {
+                    display: flex;
+                }
+            }
+        }
+
+        .line {
+            margin-bottom: 24px;
+
+            @include breakpoint($md) {
+                display: none;
+            }
+        }
+
+        figure {
+            margin-bottom: 24px;
+
+            @include breakpoint($md) {
+                min-width: 150px;
+                margin-bottom: 0;
+                order: 1;
+                margin-right: 80px;
+            }
+        }
+
+        @include breakpoint($md) {
+
+            .lokal__twoColumns {
+                margin-bottom: 5px;
+            }
         }
     }
 
     &__main {
         width: 100%;
+
+        &__meta {
+            @include breakpoint($md) {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            &__content {
+                font-weight: 800;
+                font-size: 14px;
+                line-height: 19px;
+                margin-bottom: 16px;
+                /* identical to box height */
+
+                text-transform: uppercase;
+
+                /* GREY-DARK */
+
+                color: #8F8F8F;
+
+                .--sort {
+                    color: $darkBlue;
+                    padding: 0 22px 0 10px;
+                    background: url('../images/sort.svg') right center no-repeat;
+                }
+
+                .--blue {
+                    color: $darkBlue;
+                }
+            }
+        }
     }
+
+    &__filters {
+
+
+        width: 100%;
+        max-width: 280px;
+        display: none;
+
+        @include breakpoint($md) {
+            display: block;
+            margin-right: 62px;
+        }
+
+        &__title {
+            font-weight: 800;
+            font-size: 14px;
+            line-height: 19px;
+            /* identical to box height */
+
+            text-transform: uppercase;
+
+            /* DARK BLUE */
+
+            color: #262359;
+        }
+
+        &__item {
+            @include breakpoint($md) {
+                display: none;
+            }
+        }
+    }
+
+    .--filtry {
+        background: transparent;
+        border: 1px solid #DADADA;
+        margin-top: 0;
+        margin-bottom: 40px;
+        width: 100%;
+        text-align: center;
+
+        span {
+            font-weight: 800;
+            font-size: 12px;
+            line-height: 16px;
+            text-align: center;
+            text-transform: uppercase;
+            color: #8F8F8F;
+            padding-left: 30px;
+            background: url('../images/filtry.svg') left center no-repeat;
+        }
+
+        @include breakpoint($md) {
+            display: none;
+        }
+    }
+}
+
+.noUi-horizontal {
+    width: 100%;
+    max-width: 350px;
+    margin-right: auto;
 }

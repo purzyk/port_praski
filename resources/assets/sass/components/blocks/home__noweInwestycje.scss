@@ -102,6 +102,10 @@
             flex-direction: column;
             padding: 36px 23px 110px 23px;
 
+            a {
+                color: $white;
+            }
+
             @include breakpoint($md) {
                 padding: 55px 35px;
 
@@ -141,6 +145,10 @@
             position: relative;
             border: 1px solid #262359;
             padding-bottom: 20px;
+
+            a {
+                color: $darkBlue;
+            }
         }
 
         .fnt30 {

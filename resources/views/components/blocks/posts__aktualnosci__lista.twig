@@ -13,13 +13,21 @@
 		<div class="home__noweInwestycje__wrapp js-sliderNew --CustomButtons">
 			{% for item in postLoop %}
 				<div class="home__noweInwestycje__item">
+
 					{% include 'components/generic/image.twig'  with { img_src:Image(item.thumbnail).src, width:580, height:440 } %}
+
 					<div class="home__noweInwestycje__item__inside">
-						<h4 class="fnt12">
-							{{ item.terms('category') | join(', ') }}
-						</h4>
-						<h5 class="fnt30">{{item.title}}</h5>
-						<p>{{item.preview.read_more('')}}</p>
+						<a href="{{item.link}}">
+							<h4 class="fnt12">
+								{{ item.terms('category') | join(', ') }}
+							</h4>
+							<h5 class="fnt30">{{item.title}}</h5>
+						</a>
+
+						<p>
+							<a href="{{item.link}}">{{item.preview.read_more('')}}</a>
+						</p>
+
 						<div class="home__noweInwestycje__item__socials">
 							<figure class="circle">
 								<a target="_blank" href="">
@@ -39,6 +47,7 @@
 							</figure>
 						</div>
 					</div>
+
 				</div>
 			{% endfor %}
 

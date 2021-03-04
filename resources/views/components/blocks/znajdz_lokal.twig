@@ -1,0 +1,93 @@
+<article class="znajdzLokal">
+	<div class="l-wrapper">
+		<h1 class="fnt50 znajdzLokal__title">Znajdź lokal</h1>
+		<div class="znajdzLokal__main__meta__content --mobile">liczba ofert 20
+			<span>(34)</span>
+		</div>
+		<div class="line znajdzLokal__line --mobile" data-aos="width" data-aos-duration="800"></div>
+
+		<button class="btn --mobile --filtry">
+			<span>pokaż filtry</span>
+		</button>
+		<div class="znajdzLokal__main__meta__content --mobile">
+			<span>sortuj</span>
+			<span class="--sort">nazwa</span>
+		</div>
+		<div class="line znajdzLokal__line --desktop" data-aos="width" data-aos-duration="800"></div>
+		<div class="znajdzLokal__wrapper">
+			<aside class="znajdzLokal__filters">
+				<div class="znajdzLokal__filters__item">
+					<h3 class="znajdzLokal__filters__title">inwestycja</h3>
+					{% for item in post.meta('inwestycja') %}
+						<div class="znajdzLokal__filters__inwestycja__item">
+							<figure>
+								{% include 'components/generic/image.twig'  with { img_src:Image(item.glowne_zdjecie).src, width:132, height:94 } %}
+							</figure>
+							{{item.title}}
+						</div>
+					{% endfor %}
+				</div>
+				<div class="znajdzLokal__filters__item">
+					<h3 class="znajdzLokal__filters__title">Liczba pokoi</h3>
+
+					<div id="pokoiSlider" class="pokoi-slider"></div>
+					<div class="values">
+						<span id="pokoi-from">0</span>
+						<span id="pokoi-to">10</span>
+					</div>
+
+				</div>
+				<div class="znajdzLokal__filters__item">
+					<h3 class="znajdzLokal__filters__title">Powierzchnia</h3>
+
+					<div id="powierzchniaSlider" class="powierzchnia-slider"></div>
+					<div class="values">
+						<span id="powierzchnia-from">0</span>
+						<span id="powierzchnia-to">10</span>
+					</div>
+
+				</div>
+				<div class="znajdzLokal__filters__item">
+					<h3 class="znajdzLokal__filters__title">piętro</h3>
+
+					<div id="pietroSlider" class="pietro-slider"></div>
+					<div class="values">
+						<span id="pietro-from">0</span>
+						<span id="pietro-to">10</span>
+					</div>
+
+				</div>
+				<div class="znajdzLokal__filters__item">
+					<h3 class="znajdzLokal__filters__title">Cechy dodatkowe</h3>
+
+					{% for item in dodatkowo %}
+						<span class="wpcf7-form-control-wrap acceptance-1">
+							<span class="wpcf7-form-control wpcf7-acceptance">
+								<span class="wpcf7-list-item">
+									<label><input type="checkbox" name="acceptance-1" value="1" aria-invalid="false" checked="checked"><span class="wpcf7-list-item-label">{{item.name}}
+										</span>
+									</label>
+								</span>
+							</span>
+						</span>
+					{% endfor %}
+				</div>
+			</aside>
+			<section class="znajdzLokal__main">
+				<div class="znajdzLokal__main__meta --desktop">
+					<div class="znajdzLokal__main__meta__content">
+						<span class="--blue">liczba ofert 20</span>
+						<span>(34)</span>
+					</div>
+					<div class="znajdzLokal__main__meta__content --desktop">
+						<span>sortuj</span>
+						<span class="--sort">nazwa</span>
+					</div>
+				</div>
+				{% for item in postsLoop %}
+					{% include 'components/generic/lokal.twig' %}
+				{% endfor %}
+			</section>
+		</div>
+	</div>
+</article>
