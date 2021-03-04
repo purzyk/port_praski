@@ -136,6 +136,11 @@
     align-content: center;
     align-self: baseline;
     align-items: center;
+    display: none;
+
+    @include breakpoint($sm) {
+      display: flex
+    }
 
     p {
       margin-bottom: 0;
@@ -148,6 +153,8 @@
 
     img {
       transition: all 0.2s;
+      max-height: 75vh;
+      object-fit: cover;
     }
 
     &:hover {

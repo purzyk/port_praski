@@ -1,5 +1,7 @@
 .home__noweInwestycje {
     padding-bottom: 15px;
+    //max-width: $xxl;
+    margin: 0 auto;
 
     &__title {
         padding-top: 12px;
@@ -10,13 +12,14 @@
             margin-bottom: 73px;
         }
 
+
     }
 
     &__wrapp {
         display: flex;
         justify-content: space-between;
         flex-direction: column;
-
+        width: 100%;
 
         @include breakpoint($md) {
             flex-direction: row;
@@ -33,7 +36,7 @@
             min-width: 650px;
             margin-right: 20px;
         }
-
+        position: relative;
         &:after {
             content: '';
             display: block;
@@ -44,20 +47,24 @@
             height: 12px;
             background: url('../images/lines.svg') center repeat-x;
             opacity: 0.15;
-
+    
             @include breakpoint($md) {
                 bottom: -47px;
             }
         }
-
         picture {
             width: 100%;
-
             source,
             img {
                 width: 100%;
-                min-height: 440px;
+                max-height: 500px;
+                height: 500px;
                 object-fit: cover;
+
+                @include breakpoint($sm) {
+                    max-height: 440px;
+                    height: auto;
+                  }
             }
         }
 
@@ -103,5 +110,12 @@
 
             }
         }
+    }
+}
+
+.home__noweInwestycje .wrapFullWidth {
+    @media screen and (max-width: $sm) {
+        width: 90%;
+        margin: 0 auto;
     }
 }

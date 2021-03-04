@@ -49,7 +49,23 @@
 						{{ item.title }}
 					</a>
 				</li>
+
+				
 			{% endif %}
 		{% endfor %}
+
+		<li>
+			<figure class="lang circle navbar-item menu-item">
+						<div class="lang__switch">
+							{% for item in lang %}
+								{% if item.active != 1 %}
+									<a href="{{item.url}}" class="active">
+										<img src="{{item.country_flag_url}}">
+									</a>
+								{% endif %}
+							{% endfor %}
+						</div>
+					</figure>
+		</li>
 	</ul>
 </nav>

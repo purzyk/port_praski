@@ -1,7 +1,9 @@
 {% include 'header/index.twig' %}
-<main>
+<main class="main">
+<div class="wrapper">
 	{% block content %}
 		{{ messages.base.no_content }}
 	{% endblock %}
+</div>
 </main>
 {% include 'footer/index.twig' %}

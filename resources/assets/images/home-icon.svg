@@ -1,21 +1,4 @@
-<section class="homeImageWithVideo">
-	<div class="l-wrapper">
-		<div class="line --mobile" data-aos="width" data-aos-duration="800"></div>
-		<h3 class="fnt20 homeImageWithVideo__copy__title --mobile">{{media_item.title}}</h3>
-		<div class="homeImageWithVideo__wrap">
-			<div class="homeImageWithVideo__img" data-aos-delay="200" data-aos="fade-up" data-aos-duration="800">
-				<div class="youtube-player" data-id="0Gayo0xqTOc"/></div>
-				<img class="homeImageWithVideo__wrap__img" src="https://port-praski.resimo.tech/wp-content/uploads/2021/03/portpraski_2019-0673mcm-1-1120x700-c-default.png" data-aos-delay="200" data-aos="fade-up" data-aos-duration="800" />
-			
-				
-			</div>
-			<div class="homeImageWithVideo__copy">
-			<div class="line" data-aos="width" data-aos-duration="800"></div>
-			<h3 data-aos-delay="200" data-aos="fade-up" data-aos-duration="800" class="fnt20 homeImageWithVideo__copy__title --desktop">{{media_item.title}}</h3>
-
-			{# <img class="homeImageWithVideo__copy__icon" src="../images/home-icon.svg" data-aos="fade-up" data-aos-duration="800"/> #}
-	<div  data-aos-delay="200" data-aos="fade-up" data-aos-duration="800">
-			<svg class="homeImageWithVideo__copy__icon" width="152" height="152" viewBox="0 0 152 152" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="152" height="152" viewBox="0 0 152 152" fill="none" xmlns="http://www.w3.org/2000/svg">
 <circle cx="76" cy="76" r="75.5" stroke="#DADADA"/>
 <path d="M88.4998 46.0002C88.4998 52.2502 84.6595 57.2201 78.4848 57.2201C72.0842 57.2201 68.4697 52.1749 68.4697 46.0002" stroke="#262359" stroke-width="3.5" stroke-miterlimit="10"/>
 <path d="M98.4394 57.2199C91.0599 57.2199 88.4243 52.1747 88.4243 46" stroke="#262359" stroke-width="3.5" stroke-miterlimit="10"/>
@@ -29,15 +12,4 @@
 <path d="M98.4398 102.4C91.0603 102.4 88.4247 97.3551 88.4247 91.1804" stroke="#262359" stroke-width="3.5" stroke-miterlimit="10"/>
 <path d="M48.5155 91.1804C48.5155 97.4304 52.3558 102.4 58.5305 102.4C64.9311 102.4 68.5456 97.3551 68.5456 91.1804" stroke="#262359" stroke-width="3.5" stroke-miterlimit="10"/>
 <path d="M38.4999 102.4C45.8795 102.4 48.515 97.3551 48.515 91.1804" stroke="#262359" stroke-width="3.5" stroke-miterlimit="10"/>
-</svg></div>
-
-			<h4 data-aos="fade-up" data-aos-duration="800" data-aos-delay="200" class=" fnt50 homeimagewithvideo__copy__copy video__title">{{media_item.copy}}</h4>
-			<p class="video__copy" data-aos-delay="200" data-aos="fade-up" data-aos-duration="800">{{media_item.copy_after_button}}</p>
-			{# <div class="btn_wrap" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
-				<button class="btn btnVideoReadMore">{{media_item.button}}</button>
-			</div> #}
-			</div>
-			
-		</div>
-	</div>
-</section>
+</svg>

@@ -50,7 +50,7 @@
 
     .header__logo img {
       height: 80px;
-
+      cursor: pointer;
       @include breakpoint($md) {
         height: 88px;
       }
@@ -68,7 +68,7 @@
 
 .is-sticky {
   position: fixed;
-  z-index: 10;
+  z-index: 110;
 }
 
 .smaller {
@@ -163,41 +163,44 @@
 .sidenav {
   width: 350px;
   height: 100%;
-  position: absolute;
+  position: fixed;
   z-index: 100;
   top: 0;
   left: 0;
   background-color: $white;
   overflow-x: hidden;
+  overflow-y: hidden;
   transition: 0.5s;
   z-index: 1001;
   transform: translate3d(-350px, 0, 0);
   transition: transform 0.4s;
   transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
 
+
+
   ul li {
-    transition: transform 0s 0.4s;
-    transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
-    transform: translate3d(0, 500px, 0);
+    // transition: transform 0s 0.4s;
+    // transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+    // transform: translate3d(0, 500px, 0);
 
     &:nth-child(2) {
-      transform: translate3d(0, 1000px, 0);
+      // transform: translate3d(0, 1000px, 0);
     }
 
     &:nth-child(3) {
-      transform: translate3d(0, 1500px, 0)
+      // transform: translate3d(0, 1500px, 0)
     }
 
     &:nth-child(4) {
-      transform: translate3d(0, 2000px, 0)
+     // transform: translate3d(0, 2000px, 0)
     }
 
     &:nth-child(5) {
-      transform: translate3d(0, 2500px, 0)
+    //  transform: translate3d(0, 2500px, 0)
     }
 
     &:nth-child(6) {
-      transform: translate3d(0, 3000px, 0)
+    //  transform: translate3d(0, 3000px, 0)
     }
 
   }
@@ -226,29 +229,71 @@
 
       margin-bottom: 15px;
       display: inline-block;
-      transition: 0.2s all;
+      transition: color 0.3s ease-out;
 
-      &.current-menu-item,
-      &:hover {
+      &:after {
+        content: '';
+        width: 0;
+        height: 1px;
+        position: absolute;
+        right: 0;
+        bottom: 3px;
+        display: block;
+        background: $darkBlue;
+        transition-property: width;
+        transition-duration: 0.3s;
+        transition-timing-function: ease-out;
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
         color: $darkBlue;
+      }
 
-        &:after {
-          content: '';
-          width: 100%;
-          height: 3px;
-          position: absolute;
-          bottom: 3px;
-          display: block;
-          background: $darkBlue;
-        }
+      &:hover:after,
+      &:focus:after,
+      &:active:after {
+        left: 0;
+        right: auto;
+        width: 100%;
+      }
 
+      &.current-menu-item {
+        color: $darkBlue;
       }
     }
   }
 }
 
+.sidenav .lang {
+  display: flex;
+  @include breakpoint($sm) {
+
+    display: none;
+}
+}
+
+.lang .lang__switch a {
+  display: flex;
+  align-items: center;
+  padding-bottom: 0;
+  margin-bottom: 4px;
+
+
+  &:hover {
+    color: inherit;
+  }
+}
+
+
 .openDark {
   .sidenav {
+    width: 100%;
+    @include breakpoint($sm) {
+      width: 350px;
+    }
+
     transform: translate3d(0, 0, 0);
     transition: transform 0.8s;
     transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
@@ -287,6 +332,7 @@
   line-height: 19px;
   text-transform: uppercase;
   color: $darkBlue;
+  cursor: pointer;
 
   span {
     font-weight: 300;
