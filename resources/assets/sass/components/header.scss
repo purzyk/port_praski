@@ -51,6 +51,7 @@
     .header__logo img {
       height: 80px;
       cursor: pointer;
+
       @include breakpoint($md) {
         height: 88px;
       }
@@ -192,15 +193,15 @@
     }
 
     &:nth-child(4) {
-     // transform: translate3d(0, 2000px, 0)
+      // transform: translate3d(0, 2000px, 0)
     }
 
     &:nth-child(5) {
-    //  transform: translate3d(0, 2500px, 0)
+      //  transform: translate3d(0, 2500px, 0)
     }
 
     &:nth-child(6) {
-    //  transform: translate3d(0, 3000px, 0)
+      //  transform: translate3d(0, 3000px, 0)
     }
 
   }
@@ -268,10 +269,11 @@
 
 .sidenav .lang {
   display: flex;
+
   @include breakpoint($sm) {
 
     display: none;
-}
+  }
 }
 
 .lang .lang__switch a {
@@ -290,6 +292,7 @@
 .openDark {
   .sidenav {
     width: 100%;
+
     @include breakpoint($sm) {
       width: 350px;
     }
@@ -333,6 +336,11 @@
   text-transform: uppercase;
   color: $darkBlue;
   cursor: pointer;
+
+  a {
+    color: $darkBlue;
+
+  }
 
   span {
     font-weight: 300;

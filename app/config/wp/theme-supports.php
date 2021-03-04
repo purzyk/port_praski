@@ -241,7 +241,7 @@ function cptui_register_my_taxes() {
 		"show_in_nav_menus" => true,
 		"query_var" => true,
 		"rewrite" => [ 'slug' => 'dodatkowo', 'with_front' => true, ],
-		"show_admin_column" => false,
+		"show_admin_column" => true,
 		"show_in_rest" => true,
 		"rest_base" => "dodatkowo",
 		"rest_controller_class" => "WP_REST_Terms_Controller",
@@ -384,3 +384,56 @@ function tsm_convert_id_to_term_in_query($query) {
 		$q_vars[$taxonomy] = $term->slug;
 	}
 }
+
+/**
+ *	ACF Admin Columns
+ *
+ */
+
+function add_acf_columns ( $columns ) {
+	return array_merge ( $columns, array ( 
+		'status'   => __ ( 'status' ),
+	  'pietro' => __ ( 'pietro' ),
+	  'powierzchnia'   => __ ( 'powierzchnia' ),
+	  'liczba_pokoi'   => __ ( 'liczba_pokoi' ) 
+	) );
+  }
+  add_filter ( 'manage_lokale_posts_columns', 'add_acf_columns' );
+
+  
+
+   /*
+ * Add columns to Hosting CPT
+ */
+ function lokale_custom_column ( $column, $post_id ) {
+	switch ( $column ) {
+		case 'status':
+			echo get_post_meta ( $post_id, 'status', true );
+			break;
+	  case 'pietro':
+		echo get_post_meta ( $post_id, 'pietro', true );
+		break;
+
+	  case 'powierzchnia':
+		echo get_post_meta ( $post_id, 'powierzchnia', true );
+		break;
+		case 'liczba_pokoi':
+			echo get_post_meta ( $post_id, 'liczba_pokoi', true );
+			break;
+	}
+ }
+ add_action ( 'manage_lokale_posts_custom_column', 'lokale_custom_column', 10, 2 );
+
+
+  /*
+ * Add Sortable columns
+ */
+
+function my_column_register_sortable( $columns ) {
+	$columns['status'] = 'status';
+	$columns['pietro'] = 'pietro';
+	$columns['powierzchnia'] = 'powierzchnia';
+	$columns['liczba_pokoi'] = 'liczba_pokoi';
+	return $columns;
+}
+add_filter('manage_edit-lokale_sortable_columns', 'my_column_register_sortable' );
