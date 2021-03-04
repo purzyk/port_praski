@@ -29,17 +29,45 @@
       @include breakpoint($md) {
         display: flex;
       }
-
+      li {
+        list-style-type: none;
+      }
       a {
+        display: inline-block;
         font-weight: 800;
         font-size: 16px;
         line-height: 30px;
         text-transform: uppercase;
         color: $darkBlue;
         transition: 0.2s all;
+        position: relative;
 
-        &:hover {
-          padding-left: 6px;
+        &:after {
+          content: '';
+          width: 0;
+          height: 1px;
+          position: absolute;
+          right: 0;
+          bottom: 3px;
+          display: block;
+          background: $darkBlue;
+          transition-property: width;
+          transition-duration: 0.3s;
+          transition-timing-function: ease-out;
+        }
+  
+        &:hover,
+        &:focus,
+        &:active {
+          color: $darkBlue;
+        }
+  
+        &:hover:after,
+        &:focus:after,
+        &:active:after {
+          left: 0;
+          right: auto;
+          width: 100%;
         }
       }
     }
