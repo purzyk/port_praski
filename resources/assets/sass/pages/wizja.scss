@@ -1,1 +1,87 @@
-.wizja {}
+.wizja {
+    &__centrum {
+        padding: 100px 0 100px;
+        background: #E9ECF3;
+        margin-bottom: 100px;
+    }
+
+    &__projekt {
+        margin-bottom: 100px;
+    }
+
+    &__dzielnice {
+        margin-bottom: 100px;
+    }
+
+    &__lokalizacja {
+        margin-bottom: 100px;
+
+
+
+    }
+
+    &__nagrody {
+        margin-bottom: 100px;
+    }
+}
+
+.dzielnica {
+    &__copy {
+        /*
+        .dzielnicaToggle {
+            display: none;
+
+            &:first-child {
+                display: block;
+            }
+        }
+        */
+    }
+
+    &__images {
+        .dzielnicaToggle {
+            display: none;
+
+            &:first-child {
+                display: block;
+            }
+        }
+    }
+}
+
+.lokalizacja {
+    &__separator {
+        background: linear-gradient(180deg, #FFFFFF 50%, #E9ECF3 50%);
+        padding: 140px 0;
+
+        &__wrap {
+            position: relative;
+
+            &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 100px;
+                height: 12px;
+                background: url('../images/lines.svg') center no-repeat;
+                transition: 0.8s width ease;
+                transition-delay: 1.2s;
+            }
+
+            &:after {
+                content: '';
+                display: block;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 100px;
+                height: 12px;
+                background: url('../images/lines.svg') center no-repeat;
+                transition: 0.8s width ease;
+                transition-delay: 1.2s;
+            }
+        }
+    }
+}

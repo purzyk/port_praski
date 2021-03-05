@@ -163,6 +163,90 @@ $(document).ready(function () {
 
 $(function () {
 
+  /* Dzielnice tabs  */
+// change active class, show the clicked element only and hide the others
+
+
+// grab all the buttons
+let Buttons = document.querySelectorAll(".dzielnicaSelect button");
+
+// loop through the buttons using for..of 
+for (let button of Buttons) {
+  // listen for a click event 
+  button.addEventListener('click', (e) => {
+    // et = event target
+    const et = e.target;
+    // slect active class
+    const active = document.querySelector(".active");
+    // check for the button that has active class and remove it
+    if (active) {
+      active.classList.remove("active");
+    }
+    // add active class to the clicked element 
+    et.classList.add("active");
+    
+    // select all classes with the name content
+    let allContent = document.querySelectorAll('.dzielnicaToggle  ');
+
+    // loop through all content classes
+    for (let content of allContent) {
+      // display the content if the class has the same data-attribute as the button 
+      if(content.getAttribute('data-number') === button.getAttribute('data-number')) {
+        content.style.display = "block";
+        $(".js-dzielnica__images__main").slick("refresh");
+        $(".js-dzielnica__images__main-nav-thumbnails").slick("refresh");
+       }
+      // if it's not equal then hide it.
+      else {
+        content.style.display = "none";
+        
+       }
+     }
+  });
+}
+
+$('.js-dzielnica__images__main').slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: false,
+  fade: false,
+  asNavFor: '.js-dzielnica__images__main-nav-thumbnails',
+});
+
+$('.js-dzielnica__images__main-nav-thumbnails').slick({
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  dots: false,
+  arrows: false,
+  asNavFor: '.js-dzielnica__images__main',
+  focusOnSelect: true,
+  responsive: [{
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 1,
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        arrows: false,
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
 
 
   $('.slider').slick({
@@ -230,6 +314,17 @@ $(function () {
     autoplay: true,
     autoplaySpeed: 8000,
   });
+  $('.js-lokalizacjaSlider').slick({
+    infinite: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    dots: true,
+    autoplay: false,
+  });
+
+
+  
 
   $('.js-sliderNew').slick({
     infinite: true,

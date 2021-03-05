@@ -1,0 +1,39 @@
+<div class="dzielnica__copy">
+	{% for item in post.meta('dzielnice') %}
+		<div class="dzielnica dzielnicaToggle" data-number="{{loop.index}}">
+			<div class="l-wrapper">
+				<h2 class="fnt50">{{item.nazwa}}</h2>
+				<p>{{item.opis}}</p>
+			</div>
+		</div>
+	{% endfor %}
+	<div class="dzielnicaSelect">
+		{% for item in post.meta('dzielnice') %}
+			<button type="button" {% if loop.index == 1 %} class="active" {% endif %} data-number="{{loop.index}}">0{{loop.index}}</button>
+		{% endfor %}
+
+	</div>
+	<div class="dzielnica__images">
+		{% for item in post.meta('dzielnice') %}
+			<div class="dzielnica__images__wrap dzielnicaToggle" data-number="{{loop.index}}">
+				<div class="dzielnica__images__content">
+					<div class="js-dzielnica__images__main">
+						{% for zdjecie in item.zdjecia %}
+							{% include 'components/generic/image.twig'  with { img_src:Image(zdjecie.zdjecie).src, width:1120, height:700 } %}
+						{% endfor %}
+					</div>
+				</div>
+				<div class="dzielnica__images__footer">
+					<div class="js-dzielnica__images__main-nav-thumbnails">
+						{% for item in item.zdjecia %}
+							{% include 'components/generic/image.twig'  with { img_src:Image(item.zdjecie).src, width:208, height:142 } %}
+						{% endfor %}
+
+					</div>
+
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+</div>
