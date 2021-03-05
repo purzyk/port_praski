@@ -21,13 +21,17 @@ class BackToTop {
     });
 
     $(".header__logo").click(function() {
-      $("body, html").animate(
-        {
-          scrollTop: 0,
-        },
-        800
-      );
-      return false;
+      if (document.location.pathname !== '/') {
+        document.location.href="/";
+      } else {
+        $("body, html").animate(
+          {
+            scrollTop: 0,
+          },
+          800
+        );
+        return false;
+      }
     });
   }
 }
