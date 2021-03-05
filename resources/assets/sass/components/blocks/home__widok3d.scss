@@ -1,7 +1,5 @@
 .home__widok3d {
   position: relative;
-  min-height: 75vh;
-  max-height: 100vh;
   max-width: $xxl;
   margin: 0 auto;
   @include breakpoint($md) {
@@ -31,11 +29,9 @@
     margin: 0 auto;
     pointer-events: none;
     text-align: center;
-    @include breakpoint($md) {
-      position: absolute;
-      top: 40px;
-      left: 64px;
-      right: auto;
+    @include breakpoint($sm) {
+      bottom: auto;
+      left: 42px;
       text-align: unset;
     }
     
@@ -54,8 +50,13 @@
   height: 100vh;
 
   @include breakpoint($sm) {
-    width: calc(100% - 40px);
-    margin-left: 20px;
+    width: calc(100% - 48px);
+    margin-left: 24px;
   }
+
+  // @include breakpoint($xxl) {
+  //   width: calc(100%);
+  //   margin-left: 20px;
+  // }
 
 }
