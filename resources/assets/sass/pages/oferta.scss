@@ -1,5 +1,8 @@
 .oferta {
     margin-bottom: 50px;
+    margin-top: 84px;
+
+
 
     &__header {
         height: 650px;
@@ -65,10 +68,21 @@
                 position: absolute;
                 bottom: -30px;
                 left: 0;
-                width: 100%;
+                width: 0;
                 height: 12px;
                 background: url('../images/lines.svg') center repeat-x;
                 opacity: 0.15;
+                transition: 0.8s width ease;
+                transition-delay: 2s;
+    
+                @include breakpoint($md) {
+                    bottom: -47px;
+                }
+            }
+    
+    
+            &.aos-animate:after {
+                width: 100%;
             }
         }
 
@@ -135,12 +149,5 @@
                 padding: 0 47px;
             }
         }
-    }
-
-    .home__widok3d__buttons {
-        left: 0;
-        text-align: center;
-
-
     }
 }
