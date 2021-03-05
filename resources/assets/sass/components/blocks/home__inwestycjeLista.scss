@@ -41,7 +41,7 @@
                     height: 12px;
                     background: url('../images/lines.svg') center no-repeat;
                     transition: 0.8s width ease;
-                    transition-delay: 1.2s;
+                    transition-delay: 1.6s;
                 }
 
                 &.aos-animate:before {
@@ -179,7 +179,7 @@
                 align-items: center;
 
                 transform: scale(1);
-                transition: all 0.3s ease-out 0.5s;
+                transition: all 0.3s ease-out 0.8s;
 
                 &.--mobile {
                     display: none;
@@ -200,7 +200,11 @@
                     margin-bottom: 40px;
                     width: 75px;
                     height: 75px;
-                    transition: all 0.3s ease-out 0.8s;
+                    transition: all 0.3s ease-out;
+
+                    &.delayed-animation {
+                        transition: all 0.3s ease-out 0.8s;
+                    }
                 }
 
                 @include breakpoint($xl) {
@@ -208,9 +212,11 @@
                     height: 115px;
                 }
 
-                &:hover {
-                    border-radius: 0;
-                    transition: all 0.3s ease-out;
+                @media (any-hover: hover) {
+                    &:hover {
+                        border-radius: 0;
+                        transition: all 0.3s ease-out;
+                    }
                 }
             }
 
@@ -259,11 +265,15 @@
         text-align: center;
         padding: 20px 0;
         width: 100%;
+        transform: translateY(100px);
+        opacity: 0;
 
         @include breakpoint($md) {
             max-width: 220px;
             color: $white;
             border-color: $white;
+            opacity: 0;
+            transform: translateY(100px);
         }
 
         transition: all 0.2s;
@@ -287,16 +297,21 @@
         margin-top: 16px;
         transition: all 0.3s;
         opacity: 0;
+        padding: 0 20px 70px 20px;
 
         @include breakpoint($md) {
             justify-content: space-between;
             margin-top: 0;
             flex-direction: column;
             padding: 0 20px 70px 20px;
+            margin-right: 75px;
+            margin-left: 75px;
         }
 
         @include breakpoint($xl) {
             margin-top: 15px;
+            margin-right: 115px;
+            margin-left: 115px;
         }
 
         p {
@@ -304,14 +319,15 @@
             font-size: 18px;
             line-height: 30px;
             text-align: left;
-            transform: translateX(-50px);
+            transform: translateY(100px);
             transition: transform 0.3s ease-out;
 
             @include breakpoint($md) {
                 margin-top: 0;
-                transition: transform 0.2s ease-out, opacity 0.2s ease-out;
-                opacity: 0;
-                transform: translateY(-100px);
+                transform: translateY(100px);
+                transition: transform 0.2s ease-out,
+                            opacity 0.2s ease-out;
+                margin-bottom: 50px;
             }
         }
     }
@@ -472,12 +488,13 @@
 
     .home__inwestycjeLista__item__modal__wrapp {
         p {
-            transform: translateX(100px);
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 0.3s ease-out;
 
             @include breakpoint($md) {
-                transition: transform 0.2s ease-out, opacity 0.2s ease-out;
-                opacity: 0;
-                transform: translateY(-100px);
+                transition: transform 0.2s ease-out,
+                            opacity 0.2s ease-out;
             }
         }
     }
@@ -506,10 +523,6 @@
                 width: 115px;
                 height: 115px;
             }
-        }
-
-        .home__inwestycjeLista__item__footer__subtitle {
-            transform: translateX(50px);
         }
     
         .home__inwestycjeLista__item__footer__title {
@@ -561,11 +574,11 @@
             p {
                 margin-top: 1em;
                 transform: unset;
-                transition: transform 0.8s ease-out 1s;
+                transition: transform 0.3s ease-out 1s;
+                opacity: 1;
 
                 @include breakpoint($md) {
                     margin-top: 0;
-                    opacity: 1;
                     transition: transform 0.2s ease-out 1s, opacity 0.2s ease-out 1s;
                 }
             }
@@ -588,6 +601,7 @@
                 
                 &::before {
                     opacity: 0;
+                    transform: translateY(100px);
                 }
 
                 @include breakpoint($md) {
@@ -605,6 +619,7 @@
 
         .home__inwestycjeLista__item__footer__link {
             border-radius: 0;
+            transition: all 0.3s ease-out;
 
             &:hover {
                 transform: scale(1);
@@ -623,7 +638,17 @@
             @include breakpoint($md) {
                 position: absolute;
             }
+        }
 
+        .home__inwestycjeLista__item__modal__link {
+            opacity: 1;
+            transform: unset;
+            transition: transform 0.4s ease-out 1.2s, opacity 0.4s ease-out 1.2s;
+
+
+            @include breakpoint($md) {
+                transition: transform 0.2s ease-out 1.2s, opacity 0.2s ease-out 1.2s;
+            }
         }
 
         .home__inwestycjeLista__item__images .splide__slide img {
@@ -633,7 +658,7 @@
 
         .home__inwestycjeLista__item__footer__subtitle {
             opacity: 0;
-            transform: translateX(-50px);
+            transform: translateY(100px);
             z-index: -999;
         }
     }
