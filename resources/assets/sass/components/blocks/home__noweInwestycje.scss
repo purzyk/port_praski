@@ -3,6 +3,12 @@
     //max-width: $xxl;
     margin: 0 auto;
 
+    @media (max-width: 760px) {
+        .home__noweInwestycje__item:nth-child(n+4) {
+            display: none;
+        }
+    }
+
     &__title {
         padding-top: 12px;
         margin-bottom: 38px;
