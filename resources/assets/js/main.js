@@ -445,6 +445,12 @@ $('.btnVideoReadMore').click(function (event) {
   $('.btnVideoReadMore').hide(200);
 });
 
+
+
+set3DViewButtonsPostition()
+
+
+
 // jQuery-based initialisations
 $(() => {
   new BackToTop();
@@ -470,3 +476,56 @@ function isElementInViewport(el) {
               document.documentElement.clientWidth) /* or $(window).width() */
   );
 }
+
+// TO REFACTOR
+
+function set3DViewButtonsPostition() {
+  const buttons = document.querySelector(".home__widok3d__buttons");
+  const section = document.querySelector(".home__widok3d");
+  const windowWidth = window.innerWidth
+  const jeff = document.querySelector("#wyszukiwarka3d")
+  let height;
+  let top;
+  if(windowWidth < 1600) {
+    height = windowWidth / 16 * 9;
+    top = height - 136;
+  } else {
+    height = 900
+    top = height - 126
+  }
+
+  if (windowWidth >= 848 && windowWidth <= 1640) {
+    buttons.style.top = `${top}px`
+  } else if (windowWidth > 1640) {
+    buttons.style.top = 'auto';
+    buttons.style.bottom = '48px';
+    buttons.style.left = `60px`
+  } else if (windowWidth < 849) {
+    buttons.style.top = '-72px';
+  }
+
+  if (windowWidth > window.innerHeight) {
+    section.style.maxHeight = `${height}px`
+  } else {
+    section.style.maxHeight = `none`
+  }
+
+  if (windowWidth < 1500 && windowWidth > 760) {
+    buttons.style.left = `60px`
+  } else if (windowWidth < 760) {
+    buttons.style.left = "0"
+  }
+
+  if (windowWidth > 1043) {
+    jeff.style.height = `${height + 200}px`
+  } else {
+    jeff.style.height = `100vh`
+  }
+
+}
+
+window.addEventListener("resize", function() {
+  set3DViewButtonsPostition()
+})
+
+set3DViewButtonsPostition()
