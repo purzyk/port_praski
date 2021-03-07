@@ -657,6 +657,25 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_6044cd58117c0",
+                            "label": "custom class",
+                            "name": "custom_class",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
                             "key": "field_6041f952ced6d",
                             "label": "copy",
                             "name": "copy",
@@ -731,6 +750,25 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_6044cd64117c1",
+                            "label": "custom class",
+                            "name": "custom_class",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
                             "key": "field_6041f9b1200e4",
                             "label": "image",
                             "name": "image",
@@ -783,6 +821,25 @@
                     "label": "image separator",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_6044cd6c117c2",
+                            "label": "custom class",
+                            "name": "custom_class",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
                         {
                             "key": "field_6041fab8e84f3",
                             "label": "image",
@@ -952,5 +1009,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1614939084
+    "modified": 1615121779
 }

@@ -15,40 +15,49 @@
 
 		<div class="wizja__centrum">
 			<div class="l-wrapper">
-
+				<div class="line --mobile" data-aos="width" data-aos-duration="800"></div>
+				<h3 data-aos="fade-up" data-aos-duration="800" class="fnt20 --mobile">{{post.scisle_centrum_separator_copy}}</h3>
+			</div>
+			<div class="l-wrapper --noPadding">
 				<div class="wizja__centrum__wrapper">
 					<div class="wizja__centrum__left">
 						{% include 'components/generic/image.twig'  with { img_src:Image(post.image_top).src } %}
 						{% include 'components/generic/image.twig'  with { img_src:Image(post.image_bottom).src } %}
 					</div>
 					<div class="wizja__centrum__right">
-						<div class="line" data-aos="width" data-aos-duration="800"></div>
-						<h3 data-aos="fade-up" data-aos-duration="800" class="fnt20">{{post.scisle_centrum_separator_copy}}</h3>
+						<div class="line --desktop" data-aos="width" data-aos-duration="800"></div>
+						<h3 data-aos="fade-up" data-aos-duration="800" class="fnt20 --desktop">{{post.scisle_centrum_separator_copy}}</h3>
+
 						<img src="{{Image(post.scisle_centrum_icon).src}}">
 						<h4 data-aos="fade-up" data-aos-duration="800" data-aos-delay="200" class=" fnt50 homeimagewithvideo__copy__copy video__title">{{post.scisle_centrum_title}}</h4>
-						<p class="video__copy aos-init aos-animate" data-aos-delay="200" data-aos="fade-up" data-aos-duration="800">{{post.scisle_centrum_copy}}</p>
+						<p class="aos-init aos-animate" data-aos-delay="200" data-aos="fade-up" data-aos-duration="800">{{post.scisle_centrum_copy}}</p>
 					</div>
 
 				</div>
-			</div>
 
+			</div>
 		</div>
+
+
 		<div class="wizja__projekt">
 			<div class="l-wrapper">
 				<div class="line" data-aos="width" data-aos-duration="800"></div>
 				<h3 data-aos="fade-up" data-aos-duration="800" class="fnt20">{{post.projekt_portu_separator_title}}</h3>
 				<div class="wizja__projekt__wrapper">
+
+					<div class="wizja__projekt__wrapper__right">
+						{% include 'components/generic/image.twig'  with { img_src:Image(post.projekt_portu_image).src } %}
+					</div>
 					<div class="wizja__projekt__wrapper__left">
 						<h3 class="fnt50">{{post.projekt_portu_title}}</h3>
 						<p>{{post.projekt_portu_copy}}</p>
 					</div>
-					<div class="wizja__projekt__wrapper__right">
-						{% include 'components/generic/image.twig'  with { img_src:Image(post.projekt_portu_image).src } %}
-					</div>
 				</div>
 			</div>
 		</div>
-		{% include 'components/blocks/posts__historia.twig' %}
+		<div class="wizja__historia">
+			{% include 'components/blocks/posts__historia.twig' %}
+		</div>
 		<div class="wizja__dzielnice">
 			<div class="l-wrapper">
 				<div class="line" data-aos="width" data-aos-duration="800"></div>
@@ -73,7 +82,8 @@
 				<div class="line" data-aos="width" data-aos-duration="800"></div>
 				<h3 data-aos="fade-up" data-aos-duration="800" class="fnt20">{{post.nagrody_separator_title}}</h3>
 			</div>
+			{% include 'components/blocks/posts__nagrody__lista.twig' %}
 		</div>
-		{% include 'components/blocks/posts__nagrody__lista.twig' %}
+
 	</article>
 {% endblock %}

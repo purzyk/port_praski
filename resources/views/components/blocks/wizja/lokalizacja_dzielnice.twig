@@ -2,38 +2,66 @@
 	{% for item in post.meta('dzielnice') %}
 		<div class="dzielnica dzielnicaToggle" data-number="{{loop.index}}">
 			<div class="l-wrapper">
-				<h2 class="fnt50">{{item.nazwa}}</h2>
+				<div class="dzielnica__wrapper">
+					<h2 class="fnt50">{{item.nazwa}}</h2>
+					<p class="--desktop">{{item.opis}}</p>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+</div>
+
+
+<div class="dzielnica__images">
+	<div class="l-wrapper --noPadding">
+		<div class="dzielnica__images__wrapper">
+			{% for item in post.meta('dzielnice') %}
+
+				<div class="dzielnica__images__wrap dzielnicaToggle" data-number="{{loop.index}}">
+
+					<div class="dzielnica__images__content">
+						<div class="dzielnica__images__content__slogan --desktop">
+							<p data-aos="fade-up" data-aos-duration="800" data-aos-delay="200" class="fnt20 home__inwestycjeLista__item__copy__slogan">Komfort spokoju</p>
+						</div>
+						<div class="js-dzielnica__images__main">
+							{% for zdjecie in item.zdjecia %}
+								{% include 'components/generic/image.twig'  with { img_src:Image(zdjecie.zdjecie).src, width:1120, height:700 } %}
+							{% endfor %}
+						</div>
+					</div>
+					<div class="dzielnica__images__footer">
+						<div class="js-dzielnica__images__main-nav-thumbnails">
+							{% for item in item.zdjecia %}
+								{% include 'components/generic/image.twig'  with { img_src:Image(item.zdjecie).src, width:208, height:142 } %}
+							{% endfor %}
+
+						</div>
+
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="dzielnicaSelect">
+			{% for item in post.meta('dzielnice') %}
+				<button type="button" {% if loop.index == 1 %} class="active" {% endif %} data-number="{{loop.index}}">0{{loop.index}}</button>
+			{% endfor %}
+
+		</div>
+	</div>
+
+</div>
+
+<div class="dzielnica__arrows --mobile">
+	<div class="line double --grey"></div>
+
+
+</div>
+<div class="dzielnica__copy --grey --mobile">
+	{% for item in post.meta('dzielnice') %}
+		<div class="dzielnica dzielnicaToggle" data-number="{{loop.index}}">
+			<div class="l-wrapper">
 				<p>{{item.opis}}</p>
 			</div>
 		</div>
 	{% endfor %}
-	<div class="dzielnicaSelect">
-		{% for item in post.meta('dzielnice') %}
-			<button type="button" {% if loop.index == 1 %} class="active" {% endif %} data-number="{{loop.index}}">0{{loop.index}}</button>
-		{% endfor %}
-
-	</div>
-	<div class="dzielnica__images">
-		{% for item in post.meta('dzielnice') %}
-			<div class="dzielnica__images__wrap dzielnicaToggle" data-number="{{loop.index}}">
-				<div class="dzielnica__images__content">
-					<div class="js-dzielnica__images__main">
-						{% for zdjecie in item.zdjecia %}
-							{% include 'components/generic/image.twig'  with { img_src:Image(zdjecie.zdjecie).src, width:1120, height:700 } %}
-						{% endfor %}
-					</div>
-				</div>
-				<div class="dzielnica__images__footer">
-					<div class="js-dzielnica__images__main-nav-thumbnails">
-						{% for item in item.zdjecia %}
-							{% include 'components/generic/image.twig'  with { img_src:Image(item.zdjecie).src, width:208, height:142 } %}
-						{% endfor %}
-
-					</div>
-
-				</div>
-			</div>
-		{% endfor %}
-	</div>
-
 </div>
