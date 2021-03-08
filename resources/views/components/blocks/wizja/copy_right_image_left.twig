@@ -1,0 +1,13 @@
+<div class="lokalizacja__copyRight lokalizacja__copy {{media_item.custom_class}}">
+	<div class="l-wrapper --noPadding">
+		<div class="lokalizacja__copyRight__wrap">
+
+			<div class="lokalizacja__copyRight__wrap__images">
+				{% include 'components/generic/image.twig'  with { img_src:Image(media_item.image).src, width:700, height:460 } %}
+			</div>
+			<div class="lokalizacja__copyRight__wrap__copy">
+				{{media_item.copy}}
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,8 +1,89 @@
 {% extends "base.twig" %}
 {% block content %}
 	<article class="wizja">
-		<div class="l-wrapper">
-			<p>{{post.title}}</p>
+		<section class="hero">
+			{% include 'components/generic/image.twig'  with { img_src:Image(post.header_image).src, width:1600, height:780 } %}
+			<div class="hero__slide__inside">
+				<h1 class="hero__slide__title">{{post.meta('title')}}</h1>
+				<h2 class="hero__slide__copy">{{post.subtitle}}</h2>
+			</div>
+			<figure class="circle hero__start">
+				<a href="#start"><img src="{{Image(options.arrow_up).src}}"></a>
+			</figure>
+		</section>
+		<div id="start" class="offset"></div>
+
+		<div class="wizja__centrum">
+			<div class="l-wrapper">
+				<div class="line --mobile" data-aos="width" data-aos-duration="800"></div>
+				<h3 data-aos="fade-up" data-aos-duration="800" class="fnt20 --mobile">{{post.scisle_centrum_separator_copy}}</h3>
+			</div>
+			<div class="l-wrapper --noPadding">
+				<div class="wizja__centrum__wrapper">
+					<div class="wizja__centrum__left">
+						{% include 'components/generic/image.twig'  with { img_src:Image(post.image_top).src } %}
+						{% include 'components/generic/image.twig'  with { img_src:Image(post.image_bottom).src } %}
+					</div>
+					<div class="wizja__centrum__right">
+						<div class="line --desktop" data-aos="width" data-aos-duration="800"></div>
+						<h3 data-aos="fade-up" data-aos-duration="800" class="fnt20 --desktop">{{post.scisle_centrum_separator_copy}}</h3>
+
+						<img src="{{Image(post.scisle_centrum_icon).src}}">
+						<h4 data-aos="fade-up" data-aos-duration="800" data-aos-delay="200" class=" fnt50 homeimagewithvideo__copy__copy video__title">{{post.scisle_centrum_title}}</h4>
+						<p class="aos-init aos-animate" data-aos-delay="200" data-aos="fade-up" data-aos-duration="800">{{post.scisle_centrum_copy}}</p>
+					</div>
+
+				</div>
+
+			</div>
 		</div>
+
+
+		<div class="wizja__projekt">
+			<div class="l-wrapper">
+				<div class="line" data-aos="width" data-aos-duration="800"></div>
+				<h3 data-aos="fade-up" data-aos-duration="800" class="fnt20">{{post.projekt_portu_separator_title}}</h3>
+				<div class="wizja__projekt__wrapper">
+
+					<div class="wizja__projekt__wrapper__right">
+						{% include 'components/generic/image.twig'  with { img_src:Image(post.projekt_portu_image).src } %}
+					</div>
+					<div class="wizja__projekt__wrapper__left">
+						<h3 class="fnt50">{{post.projekt_portu_title}}</h3>
+						<p>{{post.projekt_portu_copy}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="wizja__historia">
+			{% include 'components/blocks/posts__historia.twig' %}
+		</div>
+		<div class="wizja__dzielnice">
+			<div class="l-wrapper">
+				<div class="line" data-aos="width" data-aos-duration="800"></div>
+				<h3 data-aos="fade-up" data-aos-duration="800" class="fnt20">{{post.dzielnice_separator_title}}</h3>
+			</div>
+			{% include 'components/blocks/wizja/lokalizacja_dzielnice.twig' %}
+		</div>
+		<div class="wizja__lokalizacja">
+			<div class="l-wrapper">
+				<div class="line" data-aos="width" data-aos-duration="800"></div>
+				<h3 data-aos="fade-up" data-aos-duration="800" class="fnt20">{{post.lokalizacja_separator_title}}</h3>
+				<div class="wizja__lokalizacja__wrapper">
+					<h2 class="fnt50">{{post.lokalizacja_title}}
+					</h2>
+					<p>{{post.lokalizacja_copy}}</p>
+				</div>
+			</div>
+			{% include 'components/blocks/wizja/lokalizacja_builder.twig' %}
+		</div>
+		<div class="wizja__nagrody">
+			<div class="l-wrapper">
+				<div class="line" data-aos="width" data-aos-duration="800"></div>
+				<h3 data-aos="fade-up" data-aos-duration="800" class="fnt20">{{post.nagrody_separator_title}}</h3>
+			</div>
+			{% include 'components/blocks/posts__nagrody__lista.twig' %}
+		</div>
+
 	</article>
 {% endblock %}

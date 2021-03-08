@@ -1,0 +1,14 @@
+{% for media_item in post.meta('rows') %}
+	{% if media_item.acf_fc_layout == 'copy_left_slider_right' %}
+		{% include 'components/blocks/wizja/copy_left_slider_right.twig' %}
+
+	{% elseif media_item.acf_fc_layout == 'copy_right_image_left' %}
+		{% include 'components/blocks/wizja/copy_right_image_left.twig' %}
+
+
+	{% elseif media_item.acf_fc_layout == 'image_separator' %}
+		{% include 'components/blocks/wizja/image_separator.twig' %}
+
+
+	{% endif %}
+{% endfor %}

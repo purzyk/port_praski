@@ -163,6 +163,87 @@ $(document).ready(function () {
 
 $(function () {
 
+  /* Dzielnice tabs  */
+  let Buttons = document.querySelectorAll(".dzielnicaSelect button");
+  for (let button of Buttons) {
+    button.addEventListener('click', (e) => {
+      const et = e.target;
+      const active = document.querySelector(".active");
+      if (active) {
+        active.classList.remove("active");
+      }
+      et.classList.add("active");
+      let allContent = document.querySelectorAll('.dzielnicaToggle  ');
+
+
+      for (let content of allContent) {
+
+        if (content.getAttribute('data-number') === button.getAttribute('data-number')) {
+          content.style.display = "block";
+          $(".js-dzielnica__images__main").slick("refresh");
+          $(".js-dzielnica__images__main-nav-thumbnails").slick("refresh");
+        } else {
+          content.style.display = "none";
+
+        }
+      }
+    });
+  }
+
+  $('.js-dzielnica__images__main').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    fade: false,
+    mobileFirst: true,
+    infinite: true,
+    nextArrow: '<button class="dzielnica__arrow dzielnica__arrow__next"></button>',
+    prevArrow: '<button class="dzielnica__arrow dzielnica__arrow__prev"></button>',
+
+    responsive: [{
+      breakpoint: 1024,
+      settings: {
+        arrows: false,
+        asNavFor: '.js-dzielnica__images__main-nav-thumbnails',
+      }
+    }, ]
+  });
+
+  $('.js-dzielnica__images__main-nav-thumbnails').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    dots: false,
+    arrows: false,
+    mobileFirst: true,
+    focusOnSelect: true,
+    infinite: true,
+    responsive: [
+
+      {
+        breakpoint: 1024,
+        settings: {
+          asNavFor: '.js-dzielnica__images__main',
+          slidesToShow: 5,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          arrows: false,
+        }
+      }
+    ]
+  });
 
 
   $('.slider').slick({
@@ -174,9 +255,10 @@ $(function () {
   });
 
   $('.slider-nav-thumbnails').slick({
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
     asNavFor: '.slider',
+    variableWidth: false,
     dots: false,
     arrows: true,
     focusOnSelect: true,
@@ -230,6 +312,17 @@ $(function () {
     autoplay: true,
     autoplaySpeed: 8000,
   });
+  $('.js-lokalizacjaSlider').slick({
+    infinite: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    dots: true,
+    autoplay: false,
+  });
+
+
+
 
   $('.js-sliderNew').slick({
     infinite: true,
@@ -267,6 +360,32 @@ $(function () {
     ]
   });
 
+
+  $('.js-historia').slick({
+    infinite: false,
+    variableWidth: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    dots: false,
+    autoplay: false,
+    arrows: true,
+    mobileFirst: true,
+    nextArrow: '<button class="dzielnica__arrow dzielnica__arrow__next"></button>',
+    prevArrow: '<button class="dzielnica__arrow dzielnica__arrow__prev"></button>',
+    responsive: [{
+        breakpoint: 1180,
+        settings: {
+          slidesToShow: 3,
+          variableWidth: true,
+          nextArrow: '.arrow__right__dni',
+          prevArrow: '.arrow__left__dni',
+        },
+      }
+
+    ]
+  });
+
+
   $('.js-wydarzenia').slick({
     infinite: true,
     variableWidth: true,
@@ -284,35 +403,35 @@ $(function () {
 
     ]
   });
-    /* Splide slider for each secton */
-    var elms = document.getElementsByClassName("splide");
-    const splides = [];
-    const startedSplides = [];
-    for (var i = 0, len = elms.length; i < len; i++) {
-        let splide = new Splide(elms[i], {
-            type: "loop",
-            lazyLoad: "sequential",
-            arrows: false,
-            autoplay: true,
-            pauseOnHover: false,
-            pauseOnFocus: false,
-            interval: 8000,
-        }).mount()
+  /* Splide slider for each secton */
+  var elms = document.getElementsByClassName("splide");
+  const splides = [];
+  const startedSplides = [];
+  for (var i = 0, len = elms.length; i < len; i++) {
+    let splide = new Splide(elms[i], {
+      type: "loop",
+      lazyLoad: "sequential",
+      arrows: false,
+      autoplay: true,
+      pauseOnHover: false,
+      pauseOnFocus: false,
+      interval: 8000,
+    }).mount()
 
-        splides.push(splide);
-        startedSplides.push(0);
-        $(elms[i]).find(".splide__pause")[0].click()
-    }
-    document.addEventListener("scroll", function() {
-        for (let i = 0, len = elms.length; i < len; i++) {
-            if (startedSplides[i] === 0) {
-                if (isElementInViewport(elms[i])) {
-                    $(elms[i]).find(".splide__play")[0].click()
-                    startedSplides[i] = 1;
-                }
-            }
+    splides.push(splide);
+    startedSplides.push(0);
+    $(elms[i]).find(".splide__pause")[0].click()
+  }
+  document.addEventListener("scroll", function () {
+    for (let i = 0, len = elms.length; i < len; i++) {
+      if (startedSplides[i] === 0) {
+        if (isElementInViewport(elms[i])) {
+          $(elms[i]).find(".splide__play")[0].click()
+          startedSplides[i] = 1;
         }
-    });
+      }
+    }
+  });
 
   /* Lazy load images*/
   var lazyLoadInstance = new LazyLoad({
@@ -382,22 +501,22 @@ $('.home__inwestycjeLista__item__footer__link__close').click(function (event) {
 });
 
 $('.home__inwestycjeLista__item__footer__link').click(function (event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    const button = $(this);
-    const wrapper = button.closest(".home__inwestycjeLista__item__outsite");
+  const button = $(this);
+  const wrapper = button.closest(".home__inwestycjeLista__item__outsite");
 
-    wrapper.toggleClass("active");
+  wrapper.toggleClass("active");
 
-    // code for proper handling modal buttons animation so hover animation and the one
-    // from closing modal doesn't interfere with each other
-    if (!wrapper.hasClass("active")) {
-        button.addClass("delayed-animation");
+  // code for proper handling modal buttons animation so hover animation and the one
+  // from closing modal doesn't interfere with each other
+  if (!wrapper.hasClass("active")) {
+    button.addClass("delayed-animation");
 
-        setTimeout(() => {
-            button.removeClass("delayed-animation");
-        }, 1200);
-    }
+    setTimeout(() => {
+      button.removeClass("delayed-animation");
+    }, 1200);
+  }
 });
 
 /*Lang switcher */
@@ -456,24 +575,25 @@ $(() => {
   new BackToTop();
   new SmoothScroll();
 });
+
 function isElementInViewport(el) {
   // Special bonus for those using jQuery
   if (typeof jQuery === "function" && el instanceof jQuery) {
-      el = el[0];
+    el = el[0];
   }
 
   var rect = el.getBoundingClientRect();
 
   return (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <=
-          (window.innerHeight ||
-              document.documentElement
-                  .clientHeight) /* or $(window).height() */ &&
-      rect.right <=
-          (window.innerWidth ||
-              document.documentElement.clientWidth) /* or $(window).width() */
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <=
+    (window.innerHeight ||
+      document.documentElement
+      .clientHeight) /* or $(window).height() */ &&
+    rect.right <=
+    (window.innerWidth ||
+      document.documentElement.clientWidth) /* or $(window).width() */
   );
 }
 
@@ -486,7 +606,7 @@ function set3DViewButtonsPostition() {
   const jeff = document.querySelector("#wyszukiwarka3d")
   let height;
   let top;
-  if(windowWidth < 1600) {
+  if (windowWidth < 1600) {
     height = windowWidth / 16 * 9;
     top = height - 136;
   } else {
@@ -499,7 +619,7 @@ function set3DViewButtonsPostition() {
   } else if (windowWidth > 1640) {
     buttons.style.top = 'auto';
     buttons.style.bottom = '48px';
-    buttons.style.left = `60px`
+    buttons.style.left = `42px`
   } else if (windowWidth < 849) {
     buttons.style.top = '-72px';
   }
@@ -511,7 +631,7 @@ function set3DViewButtonsPostition() {
   }
 
   if (windowWidth < 1500 && windowWidth > 760) {
-    buttons.style.left = `60px`
+    buttons.style.left = `42px`
   } else if (windowWidth < 760) {
     buttons.style.left = "0"
   }
@@ -524,7 +644,7 @@ function set3DViewButtonsPostition() {
 
 }
 
-window.addEventListener("resize", function() {
+window.addEventListener("resize", function () {
   set3DViewButtonsPostition()
 })
 
