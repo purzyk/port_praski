@@ -1,39 +1,28 @@
 {% extends "base.twig" %}
 {% block content %}
 	<article class="oferta">
-		<header class="oferta__header">
-			<img class="oferta__header__img" src="{{Image(post.header_background).src}}">
-			<div class="l-wrapper">
-				<div class="home__widok3d__buttons">
-					<div class="l-wrapper">
-						<div class="home__widok3d__buttons__wrapp">
-							<a href="{{media_item.widok_3d_url}}" class="btnRound --blue">Widok 3D</a>
-							<a href="{{media_item.lista_url}}" class="btnRound">Lista mieszkań</a>
-						</div>
-
-					</div>
-				</div>
-			</div>
+		<header>
+			{% include 'components/blocks/home__widok3d.twig' %}
 		</header>
 		<section class="oferta__section">
 			<div class="l-wrapper">
 				<div class="line" data-aos="width" data-aos-duration="800"></div>
-				<h5 class="fnt20 oferta__section__title">
+				<h5 class="fnt20 oferta__section__title" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
 					{{ post.inwestycje_w_sprzedazy_title}}
 				</h5>
 			</div>
-			<div class="l-wrapper --noPadding">
-				<div class="oferta__oferty">
+			<div class="l-wrapper">
+				<div class="oferta__oferty" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
 					{% for item in post.meta('inwestycje') %}
-						<div class="oferta__item">
+						<div class="oferta__item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" data-aos-offset="400">
 							{% include 'components/generic/image.twig'  with { img_src:Image(item.glowne_zdjecie).src, width:665, height:360 } %}
 							<div class="l-wrapper">
-								<h2 class="oferta__item__title">
+								<h2 class="oferta__item__title"  data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
 									{{item.title}}
 								</h2>
-								<p class="oferta__item__copy">{{item.krotki_opis}}
+								<p class="oferta__item__copy"  data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">{{item.krotki_opis}}
 								</p>
-								<div class="oferta__item__btns">
+								<div class="oferta__item__btns"  data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
 									<a href="{{item.link}}" class="btn">Zobacz lokale</a>
 									<a href="{{item.link}}" class="btn --white">inwestycja</a>
 								</div>

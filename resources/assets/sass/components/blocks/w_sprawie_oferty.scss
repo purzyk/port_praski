@@ -1,6 +1,7 @@
 .wSprawieOferty {
-    margin-top: 10rem;
-
+    @include breakpoint($md) {
+        margin-top: 10rem;
+    }
     
     &__wrap {
         background: $lightBlue;

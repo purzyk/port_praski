@@ -21,7 +21,11 @@
     }
 
     &__item {
-        padding-bottom: 120px;
+        padding-bottom: 20px;
+
+        @include breakpoint($md) {
+            padding-bottom: 120px;
+        }
 
         &__wrap {
             display: flex;
