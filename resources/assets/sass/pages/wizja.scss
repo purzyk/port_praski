@@ -3,7 +3,15 @@
         display: block;
         width: 100%;
     }
+    
+    picture {
+        display: block;
 
+        img {
+            display: block;
+        }
+    }
+    
     .slick-dots {
         bottom: 22px;
     }
@@ -104,6 +112,11 @@
     }
 
     &__historia {
+
+        .slider__header__buttons {
+            padding-top: 0;
+        }
+
         .dzielnica__arrow {
             bottom: 80px;
         }
