@@ -99,6 +99,13 @@
                 img {
                     position: relative;
                     transition: all 0.8s ease-in-out;
+                    height: 35vh;
+                    object-fit: cover;
+
+                    @include breakpoint($md) {
+                        height: 70vh;
+
+                    }
                 }
             }
 

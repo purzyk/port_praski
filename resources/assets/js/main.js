@@ -311,6 +311,9 @@ $(function () {
     dots: true,
     autoplay: true,
     autoplaySpeed: 8000,
+    fade: true,
+    speed: 2000,
+    cssEase: "linear"
   });
   $('.js-lokalizacjaSlider').slick({
     infinite: false,
