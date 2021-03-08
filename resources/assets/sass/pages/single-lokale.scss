@@ -1,7 +1,11 @@
 .lokal {
     background: #F6F6F6;
     padding-top: 30px;
-    padding-bottom: 200px;
+    padding-bottom: 124px;
+
+    @include breakpoint($md) {
+        padding-bottom: 32px;
+    }
 
     &__wrapper {
         display: flex;
