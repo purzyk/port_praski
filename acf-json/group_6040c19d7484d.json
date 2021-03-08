@@ -358,7 +358,7 @@
             "min": 0,
             "max": 0,
             "layout": "table",
-            "button_label": "",
+            "button_label": "Dodaj element historii",
             "sub_fields": [
                 {
                     "key": "field_6041e7b00aa74",
@@ -476,7 +476,7 @@
             "min": 0,
             "max": 0,
             "layout": "table",
-            "button_label": "",
+            "button_label": "Dodaj dzielnicę",
             "sub_fields": [
                 {
                     "key": "field_6042039819660",
@@ -533,7 +533,7 @@
                     "min": 0,
                     "max": 0,
                     "layout": "table",
-                    "button_label": "",
+                    "button_label": "Dodaj zdjęcie",
                     "sub_fields": [
                         {
                             "key": "field_604203bf19663",
@@ -711,7 +711,7 @@
                             "min": 0,
                             "max": 0,
                             "layout": "table",
-                            "button_label": "",
+                            "button_label": "Dodaj zdjęcie",
                             "sub_fields": [
                                 {
                                     "key": "field_6041faa32672a",
@@ -869,7 +869,7 @@
                     "max": ""
                 }
             },
-            "button_label": "Dodaj wiersz",
+            "button_label": "Dodaj wiersz lokalizacji",
             "min": "",
             "max": ""
         },
@@ -925,7 +925,7 @@
             "min": 0,
             "max": 0,
             "layout": "table",
-            "button_label": "",
+            "button_label": "Dodaj nagrodę",
             "sub_fields": [
                 {
                     "key": "field_6041f550050a0",
@@ -1009,5 +1009,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1615121779
+    "modified": 1615200262
 }
