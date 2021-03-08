@@ -162,6 +162,31 @@
 
             width: 100%;
         }
+
+        &.--nagrody {
+            p {
+                color: #000;
+            }
+        }
+
+        .home__noweInwestycje__item__inside {
+            margin: 1px;
+        }
+
+        .home__noweInwestycje__item {
+            border: 0;
+        }
+
+        .home__noweInwestycje__wrapp {}
+
+        .slider__header__buttons {
+            display: none;
+
+            @include breakpoint(1180px) {
+                display: flex;
+
+            }
+        }
     }
 
     &__projekt {
@@ -353,6 +378,18 @@
                 height: 100px;
                 width: auto;
                 align-self: baseline;
+            }
+        }
+
+        .arrow__left__nag {
+            img {
+                transform: rotate(-90deg);
+            }
+        }
+
+        .arrow__right__nag {
+            img {
+                transform: rotate(90deg);
             }
         }
     }
@@ -554,7 +591,7 @@
             display: none;
 
             @include breakpoint($md) {
-
+                margin-top: 36px;
 
                 .slick-slide {
                     margin: 0 10px;
@@ -568,9 +605,10 @@
 
                 display: block;
                 background: #E9ECF3;
-                width: 75%;
+                width: 100%;
                 margin-left: auto;
                 padding-bottom: 150px;
+                max-width: 75%;
 
                 picture {
                     width: 20%;

@@ -210,3 +210,31 @@ input[type="email"].form-control {
     padding: 10px;
 
 }
+
+/* Modal */
+.mfp-content {
+    cursor: auto;
+}
+
+.mfp-content {
+    width: 100%;
+    cursor: auto;
+}
+
+.mfp-content {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 auto;
+    text-align: left;
+    z-index: 1045;
+}
+
+.form__modal {
+    background: #FFF;
+    padding: 20px 30px;
+    text-align: left;
+    max-width: 650px;
+    margin: 40px auto;
+    position: relative;
+}

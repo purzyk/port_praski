@@ -162,6 +162,14 @@ $(document).ready(function () {
 });
 
 $(function () {
+/* Contact form modal */ 
+  $('.popup-modal').magnificPopup({
+		type: 'inline',
+		preloader: false,
+	});
+
+
+
 
   /* Dzielnice tabs  */
   let Buttons = document.querySelectorAll(".dzielnicaSelect button");
@@ -366,7 +374,7 @@ $(function () {
 
   $('.js-historia').slick({
     infinite: false,
-    variableWidth: true,
+    variableWidth: false,
     slidesToShow: 1,
     slidesToScroll: 1,
     dots: false,
@@ -388,7 +396,29 @@ $(function () {
     ]
   });
 
+  $('.js-nagrody').slick({
+    infinite: false,
+    variableWidth: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    dots: false,
+    autoplay: false,
+    arrows: true,
+    mobileFirst: true,
+    nextArrow: '<button class="dzielnica__arrow dzielnica__arrow__next"></button>',
+    prevArrow: '<button class="dzielnica__arrow dzielnica__arrow__prev"></button>',
+    responsive: [{
+        breakpoint: 1180,
+        settings: {
+          slidesToShow: 3,
+          variableWidth: true,
+          nextArrow: '.arrow__right__nag',
+          prevArrow: '.arrow__left__nag',
+        },
+      }
 
+    ]
+  });
   $('.js-wydarzenia').slick({
     infinite: true,
     variableWidth: true,
