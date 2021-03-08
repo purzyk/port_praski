@@ -330,7 +330,7 @@ $(function () {
   $('.js-sliderNew').slick({
     infinite: true,
     variableWidth: true,
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
     dots: false,
     autoplay: false,

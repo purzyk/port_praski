@@ -587,9 +587,11 @@
                 transform: unset;
                 transition: transform 0.3s ease-out 1s;
                 opacity: 1;
+                color: $black;
 
                 @include breakpoint($md) {
                     margin-top: 0;
+                    color: $white;
                     transition: transform 0.2s ease-out 1s, opacity 0.2s ease-out 1s;
                 }
             }
