@@ -382,7 +382,7 @@
         .home__inwestycjeLista__item__footer__link {
             width: 70px;
             height: 70px;
-            margin-left: -20px;
+            // margin-left: -20px;
 
             @include breakpoint($md) {
                 width: 75px;
@@ -522,7 +522,7 @@
         .home__inwestycjeLista__item__footer__link {
             width: 70px;
             height: 70px;
-            margin-right: -20px;
+            // margin-right: -20px;
 
             @include breakpoint($md) {
                 width: 75px;
