@@ -16,7 +16,7 @@
 					{% for item in post.meta('inwestycje') %}
 						<div class="oferta__item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" data-aos-offset="400">
 							{% include 'components/generic/image.twig'  with { img_src:Image(item.glowne_zdjecie).src, width:665, height:360 } %}
-							<div class="l-wrapper">
+							<div class="l-wrapper oferta-content">
 								<h2 class="oferta__item__title"  data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
 									{{item.title}}
 								</h2>
