@@ -566,9 +566,6 @@ $('.btnVideoReadMore').click(function (event) {
 
 
 
-set3DViewButtonsPostition()
-
-
 
 // jQuery-based initialisations
 $(() => {
@@ -624,7 +621,7 @@ function set3DViewButtonsPostition() {
     buttons.style.top = '-72px';
   }
 
-  if (windowWidth > window.innerHeight) {
+  if (windowWidth > window.innerHeight && windowWidth > 768) {
     section.style.maxHeight = `${height}px`
   } else {
     section.style.maxHeight = `none`
@@ -644,8 +641,11 @@ function set3DViewButtonsPostition() {
 
 }
 
-window.addEventListener("resize", function () {
-  set3DViewButtonsPostition()
-})
 
-set3DViewButtonsPostition()
+if(document.querySelector("#wyszukiwarka3d")) {
+  window.addEventListener("resize", function () {
+    set3DViewButtonsPostition()
+  })
+  
+  set3DViewButtonsPostition()
+}
