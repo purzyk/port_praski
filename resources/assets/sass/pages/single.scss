@@ -90,3 +90,21 @@
 
     }
 }
+
+.mfp-arrow-right:after {
+    border-left: 17px solid $darkBlue
+}
+
+.mfp-arrow-right:before {
+    border-left: 27px solid $darkBlue;
+    opacity: 1
+}
+
+.mfp-arrow-left:after {
+    border-right: 17px solid $darkBlue
+}
+
+.mfp-arrow-left:before {
+    border-right: 27px solid $darkBlue;
+    opacity: 1;
+}

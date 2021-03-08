@@ -652,11 +652,14 @@
                     position: absolute;
                     top: 0;
                     right: 0;
-                    width: 100px;
+                    width: 0;
                     height: 12px;
                     background: url('../images/lines.svg') center no-repeat;
                     transition: 0.8s width ease;
-                    transition-delay: 1.2s;
+                    transition-delay: 0.4s;
+                }
+                &.aos-animate:before {
+                    width: 100px
                 }
 
                 &:after {
@@ -665,11 +668,14 @@
                     position: absolute;
                     bottom: 0;
                     right: 0;
-                    width: 100px;
+                    width: 0;
                     height: 12px;
                     background: url('../images/lines.svg') center no-repeat;
                     transition: 0.8s width ease;
-                    transition-delay: 1.2s;
+                    transition-delay: 1s;
+                }
+                &.aos-animate:after {
+                    width: 100px;
                 }
             }
         }
@@ -784,13 +790,14 @@
                     position: absolute;
                     top: 0;
                     left: 20px;
-                    width: 100px;
+                    width: 0;
                     height: 12px;
                     background: url('../images/lines.svg') center no-repeat;
                     transition: 0.8s width ease;
                     transition-delay: 1.2s;
 
                 }
+
             }
         }
 

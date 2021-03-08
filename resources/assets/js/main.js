@@ -573,7 +573,11 @@ $('.gallery').each(function () {
 });
 
 $('.image-link').magnificPopup({
-  type: 'image'
+  type: 'image',
+  gallery: {
+    enabled: true,
+    arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"></button>', // markup of an arrow button
+  }
 });
 
 /* Open and close nav */
@@ -698,8 +702,10 @@ const goToContact = () => {
 
 }
 
-const contactButton = document.querySelector('#contactButton');
+if(document.querySelector('#contactButton')) {
+  const contactButton = document.querySelector('#contactButton');
 
 contactButton.addEventListener('click', function(){
   goToContact()
 })
+}

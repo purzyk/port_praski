@@ -90,6 +90,14 @@
     &__section {
         margin-top: 100px;
 
+        &__slider {
+            img {
+                object-fit: cover;
+                height: 75vh;
+                max-height: 720px;
+            }
+        }
+
         @include breakpoint($md) {
             margin-top: 153px;
         }
