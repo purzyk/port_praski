@@ -196,7 +196,7 @@ $(function () {
     arrows: true,
     fade: false,
     mobileFirst: true,
-    infinite: true,
+    infinite: false,
     nextArrow: '<button class="dzielnica__arrow dzielnica__arrow__next"></button>',
     prevArrow: '<button class="dzielnica__arrow dzielnica__arrow__prev"></button>',
 
@@ -216,7 +216,7 @@ $(function () {
     arrows: false,
     mobileFirst: true,
     focusOnSelect: true,
-    infinite: true,
+    infinite: false,
     responsive: [
 
       {
