@@ -9,22 +9,24 @@
 			</div>
 		</div>
 	</div>
-	<div class="wrapFullWidth --right" data-aos="fade-up" data-aos-delay="140">
-		<div class="home__noweInwestycje__wrapp js-historia --CustomButtons">
-			{% for item in post.meta('historia') %}
-				<div class="home__noweInwestycje__item">
-					{% include 'components/generic/image.twig'  with { img_src:Image(item.zdjecie).src, width:580, height:440 } %}
-					<div class="home__noweInwestycje__item__inside">
+	<div class="slider-wrapper">
+		<div class="wrapFullWidth --right" data-aos="fade-up" data-aos-delay="140">
+			<div class="home__noweInwestycje__wrapp js-historia --CustomButtons">
+				{% for item in post.meta('historia') %}
+					<div class="home__noweInwestycje__item">
+						{% include 'components/generic/image.twig'  with { img_src:Image(item.zdjecie).src, width:580, height:440 } %}
+						<div class="home__noweInwestycje__item__inside">
 
-						<h5 class="fnt30">{{item.rok}}</h5>
+							<h5 class="fnt30">{{item.rok}}</h5>
 
-						<p>
-							{{item.opis}}
-						</p>
+							<p>
+								{{item.opis}}
+							</p>
 
+						</div>
 					</div>
-				</div>
-			{% endfor %}
+				{% endfor %}
+			</div>
 		</div>
 	</div>
 </section>

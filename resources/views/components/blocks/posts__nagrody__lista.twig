@@ -8,22 +8,24 @@
 			</div>
 		</div>
 	</div>
-	<div class="wrapFullWidth --right" data-aos="fade-up" data-aos-delay="140">
-		<div class="home__noweInwestycje__wrapp js-wydarzenia --CustomButtons">
-			{% for item in post.meta('nagrody') %}
-				<div class="home__noweInwestycje__item">
-					<div class="home__noweInwestycje__item__inside">
+	<div class="slider-wrapper">
+		<div class="wrapFullWidth --right" data-aos="fade-up" data-aos-delay="140">
+			<div class="home__noweInwestycje__wrapp js-wydarzenia --CustomButtons">
+				{% for item in post.meta('nagrody') %}
+					<div class="home__noweInwestycje__item">
+						<div class="home__noweInwestycje__item__inside">
 
-						<h5 class="fnt30">{{item.tytul}}</h5>
+							<h5 class="fnt30">{{item.tytul}}</h5>
 
-						<p>
-							{{item.opis}}
-						</p>
-						<img src="{{Image(item.zdjecie).src}}">
+							<p>
+								{{item.opis}}
+							</p>
+							<img src="{{Image(item.zdjecie).src}}">
 
+						</div>
 					</div>
-				</div>
-			{% endfor %}
+				{% endfor %}
+			</div>
 		</div>
 	</div>
 </section>

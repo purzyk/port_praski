@@ -214,6 +214,11 @@ a {
 }
 
 
+.slider-wrapper {
+  margin: 0 auto;
+  max-width: $xxl;
+}
+
 
 .wrapFullWidth {
   width: calc(100% - 20px);
@@ -222,8 +227,11 @@ a {
     margin: 0 auto;
 
     @include breakpoint($md) {
-
       margin: 0 auto 0 0;
+    }
+
+    @include breakpoint($xxl) {
+      margin: 0 auto;
     }
 
     .home__noweInwestycje__wrapp {
@@ -237,17 +245,16 @@ a {
     margin: 0 auto;
 
     @include breakpoint($md) {
-
       margin: 0 0 0 auto;
+    }
+
+    @include breakpoint($xxl) {
+      margin: 0 auto;
     }
   }
 
-  @include breakpoint($xl) {
-    width: calc(((100% - 1420px) / 2) + 1420px);
-  }
-
   @include breakpoint($xxl) {
-    width: calc(((100% - 1600px) / 2) + 1600px);
+    width: calc(100% - 40px);
   }
 }
 
