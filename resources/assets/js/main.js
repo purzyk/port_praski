@@ -679,3 +679,27 @@ if(document.querySelector("#wyszukiwarka3d")) {
   
   set3DViewButtonsPostition()
 }
+
+
+const goToContact = () => {
+  const urlArray = window.location.href.split("/")
+  const apartmentId = urlArray[urlArray.length - 2].toUpperCase()
+  const messageInput = document.querySelector('input[name="text-wiadomosc"]')
+
+  messageInput.parentNode.parentNode.classList.add("active")
+  messageInput.value = `Jestem zainteresowany ofertą mieszkania nr ${apartmentId}`
+
+    $("body, html").animate(
+        {
+            scrollTop: $(".wSprawieOferty").offset().top - 142
+        },
+        800
+    );
+
+}
+
+const contactButton = document.querySelector('#contactButton');
+
+contactButton.addEventListener('click', function(){
+  goToContact()
+})

@@ -33,10 +33,6 @@
             text-align: center;
             z-index: 1;
 
-            @include breakpoint($md) {
-                text-align: left;
-            }
-
             figure {
                 order: 2;
                 margin-top: 15px;
@@ -58,6 +54,11 @@
 
             &__title {
                 color: #fff;
+                text-align: center;
+
+                @include breakpoint($md) {
+                    text-align: left;
+                }
 
                 &__copy {}
             }
