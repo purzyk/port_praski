@@ -8,14 +8,15 @@
     .home__noweInwestycje {
         .btn {
             text-align: center;
-
+            margin: 27px auto 0 auto;
+            display: block;
             @include breakpoint($md) {
                 display: none;
             }
         }
     }
 
-    .home__noweInwestycje__item:after {
+    .home__noweInwestycje__item.aos-animate:after {
         width: 100%;
     }
 

@@ -27,20 +27,20 @@
 		<div class="l-wrapper --noPadding">
 			<div class="kontakt__address">
 				<div class="kontakt__address__left kontakt__grey">
-					<div class="line double --grey"></div>
-					<p class="kontakt__address__godziny">{{post.meta('godziny_otwarcia')}}</p>
-					<div class="line double --grey"></div>
+					<div class="line double --grey"  data-aos="width" data-aos-duration="800" data-aos-delay="500"></div>
+					<p class="kontakt__address__godziny" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">{{post.meta('godziny_otwarcia')}}</p>
+					<div class="line double --grey"  data-aos="width" data-aos-duration="800" data-aos-delay="500"></div>
 					<figure class="--desktop"><img src="{{Image(post.logo_desktop).src}}"></figure>
-					<figure class="--mobile"><img src="{{Image(post.logo_mobile).src}}"></figure>
+					<figure class="--mobile" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100"><img src="{{Image(post.logo_mobile).src}}"></figure>
 				</div>
-				<div class="kontakt__address__right">
-					<p>{{post.meta('copy')}}</p>
+				<div class="kontakt__address__right"  data-aos="fade-up"  data-aos-duration="800" data-aos-delay="100" data-aos-offset="200">
+					<p data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" data-aos-offset="200">{{post.meta('copy')}}</p>
 				</div>
 			</div>
 
 		</div>
 		<div class="l-wrapper --noPadding">
-			<figure class="kontakt__map"><img src="{{Image(post.mapa).src}}"></figure>
+			<figure class="kontakt__map" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100"><img src="{{Image(post.mapa).src}}"></figure>
 		</div>
 		<div class="l-wrapper">
 			<div class="line" data-aos="width" data-aos-duration="800"></div>
@@ -49,7 +49,7 @@
 		<div class="l-wrapper --noPadding">
 			<div class="kontakt__pliki">
 				{% for item in post.meta('pliki_do_pobrania') %}
-					<div class="kontakt__plik">
+					<div class="kontakt__plik"  data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
 						<p class="index">
 							0{{loop.index}}</p>
 						<p>{{item.plik.name}}</p>
