@@ -397,7 +397,7 @@ $(function () {
   });
 
   $('.js-nagrody').slick({
-    infinite: false,
+    infinite: true,
     variableWidth: false,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -422,7 +422,7 @@ $(function () {
   $('.js-wydarzenia').slick({
     infinite: true,
     variableWidth: true,
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
     dots: false,
     autoplay: false,
