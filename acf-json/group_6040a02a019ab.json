@@ -23,66 +23,6 @@
             "load_terms": 0,
             "return_format": "id",
             "multiple": 0
-        },
-        {
-            "key": "field_6040a06b66575",
-            "label": "liczba pokoi",
-            "name": "liczba_pokoi",
-            "type": "range",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "min": "",
-            "max": 10,
-            "step": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_6040a08c66576",
-            "label": "powierzchnia",
-            "name": "powierzchnia",
-            "type": "range",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "min": "",
-            "max": 200,
-            "step": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_6040a0a966577",
-            "label": "piętro",
-            "name": "pietro",
-            "type": "range",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "min": 0,
-            "max": 10,
-            "step": "",
-            "prepend": "",
-            "append": ""
         }
     ],
     "location": [
@@ -102,5 +42,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1614856657
+    "modified": 1615323862
 }
