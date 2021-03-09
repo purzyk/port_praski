@@ -4,7 +4,7 @@
 			<div class="l-wrapper">
 				<div class="dzielnica__wrapper">
 					<h2 class="fnt50" data-aos="fade-up" data-aos-duration="800">{{item.nazwa}}</h2>
-					<p class="--desktop" data-aos="fade-up" data-aos-duration="800">{{item.opis}}</p>
+					<p class="--desktop dzielnica__wrapper__content" data-aos="fade-up" data-aos-duration="800">{{item.opis}}</p>
 				</div>
 			</div>
 		</div>
@@ -15,31 +15,29 @@
 <div class="dzielnica__images">
 	<div class="l-wrapper --noPadding">
 		<div class="dzielnica__images__wrapper">
-			{% for item in post.meta('dzielnice') %}
 
-				<div class="dzielnica__images__wrap dzielnicaToggle" data-number="{{loop.index}}">
+				<div class="dzielnica__images__wrap">
 
 					<div class="dzielnica__images__content">
 						<div class="dzielnica__images__content__slogan --desktop">
 							<p data-aos="fade-up" data-aos-duration="800" data-aos-delay="200" class="fnt20 home__inwestycjeLista__item__copy__slogan">Komfort spokoju</p>
 						</div>
 						<div class="js-dzielnica__images__main">
-							{% for zdjecie in item.zdjecia %}
-								{% include 'components/generic/image.twig'  with { img_src:Image(zdjecie.zdjecie).src, width:1120, height:700 } %}
+							{% for item in post.meta('dzielnice') %}
+								{% include 'components/generic/image.twig'  with { img_src:Image(item.zdjecia[0].zdjecie).src, width:1120, height:700 } %}
 							{% endfor %}
 						</div>
 					</div>
 					<div class="dzielnica__images__footer">
 						<div class="js-dzielnica__images__main-nav-thumbnails">
-							{% for item in item.zdjecia %}
-								{% include 'components/generic/image.twig'  with { img_src:Image(item.zdjecie).src, width:208, height:142 } %}
+							{% for item in post.meta('dzielnice') %}
+								{% include 'components/generic/image.twig'  with { img_src:Image(item.zdjecia[0].zdjecie).src, width:208, height:142  } %}
 							{% endfor %}
 
 						</div>
 
 					</div>
 				</div>
-			{% endfor %}
 		</div>
 		<div class="dzielnicaSelect">
 			{% for item in post.meta('dzielnice') %}

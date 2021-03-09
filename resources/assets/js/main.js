@@ -172,27 +172,65 @@ $(function () {
 
 
   /* Dzielnice tabs  */
+  let allContent = document.querySelectorAll('.dzielnicaToggle  ');
   let Buttons = document.querySelectorAll(".dzielnicaSelect button");
+  let currentIndex = 0;
+  $(".js-dzielnica__images__main").on('beforeChange', function(event, slick, currentSlide, nextSlide){
+    currentIndex = nextSlide
+    for(let button of Buttons) {
+      button.classList.remove("active");
+    }
+    for (let content of allContent) {
+      if (content.getAttribute('data-number') * 1 - 1 === currentIndex) {
+        const slideIndex = content.getAttribute('data-number') - 1;
+        content.style.display = "block";
+        $(".js-dzielnica__images__main").slick('slickGoTo', slideIndex);
+      } else {
+
+        content.style.display = "none"
+      }
+    }
+    Buttons[currentIndex].classList.add("active")
+
+  });
+
+
+
   for (let button of Buttons) {
     button.addEventListener('click', (e) => {
-      const et = e.target;
-      const active = document.querySelector(".active");
-      if (active) {
-        active.classList.remove("active");
-      }
-      et.classList.add("active");
-      let allContent = document.querySelectorAll('.dzielnicaToggle  ');
+      // const et = e.target;
+      // const active = document.querySelector(".active");
+      
+      // if (active) {
+      //   active.classList.remove("active");
+      // }
+      // et.classList.add("active");
+      // let allContent = document.querySelectorAll('.dzielnicaToggle  ');
 
 
+      // for (let content of allContent) {
+      //   if (content.getAttribute('data-number') === button.getAttribute('data-number')) {
+      //     const slideIndex = content.getAttribute('data-number') - 1;
+      //     content.style.display = "block";
+      //     $(".js-dzielnica__images__main").slick('slickGoTo', slideIndex);
+
+      //    // $(".js-dzielnica__images__main-nav-thumbnails").slick("refresh");
+      //   } else {
+      //     console.log(content)
+      //     content.style.display = "none"
+      //   }
+      // }
       for (let content of allContent) {
+        if (content.getAttribute('data-number') * 1 - 1 === currentIndex) {
+          const slideIndex = (button.getAttribute('data-number') * 1) - 1
 
-        if (content.getAttribute('data-number') === button.getAttribute('data-number')) {
           content.style.display = "block";
-          $(".js-dzielnica__images__main").slick("refresh");
-          $(".js-dzielnica__images__main-nav-thumbnails").slick("refresh");
+          $(".js-dzielnica__images__main").slick('slickGoTo', slideIndex);
+  
+         // $(".js-dzielnica__images__main-nav-thumbnails").slick("refresh");
         } else {
-          content.style.display = "none";
-
+          console.log(content)
+          content.style.display = "none"
         }
       }
     });
@@ -205,6 +243,9 @@ $(function () {
     fade: false,
     mobileFirst: true,
     infinite: false,
+    fade: true,
+    speed: 1000,
+    cssEase: "linear",
     nextArrow: '<button class="dzielnica__arrow dzielnica__arrow__next"></button>',
     prevArrow: '<button class="dzielnica__arrow dzielnica__arrow__prev"></button>',
 
@@ -231,7 +272,7 @@ $(function () {
         breakpoint: 1024,
         settings: {
           asNavFor: '.js-dzielnica__images__main',
-          slidesToShow: 5,
+          slidesToShow: 4,
           slidesToScroll: 1,
         }
       },
