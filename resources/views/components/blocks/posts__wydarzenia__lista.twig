@@ -9,27 +9,27 @@
 			</div>
 		</div>
 	</div>
-	<div class="slider-wrapper">
-		<div class="wrapFullWidth --right" data-aos="fade-up" data-aos-delay="140">
-			<div class="home__noweInwestycje__wrapp js-nagrody --CustomButtons">
-				{% for item in wydarzeniaLoop %}
-					<div class="home__noweInwestycje__item">
-						<div class="home__noweInwestycje__item__inside">
-							<a href="{{item.link}}">
-								<h4 class="fnt12">
-									{{item.date | date('d.m.Y')}}
-								</h4>
-								<h5 class="fnt30">{{item.title}}</h5>
-							</a>
-							<p>
-								<a href="{{item.link}}">{{item.preview.read_more('')}}</a>
-							</p>
 
-						</div>
+	<div class="wrapFullWidth --right" data-aos="fade-up" data-aos-delay="140">
+		<div class="home__noweInwestycje__wrapp js-nagrody --CustomButtons">
+			{% for item in wydarzeniaLoop %}
+				<div class="home__noweInwestycje__item">
+					<div class="home__noweInwestycje__item__inside">
+						<a href="{{item.link}}">
+							<h4 class="fnt12">
+								{{item.date | date('d.m.Y')}}
+							</h4>
+							<h5 class="fnt30">{{item.title}}</h5>
+						</a>
+						<p>
+							<a href="{{item.link}}">{{item.preview.read_more('')}}</a>
+						</p>
+
 					</div>
-				{% endfor %}
-			</div>
-			<a class="btn --mobile" href="">Zobacz więcej</a>
+				</div>
+			{% endfor %}
 		</div>
+		<a class="btn --mobile" href="">Zobacz więcej</a>
 	</div>
+
 </section>
