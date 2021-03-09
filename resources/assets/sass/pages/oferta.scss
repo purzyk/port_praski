@@ -39,6 +39,12 @@
     }
 
     &__section {
+        margin-top: 100px;
+
+        @include breakpoint($md) {
+            margin-top: 0px;
+        }
+
         &__title {
             margin-bottom: 40px;
 
