@@ -2,7 +2,7 @@
 {% block content %}
 	<article class="wizja">
 		<section class="hero">
-			{% include 'components/generic/image.twig'  with { img_src:Image(post.header_image).src, width:1600, height:780 } %}
+			{% include 'components/generic/image_nolazy.twig'  with { img_src:Image(post.header_image).src, width:1600, height:780 } %}
 			<div class="hero__slide__inside">
 				<h1 class="hero__slide__title">{{post.meta('title')}}</h1>
 				<h2 class="hero__slide__copy">{{post.subtitle}}</h2>
@@ -21,8 +21,8 @@
 			<div class="l-wrapper --noPadding">
 				<div class="wizja__centrum__wrapper">
 					<div class="wizja__centrum__left">
-						{% include 'components/generic/image.twig'  with { img_src:Image(post.image_top).src } %}
-						{% include 'components/generic/image.twig'  with { img_src:Image(post.image_bottom).src } %}
+						{% include 'components/generic/image_nolazy.twig'  with { img_src:Image(post.image_top).src } %}
+						{% include 'components/generic/image_nolazy.twig'  with { img_src:Image(post.image_bottom).src } %}
 					</div>
 					<div class="wizja__centrum__right">
 						<div class="line --desktop" data-aos="width" data-aos-duration="800"></div>
@@ -46,7 +46,7 @@
 				<div class="wizja__projekt__wrapper">
 
 					<div class="wizja__projekt__wrapper__right" data-aos="fade-up" data-aos-duration="800">
-						{% include 'components/generic/image.twig'  with { img_src:Image(post.projekt_portu_image).src } %}
+						{% include 'components/generic/image_nolazy.twig'  with { img_src:Image(post.projekt_portu_image).src } %}
 					</div>
 					<div class="wizja__projekt__wrapper__left">
 						<h3 class="fnt50" data-aos="fade-up" data-aos-duration="800">{{post.projekt_portu_title}}</h3>

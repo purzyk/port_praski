@@ -484,7 +484,7 @@ $(function () {
   for (var i = 0, len = elms.length; i < len; i++) {
     let splide = new Splide(elms[i], {
       type: "loop",
-      lazyLoad: "sequential",
+      lazyLoad: "nearby",
       arrows: false,
       autoplay: true,
       pauseOnHover: false,
