@@ -12,7 +12,7 @@
 		<div class="znajdzLokal__main__meta__content --mobile">
 			<span>sortuj</span>
 			<span class="--sort">nazwa</span>
-						<div class="controls">
+			<div class="controls">
 				<button type="button" class="control" data-sort="sort:asc">Asc</button>
 				<button type="button" class="control" data-sort="sort:desc">Desc</button>
 			</div>
@@ -23,104 +23,116 @@
 				<div class="znajdzLokal__filters__item --inwestycje">
 					<h3 class="znajdzLokal__filters__title">inwestycja</h3>
 					<div class="znajdzLokal__filters__item__wrapp">
-					
 
-					
-							<div class="controls" data-filter-group="inwestycje">										
-					<ul class="checkboxTest">
-					{% for item in categories %}
-  <li><input type="checkbox" value=".{{item.slug}}"  id="cb{{loop.index}}" />
-    <label for="cb{{loop.index}}"><img src="{{Image(item.glowne_zdjecie).src | resize(132,94)}}" /></label>
-	<span>{{item.title}}</span>
-  </li>
-{% endfor %}
-</ul>
-											
-	
-					
+
+						<div class="controls smaller-margin" data-filter-group="inwestycje">
+							<ul class="checkboxTest">
+								{% for item in categories %}
+									<li><input type="checkbox" value=".{{item.slug}}" id="cb{{loop.index}}"/>
+										<label for="cb{{loop.index}}"><img src="{{Image(item.glowne_zdjecie).src | resize(132,94)}}"/></label>
+										<span class="checkboxTest__title">{{item.title}}</span>
+									</li>
+								{% endfor %}
+							</ul>
+
+
+						</div>
+					</div>
+
 				</div>
-			</div>
-			
-				</div>
-						<div class="znajdzLokal__filters__item">
+				<div class="znajdzLokal__filters__item --typ">
 					<h3 class="znajdzLokal__filters__title">Typ</h3>
-			
-				<div class="controls" data-filter-group="typ">					
-												
-															<span class="wpcf7-form-control-wrap acceptance-1">
+
+					<div class="controls" data-filter-group="typ">
+
+						<span class="wpcf7-form-control-wrap acceptance-1">
 							<span class="wpcf7-form-control wpcf7-acceptance">
 								<span class="wpcf7-list-item">
-												<label>
-						<input type="checkbox" value=".mieszkanie" />
-						<span class="wpcf7-list-item-label">mieszkanie</span>
-					</label>
-											</span>
+									<label>
+										<input type="checkbox" value=".mieszkanie"/>
+										<span class="wpcf7-list-item-label">Mieszkanie lub Apartament</span>
+									</label>
+								</span>
 							</span>
 						</span>
-							<span class="wpcf7-form-control-wrap acceptance-1">
+						<span class="wpcf7-form-control-wrap acceptance-1">
 							<span class="wpcf7-form-control wpcf7-acceptance">
 								<span class="wpcf7-list-item">
-												<label>
-						<input type="checkbox" value=".uslugi" />
-						<span class="wpcf7-list-item-label">uslugi</span>
-					</label>
-											</span>
+									<label>
+										<input type="checkbox" value=".uslugi"/>
+										<span class="wpcf7-list-item-label">Usługi</span>
+									</label>
+								</span>
 							</span>
 						</span>
-					
-				</div>
-			
+
+					</div>
+
 
 				</div>
 				<div class="znajdzLokal__filters__item">
 					<h3 class="znajdzLokal__filters__title">Liczba pokoi</h3>
 
-	<div class="range-sliderrr">
-	<input type="text" class="js-range-slider" data-ref="range-slider-a" value="" />
-</div>
+					<div class="range-sliderrr">
+						<input type="text" class="js-range-slider" data-ref="range-slider-a" value=""/>
+					</div>
+					<div class="extra-controls">
+						<input type="text" class="js-input-from-a" value="0"/>
+						<input type="text" class="js-input-to-a" value="0"/>
+					</div>
 
 				</div>
 				<div class="znajdzLokal__filters__item">
 					<h3 class="znajdzLokal__filters__title">Powierzchnia</h3>
 
-<div class="range-sliderrr">
-	<input type="text" class="js-range-slider" data-ref="range-slider-b" value="" />
-</div>
+					<div class="range-sliderrr">
+						<input type="text" class="js-range-slider" data-ref="range-slider-b" value=""/>
+					</div>
+					<div class="extra-controls">
+						<input type="text" class="js-input-from-b" value="0"/>
+						<input type="text" class="js-input-to-b" value="0"/>
+					</div>
+
 
 				</div>
 				<div class="znajdzLokal__filters__item">
 					<h3 class="znajdzLokal__filters__title">piętro</h3>
-		<div class="range-sliderrr">
-	<input type="text" class="js-range-slider" data-ref="range-slider-c" value="" />
-</div>
-
+					<div class="range-sliderrr">
+						<input type="text" class="js-range-slider" data-ref="range-slider-c" value=""/>
+					</div>
+					<div class="extra-controls">
+						<input type="text" class="js-input-from-c" value="0"/>
+						<input type="text" class="js-input-to-c" value="0"/>
+					</div>
 				</div>
 				<div class="znajdzLokal__filters__item">
 					<h3 class="znajdzLokal__filters__title">Cechy dodatkowe</h3>
-			
-				<div class="controls" data-filter-group="cechy">					
-												{% for item in dodatkowo %}
-															<span class="wpcf7-form-control-wrap acceptance-1">
-							<span class="wpcf7-form-control wpcf7-acceptance">
-								<span class="wpcf7-list-item">
-												<label>
-						<input type="checkbox" value=".{{item.name}}" />
-						<span class="wpcf7-list-item-label">{{item.name}}</span>
-					</label>
-											</span>
+
+					<div class="controls dodatkowe" data-filter-group="cechy">
+						{% for item in dodatkowo %}
+							<span class="wpcf7-form-control-wrap acceptance-1">
+								<span class="wpcf7-form-control wpcf7-acceptance">
+									<span class="wpcf7-list-item">
+										<label>
+											<input type="checkbox" value=".{{item.name}}"/>
+											<span class="wpcf7-list-item-label">{{item.name}}</span>
+										</label>
+									</span>
+								</span>
 							</span>
-						</span>
-	
-					{% endfor %}
-				</div>
-			
+
+						{% endfor %}
+					</div>
+
 
 				</div>
 			</aside>
 			<section class="znajdzLokal__main">
 				<div class="znajdzLokal__main__meta --desktop">
 					<div class="znajdzLokal__main__meta__content">
-						<span class="--blue">liczba ofert <span id="counter">1</span></span>
+						<span class="--blue">liczba ofert
+							<span id="counter">1</span>
+						</span>
 						<span>(<span id="total">10</span>)</span>
 					</div>
 					<div class="znajdzLokal__main__meta__content --desktop">
@@ -130,14 +142,14 @@
 					</div>
 				</div>
 				<div class="container">
-				<div id="Container">
-				{% for item in postsLoop %}
-					{% include 'components/generic/lokal.twig' %}
-				{% endfor %}
-									</div>
-									<div id="pagination" class="pagination"></div>
+					<div id="Container">
+						{% for item in postsLoop %}
+							{% include 'components/generic/lokal.twig' %}
+						{% endfor %}
+					</div>
+					<div id="pagination" class="pagination"></div>
 				</div>
-				
+
 			</section>
 		</div>
 	</div>

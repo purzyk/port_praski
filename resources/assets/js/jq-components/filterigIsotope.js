@@ -5,8 +5,21 @@ class filterigIsotope {
 
 
         var $rangeA = $('[data-ref="range-slider-a"]');
+        var $inputFromA = $(".js-input-from-a");
+        var $inputToA = $(".js-input-to-a");
+        var fromA = 0;
+        var toA = 0;
         var $rangeB = $('[data-ref="range-slider-b"]');
+        var $inputFromB = $(".js-input-from-b");
+        var $inputToB = $(".js-input-to-b");
+        var fromB = 0;
+        var toB = 0;
         var $rangeC = $('[data-ref="range-slider-c"]');
+        var $inputFromC = $(".js-input-from-c");
+        var $inputToC = $(".js-input-to-c");
+        var fromC = 0;
+        var toC = 0;
+
 
         $rangeA.ionRangeSlider({
           skin: "round",
@@ -15,7 +28,8 @@ class filterigIsotope {
           max: 10,
           from: 0,
           to: 10,
-          onChange: handleRangeInputChange
+          onStart: updateInputsStartA,
+          onChange: updateInputsChangeA
         });
 
         $rangeB.ionRangeSlider({
@@ -25,7 +39,8 @@ class filterigIsotope {
           max: 300,
           from: 0,
           to: 300,
-          onChange: handleRangeInputChange
+          onStart: updateInputsStartB,
+          onChange: updateInputsChangeB
         });
         $rangeC.ionRangeSlider({
           skin: "round",
@@ -34,7 +49,8 @@ class filterigIsotope {
           max: 10,
           from: 0,
           to: 10,
-          onChange: handleRangeInputChange
+          onStart: updateInputsStartC,
+          onChange: updateInputsChangeC
         });
         var instanceA = $rangeA.data("ionRangeSlider");
         var instanceB = $rangeB.data("ionRangeSlider");
@@ -42,6 +58,54 @@ class filterigIsotope {
 
 
         var pagination = $('.pagination');
+        function handleRangeInputChange() {
+          mixer.filter(mixer.getState().activeFilter);
+        }
+        
+        function updateInputsStartA (data) {
+          fromA = data.from;
+            toA = data.to;
+            $inputFromA.prop("value", fromA);
+            $inputToA.prop("value", toA);	
+        }
+
+        function updateInputsChangeA (data) {
+          handleRangeInputChange();
+          fromA = data.from;
+            toA = data.to;
+            $inputFromA.prop("value", fromA);
+            $inputToA.prop("value", toA);	
+        }
+
+        function updateInputsStartB (data) {
+          fromB = data.from;
+            toB = data.to;
+            $inputFromB.prop("value", fromB);
+            $inputToB.prop("value", toB);	
+        }
+
+        function updateInputsChangeB (data) {
+          handleRangeInputChange();
+          fromB = data.from;
+            toB = data.to;
+            $inputFromB.prop("value", fromB);
+            $inputToB.prop("value", toB);	
+        }
+
+        function updateInputsStartC (data) {
+          fromC = data.from;
+            toC = data.to;
+            $inputFromC.prop("value", fromC);
+            $inputToC.prop("value", toC);	
+        }
+
+        function updateInputsChangeC (data) {
+          handleRangeInputChange();
+          fromC = data.from;
+            toC = data.to;
+            $inputFromC.prop("value", fromC);
+            $inputToC.prop("value", toC);	
+        }
 
         function setPagination() {
           pagination.jPages({
@@ -114,9 +178,7 @@ class filterigIsotope {
           };
         }
 
-        function handleRangeInputChange() {
-          mixer.filter(mixer.getState().activeFilter);
-        }
+
 
         function filterTestResult(testResult, target) {
           var a = Number(target.dom.el.getAttribute('data-a'));
