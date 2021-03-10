@@ -6,8 +6,7 @@ import LazyLoad from "vanilla-lazyload"
 import BackToTop from './jq-components/backToTop';
 import SmoothScroll from './jq-components/smoothScroll';
 import Splide from '@splidejs/splide';
-import noUiSlider from "nouislider";
-
+import filterigIsotope from './jq-components/filterigIsotope';
 
 /* Replace image vidth youtube content */
 function labnolIframe(div) {
@@ -48,7 +47,7 @@ document.addEventListener("DOMContentLoaded", initYouTubeVideos);
 
 $(document).ready(function () {
   var pokoiSlider = document.getElementById('pokoiSlider');
-  var powierzchniaSlider = document.getElementById('powierzchniaSlider');
+  
   var pietroSlider = document.getElementById('pietroSlider');
   if (pokoiSlider) {
     noUiSlider.create(pokoiSlider, {
@@ -68,24 +67,7 @@ $(document).ready(function () {
       nodes[handle].innerHTML = values[handle];
     });
   }
-  if (powierzchniaSlider) {
-    noUiSlider.create(powierzchniaSlider, {
-      start: [0, 200],
-      connect: true,
-      step: 1,
-      range: {
-        'min': 0,
-        'max': 200
-      }
-    });
-    var nodes2 = [
-      document.getElementById('powierzchnia-from'), // 0
-      document.getElementById('powierzchnia-to') // 1
-    ];
-    powierzchniaSlider.noUiSlider.on('update', function (values, handle, unencoded, isTap, positions) {
-      nodes2[handle].innerHTML = values[handle];
-    });
-  }
+
   if (pietroSlider) {
     noUiSlider.create(pietroSlider, {
       start: [0, 10],
@@ -649,6 +631,7 @@ $('.btnVideoReadMore').click(function (event) {
 $(() => {
   new BackToTop();
   new SmoothScroll();
+  new filterigIsotope();
 });
 
 function isElementInViewport(el) {

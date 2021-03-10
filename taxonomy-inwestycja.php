@@ -17,6 +17,8 @@ $context['lead'] = $lead;
 $context['opis'] = $opis;
 $context['posts']      = new Timber\PostQuery();
 $context['pagination'] = Timber::get_pagination($pagination_mid_size);
+$dodatkowo = get_terms( 'dodatkowo', array('hide_empty' => true) );
+$context['dodatkowo'] = $dodatkowo;
 $cat = get_queried_object()->term_id;
 $lokale = Timber::get_posts(array('orderby' => 'title', 'post_type' => 'lokale','posts_per_page' => '-1', 'order' => 'ASC', 'tax_query' => array(
     array(

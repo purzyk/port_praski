@@ -160,7 +160,41 @@
                 .--sort {
                     color: $darkBlue;
                     padding: 0 22px 0 10px;
-                    background: url('../images/sort.svg') right center no-repeat;
+
+                    font-weight: 800;
+                    font-size: 14px;
+                    line-height: 19px;
+                    margin-bottom: 0;
+                    text-transform: uppercase;
+                    color: #262359;
+                    position: relative;
+                    border: 0;
+                    background: transparent;
+
+                    &:after {
+                        content: '';
+                        width: 12px;
+                        height: 6px;
+                        background: url('../images/sort.svg') right center no-repeat;
+                        display: block;
+                        right: 0;
+                        top: 6px;
+                        position: absolute;
+                    }
+
+                    &.mixitup-control-active {
+                        display: none;
+                    }
+
+                    &.sortDown {
+
+
+                        &:after {
+                            transform: rotate(180deg);
+                        }
+
+
+                    }
                 }
 
                 .--blue {
@@ -186,7 +220,7 @@
             font-weight: 800;
             font-size: 14px;
             line-height: 19px;
-            /* identical to box height */
+            margin-bottom: 16px;
 
             text-transform: uppercase;
 
@@ -196,8 +230,58 @@
         }
 
         &__item {
-            @include breakpoint($md) {
-                display: none;
+            &.--inwestycje {}
+
+            &__singleZdjecie {
+                @include breakpoint($md) {
+                    opacity: 0.9;
+
+                    p {
+                        font-size: 14px;
+                        line-height: 19px;
+                        color: #000000;
+                    }
+                }
+            }
+
+            &__wrapp {
+                /*
+                display: flex;
+                flex-wrap: wrap;
+
+                .znajdzLokal__filters__item__singleZdjecie {
+                    width: 48%;
+                }
+                */
+            }
+
+            .controls {
+                .wpcf7-acceptance .wpcf7-list-item-label {
+                    font-size: 14px;
+                    line-height: 19px;
+                    color: #000000;
+                }
+
+                margin-bottom: 20px;
+
+                .wpcf7-acceptance span.wpcf7-list-item {
+                    margin: 0;
+                    margin-bottom: 10px;
+                }
+
+                &.smaller-margin {
+                    margin-bottom: 7px;
+                }
+
+                &.dodatkowe {
+                    .wpcf7-acceptance .wpcf7-list-item-label {
+                        text-transform: capitalize;
+                    }
+                }
+            }
+
+            .extra-controls {
+                margin-bottom: 28px;
             }
         }
     }
@@ -231,4 +315,120 @@
     width: 100%;
     max-width: 350px;
     margin-right: auto;
+}
+
+
+
+ul.checkboxTest {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    li {
+        max-width: 48%;
+        margin-bottom: 22px;
+    }
+}
+
+.checkboxTest {
+    span.wpcf7-list-item {
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    input[type="checkbox"][id^="cb"] {
+        display: none;
+    }
+
+    &__title {
+        font-size: 14px;
+        line-height: 19px;
+        color: #000000;
+    }
+
+    label {
+
+        display: block;
+        position: relative;
+        margin-bottom: 6px;
+
+        cursor: pointer;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    label::before {
+        background-color: white;
+        color: white;
+        content: " ";
+        display: block;
+        border-radius: 50%;
+        border: 1px solid grey;
+        position: absolute;
+        top: 7px;
+        left: 7px;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        line-height: 28px;
+        transition-duration: 0.4s;
+        transform: scale(0);
+    }
+
+    label img {
+
+        transition-duration: 0.2s;
+        transform-origin: 50% 50%;
+        opacity: 0.4;
+    }
+
+    :checked+label {
+        border-color: #ddd;
+    }
+
+    :checked+label::before {
+        content: "";
+        background: $darkBlue url('../images/check_mark.svg') center no-repeat;
+        transform: scale(1);
+    }
+
+    :checked+label img {
+        border: 2px solid $darkBlue;
+        z-index: -1;
+        opacity: 1;
+    }
+}
+
+.extra-controls {
+    display: flex;
+    justify-content: space-between;
+
+    input {
+        background: transparent;
+        border: none;
+        width: 50px;
+        font-size: 14px;
+        line-height: 19px;
+        text-transform: uppercase;
+        font-weight: 800;
+        color: #8F8F8F;
+
+        &:last-child {
+            text-align: right;
+        }
+
+    }
+}
+
+.tax-inwestycja {
+
+    .--inwestycje,
+    .--typ {
+        display: none;
+    }
 }

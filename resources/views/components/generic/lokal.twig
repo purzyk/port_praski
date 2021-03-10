@@ -1,4 +1,7 @@
-<article class="znajdzLokal__item {% for termname in item.terms('dodatkowo') %}{{termname.slug}} {% endfor %}">
+
+
+	
+<article class="mix znajdzLokal__item {% if item.typ == 'Usługi' %}uslugi{% else %}mieszkanie{% endif %} {% for termname in item.terms('inwestycja') %}{{termname.slug}} {% endfor %} {% for termname in item.terms('dodatkowo') %}{{termname.slug}} {% endfor %}" data-sort="{{item.title}}" {% if item.liczba_pokoi %}data-a="{{item.liczba_pokoi}}"{% endif %} {% if item.powierzchnia %}data-b="{{item.powierzchnia}}"{% endif %} {% if item.pietro %}data-c="{{item.pietro}}"{% endif %}>
 
 	<div class="znajdzLokal__item__copy">
 		<h2 class="znajdzLokal__item__copy__title">
