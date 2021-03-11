@@ -25,6 +25,70 @@
             "max_height": "",
             "max_size": "",
             "mime_types": ""
+        },
+        {
+            "key": "field_604a11f2b262d",
+            "label": "zobacz więcej nowe inwestycje url",
+            "name": "zobacz_wiecej_nowe_inwestycje_url",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_604a1211b262e",
+            "label": "zobacz więcej aktualności url",
+            "name": "zobacz_wiecej_aktualnosci_url",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_604a1230b262f",
+            "label": "zobacz więcej dni otwarte url",
+            "name": "zobacz_wiecej_dni_otwarte_url",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_604a1249b2630",
+            "label": "zobacz więcej wydarzenia url",
+            "name": "zobacz_wiecej_wydarzenia_url",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
         }
     ],
     "location": [
@@ -44,5 +108,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1613642509
+    "modified": 1615467093
 }

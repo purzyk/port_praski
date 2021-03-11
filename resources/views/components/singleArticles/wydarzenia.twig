@@ -1,0 +1,14 @@
+<div class="home__noweInwestycje__item --wydarzenie">
+	<div class="home__noweInwestycje__item__inside">
+		<a href="{{item.link}}">
+			<h4 class="fnt12">
+				{{item.date | date('d.m.Y')}}
+			</h4>
+			<h5 class="fnt30">{{item.title}}</h5>
+		</a>
+		<p>
+			<a href="{{item.link}}">{{item.preview.read_more('')}}</a>
+		</p>
+
+	</div>
+</div>

@@ -1,13 +1,25 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<h1 class="title is-2">{{ title }}</h1>
-	{% for post in posts %}
-		{% include 'components/article.twig' %}
-		<hr/>
-	{% endfor %}
-	{% if posts.pagination.pages %}
-		{% include 'components/pagination.twig' %}
-	{% endif %}
-
+	<section class="archive">
+		<div class="l-wrapper">
+			<h1 class="title is-2 fnt50">{{ title }}</h1>
+			<div class="archive__wrapper">
+				{% for item in posts %}
+					{% if post_type == 'dni_otwarte' %}
+						{% include 'components/singleArticles/dni_otwarte.twig' %}
+					{% endif %}
+					{% if post_type == 'wydarzenia' %}
+						{% include 'components/singleArticles/wydarzenia.twig' %}
+					{% endif %}
+					{% if post_type == 'post' %}
+						{% include 'components/singleArticles/aktualnosci.twig' %}
+					{% endif %}
+				{% endfor %}
+			</div>
+			{% if posts.pagination.pages %}
+				{% include 'components/pagination.twig' %}
+			{% endif %}
+		</div>
+	</section>
 {% endblock %}

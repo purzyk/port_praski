@@ -3,7 +3,8 @@
 $templates        = ['archive.twig', 'index.twig'];
 $context          = Timber::get_context();
 $context['title'] = 'Archive';
-
+$post_type = get_post_type();
+$context['post_type'] = $post_type;
 if (is_day()) {
     $context['title'] = 'Archive: ' . get_the_date('D M Y');
 } elseif (is_month()) {

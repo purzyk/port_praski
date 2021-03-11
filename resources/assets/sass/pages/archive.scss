@@ -1,0 +1,95 @@
+.archive {
+    padding-top: 50px;
+
+    &__wrapper {
+        padding-top: 50px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .home__noweInwestycje__item {
+            width: 100% !important;
+            margin-right: 0;
+
+            @include breakpoint($md) {
+                width: 32% !important;
+                margin-right: 0;
+            }
+
+            margin-bottom: 1%;
+        }
+    }
+
+    .pagination {
+        display: flex;
+        align-items: center;
+
+        button {
+            display: none;
+        }
+
+        .pagination-next,
+        .pagination-previous {
+            display: none;
+        }
+
+        .pagination-list {
+            display: flex;
+            align-items: center;
+
+
+
+            span,
+            a {
+                margin: 0;
+                margin-right: 10px;
+                font-size: 14px;
+                line-height: 19px;
+                margin-bottom: 16px;
+                text-transform: uppercase;
+                color: #8F8F8F;
+                font-weight: 800;
+                cursor: pointer;
+
+                &.current {
+                    color: $darkBlue;
+                    margin: 0;
+                    padding: 0;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
+
+
+.--wydarzenie {
+    .home__noweInwestycje__item__inside {
+        min-height: 440px;
+    }
+
+    .home__noweInwestycje__item__inside {
+        color: $darkBlue;
+        position: relative;
+        border: 1px solid #262359;
+        padding-bottom: 20px;
+
+        a {
+            color: $darkBlue;
+        }
+    }
+
+    .fnt30 {
+        margin-bottom: 60px;
+    }
+}
+
+.--aktualnosc,
+.--dzienOtwarty {
+
+
+    .home__noweInwestycje__item__inside {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), linear-gradient(180deg, rgba(0, 0, 0, 0) 53.25%, rgba(0, 0, 0, 0.25) 100%);
+
+    }
+}
