@@ -523,6 +523,8 @@ $('.znajdzLokal__filters__close').click(function (event) {
   
 });
 
+
+
 /* Toggle modal */
 $('.home__inwestycjeLista__item__footer__link__close').click(function (event) {
   $(this).closest('.home__inwestycjeLista__item__outsite').removeClass('active');

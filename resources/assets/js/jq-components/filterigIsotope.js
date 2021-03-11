@@ -3,6 +3,14 @@ class filterigIsotope {
     (function ($) {
       $(document).ready(function () {
 
+        $('.znajdzLokal__filters__clear').click(function (event) {
+          event.preventDefault();
+          $('input[type=checkbox]').each(function () {
+            this.checked = false;
+            resetInputsChangeA();
+          });
+
+        });
 
         var $rangeA = $('[data-ref="range-slider-a"]');
         var $inputFromA = $(".js-input-from-a");
@@ -58,65 +66,81 @@ class filterigIsotope {
 
 
         var pagination = $('.pagination');
+
         function handleRangeInputChange() {
           mixer.filter(mixer.getState().activeFilter);
         }
-        
-        function updateInputsStartA (data) {
+
+        function resetInputsChangeA(data) {
+          handleRangeInputChange();
+          instanceA.reset()
+          instanceB.reset()
+          instanceC.reset()
+          $inputFromA.prop("value", 0);
+          $inputToA.prop("value", 10);
+          $inputFromB.prop("value", 0);
+          $inputToB.prop("value", 300);
+          $inputFromC.prop("value", 0);
+          $inputToC.prop("value", 10);
+        }
+
+        function updateInputsStartA(data) {
           fromA = data.from;
-            toA = data.to;
-            $inputFromA.prop("value", fromA);
-            $inputToA.prop("value", toA);	
+          toA = data.to;
+          $inputFromA.prop("value", fromA);
+          $inputToA.prop("value", toA);
         }
 
-        function updateInputsChangeA (data) {
+        function updateInputsChangeA(data) {
           handleRangeInputChange();
           fromA = data.from;
-            toA = data.to;
-            $inputFromA.prop("value", fromA);
-            $inputToA.prop("value", toA);	
+          toA = data.to;
+          $inputFromA.prop("value", fromA);
+          $inputToA.prop("value", toA);
         }
 
-        function updateInputsStartB (data) {
+
+
+        function updateInputsStartB(data) {
           fromB = data.from;
-            toB = data.to;
-            $inputFromB.prop("value", fromB);
-            $inputToB.prop("value", toB);	
+          toB = data.to;
+          $inputFromB.prop("value", fromB);
+          $inputToB.prop("value", toB);
         }
 
-        function updateInputsChangeB (data) {
+        function updateInputsChangeB(data) {
           handleRangeInputChange();
           fromB = data.from;
-            toB = data.to;
-            $inputFromB.prop("value", fromB);
-            $inputToB.prop("value", toB);	
+          toB = data.to;
+          $inputFromB.prop("value", fromB);
+          $inputToB.prop("value", toB);
         }
 
-        function updateInputsStartC (data) {
+        function updateInputsStartC(data) {
           fromC = data.from;
-            toC = data.to;
-            $inputFromC.prop("value", fromC);
-            $inputToC.prop("value", toC);	
+          toC = data.to;
+          $inputFromC.prop("value", fromC);
+          $inputToC.prop("value", toC);
         }
 
-        function updateInputsChangeC (data) {
+        function updateInputsChangeC(data) {
           handleRangeInputChange();
           fromC = data.from;
-            toC = data.to;
-            $inputFromC.prop("value", fromC);
-            $inputToC.prop("value", toC);	
+          toC = data.to;
+          $inputFromC.prop("value", fromC);
+          $inputToC.prop("value", toC);
         }
 
         function setPagination() {
           pagination.jPages({
             containerID: 'Container',
-            perPage: 2,
+            perPage: 4,
             startPage: 1,
             startRange: 1,
             midRange: 3,
             endRange: 1,
-            previous    : "poprzednia",
-            next        : "następna",
+            previous: "poprzednia",
+            next: "następna",
             first: false,
             last: false
           });
@@ -155,7 +179,7 @@ class filterigIsotope {
               /* onMixClick not working with multifilter - github issue #386 */
             },
             onMixEnd: function (state, originalEvent) {
-              $("#counter").text(state.totalMatching);
+              $(".counter").text(state.totalMatching);
               setPagination();
             }
           }
@@ -196,7 +220,8 @@ class filterigIsotope {
 
         /* getState */
         var state = mixer.getState();
-        $("#total").text(state.totalTargets);
+        $(".total").text(state.totalTargets);
+        $(".counter").text(state.totalTargets);
 
         $("form :input").change(function () {
           var currentValue = this.value;
