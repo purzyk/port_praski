@@ -12,7 +12,7 @@
 	<div class="wrapFullWidth --right" data-aos="fade-up" data-aos-delay="140">
 		<div class="home__noweInwestycje__wrapp js-historia --CustomButtons">
 			{% for item in post.meta('historia') %}
-				<div class="home__noweInwestycje__item">
+				<div class="home__noweInwestycje__item"  data-aos="not-real-animation" data-aos-delay="140">
 					{% include 'components/generic/image.twig'  with { img_src:Image(item.zdjecie).src, width:580, height:440 } %}
 					<div class="home__noweInwestycje__item__inside">
 
