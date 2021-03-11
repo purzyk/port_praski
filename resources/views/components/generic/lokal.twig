@@ -1,58 +1,55 @@
+<article class="mix  {% if item.typ == 'Usługi' %}uslugi{% else %}mieszkanie{% endif %} {% for termname in item.terms('inwestycja') %}{{termname.slug}} {% endfor %} {% for termname in item.terms('dodatkowo') %}{{termname.slug}} {% endfor %}" data-sort="{{item.title}}" {% if item.liczba_pokoi %} data-a="{{item.liczba_pokoi}}" {% endif %} {% if item.powierzchnia %} data-b="{{item.powierzchnia}}" {% endif %} {% if item.pietro %} data-c="{{item.pietro}}" {% endif %}>
+	<div class="znajdzLokal__item">
+		<div class="znajdzLokal__item__copy">
+			<h2 class="znajdzLokal__item__copy__title">
+				<span class="znajdzLokal__item__title">{{item.title}}</span>
+				<span class="znajdzLokal__item__inwestycja">
+					{% for termname in item.terms('inwestycja') %}
+						{{termname.name}}
+					{% endfor %}
+				</span>
+			</h2>
+			{% if item.powierzchnia %}
+				<div class="lokal__twoColumns">
+					<h3>Powierzchnia:</h3>
+					<p>{{item.powierzchnia}}
+						m²</p>
+				</div>
+			{% endif %}
+			{% if item.liczba_pokoi %}
+				<div class="lokal__twoColumns">
+					<h3>Liczba pokoi:</h3>
+					<p>{{item.liczba_pokoi}}</p>
+				</div>
+			{% endif %}
 
-
-	
-<article class="mix znajdzLokal__item {% if item.typ == 'Usługi' %}uslugi{% else %}mieszkanie{% endif %} {% for termname in item.terms('inwestycja') %}{{termname.slug}} {% endfor %} {% for termname in item.terms('dodatkowo') %}{{termname.slug}} {% endfor %}" data-sort="{{item.title}}" {% if item.liczba_pokoi %}data-a="{{item.liczba_pokoi}}"{% endif %} {% if item.powierzchnia %}data-b="{{item.powierzchnia}}"{% endif %} {% if item.pietro %}data-c="{{item.pietro}}"{% endif %}>
-
-	<div class="znajdzLokal__item__copy">
-		<h2 class="znajdzLokal__item__copy__title">
-			<span class="znajdzLokal__item__title">{{item.title}}</span>
-			<span class="znajdzLokal__item__inwestycja">
-				{% for termname in item.terms('inwestycja') %}
-					{{termname.name}}
-				{% endfor %}
-			</span>
-		</h2>
-		{% if item.powierzchnia %}
 			<div class="lokal__twoColumns">
-				<h3>Powierzchnia:</h3>
-				<p>{{item.powierzchnia}}
-					m²</p>
+				<h3>Piętro:</h3>
+				<p>{{item.pietro}}</p>
 			</div>
-		{% endif %}
-		{% if item.liczba_pokoi %}
-			<div class="lokal__twoColumns">
-				<h3>Liczba pokoi:</h3>
-				<p>{{item.liczba_pokoi}}</p>
-			</div>
-		{% endif %}
 
-		<div class="lokal__twoColumns">
-			<h3>Piętro:</h3>
-			<p>{{item.pietro}}</p>
+			{% if item.meta('status') %}
+				<div class="lokal__twoColumns">
+					<h3>Status:</h3>
+					<p>{{item.meta('status')}}</p>
+				</div>
+			{% endif %}
+
 		</div>
+		<div class="line --grey" data-aos="width" data-aos-duration="800"></div>
+		<figure>
+			<img src="{{item.thumbnail | resize(150,132)}}">
 
-		{% if item.meta('status') %}
-			<div class="lokal__twoColumns">
-				<h3>Status:</h3>
-				<p>{{item.meta('status')}}</p>
-			</div>
-		{% endif %}
+		</figure>
+		<div class="line --grey" data-aos="width" data-aos-duration="800"></div>
 
+		<div class="lokal__btns">
+			<button class="btn">prośba o kontakt</button>
+			<a href="{{item.link}}" class="btn --lightGrey">Karta mieszkania</a>
+			{% if item.meta('pdf') %}
+				<a target="_blank" href="{{item.meta('pdf')}}" class="btn --lightGrey">pobierz PDF</a>
+			{% endif %}
+
+		</div>
 	</div>
-	<div class="line --grey" data-aos="width" data-aos-duration="800"></div>
-	<figure>
-		<img src="{{item.thumbnail | resize(150,132)}}">
-
-	</figure>
-	<div class="line --grey" data-aos="width" data-aos-duration="800"></div>
-
-	<div class="lokal__btns">
-		<button class="btn">prośba o kontakt</button>
-		<a href="{{item.link}}" class="btn --lightGrey">Karta mieszkania</a>
-		{% if item.meta('pdf') %}
-			<a target="_blank" href="{{item.meta('pdf')}}" class="btn --lightGrey">pobierz PDF</a>
-		{% endif %}
-
-	</div>
-
 </article>

@@ -1,25 +1,31 @@
 <article class="znajdzLokal">
 	<div class="l-wrapper">
 		<h1 class="fnt50 znajdzLokal__title">Znajdź lokal</h1>
-		<div class="znajdzLokal__main__meta__content --mobile">liczba ofert 20
-			<span>(34)</span>
+		<div class="znajdzLokal__main__meta__content  --mobile">
+			<span class="--blue">liczba ofert
+				<span id="counter">1</span>
+			</span>
+			<span>(<span id="total">10</span>)</span>
 		</div>
 		<div class="line znajdzLokal__line --mobile" data-aos="width" data-aos-duration="800"></div>
 
-		<button class="btn --mobile --filtry">
+		<button class="btn --mobile --filtry showFilters">
 			<span>pokaż filtry</span>
 		</button>
 		<div class="znajdzLokal__main__meta__content --mobile">
-			<span>sortuj</span>
-			<span class="--sort">nazwa</span>
-			<div class="controls">
-				<button type="button" class="control" data-sort="sort:asc">Asc</button>
-				<button type="button" class="control" data-sort="sort:desc">Desc</button>
-			</div>
+			<span>sortuj:</span>
+			<button data-sort="sort:asc" class="--sort sortUp">nazwa</button>
+			<button data-sort="sort:desc" class="--sort sortDown">nazwa</button>
 		</div>
 		<div class="line znajdzLokal__line --desktop" data-aos="width" data-aos-duration="800"></div>
+	</div>
+	<div class="l-wrapper --noPadding --noRelative">
 		<div class="znajdzLokal__wrapper">
 			<aside class="znajdzLokal__filters">
+				<button class="znajdzLokal__filters__close --mobile"></button>
+				<h1 class="fnt50 znajdzLokal__title filtry__title">Filtry</h1>
+				<div class="line znajdzLokal__line --mobile" data-aos="width" data-aos-duration="800"></div>
+				<button type="reset" data-filter="all" class="znajdzLokal__filters__clear btn --white --mobile">Wyczyść filtry</button>
 				<div class="znajdzLokal__filters__item --inwestycje">
 					<h3 class="znajdzLokal__filters__title">inwestycja</h3>
 					<div class="znajdzLokal__filters__item__wrapp">

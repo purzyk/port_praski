@@ -13,19 +13,15 @@ function base_camp_scripts_and_styles()
         // Register scripts
     wp_register_script('wptheme-vendor', assets('vendor.js'), [], '', true);
     wp_register_script('wptheme-scripts', assets('scripts.js') . $suffix, ['wptheme-vendor'], '', true);
-    wp_register_script( 'wptheme-slider', get_template_directory_uri() . '/js/bootstrap-slider.js' );
     wp_register_script( 'wptheme-jPages', get_template_directory_uri() . '/js/jPages.min.js' );
     wp_register_script( 'wptheme-ion.rangeSlider', get_template_directory_uri() . '/js/ion.rangeSlider.min.js' );
     wp_register_script( 'wptheme-mixitup', get_template_directory_uri() . '/js/mixitup.min.js' );
     wp_register_script( 'wptheme-mixitup-multifilter', get_template_directory_uri() . '/js/mixitup-multifilter.js' );
     
-       
-
     // Enqueue scripts and styles
     
     wp_enqueue_script('wptheme-scripts');
     wp_enqueue_script('wptheme-vendor');
-    wp_enqueue_script('wptheme-slider');
     wp_enqueue_script('wptheme-ion.rangeSlider');
     wp_enqueue_script('wptheme-jPages');
     wp_enqueue_script('wptheme-mixitup');

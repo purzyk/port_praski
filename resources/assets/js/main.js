@@ -504,7 +504,24 @@ $('a#back-top').click(() => {
 });
 
 
-
+/* Show filters */
+/* Toggle modal */
+$('.showFilters').click(function (event) {
+    event.preventDefault();
+    $('.znajdzLokal__filters').show();
+    $('body,html').animate({
+      scrollTop: 0,
+    },
+    1000,
+  );
+  return false;
+    
+});
+$('.znajdzLokal__filters__close').click(function (event) {
+  event.preventDefault();
+  $('.znajdzLokal__filters').hide();
+  
+});
 
 /* Toggle modal */
 $('.home__inwestycjeLista__item__footer__link__close').click(function (event) {
