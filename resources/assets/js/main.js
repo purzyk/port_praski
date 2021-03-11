@@ -745,7 +745,7 @@ if(document.querySelector("#wyszukiwarka3d")) {
 
 const goToContact = () => {
   const urlArray = window.location.href.split("/")
-  const apartmentId = urlArray[urlArray.length - 2].toUpperCase()
+  const apartmentId = urlArray[urlArray.length - 2].toUpperCase().replace("-", ".")
   const messageInput = document.querySelector('input[name="text-wiadomosc"]')
 
   messageInput.parentNode.parentNode.classList.add("active")
