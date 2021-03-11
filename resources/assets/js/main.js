@@ -766,7 +766,7 @@ function set3DViewButtonsPostition() {
     buttons.style.bottom = '48px';
     buttons.style.left = `42px`
   } else if (windowWidth < 849) {
-    buttons.style.top = '-72px';
+    buttons.style.top = '0';
   }
 
   if (windowWidth > window.innerHeight && windowWidth > 768) {
