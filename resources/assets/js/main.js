@@ -338,6 +338,53 @@ $(function () {
     ]
   });
 
+
+  $('.slider-lokal').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    fade: false,
+    asNavFor: '.slider-nav-lokal-thumbnails',
+  });
+
+  $('.slider-nav-lokal-thumbnails').slick({
+    slidesToShow: 4,
+    infinite: true,
+    slidesToScroll: 1,
+    asNavFor: '.slider-lokal',
+    variableWidth: false,
+    dots: false,
+    arrows: true,
+    focusOnSelect: true,
+    responsive: [{
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          arrows: false,
+        }
+      }
+      // You can unslick at a given breakpoint now by adding:
+      // settings: "unslick"
+      // instead of a settings object
+    ]
+  });
+
+
   // Remove active class from all thumbnail slides
   $('.slider-nav-thumbnails .slick-slide').removeClass('slick-active');
 
@@ -632,8 +679,15 @@ $('.gallery').each(function () {
 $('.image-link').magnificPopup({
   type: 'image',
   gallery: {
-    enabled: true,
-    arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"></button>', // markup of an arrow button
+      enabled: true,
+      arrowMarkup: '<button title="%title%" type="button" class="custom-arrow custom-arrow-%dir%"></button>'
+    },
+    callbacks: {
+      change: function() {
+          if (this.isOpen) {
+              this.wrap.addClass('mfp-open');
+          }
+      }
   }
 });
 

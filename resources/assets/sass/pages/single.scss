@@ -1,26 +1,19 @@
 .single {
-
-
     &__article {
         padding-top: 100px;
         margin-bottom: 100px;
 
         @include breakpoint($md) {
-
             margin-bottom: 150px;
             padding-top: 120px;
         }
-
-
 
         .line {
             margin-bottom: 10px;
 
             @include breakpoint($md) {
-
                 margin-bottom: 20px;
             }
-
         }
 
         &__figure {
@@ -31,14 +24,12 @@
             margin-bottom: 60px;
 
             @include breakpoint($md) {
-
                 margin-bottom: 90px;
             }
 
             img {
                 width: 100%;
             }
-
 
             @include breakpoint($xl) {
                 max-width: $xl;
@@ -87,24 +78,97 @@
         font-size: 20px;
         line-height: 32px;
         font-weight: 300;
-
     }
 }
 
-.mfp-arrow-right:after {
-    border-left: 17px solid $darkBlue
+.mfp-container {
+    position: relative
 }
 
-.mfp-arrow-right:before {
-    border-left: 27px solid $darkBlue;
-    opacity: 1
+.mfp-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top:0;
+    left:0;
 }
 
-.mfp-arrow-left:after {
-    border-right: 17px solid $darkBlue
+.mfp-container .mfp-content .mfp-figure {
+    cursor: auto;
+    padding: 52px;
 }
 
-.mfp-arrow-left:before {
-    border-right: 27px solid $darkBlue;
+.mfp-figure:after {
+    box-shadow: none;
+    background-color: $white;
+}
+
+.custom-arrow {
+    height: 32px;
+    width: 32px;
+    z-index: 100;
+    background: $darkBlue;
+    border-radius: 50%;
+    position: absolute;
+    top: 48%;
+    z-index: 9999;
+    border: none;
+    cursor: pointer;
+}
+
+.custom-arrow:before {
+    content: "";
+    background: url("../images/arrow_white.svg") center no-repeat;
+    width: 12px;
+    height: 17px;
+    display: block;
+    margin: 0 auto;
+    transform: rotate(90deg);
+}
+.custom-arrow-right {
+    right: 12px;
+
+    @include breakpoint($md) {
+        right: 64px;
+    }
+}
+
+.custom-arrow-left {
+    left: 12px;
+    transform: rotate(180deg);
+    @include breakpoint($md) {
+        left: 64px;
+    }
+}
+
+
+
+.mfp-zoom-out-cur .mfp-image-holder .mfp-close {
+    color: $darkBlue;
     opacity: 1;
+    position: absolute;
+    top: 64px;
+    right: 12px;
+    width: 44px;
+    cursor: pointer;
+
+    @include breakpoint($md) {
+        right: 24px;
+    }
+}
+
+
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+.mfp-open .mfp-figure {
+    animation-name: fadeIn;
+    animation-duration: .5s;
+    animation-fill-mode: both;
+
 }
