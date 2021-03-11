@@ -156,6 +156,14 @@
     p {
       margin-bottom: 0;
 
+      a {
+        color: $darkBlue;
+        font-weight: 800;
+        font-size: 12px;
+        line-height: 16px;
+        text-transform: uppercase;
+      }
+
     }
   }
 

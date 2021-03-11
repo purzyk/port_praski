@@ -487,6 +487,11 @@ ul.checkboxTest {
 }
 
 .pagination {
+    padding: 0 20px;
+
+    @include breakpoint($md) {
+        padding: 0;
+    }
 
     a,
     span {

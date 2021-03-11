@@ -121,7 +121,7 @@
     display: none;
 
     a {
-      color: #A1A1A1;
+      color: #A1A1A1 !important;
       font-size: 13px;
       line-height: 15px;
       margin-bottom: 20px;
@@ -132,6 +132,11 @@
       padding-right: 20px;
       align-items: center;
       display: flex;
+      justify-content: flex-start;
+
+      &:hover {
+        transform: scale(1);
+      }
 
       img {
         margin-right: 5px;

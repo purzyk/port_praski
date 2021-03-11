@@ -3,7 +3,7 @@
 $context                = Timber::get_context();
 $post                   = new TimberPost();
 $context['post']        = $post;
-
+$context['post_type']        = get_post_type( $post->ID );
 $dodatkowo = get_field('dodatkowo');
 $inwestycja = get_the_terms( $post->ID, 'inwestycja' );
 $context['inwestycja'] = $inwestycja;
