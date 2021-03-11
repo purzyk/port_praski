@@ -658,10 +658,10 @@ $('.home__inwestycjeLista__item__footer__link').click(function (event) {
   }
 });
 
-/*Lang switcher */
-$('.lang__switch').on("click", function () {
-  $('.lang__area').slideToggle(300);
-});
+// /*Lang switcher */
+// $('.lang__switch').on("click", function () {
+//   $('.lang__area').slideToggle(300);
+// });
 
 AOS.init({
   once: true
