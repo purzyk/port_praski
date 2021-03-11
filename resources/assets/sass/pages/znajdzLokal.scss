@@ -34,11 +34,13 @@
         background: $white;
         display: flex;
         margin-bottom: 20px;
+        margin: 0 20px 20px;
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
         flex-direction: column;
         padding: 27px 20px 0;
 
         @include breakpoint($md) {
+            margin: 0 0 20px;
             flex-direction: row;
             padding: 38px 38px 38px 80px;
         }
@@ -208,12 +210,35 @@
 
 
         width: 100%;
-        max-width: 280px;
+
         display: none;
+        padding: 92px 10px 0;
+        background: #fff;
+        margin-bottom: 20px;
+
+        position: absolute;
+        top: 0;
+        z-index: 10000;
+        min-height: 100vh;
 
         @include breakpoint($md) {
+            max-width: 280px;
             display: block;
+            padding: 0;
+            background: initial;
             margin-right: 62px;
+            margin-bottom: 0;
+            min-height: initial;
+            position: relative;
+            top: initial;
+        }
+
+        .filtry__title {
+            margin-bottom: 18px;
+
+            @include breakpoint($md) {
+                display: none;
+            }
         }
 
         &__title {
@@ -284,6 +309,28 @@
                 margin-bottom: 28px;
             }
         }
+
+        &__close {
+            width: 80px;
+            height: 80px;
+            background: url('../images/filters_close.svg') center no-repeat;
+            position: absolute;
+            top: 0;
+            right: 0;
+            border: 0;
+            cursor: pointer;
+
+        }
+
+        &__clear {
+            border: 1px solid $darkBlue;
+            margin-top: 0;
+            margin-bottom: 30px;
+
+            @include breakpoint($md) {
+                display: none;
+            }
+        }
     }
 
     .--filtry {
@@ -309,6 +356,10 @@
             display: none;
         }
     }
+
+    .--noRelative {
+        position: initial;
+    }
 }
 
 .noUi-horizontal {
@@ -328,6 +379,7 @@ ul.checkboxTest {
     li {
         max-width: 48%;
         margin-bottom: 22px;
+        width: 100%;
     }
 }
 
@@ -385,6 +437,7 @@ ul.checkboxTest {
         transition-duration: 0.2s;
         transform-origin: 50% 50%;
         opacity: 0.4;
+        width: 100%;
     }
 
     :checked+label {
@@ -429,6 +482,30 @@ ul.checkboxTest {
 
     .--inwestycje,
     .--typ {
+        display: none;
+    }
+}
+
+.pagination {
+
+    a,
+    span {
+        margin-right: 10px;
+        font-size: 14px;
+        line-height: 19px;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+        color: #8F8F8F;
+        font-weight: 800;
+        cursor: pointer;
+    }
+
+    .jp-current {
+
+        color: $darkBlue;
+    }
+
+    .jp-disabled {
         display: none;
     }
 }

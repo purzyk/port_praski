@@ -110,12 +110,13 @@ class filterigIsotope {
         function setPagination() {
           pagination.jPages({
             containerID: 'Container',
-            perPage: 4,
-            animation: false,
+            perPage: 2,
             startPage: 1,
             startRange: 1,
             midRange: 3,
             endRange: 1,
+            previous    : "poprzednia",
+            next        : "następna",
             first: false,
             last: false
           });
@@ -131,8 +132,7 @@ class filterigIsotope {
         var containerEl = document.querySelector(".container");
         var mixer = mixitup(containerEl, {
           animation: {
-            duration: 350,
-            queueLimit: 10
+            enable: false
           },
           controls: {},
           load: {
