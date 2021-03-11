@@ -173,7 +173,14 @@ $(function () {
       }
     }
     Buttons[currentIndex].classList.add("active")
-
+    $("body, html").animate(
+      {
+          scrollTop: $(".wizja__dzielnice__title").offset().top - 42
+      },
+      800
+  );
+    const navbar = $('.header');
+    navbar.removeClass("scrollUp");
   });
 
 
@@ -191,6 +198,7 @@ $(function () {
 
 
       // for (let content of allContent) {
+        // wizja__dzielnice__title
       //   if (content.getAttribute('data-number') === button.getAttribute('data-number')) {
       //     const slideIndex = content.getAttribute('data-number') - 1;
       //     content.style.display = "block";
@@ -215,6 +223,15 @@ $(function () {
           content.style.display = "none"
         }
       }
+
+      $("body, html").animate(
+        {
+            scrollTop: $(".wizja__dzielnice__title").offset().top
+        },
+        800
+    );
+    const navbar = $('.header');
+    navbar.removeClass("scrollUp");
     });
   }
 
@@ -719,7 +736,7 @@ const goToContact = () => {
 
     $("body, html").animate(
         {
-            scrollTop: $(".wSprawieOferty").offset().top - 142
+            scrollTop: $(".wSprawieOferty").offset().top + 144
         },
         800
     );

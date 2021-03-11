@@ -860,3 +860,11 @@
         background-size: 10%;
 }
 }
+
+.dzielnica__copy .dzielnica__wrapper_description {
+    @include breakpoint($md) {
+        max-width: 70%;
+        min-height: 192px;
+    }
+}
+
