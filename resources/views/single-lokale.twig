@@ -59,7 +59,7 @@
 				<div class="lokal__right">
 					<div class="slider-lokal">
 						{% for item in post.meta('galeria') %}
-							<a class="image-link" href="{{Image(item.zdjecie).src}}">
+							<a class="image-link " href="{{Image(item.zdjecie).src}}">
 								<img src="{{Image(item.zdjecie).src}}">
 							</a>
 						{% endfor %}

@@ -675,22 +675,27 @@ $('.gallery').each(function () {
     gallery: {
       enabled: true,
     },
+    callbacks: {
+      change: function() {
+				console.log(this.st)
+			}
+  }
   });
 });
 
 $('.image-link').magnificPopup({
   type: 'image',
+  removalDelay: 400,
+  fixedContentPos: true,
   gallery: {
       enabled: true,
       arrowMarkup: '<button title="%title%" type="button" class="custom-arrow custom-arrow-%dir%"></button>'
     },
     callbacks: {
-      change: function() {
-          if (this.isOpen) {
-              this.wrap.addClass('mfp-open');
-          }
+      beforeOpen: function() {
+				this.st.mainClass = this.st.el.attr('data-effect');
       }
-  }
+    }
 });
 
 /* Open and close nav */
