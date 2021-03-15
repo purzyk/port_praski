@@ -868,3 +868,12 @@
     }
 }
 
+
+
+.wizja__nagrody .js-nagrody {
+    padding-bottom: 130px;
+    
+    @include breakpoint($md) {
+        padding-bottom: 0;
+    }
+}
