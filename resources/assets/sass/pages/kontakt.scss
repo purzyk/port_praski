@@ -183,3 +183,38 @@
         }
     }
 }
+
+.kontakt__modal {
+    a {
+        color: $darkBlue;
+    }
+
+    p {}
+
+    br {
+        display: inherit
+    }
+
+    h3 {
+
+        font-size: 28px;
+        line-height: 38px;
+        font-weight: 800;
+        text-transform: uppercase;
+
+        @include breakpoint($md) {
+            font-size: 30px;
+            line-height: 41px;
+        }
+    }
+
+    input[type="tel"] {
+        border: 1px solid $darkBlue;
+        margin-top: 10px;
+    }
+
+    .btn {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+}
