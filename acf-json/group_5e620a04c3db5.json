@@ -44,6 +44,25 @@
             "allow_null": 0,
             "allow_archives": 1,
             "multiple": 0
+        },
+        {
+            "key": "field_604f56a9f04da",
+            "label": "header popup shortcode",
+            "name": "header_popup_shortcode",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -63,5 +82,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1614889179
+    "modified": 1615812278
 }

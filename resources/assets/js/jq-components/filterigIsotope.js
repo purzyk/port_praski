@@ -27,6 +27,10 @@ class filterigIsotope {
         var $inputToC = $(".js-input-to-c");
         var fromC = 0;
         var toC = 0;
+        var $itemsPerPage = 5;
+        if ($("body").hasClass("page-template-template-znajdz-lokal")) {
+          var $itemsPerPage = 10;
+    }
 
 
         $rangeA.ionRangeSlider({
@@ -134,7 +138,7 @@ class filterigIsotope {
         function setPagination() {
           pagination.jPages({
             containerID: 'Container',
-            perPage: 4,
+            perPage: $itemsPerPage,
             startPage: 1,
             startRange: 1,
             midRange: 3,

@@ -10,7 +10,17 @@
 					<div class="l-wrapper">
 						<div class="home__inwestycjeLista__item__footer__wrapper">
 							<div data-aos="fade-up" data-aos-duration="800">
-								<h5 class="fnt82 home__inwestycjeLista__item__footer__title">{{item.title}}</h5>
+
+								{% if item.link_do_oferty.link %}
+									<a href="{{item.link_do_oferty.link}}">
+										<h5 class="fnt82 home__inwestycjeLista__item__footer__title">{{item.title}}</h5>
+									</a>
+								{% else %}
+
+									<h5 class="fnt82 home__inwestycjeLista__item__footer__title">{{item.title}}</h5>
+
+								{% endif %}
+
 							</div>
 
 							<a href="#" class="home__inwestycjeLista__item__footer__link">
@@ -24,7 +34,7 @@
 								<div class="home__inwestycjeLista__item__modal__wrapp">
 
 									<p>{{item.copy}}</p>
-									<a class="home__inwestycjeLista__item__modal__link" href="">Przejdź do oferty</a>
+									<a class="home__inwestycjeLista__item__modal__link" href="{{item.link_do_oferty.link}}">Przejdź do oferty</a>
 
 								</div>
 							</div>
@@ -55,13 +65,11 @@
 										<div class="splide__progress">
 											<div class="splide__progress__bar"></div>
 										</div>
-											<div class="splide__autoplay">
-		<button class="splide__play">Play</button>
-		<button class="splide__pause">Pause</button>
-	</div>
-</div>
+										<div class="splide__autoplay">
+											<button class="splide__play">Play</button>
+											<button class="splide__pause">Pause</button>
+										</div>
 									</div>
-
 								</div>
 
 							</div>
@@ -69,6 +77,8 @@
 						</div>
 
 					</div>
+
 				</div>
+			</div>
 		{% endfor %}
-</section>
+	</section>
