@@ -286,7 +286,9 @@
   align-items: center;
   padding-bottom: 0;
   margin-bottom: 4px;
-
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 16px;
 
   &:hover {
     color: inherit;
