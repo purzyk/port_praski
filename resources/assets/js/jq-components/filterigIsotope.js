@@ -11,7 +11,7 @@ class filterigIsotope {
           });
 
         });
-
+        const loaders = []
         var $rangeA = $('[data-ref="range-slider-a"]');
         var $inputFromA = $(".js-input-from-a");
         var $inputToA = $(".js-input-to-a");
@@ -177,6 +177,7 @@ class filterigIsotope {
           },
           callbacks: {
             onMixStart: function (state, futureState) {
+              
               destroyPagination();
             },
             onMixClick: function (state, futureState) {
@@ -184,6 +185,7 @@ class filterigIsotope {
             },
             onMixEnd: function (state, originalEvent) {
               $(".counter").text(state.totalMatching);
+           
               setPagination();
             }
           }
@@ -217,6 +219,7 @@ class filterigIsotope {
           if (a < range.aMin || a > range.aMax || b < range.bMin || b > range.bMax || c < range.cMin || c > range.cMax) {
             testResult = false;
           }
+          console.log('filtered')
           return testResult;
         }
 
@@ -226,7 +229,7 @@ class filterigIsotope {
         var state = mixer.getState();
         $(".total").text(state.totalTargets);
         $(".counter").text(state.totalTargets);
-
+        
         $("form :input").change(function () {
           var currentValue = this.value;
           $('button[data-value="' + currentValue + '"]').remove();

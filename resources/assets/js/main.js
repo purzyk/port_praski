@@ -7,6 +7,7 @@ import BackToTop from './jq-components/backToTop';
 import SmoothScroll from './jq-components/smoothScroll';
 import Splide from '@splidejs/splide';
 import filterigIsotope from './jq-components/filterigIsotope';
+import MicroModal from 'micromodal';
 
 /* Replace image vidth youtube content */
 function labnolIframe(div) {
@@ -46,6 +47,9 @@ function initYouTubeVideos() {
 document.addEventListener("DOMContentLoaded", initYouTubeVideos);
 
 $(document).ready(function () {
+
+  MicroModal.init();
+
   var pokoiSlider = document.getElementById('pokoiSlider');
   
   var pietroSlider = document.getElementById('pietroSlider');
@@ -65,6 +69,7 @@ $(document).ready(function () {
     ];
     pokoiSlider.noUiSlider.on('update', function (values, handle, unencoded, isTap, positions) {
       nodes[handle].innerHTML = values[handle];
+      console.log("FILTERED")
     });
   }
 
@@ -88,6 +93,7 @@ $(document).ready(function () {
 
     pietroSlider.noUiSlider.on('update', function (values, handle, unencoded, isTap, positions) {
       nodes3[handle].innerHTML = values[handle];
+      console.log("FILTERED")
     });
   }
 
@@ -806,19 +812,19 @@ if(document.querySelector("#wyszukiwarka3d")) {
 
 const goToContact = () => {
   const urlArray = window.location.href.split("/")
-  const apartmentId = urlArray[urlArray.length - 2].toUpperCase().replace("-", ".")
-  const messageInput = document.querySelector('input[name="text-wiadomosc"]')
+  const apartmentId = urlArray[urlArray.length - 2].toUpperCase().replaceAll("-", ".")
+  const messageInput = document.querySelector('#contact-modal input[name="text-wiadomosc"]')
 
   messageInput.parentNode.parentNode.classList.add("active")
   messageInput.value = `Jestem zainteresowany ofertą mieszkania nr ${apartmentId}`
 
-    $("body, html").animate(
-        {
-            scrollTop: $(".wSprawieOferty").offset().top + 144
-        },
-        800
-    );
-
+  //   $("body, html").animate(
+  //       {
+  //           scrollTop: $(".wSprawieOferty").offset().top + 144
+  //       },
+  //       800
+  //   );
+  MicroModal.show('contact-modal');
 }
 
 if(document.querySelector('#contactButton')) {
