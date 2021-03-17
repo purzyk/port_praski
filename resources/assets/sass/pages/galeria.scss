@@ -8,19 +8,19 @@
         flex-wrap: nowrap;
         overflow-x: scroll;
         -webkit-overflow-scrolling: touch;
-
+        padding: 6px 0;
         @include breakpoint($md) {
-            border: 1px solid #DADADA;
+            //border: 1px solid #DADADA;
             overflow-x: auto;
             flex-wrap: wrap;
         }
 
 
         .btnRound {
-            background: #E9ECF3;
-            margin-right: 10px;
+            background: #fff;
+            margin-left: 10px;
             align-self: baseline;
-
+            
             &.is-active {
                 background-color: $darkBlue;
                 color: $white;
