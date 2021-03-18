@@ -159,13 +159,17 @@ modal {
   .acceptance-modal {
     width: 780px;
     font-size: 14px;
-    padding: 24px;
+   
   }
 
   .acceptance-modal .btn {
     display: block;
     margin: 27px auto 0 auto;
   }
+
+.acceptance-modal .modal__content {
+  padding: 24px 24px 0 24px;
+}
 
   .acceptance-modal .modal__content ul, .acceptance-modal .modal__content ol {
     list-style-type: circle;
