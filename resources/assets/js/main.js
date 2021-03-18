@@ -836,6 +836,29 @@ function set3DViewButtonsPostition() {
 // test()
 
 
+const addListenersToContactButtons = () => {
+  const allAskToContactButtons = $( ".contact-btn" )
+
+  for(let i = 0; i < allAskToContactButtons.length; i++) {
+    allAskToContactButtons[i].addEventListener('click', function(e) {
+      e.stopPropagation()
+      const id = allAskToContactButtons[i].dataset.id
+      MicroModal.show('contact-modal');
+      if(document.querySelector('#contact-modal input[name="text-wiadomosc"]')) {
+        const messageInput = document.querySelector('#contact-modal input[name="text-wiadomosc"]')
+        messageInput.parentNode.parentNode.classList.add("active")
+        messageInput.value = `Interesuje mnie oferta mieszkania nr ${id}`
+      }
+      
+    })
+  }
+}
+
+if($(".contact-btn")) {
+  addListenersToContactButtons()
+}
+
+
 if(document.querySelector("#wyszukiwarka3d")) {
   window.addEventListener("resize", function () {
     set3DViewButtonsPostition()
@@ -851,7 +874,7 @@ const goToContact = () => {
   const messageInput = document.querySelector('#contact-modal input[name="text-wiadomosc"]')
 
   messageInput.parentNode.parentNode.classList.add("active")
-  messageInput.value = `Jestem zainteresowany ofertą mieszkania nr ${apartmentId}`
+  messageInput.value = `Interesuje mnie oferta mieszkania nr ${apartmentId}`
 
   //   $("body, html").animate(
   //       {
