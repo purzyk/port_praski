@@ -3,6 +3,15 @@
     padding-top: 60px;
     padding-bottom: 100px;
 
+    #Container {
+        pointer-events: none;
+
+        button,
+        a {
+            pointer-events: all;
+        }
+    }
+
     &__title {
         text-align: left;
         font-size: 32px;
