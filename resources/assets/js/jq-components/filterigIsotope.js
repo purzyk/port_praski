@@ -177,16 +177,26 @@ class filterigIsotope {
           },
           callbacks: {
             onMixStart: function (state, futureState) {
-              
+              const loader = document.querySelector(".loader-container")
+              loader.classList.remove("loader-container--hide")
+              loader.classList.add("loader-container--show")
+
               destroyPagination();
             },
             onMixClick: function (state, futureState) {
               /* onMixClick not working with multifilter - github issue #386 */
+              // const loader = document.querySelector(".loader-container")
+              // loader.classList.remove("loader-container--hide")
+              // loader.classList.add("loader-container--show")
             },
             onMixEnd: function (state, originalEvent) {
               $(".counter").text(state.totalMatching);
            
               setPagination();
+              const loader = document.querySelector(".loader-container")
+              loader.classList.remove("loader-container--show")
+              loader.classList.add("loader-container--hide")
+              console.log("ZOSTAŁO PRZEFILTROWANEEASD")
             }
           }
         });
