@@ -800,6 +800,36 @@ function set3DViewButtonsPostition() {
 
 }
 
+// const bindLoadingOnApartmentsList = (showLoader) => {
+//   const loadingContainer = document.querySelector(".loader-container")
+
+//   if(showLoader) {
+//     loadingContainer.classList.remove('loader-container--hide')
+//     loadingContainer.classList.add('loader-container--show')
+//   } else {
+//     loadingContainer.classList.remove('loader-container--show')
+//     loadingContainer.classList.add('loader-container--hide')
+//     // same time like in animation css
+
+//   }
+// }
+
+// const test = () => {
+//   const trigger = document.querySelector('.test');
+//   let clicked = 0
+//   trigger.addEventListener("click", function() {
+//     if(clicked) {
+//       bindLoadingOnApartmentsList(false)
+//       clicked = 0
+//     } else {
+//       bindLoadingOnApartmentsList(true)
+//       clicked = 1
+//     }
+//   })
+// }
+
+// test()
+
 
 if(document.querySelector("#wyszukiwarka3d")) {
   window.addEventListener("resize", function () {
