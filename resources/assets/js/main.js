@@ -685,6 +685,7 @@ $('.gallery').each(function () {
     type: 'image',
     gallery: {
       enabled: true,
+      arrowMarkup: '<button title="%title%" type="button" class="custom-arrow custom-arrow-%dir%"></button>'
     },
     callbacks: {
       change: function() {
