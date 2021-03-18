@@ -419,7 +419,9 @@
         align-items: flex-end;
 
         p {
-            text-align: right;
+            @include breakpoint($md) {
+                text-align: right;
+            }
         }
     }
 
