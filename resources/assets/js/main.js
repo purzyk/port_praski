@@ -781,7 +781,7 @@ function set3DViewButtonsPostition() {
   } else if (windowWidth > 1640) {
     buttons.style.top = 'auto';
     buttons.style.bottom = '48px';
-    buttons.style.left = `42px`
+    buttons.style.left = `64px`
   } else if (windowWidth < 849) {
     buttons.style.top = '0';
   }
@@ -793,7 +793,7 @@ function set3DViewButtonsPostition() {
   }
 
   if (windowWidth < 1500 && windowWidth > 760) {
-    buttons.style.left = `42px`
+    buttons.style.left = `64px`
   } else if (windowWidth < 760) {
     buttons.style.left = "0"
   }

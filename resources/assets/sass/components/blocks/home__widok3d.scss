@@ -9,7 +9,7 @@
   .offset {
     margin-top: 0;
 
-    @include breakpoint($md) {
+    @include breakpoint($sm) {
       margin-top: -80px
     }
   }
