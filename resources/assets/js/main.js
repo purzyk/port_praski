@@ -954,4 +954,12 @@ if(document.querySelector('#contactButton')) {
 contactButton.addEventListener('click', function(){
   goToContact()
 })
+
+  const pdfLink = document.querySelector("#pdfLink");
+  if(pdfLink) {
+    const urlArray = window.location.href.split("/")
+    const apartmentId = urlArray[urlArray.length - 2].toUpperCase().replaceAll("-", ".")
+    pdfLink.href = `/wp-content/themes/wptheme/static/pdf/${apartmentId}.pdf`
+  }
+
 }

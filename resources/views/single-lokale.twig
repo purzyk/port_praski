@@ -52,7 +52,12 @@
 					<div class="line double --grey"></div>
 					<div class="lokal__btns">
 						<button class="btn" id="contactButton">prośba o kontakt</button>
-						<a target="_blank" href="{{pdf}}" class="btn --lightGrey">pobierz PDF</a>
+						{% if pdf is empty %}
+						<a target="_blank" href="" class="btn --lightGrey" id="pdfLink">pobierz PDF</a>
+						{% else %}
+							<a target="_blank" href="{{pdf}}" class="btn --lightGrey">pobierz PDF</a>
+						{% endif %}
+					
 					</div>
 				</div>
 

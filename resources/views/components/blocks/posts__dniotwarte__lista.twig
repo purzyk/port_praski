@@ -14,7 +14,17 @@
 			</div>
 		</div>
 	</div>
+	{% if dniotwarteLoop|length == 0 %}
+	<div class="l-wrapper">
+	
+				<h5 class="fnt30">
+					AKTUALNIE BRAK PLANOWANYCH WYDARZEŃ
+				</p>
+			
+	</div>
+	{% endif %}
 	<div class="wrapFullWidth --left" data-aos="fade-up" data-aos-delay="140">
+	
 		<div class="home__noweInwestycje__wrapp js-dniotwarte --CustomButtons">
 			{% for item in dniotwarteLoop %}
 				<div class="home__noweInwestycje__item">
@@ -47,11 +57,6 @@
 					</div>
 				</div>
 			{% endfor %}
-			{% if dniotwarteLoop|length == 0 %}
-				<h5 class="fnt30" style="padding-left: 20px">
-					AKTUALNIE BRAK PLANOWANYCH WYDARZEŃ
-				</p>
-			{% endif %}
 		</div>
 		{% if dniotwarteLoop|length > 0 %}
 		<a class="btn --mobile" href="">Zobacz więcej</a>
