@@ -860,6 +860,22 @@ if($(".contact-btn")) {
 }
 
 
+
+const sortButtons = document.querySelectorAll(".--sort");
+console.log(sortButtons)
+if(sortButtons) {
+ 
+  for(let i; i < sortButtons.length; i++) {
+    sortButtons[i].addEventListener("click", function() {
+      console.log(sortButtons)
+      const loader = document.querySelector(".loader-container")
+      loader.classList.remove("loader-container--hide")
+      loader.classList.add("loader-container--show")
+    })
+  }
+}
+
+
 if(document.querySelector("#wyszukiwarka3d")) {
   window.addEventListener("resize", function () {
     set3DViewButtonsPostition()

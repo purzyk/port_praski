@@ -476,7 +476,8 @@ ul.checkboxTest {
 
 .pagination {
     padding: 0 20px;
-
+    display: flex;
+    justify-content: center;
     @include breakpoint($md) {
         padding: 0;
     }
@@ -484,9 +485,8 @@ ul.checkboxTest {
     a,
     span {
         margin-right: 10px;
-        font-size: 14px;
+        font-size: 16px;
         line-height: 19px;
-        margin-bottom: 16px;
         text-transform: uppercase;
         color: #8f8f8f;
         font-weight: 800;
