@@ -139,11 +139,16 @@ $(document).ready(function () {
     var a = $(window).scrollTop();
     var b = navbar.height();
     currentScrollTop = a;
+
     if (c < currentScrollTop && a > b + b) {
       navbar.addClass("scrollUp");
     } else if (c > currentScrollTop && !(a <= b)) {
       navbar.removeClass("scrollUp");
     }
+    if (Math.abs(document.body.offsetHeight - window.innerHeight - window.pageYOffset) <= 3) {
+      navbar.removeClass("scrollUp");
+    }
+
     c = currentScrollTop;
   });
 
