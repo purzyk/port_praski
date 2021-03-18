@@ -69,7 +69,6 @@ $(document).ready(function () {
     ];
     pokoiSlider.noUiSlider.on('end', function (values, handle, unencoded, isTap, positions) {
       nodes[handle].innerHTML = values[handle];
-      console.log("FILTERED")
     });
   }
 
@@ -586,6 +585,34 @@ $(function () {
         AOS.refresh()
       )
     );
+
+
+    const formAcceptances = () => {
+      const acceptance1 = document.querySelectorAll('.acceptance-1 .wpcf7-acceptance a')
+      for(let i = 0; i< acceptance1.length; i++) {
+        acceptance1[i].addEventListener('click', function(e) {
+          e.preventDefault()
+          MicroModal.show('marketing-info-modal');
+        })
+      }
+      const acceptance2 = document.querySelectorAll('.acceptance-2 .wpcf7-acceptance a')
+      for(let i = 0; i< acceptance2.length; i++) {
+        acceptance2[i].addEventListener('click', function(e) {
+          e.preventDefault()
+          MicroModal.show('email-info-modal');
+        })
+      }
+
+      const acceptance3 = document.querySelectorAll('.acceptance-3 .wpcf7-acceptance a')
+      for(let i = 0; i< acceptance3.length; i++) {
+        acceptance3[i].addEventListener('click', function(e) {
+          e.preventDefault()
+          MicroModal.show('phone-info-modal');
+        })
+      }
+    }
+    
+    formAcceptances()
 });
 
 
@@ -860,13 +887,14 @@ if($(".contact-btn")) {
 
 
 
+
+
 const sortButtons = document.querySelectorAll(".--sort");
-console.log(sortButtons)
+
 if(sortButtons) {
  
   for(let i; i < sortButtons.length; i++) {
     sortButtons[i].addEventListener("click", function() {
-      console.log(sortButtons)
       const loader = document.querySelector(".loader-container")
       loader.classList.remove("loader-container--hide")
       loader.classList.add("loader-container--show")
