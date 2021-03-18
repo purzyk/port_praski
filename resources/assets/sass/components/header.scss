@@ -398,13 +398,15 @@
 
   .header__logo {
     position: absolute;
-
-
   }
 
   .header__logo__img {
     transition: 0.3s all;
     height: 130px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   figure {
