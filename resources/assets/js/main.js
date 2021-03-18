@@ -537,11 +537,14 @@ $(function () {
     dots: false,
     autoplay: false,
     arrows: true,
-    nextArrow: '.arrow__right__wyd',
-    prevArrow: '.arrow__left__wyd',
+    mobileFirst: true,
+    nextArrow: '<button class="dzielnica__arrow dzielnica__arrow__next"></button>',
+    prevArrow: '<button class="dzielnica__arrow dzielnica__arrow__prev"></button>',
     responsive: [{
         breakpoint: 760,
-        settings: "unslick"
+        settings: "unslick",
+        nextArrow: '<button class="dzielnica__arrow dzielnica__arrow__next"></button>',
+        prevArrow: '<button class="dzielnica__arrow dzielnica__arrow__prev"></button>',
       }
 
     ]

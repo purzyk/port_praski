@@ -383,13 +383,13 @@
 
         .arrow__left__nag {
             img {
-                transform: rotate(-90deg);
+                transform: rotate(-180deg);
             }
         }
 
         .arrow__right__nag {
             img {
-                transform: rotate(90deg);
+                transform: rotate(180deg);
             }
         }
     }
