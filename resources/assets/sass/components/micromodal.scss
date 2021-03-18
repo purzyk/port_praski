@@ -159,4 +159,22 @@ modal {
   .acceptance-modal {
     width: 780px;
     font-size: 14px;
+    padding: 24px;
+  }
+
+  .acceptance-modal .btn {
+    display: block;
+    margin: 27px auto 0 auto;
+  }
+
+  .acceptance-modal .modal__content ul, .acceptance-modal .modal__content ol {
+    list-style-type: circle;
+  }
+
+  .acceptance-modal .modal__content ul {
+    padding-left: 32px;
+  }
+
+  .acceptance-modal .modal__content li {
+    margin-bottom: 20px;
   }
