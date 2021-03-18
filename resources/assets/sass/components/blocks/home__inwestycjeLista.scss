@@ -98,7 +98,7 @@
 
                 img {
                     position: relative;
-                    transition: all 0.8s ease-in-out;
+                    transition: all 0.8s ease-in-out 0.4s;
                     height: 35vh;
                     object-fit: cover;
 
@@ -197,13 +197,13 @@
                 }
 
                 svg {
-                    width: 25px;
-                    height: 25px;
+                    width: 20px;
+                    height: 20px;
                     transition: 0.2s all;
 
                     @include breakpoint($md) {
-                        width: 40px;
-                        height: 40px;
+                        width: 32px;
+                        height: 32px;
                     }
                 }
 
@@ -417,6 +417,10 @@
 
     .home__inwestycjeLista__item__modal__wrapp {
         align-items: flex-end;
+
+        p {
+            text-align: right;
+        }
     }
 
     @include breakpoint($md) {
