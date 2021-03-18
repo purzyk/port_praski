@@ -3,11 +3,14 @@
 		<div class="slider__header">
 			<h3 data-aos="fade-up" data-aos-duration="800" class="fnt20 home__noweInwestycje__title">Dni otwarte</h3>
 			<div class="slider__header__buttons">
+			{% if dniotwarteLoop|length > 0 %}
 				<p>
 					<a href="{{options.zobacz_wiecej_dni_otwarte_url}}">zobacz więcej</a>
 				</p>
+				
 				<button class="circle --white slider__header__button arrow__left__dni"><img src="{{Image(options.arrow_up).src}}"></button>
 				<button class="circle --white slider__header__button arrow__right__dni"><img src="{{Image(options.arrow_up).src}}"></button>
+				{% endif %}
 			</div>
 		</div>
 	</div>
@@ -44,7 +47,14 @@
 					</div>
 				</div>
 			{% endfor %}
+			{% if dniotwarteLoop|length == 0 %}
+				<h5 class="fnt30" style="padding-left: 20px">
+					AKTUALNIE BRAK PLANOWANYCH WYDARZEŃ
+				</p>
+			{% endif %}
 		</div>
+		{% if dniotwarteLoop|length > 0 %}
 		<a class="btn --mobile" href="">Zobacz więcej</a>
+		{% endif %}
 	</div>
 </section>
