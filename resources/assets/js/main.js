@@ -49,7 +49,20 @@ document.addEventListener("DOMContentLoaded", initYouTubeVideos);
 $(document).ready(function () {
 
 
-  MicroModal.init();
+  MicroModal.init({
+    openTrigger: 'data-custom-open', // [3]
+    closeTrigger: 'data-custom-close', // [4]
+  });
+
+  const closeContactModalButton = document.querySelectorAll(".contact-modal .modal__close")
+
+  if(closeContactModalButton) {
+    for(let i = 0; i < closeContactModalButton.length; i++) {
+      closeContactModalButton[i].addEventListener('click', function() {
+        MicroModal.close('contact-modal')
+      })
+  }
+}
 
   var pokoiSlider = document.getElementById('pokoiSlider');
   
@@ -593,7 +606,9 @@ $(function () {
       for(let i = 0; i< acceptance1.length; i++) {
         acceptance1[i].addEventListener('click', function(e) {
           e.preventDefault()
-          MicroModal.show('marketing-info-modal');
+          MicroModal.show('marketing-info-modal', {
+            openTrigger: 'data-custom-open'
+          });
         })
       }
       const acceptance2 = document.querySelectorAll('.acceptance-2 .wpcf7-acceptance a')
