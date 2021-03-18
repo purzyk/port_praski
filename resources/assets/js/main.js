@@ -67,7 +67,7 @@ $(document).ready(function () {
       document.getElementById('pokoi-from'), // 0
       document.getElementById('pokoi-to') // 1
     ];
-    pokoiSlider.noUiSlider.on('update', function (values, handle, unencoded, isTap, positions) {
+    pokoiSlider.noUiSlider.on('end', function (values, handle, unencoded, isTap, positions) {
       nodes[handle].innerHTML = values[handle];
       console.log("FILTERED")
     });
@@ -91,9 +91,8 @@ $(document).ready(function () {
     // from the left edge of the slider.
 
 
-    pietroSlider.noUiSlider.on('update', function (values, handle, unencoded, isTap, positions) {
+    pietroSlider.noUiSlider.on('end', function (values, handle, unencoded, isTap, positions) {
       nodes3[handle].innerHTML = values[handle];
-      console.log("FILTERED")
     });
   }
 

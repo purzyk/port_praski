@@ -38,7 +38,7 @@ class filterigIsotope {
                     from: 0,
                     to: 10,
                     onStart: updateInputsStartA,
-                    onChange: updateInputsChangeA,
+                    onFinish: updateInputsChangeA,
                 });
 
                 $rangeB.ionRangeSlider({
@@ -49,7 +49,7 @@ class filterigIsotope {
                     from: 0,
                     to: 300,
                     onStart: updateInputsStartB,
-                    onChange: updateInputsChangeB,
+                    onFinish: updateInputsChangeB,
                 });
                 $rangeC.ionRangeSlider({
                     skin: "round",
@@ -59,7 +59,7 @@ class filterigIsotope {
                     from: 0,
                     to: 10,
                     onStart: updateInputsStartC,
-                    onChange: updateInputsChangeC,
+                    onFinish: updateInputsChangeC,
                 });
                 var instanceA = $rangeA.data("ionRangeSlider");
                 var instanceB = $rangeB.data("ionRangeSlider");
@@ -156,7 +156,9 @@ class filterigIsotope {
                     animation: {
                         enable: false,
                     },
-                    controls: {},
+					behavior: {
+						liveSort: false
+					},
                     load: {
                         sort: "sort:asc",
                     },
@@ -164,7 +166,8 @@ class filterigIsotope {
                         enable: true, // enable the multifilter extension for the mixer,'
                     },
                     controls: {
-                        live: true,
+						enable: false,
+                        live: false,
                     },
                     debug: {
                         enable: true,
@@ -202,6 +205,11 @@ class filterigIsotope {
                         },
                     },
                 });
+
+				const sortButtons = () => {
+
+				}
+
 
                 function getRange() {
                     var aMin = Number(instanceA.result.from);
