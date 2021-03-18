@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", initYouTubeVideos);
 
 $(document).ready(function () {
 
+
   MicroModal.init();
 
   var pokoiSlider = document.getElementById('pokoiSlider');

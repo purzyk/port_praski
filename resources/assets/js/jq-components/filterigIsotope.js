@@ -156,9 +156,9 @@ class filterigIsotope {
                     animation: {
                         enable: false,
                     },
-					behavior: {
-						liveSort: false
-					},
+                    behavior: {
+                        liveSort: false,
+                    },
                     load: {
                         sort: "sort:asc",
                     },
@@ -166,7 +166,7 @@ class filterigIsotope {
                         enable: true, // enable the multifilter extension for the mixer,'
                     },
                     controls: {
-						enable: false,
+                        enable: false,
                         live: false,
                     },
                     debug: {
@@ -174,7 +174,6 @@ class filterigIsotope {
                     },
                     callbacks: {
                         onMixStart: function(state, futureState) {
-                            console.log("ZACZYNA PRZEFILTROWANEEASD");
                             const loader = document.querySelector(
                                 ".loader-container"
                             );
@@ -193,23 +192,57 @@ class filterigIsotope {
                             $(".counter").text(state.totalMatching);
 
                             setPagination();
-                            setTimeout(function() {
-                                const loader = document.querySelector(
-                                    ".loader-container"
-                                );
-                                loader.classList.remove(
-                                    "loader-container--show"
-                                );
-                                loader.classList.add("loader-container--hide");
-                            }, 200);
+                            const loader = document.querySelector(
+								".loader-container"
+							);
+							loader.classList.remove(
+								"loader-container--show"
+							);
+							loader.classList.add("loader-container--hide");
                         },
                     },
                 });
 
-				const sortButtons = () => {
+                const sortButtons = () => {
+                    const sortUp = document.querySelectorAll(".sortUp");
+                    const sortDown = document.querySelectorAll(".sortDown");
 
-				}
+                    for (let i = 0; i < sortUp.length; i++) {
+                        sortUp[i].addEventListener("click", function() {
+                            const loader = document.querySelector(
+                                ".loader-container"
+                            );
+                            loader.classList.add("loader-container--show");
+                            loader.classList.remove("loader-container--hide");
+                            mixer.sort("sort:asc");
+							sortUp[i].style.display = "none";
+                            for (let i = 0; i < sortDown.length; i++) {
+                                sortDown[i].style.display = "inline-block";
+                            }
+                        });
+                    }
 
+                    for (let i = 0; i < sortDown.length; i++) {
+                        sortDown[i].addEventListener("click", function() {
+							const loader = document.querySelector(
+                                ".loader-container"
+                            );
+                            loader.classList.add("loader-container--show");
+                            loader.classList.remove("loader-container--hide");
+							sortDown[i].style.display = "none";
+                            mixer.sort("sort:desc");
+                            for (let i = 0; i < sortUp.length; i++) {
+                                sortUp[i].style.display = "inline-block";
+                            }
+                        });
+                    }
+
+                    for (let i = 0; i < sortDown.length; i++) {
+                        sortDown[i].style.display = "none";
+                    }
+                };
+
+                sortButtons();
 
                 function getRange() {
                     var aMin = Number(instanceA.result.from);
