@@ -198,24 +198,25 @@
 
     h3 {
 
-        font-size: 28px;
-        line-height: 38px;
+        font-size: 24px;
+        line-height: 30px;
         font-weight: 800;
         text-transform: uppercase;
 
         @include breakpoint($md) {
-            font-size: 30px;
-            line-height: 41px;
+            font-size: 24px;
+            line-height: 30px;
         }
     }
 
     input[type="tel"] {
         border: 1px solid $darkBlue;
         margin-top: 10px;
+        padding: 10px 0 10px 10px;
     }
 
     .btn {
         margin-top: 10px;
-        margin-bottom: 20px;
+        margin-bottom: 0;
     }
 }
