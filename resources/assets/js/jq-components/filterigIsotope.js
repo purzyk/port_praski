@@ -144,9 +144,9 @@ class filterigIsotope {
                         callback: () => {
                             $("body, html").animate(
                                 {
-                                    scrollTop: $("#Container").offset().top
+                                    scrollTop: $("#Container").offset().top - 200
                                 },
-                                200
+                                800
                             );
                         }
                     });
