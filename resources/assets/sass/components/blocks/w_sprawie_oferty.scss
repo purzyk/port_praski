@@ -1,4 +1,6 @@
 .wSprawieOferty {
+    margin-top: 20px;
+    
     @include breakpoint($md) {
         margin-top: 10rem;
     }
