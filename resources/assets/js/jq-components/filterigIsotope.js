@@ -68,7 +68,6 @@ class filterigIsotope {
                 var pagination = $(".pagination");
 
                 function handleRangeInputChange() {
-                    console.log("AAAAAA");
                     mixer.filter(mixer.getState().activeFilter);
                 }
 
@@ -142,6 +141,14 @@ class filterigIsotope {
                         next: "następna",
                         first: false,
                         last: false,
+                        callback: () => {
+                            $("body, html").animate(
+                                {
+                                    scrollTop: $("#Container").offset().top
+                                },
+                                200
+                            );
+                        }
                     });
                 }
 

@@ -21,7 +21,7 @@
     }
   }
 
-  &&.--noPaddingMobile {
+  &.--noPaddingMobile {
     padding: 0;
 
     @include breakpoint($md) {
