@@ -140,17 +140,13 @@ class filterigIsotope {
                         previous: "poprzednia",
                         next: "następna",
                         first: false,
-                        last: false,
-                        callback: () => {
-                            $("body, html").animate(
-                                {
-                                    scrollTop: $("#Container").offset().top - 200
-                                },
-                                800
-                            );
-                        }
+                        last: false
                     });
                 }
+
+                $(".pagination").on("click", () => {
+                    $("body, html").scrollTop($("#Container").offset().top - 200);
+                });
 
                 function destroyPagination() {
                     $(".pagination").jPages("destroy");

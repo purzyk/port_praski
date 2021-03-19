@@ -215,8 +215,10 @@
         top: 0;
         z-index: 9;
         min-height: 100vh;
+        margin-top: 80px;
 
         @include breakpoint($md) {
+            margin-top: 0;
             max-width: 280px;
             display: block;
             padding: 0;
@@ -318,6 +320,16 @@
         }
 
         &__clear {
+            border: 1px solid $darkBlue;
+            margin-top: 0;
+            margin-bottom: 10px;
+
+            @include breakpoint($md) {
+                display: none;
+            }
+        }
+
+        &__close--wide {
             border: 1px solid $darkBlue;
             margin-top: 0;
             margin-bottom: 30px;

@@ -684,7 +684,10 @@ $('.showFilters').click(function (event) {
 $('.znajdzLokal__filters__close').click(function (event) {
   event.preventDefault();
   $('.znajdzLokal__filters').hide();
-  
+});
+$('.znajdzLokal__filters__close--wide').click(function (event) {
+  event.preventDefault();
+  $('.znajdzLokal__filters').hide();
 });
 
 
