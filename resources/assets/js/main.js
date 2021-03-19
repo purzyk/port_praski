@@ -32,7 +32,7 @@ function initYouTubeVideos() {
     var div = document.createElement("div");
     div.setAttribute("data-id", videoId);
     var thumbNode = document.createElement("img");
-    thumbNode.src = "http://port.develop.name/wp-content/uploads/2021/02/img_4-2-0x0-c-default.png";
+    thumbNode.src = "https://port-praski.resimo.tech/wp-content/uploads/2021/03/img_4-2-0x0-c-default-1.jpg";
     div.appendChild(thumbNode);
     var playButton = document.createElement("div");
     playButton.setAttribute("class", "play");
