@@ -35,7 +35,7 @@
 						<div class="controls smaller-margin" data-filter-group="inwestycje">
 							<ul class="checkboxTest">
 								{% for item in categories %}
-									<li><input type="checkbox" value=".{{item.slug}}" id="cb{{loop.index}}"/>
+									<li><input type="checkbox" checked value=".{{item.slug}}" id="cb{{loop.index}}"/>
 										<label for="cb{{loop.index}}"><img src="{{Image(item.glowne_zdjecie).src | resize(132,94)}}"/></label>
 										<span class="checkboxTest__title">{{item.title}}</span>
 									</li>
