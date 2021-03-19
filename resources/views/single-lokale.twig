@@ -6,7 +6,7 @@
 			<button class="goBack">Wróć do listy</button>
 			<div class="lokal__wrapper">
 				<div class="lokal__left">
-					<div class="lokal__status">{{post.meta('status')}}</div>
+					<div class="lokal__status {{post.meta('status')}}">{{post.meta('status')}}</div>
 					<h1 class="lokal__inwestycja">
 						{% for item in inwestycja %}
 							{{item.name}}
