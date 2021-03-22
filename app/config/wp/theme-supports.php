@@ -672,7 +672,7 @@ function custom_api_get_uslugowe_callback( $request ) {
 				array(
 				  'taxonomy' => 'inwestycja',
 				  'field' => 'term_id',
-				  'terms' => 7
+				  'terms' => 13
 				)
 			  )
         )
