@@ -651,18 +651,16 @@ function custom_api_get_port2_callback( $request ) {
 }
 /* end port2*/ 
 
+/* uslugowe*/ 
+add_action( 'rest_api_init', 'custom_api_get_uslugowe' );
 
-
-/* lokaleUslugowe*/ 
-add_action( 'rest_api_init', 'custom_api_get_lokaleUslugowe' );
-
-function custom_api_get_lokaleUslugowe() {
-    register_rest_route( 'custom/v1', '/lokaleUslugowe', array(
+function custom_api_get_uslugowe() {
+    register_rest_route( 'custom/v1', '/uslugowe', array(
         'methods' => 'GET',
-        'callback' => 'custom_api_get_lokaleUslugowe_callback'
+        'callback' => 'custom_api_get_uslugowe_callback'
     ));
 }
-function custom_api_get_lokaleUslugowe_callback( $request ) {
+function custom_api_get_uslugowe_callback( $request ) {
     $posts_data = array();
     $paged = $request->get_param( 'page' );
     $paged = ( isset( $paged ) || ! ( empty( $paged ) ) ) ? $paged : 1;
@@ -674,7 +672,7 @@ function custom_api_get_lokaleUslugowe_callback( $request ) {
 				array(
 				  'taxonomy' => 'inwestycja',
 				  'field' => 'term_id',
-				  'terms' => 13
+				  'terms' => 7
 				)
 			  )
         )
@@ -703,4 +701,4 @@ function custom_api_get_lokaleUslugowe_callback( $request ) {
     }
     return $lokale;
 }
-/* end lokaleUslugowe*/ 
+/* end uslugowe*/ 
