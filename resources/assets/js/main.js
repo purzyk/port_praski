@@ -798,7 +798,9 @@ $('.btnVideoReadMore').click(function (event) {
 $(() => {
   new BackToTop();
   new SmoothScroll();
-  new filterigIsotope();
+  if(document.querySelector(".container")) {
+    new filterigIsotope();
+  }
 });
 
 function isElementInViewport(el) {
