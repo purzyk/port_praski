@@ -673,6 +673,7 @@ $('a#back-top').click(() => {
 $('.showFilters').click(function (event) {
     event.preventDefault();
     $('.znajdzLokal__filters').show();
+    $('.znajdzLokal__main').hide();
     $('body,html').animate({
       scrollTop: 0,
     },
@@ -684,11 +685,22 @@ $('.showFilters').click(function (event) {
 $('.znajdzLokal__filters__close').click(function (event) {
   event.preventDefault();
   $('.znajdzLokal__filters').hide();
+  $('.znajdzLokal__main').show();
 });
 $('.znajdzLokal__filters__close--wide').click(function (event) {
   event.preventDefault();
   $('.znajdzLokal__filters').hide();
+  $('.znajdzLokal__main').show();
 });
+
+const localsListHandler = () => {
+  if ($(window).width() > 1180) {
+    $('.znajdzLokal__main').show();
+  }
+}
+
+$(window).on('resize', localsListHandler);
+$(window).on('orientationchange', localsListHandler)
 
 
 
