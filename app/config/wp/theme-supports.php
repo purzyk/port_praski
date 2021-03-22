@@ -437,3 +437,46 @@ function my_column_register_sortable( $columns ) {
 	return $columns;
 }
 add_filter('manage_edit-lokale_sortable_columns', 'my_column_register_sortable' );
+
+add_action( 'rest_api_init', 'custom_api_get_lokale' );
+
+function custom_api_get_lokale() {
+    register_rest_route( 'custom/v1', '/lokale', array(
+        'methods' => 'GET',
+        'callback' => 'custom_api_get_lokale_callback'
+    ));
+}
+function custom_api_get_lokale_callback( $request ) {
+    $posts_data = array();
+    $paged = $request->get_param( 'page' );
+    $paged = ( isset( $paged ) || ! ( empty( $paged ) ) ) ? $paged : 1;
+    $posts = get_posts( array(
+            'paged' => $paged,
+            'posts_per_page' => -1,
+            'post_type' => array( 'lokale' )
+        )
+    );
+
+    foreach( $posts as $post ) {
+        $id = $post->ID;
+        $post_thumbnail = ( has_post_thumbnail( $id ) ) ? get_the_post_thumbnail_url( $id, array(800,577)) : null;
+		$inwestycja =  wp_get_post_terms( $post->ID, 'inwestycja', array( 'fields' => 'names' ) );
+		$powierzchnia = get_field('powierzchnia', $id);
+		$typ = get_field('typ', $id);
+		$liczba_pokoi = get_field('liczba_pokoi', $id);
+		$pietro = get_field('pietro', $id);
+		$status = get_field('status', $id);
+		
+		$lokale[] = array(
+            'status' => $status,
+            'nr_lokalu' => get_the_title( $id ),
+            'rzut_3D' => $post_thumbnail,
+			'inwestycja' => $inwestycja[0],
+			'powierzchnia' => $powierzchnia,
+			'typ' => $typ,
+			'liczba_pokoi' => $liczba_pokoi,
+			'pietro' => $pietro,
+        );
+    }
+    return $lokale;
+}
