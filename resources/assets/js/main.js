@@ -56,16 +56,16 @@ $(document).ready(function () {
 
   const closeContactModalButton = document.querySelectorAll(".contact-modal .modal__close")
 
-  if(closeContactModalButton) {
-    for(let i = 0; i < closeContactModalButton.length; i++) {
-      closeContactModalButton[i].addEventListener('click', function() {
+  if (closeContactModalButton) {
+    for (let i = 0; i < closeContactModalButton.length; i++) {
+      closeContactModalButton[i].addEventListener('click', function () {
         MicroModal.close('contact-modal')
       })
+    }
   }
-}
 
   var pokoiSlider = document.getElementById('pokoiSlider');
-  
+
   var pietroSlider = document.getElementById('pietroSlider');
   if (pokoiSlider) {
     noUiSlider.create(pokoiSlider, {
@@ -167,11 +167,11 @@ $(document).ready(function () {
 });
 
 $(function () {
-/* Contact form modal */ 
+  /* Contact form modal */
   $('.popup-modal').magnificPopup({
-		type: 'inline',
-		preloader: false,
-	});
+    type: 'inline',
+    preloader: false,
+  });
 
 
 
@@ -180,9 +180,9 @@ $(function () {
   let allContent = document.querySelectorAll('.dzielnicaToggle  ');
   let Buttons = document.querySelectorAll(".dzielnicaSelect button");
   let currentIndex = 0;
-  $(".js-dzielnica__images__main").on('beforeChange', function(event, slick, currentSlide, nextSlide){
+  $(".js-dzielnica__images__main").on('beforeChange', function (event, slick, currentSlide, nextSlide) {
     currentIndex = nextSlide
-    for(let button of Buttons) {
+    for (let button of Buttons) {
       button.classList.remove("active");
     }
     for (let content of allContent) {
@@ -198,13 +198,15 @@ $(function () {
     Buttons[currentIndex].classList.add("active")
     $("body, html").animate(
       {
-          scrollTop: $(".wizja__dzielnice__title").offset().top - 42
+        scrollTop: $(".wizja__dzielnice__title").offset().top - 42
       },
       800
-  );
+    );
     const navbar = $('.header');
     navbar.removeClass("scrollUp");
   });
+
+
 
 
 
@@ -212,7 +214,7 @@ $(function () {
     button.addEventListener('click', (e) => {
       // const et = e.target;
       // const active = document.querySelector(".active");
-      
+
       // if (active) {
       //   active.classList.remove("active");
       // }
@@ -221,7 +223,7 @@ $(function () {
 
 
       // for (let content of allContent) {
-        // wizja__dzielnice__title
+      // wizja__dzielnice__title
       //   if (content.getAttribute('data-number') === button.getAttribute('data-number')) {
       //     const slideIndex = content.getAttribute('data-number') - 1;
       //     content.style.display = "block";
@@ -239,8 +241,8 @@ $(function () {
 
           content.style.display = "block";
           $(".js-dzielnica__images__main").slick('slickGoTo', slideIndex);
-  
-         // $(".js-dzielnica__images__main-nav-thumbnails").slick("refresh");
+
+          // $(".js-dzielnica__images__main-nav-thumbnails").slick("refresh");
         } else {
           console.log(content)
           content.style.display = "none"
@@ -249,12 +251,12 @@ $(function () {
 
       $("body, html").animate(
         {
-            scrollTop: $(".wizja__dzielnice__title").offset().top
+          scrollTop: $(".wizja__dzielnice__title").offset().top
         },
         800
-    );
-    const navbar = $('.header');
-    navbar.removeClass("scrollUp");
+      );
+      const navbar = $('.header');
+      navbar.removeClass("scrollUp");
     });
   }
 
@@ -277,7 +279,7 @@ $(function () {
         arrows: false,
         asNavFor: '.js-dzielnica__images__main-nav-thumbnails',
       }
-    }, ]
+    },]
   });
 
   $('.js-dzielnica__images__main-nav-thumbnails').slick({
@@ -334,27 +336,27 @@ $(function () {
     arrows: true,
     focusOnSelect: true,
     responsive: [{
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          arrows: false,
-        }
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
       }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        arrows: false,
+      }
+    }
       // You can unslick at a given breakpoint now by adding:
       // settings: "unslick"
       // instead of a settings object
@@ -380,27 +382,27 @@ $(function () {
     arrows: true,
     focusOnSelect: true,
     responsive: [{
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          arrows: false,
-        }
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
       }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        arrows: false,
+      }
+    }
       // You can unslick at a given breakpoint now by adding:
       // settings: "unslick"
       // instead of a settings object
@@ -456,9 +458,9 @@ $(function () {
     nextArrow: '.arrow__right',
     prevArrow: '.arrow__left',
     responsive: [{
-        breakpoint: 760,
-        settings: "unslick"
-      }
+      breakpoint: 760,
+      settings: "unslick"
+    }
 
     ]
   });
@@ -474,9 +476,9 @@ $(function () {
     nextArrow: '.arrow__right__dni',
     prevArrow: '.arrow__left__dni',
     responsive: [{
-        breakpoint: 760,
-        settings: "unslick"
-      }
+      breakpoint: 760,
+      settings: "unslick"
+    }
 
     ]
   });
@@ -494,14 +496,14 @@ $(function () {
     nextArrow: '<button class="dzielnica__arrow dzielnica__arrow__next"></button>',
     prevArrow: '<button class="dzielnica__arrow dzielnica__arrow__prev"></button>',
     responsive: [{
-        breakpoint: 1180,
-        settings: {
-          slidesToShow: 3,
-          variableWidth: true,
-          nextArrow: '.arrow__right__dni',
-          prevArrow: '.arrow__left__dni',
-        },
-      }
+      breakpoint: 1180,
+      settings: {
+        slidesToShow: 3,
+        variableWidth: true,
+        nextArrow: '.arrow__right__dni',
+        prevArrow: '.arrow__left__dni',
+      },
+    }
 
     ]
   });
@@ -518,14 +520,14 @@ $(function () {
     nextArrow: '<button class="dzielnica__arrow dzielnica__arrow__next"></button>',
     prevArrow: '<button class="dzielnica__arrow dzielnica__arrow__prev"></button>',
     responsive: [{
-        breakpoint: 1180,
-        settings: {
-          slidesToShow: 3,
-          variableWidth: true,
-          nextArrow: '.arrow__right__nag',
-          prevArrow: '.arrow__left__nag',
-        },
-      }
+      breakpoint: 1180,
+      settings: {
+        slidesToShow: 3,
+        variableWidth: true,
+        nextArrow: '.arrow__right__nag',
+        prevArrow: '.arrow__left__nag',
+      },
+    }
 
     ]
   });
@@ -541,11 +543,11 @@ $(function () {
     nextArrow: '<button class="dzielnica__arrow dzielnica__arrow__next"></button>',
     prevArrow: '<button class="dzielnica__arrow dzielnica__arrow__prev"></button>',
     responsive: [{
-        breakpoint: 760,
-        settings: "unslick",
-        nextArrow: '<button class="dzielnica__arrow dzielnica__arrow__next"></button>',
-        prevArrow: '<button class="dzielnica__arrow dzielnica__arrow__prev"></button>',
-      }
+      breakpoint: 760,
+      settings: "unslick",
+      nextArrow: '<button class="dzielnica__arrow dzielnica__arrow__next"></button>',
+      prevArrow: '<button class="dzielnica__arrow dzielnica__arrow__prev"></button>',
+    }
 
     ]
   });
@@ -604,34 +606,34 @@ $(function () {
     );
 
 
-    const formAcceptances = () => {
-      const acceptance1 = document.querySelectorAll('.acceptance-1 .wpcf7-acceptance a')
-      for(let i = 0; i< acceptance1.length; i++) {
-        acceptance1[i].addEventListener('click', function(e) {
-          e.preventDefault()
-          MicroModal.show('marketing-info-modal', {
-            openTrigger: 'data-custom-open'
-          });
-        })
-      }
-      const acceptance2 = document.querySelectorAll('.acceptance-2 .wpcf7-acceptance a')
-      for(let i = 0; i< acceptance2.length; i++) {
-        acceptance2[i].addEventListener('click', function(e) {
-          e.preventDefault()
-          MicroModal.show('email-info-modal');
-        })
-      }
-
-      const acceptance3 = document.querySelectorAll('.acceptance-3 .wpcf7-acceptance a')
-      for(let i = 0; i< acceptance3.length; i++) {
-        acceptance3[i].addEventListener('click', function(e) {
-          e.preventDefault()
-          MicroModal.show('phone-info-modal');
-        })
-      }
+  const formAcceptances = () => {
+    const acceptance1 = document.querySelectorAll('.acceptance-1 .wpcf7-acceptance a')
+    for (let i = 0; i < acceptance1.length; i++) {
+      acceptance1[i].addEventListener('click', function (e) {
+        e.preventDefault()
+        MicroModal.show('marketing-info-modal', {
+          openTrigger: 'data-custom-open'
+        });
+      })
     }
-    
-    formAcceptances()
+    const acceptance2 = document.querySelectorAll('.acceptance-2 .wpcf7-acceptance a')
+    for (let i = 0; i < acceptance2.length; i++) {
+      acceptance2[i].addEventListener('click', function (e) {
+        e.preventDefault()
+        MicroModal.show('email-info-modal');
+      })
+    }
+
+    const acceptance3 = document.querySelectorAll('.acceptance-3 .wpcf7-acceptance a')
+    for (let i = 0; i < acceptance3.length; i++) {
+      acceptance3[i].addEventListener('click', function (e) {
+        e.preventDefault()
+        MicroModal.show('phone-info-modal');
+      })
+    }
+  }
+
+  formAcceptances()
 });
 
 
@@ -660,8 +662,8 @@ $(window).scroll(function () {
 });
 $('a#back-top').click(() => {
   $('body,html').animate({
-      scrollTop: 0,
-    },
+    scrollTop: 0,
+  },
     1000,
   );
   return false;
@@ -671,16 +673,16 @@ $('a#back-top').click(() => {
 /* Show filters */
 /* Toggle modal */
 $('.showFilters').click(function (event) {
-    event.preventDefault();
-    $('.znajdzLokal__filters').show();
-    $('.znajdzLokal__main').hide();
-    $('body,html').animate({
-      scrollTop: 0,
-    },
+  event.preventDefault();
+  $('.znajdzLokal__filters').show();
+  $('.znajdzLokal__main').hide();
+  $('body,html').animate({
+    scrollTop: 0,
+  },
     1000,
   );
   return false;
-    
+
 });
 $('.znajdzLokal__filters__close').click(function (event) {
   event.preventDefault();
@@ -748,10 +750,10 @@ $('.gallery').each(function () {
       arrowMarkup: '<button title="%title%" type="button" class="custom-arrow custom-arrow-%dir%"></button>'
     },
     callbacks: {
-      change: function() {
-				console.log(this.st)
-			}
-  }
+      change: function () {
+        console.log(this.st)
+      }
+    }
   });
 });
 
@@ -760,14 +762,14 @@ $('.image-link').magnificPopup({
   removalDelay: 400,
   fixedContentPos: true,
   gallery: {
-      enabled: true,
-      arrowMarkup: '<button title="%title%" type="button" class="custom-arrow custom-arrow-%dir%"></button>'
-    },
-    callbacks: {
-      beforeOpen: function() {
-				this.st.mainClass = this.st.el.attr('data-effect');
-      }
+    enabled: true,
+    arrowMarkup: '<button title="%title%" type="button" class="custom-arrow custom-arrow-%dir%"></button>'
+  },
+  callbacks: {
+    beforeOpen: function () {
+      this.st.mainClass = this.st.el.attr('data-effect');
     }
+  }
 });
 
 /* Open and close nav */
@@ -798,7 +800,7 @@ $('.btnVideoReadMore').click(function (event) {
 $(() => {
   new BackToTop();
   new SmoothScroll();
-  if(document.querySelector(".container")) {
+  if (document.querySelector(".container")) {
     new filterigIsotope();
   }
 });
@@ -818,7 +820,7 @@ function isElementInViewport(el) {
       rect.bottom >= 0
     ) &&
     rect.right <= (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */
-);
+  );
 }
 
 // TO REFACTOR
@@ -900,24 +902,24 @@ function set3DViewButtonsPostition() {
 
 
 const addListenersToContactButtons = () => {
-  const allAskToContactButtons = $( ".contact-btn" )
+  const allAskToContactButtons = $(".contact-btn")
 
-  for(let i = 0; i < allAskToContactButtons.length; i++) {
-    allAskToContactButtons[i].addEventListener('click', function(e) {
+  for (let i = 0; i < allAskToContactButtons.length; i++) {
+    allAskToContactButtons[i].addEventListener('click', function (e) {
       e.stopPropagation()
       const id = allAskToContactButtons[i].dataset.id
       MicroModal.show('contact-modal');
-      if(document.querySelector('#contact-modal input[name="text-wiadomosc"]')) {
+      if (document.querySelector('#contact-modal input[name="text-wiadomosc"]')) {
         const messageInput = document.querySelector('#contact-modal input[name="text-wiadomosc"]')
         messageInput.parentNode.parentNode.classList.add("active")
         messageInput.value = `Interesuje mnie oferta mieszkania nr ${id}`
       }
-      
+
     })
   }
 }
 
-if($(".contact-btn")) {
+if ($(".contact-btn")) {
   addListenersToContactButtons()
 }
 
@@ -927,10 +929,10 @@ if($(".contact-btn")) {
 
 const sortButtons = document.querySelectorAll(".--sort");
 
-if(sortButtons) {
- 
-  for(let i; i < sortButtons.length; i++) {
-    sortButtons[i].addEventListener("click", function() {
+if (sortButtons) {
+
+  for (let i; i < sortButtons.length; i++) {
+    sortButtons[i].addEventListener("click", function () {
       const loader = document.querySelector(".loader-container")
       loader.classList.remove("loader-container--hide")
       loader.classList.add("loader-container--show")
@@ -939,11 +941,11 @@ if(sortButtons) {
 }
 
 
-if(document.querySelector("#wyszukiwarka3d")) {
+if (document.querySelector("#wyszukiwarka3d")) {
   window.addEventListener("resize", function () {
     set3DViewButtonsPostition()
   })
-  
+
   set3DViewButtonsPostition()
 }
 
@@ -965,18 +967,30 @@ const goToContact = () => {
   MicroModal.show('contact-modal');
 }
 
-if(document.querySelector('#contactButton')) {
+if (document.querySelector('#contactButton')) {
   const contactButton = document.querySelector('#contactButton');
 
-contactButton.addEventListener('click', function(){
-  goToContact()
-})
+  contactButton.addEventListener('click', function () {
+    goToContact()
+  })
 
   const pdfLink = document.querySelector("#pdfLink");
-  if(pdfLink) {
+  if (pdfLink) {
     const urlArray = window.location.href.split("/")
     const apartmentId = urlArray[urlArray.length - 2].toUpperCase().replaceAll("-", ".")
     pdfLink.href = `/wp-content/themes/wptheme/static/pdf/${apartmentId}.pdf`
   }
 
 }
+
+
+const envelopeIcons = document.querySelectorAll(".contact-icon");
+
+if (envelopeIcons) {
+  [...envelopeIcons].forEach(item => item.addEventListener('click', () => {
+    MicroModal.show('contact-modal', {
+      openTrigger: 'data-custom-open'
+    });
+  }))
+}
+
