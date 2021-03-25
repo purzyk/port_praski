@@ -311,3 +311,8 @@ a {
 .mfp-wrap {
   z-index: 999 !important;
 }
+
+.contact-icon svg,
+.phone-icon svg {
+  pointer-events: none;
+}

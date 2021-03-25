@@ -984,13 +984,21 @@ if (document.querySelector('#contactButton')) {
 }
 
 
-const envelopeIcons = document.querySelectorAll(".contact-icon");
+// init listeners for contact buttons on sliders
+const slidersWithButtons = document.querySelectorAll(".js-sliderNew, .js-dniotwarte")
 
-if (envelopeIcons) {
-  [...envelopeIcons].forEach(item => item.addEventListener('click', () => {
-    MicroModal.show('contact-modal', {
-      openTrigger: 'data-custom-open'
-    });
-  }))
-}
+slidersWithButtons.forEach(el => {
+  el.addEventListener('click', (e) => {
+    if (e.target.classList.contains('contact-icon')) {
+      MicroModal.show('contact-modal', {
+        openTrigger: 'data-custom-open'
+      })
+    } else if (e.target.classList.contains('phone-icon')) {
+      // THIS NEEDS UPDATE - FOR FORM LIKE IN NAVBAR
+      MicroModal.show('contact-modal', {
+        openTrigger: 'data-custom-open'
+      })
+    }
+  })
+})
 
