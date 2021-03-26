@@ -70,6 +70,23 @@ modal {
     content: "\2715";
 }
 
+#phone-modal {
+    h3,
+    p {
+        color: $darkBlue;
+    }
+
+    .modal__header {
+        top: 30px;
+        right: 30px;
+        position: absolute;
+
+        .modal__close {
+            padding: 0;
+        }
+    }
+}
+
 .modal__content {
     margin-top: 2rem;
     margin-bottom: 2rem;

@@ -995,7 +995,7 @@ slidersWithButtons.forEach(el => {
       })
     } else if (e.target.classList.contains('phone-icon')) {
       // THIS NEEDS UPDATE - FOR FORM LIKE IN NAVBAR
-      MicroModal.show('contact-modal', {
+      MicroModal.show('phone-modal', {
         openTrigger: 'data-custom-open'
       })
     }
