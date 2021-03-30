@@ -64,6 +64,16 @@ $(document).ready(function () {
     }
   }
 
+  const closePhoneModalButton = document.querySelectorAll(".phone-modal .modal__close")
+
+  if (closePhoneModalButton) {
+    for (let i = 0; i < closePhoneModalButton.length; i++) {
+      closePhoneModalButton[i].addEventListener('click', function () {
+        MicroModal.close('phone-modal')
+      })
+    }
+  }
+
   var pokoiSlider = document.getElementById('pokoiSlider');
 
   var pietroSlider = document.getElementById('pietroSlider');

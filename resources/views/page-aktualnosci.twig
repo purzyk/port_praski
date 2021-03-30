@@ -7,20 +7,5 @@
 	</article>
 
 	{% include 'components/blocks/contact_modal.twig' %}
-	<div class="modal micromodal-slide phone-modal" id="phone-modal" aria-hidden="true">
-		<div class="modal__overlay" tabindex="-1" data-micromodal-close>
-			<div class="modal__container white-circle" role="dialog" aria-modal="true" aria-labelledby="modal-5-title">
-				<div class="modal__content kontakt__modal" id="modal-5-content">
-					{% if options.header_popup_shortcode %}
-						{% filter shortcodes %}
-							{{options.header_popup_shortcode}}
-						{% endfilter %}
-					{% endif %}
-				</div>
-			<div class="modal__header">
-				<button class="modal__close" aria-label="Close modal" data-micromodal-close="phone-modal"></button>
-			</div>
-			</div>
-		</div>
-	</div>
+	{% include 'components/blocks/phone_modal.twig' %}
 {% endblock %}
