@@ -468,7 +468,7 @@ function custom_api_get_sierakowskiego4_callback( $request ) {
 
     foreach( $posts as $post ) {
         $id = $post->ID;
-		$permalink = get_permalink( $post->ID );
+		$permalink = substr(get_permalink( $post->ID ), 0, -1);
         $post_thumbnail = ( has_post_thumbnail( $id ) ) ? get_the_post_thumbnail_url( $id, array(800,577)) : null;
 		$powierzchnia = get_field('powierzchnia', $id);
 		$inwestycja =  wp_get_post_terms( $post->ID, 'inwestycja', array( 'fields' => 'names' ) );
@@ -523,7 +523,7 @@ function custom_api_get_sierakowskiego2_callback( $request ) {
 
     foreach( $posts as $post ) {
         $id = $post->ID;
-		$permalink = get_permalink( $post->ID );
+		$permalink = substr(get_permalink( $post->ID ), 0, -1);
         $post_thumbnail = ( has_post_thumbnail( $id ) ) ? get_the_post_thumbnail_url( $id, array(800,577)) : null;
 		$powierzchnia = get_field('powierzchnia', $id);
 		$inwestycja =  wp_get_post_terms( $post->ID, 'inwestycja', array( 'fields' => 'names' ) );
@@ -578,7 +578,7 @@ function custom_api_get_port_callback( $request ) {
 
     foreach( $posts as $post ) {
         $id = $post->ID;
-		$permalink = get_permalink( $post->ID );
+		$permalink = substr(get_permalink( $post->ID ), 0, -1);
         $post_thumbnail = ( has_post_thumbnail( $id ) ) ? get_the_post_thumbnail_url( $id, array(800,577)) : null;
 		$powierzchnia = get_field('powierzchnia', $id);
 		$inwestycja =  wp_get_post_terms( $post->ID, 'inwestycja', array( 'fields' => 'names' ) );
@@ -634,7 +634,7 @@ function custom_api_get_port2_callback( $request ) {
 
     foreach( $posts as $post ) {
         $id = $post->ID;
-		$permalink = get_permalink( $post->ID );
+		$permalink = substr(get_permalink( $post->ID ), 0, -1);
         $post_thumbnail = ( has_post_thumbnail( $id ) ) ? get_the_post_thumbnail_url( $id, array(800,577)) : null;
 		$powierzchnia = get_field('powierzchnia', $id);
 		$inwestycja =  wp_get_post_terms( $post->ID, 'inwestycja', array( 'fields' => 'names' ) );
@@ -688,7 +688,7 @@ function custom_api_get_uslugowe_callback( $request ) {
 
     foreach( $posts as $post ) {
         $id = $post->ID;
-		$permalink = get_permalink( $post->ID );
+		$permalink = substr(get_permalink( $post->ID ), 0, -1);
         $post_thumbnail = ( has_post_thumbnail( $id ) ) ? get_the_post_thumbnail_url( $id, array(800,577)) : null;
 		$powierzchnia = get_field('powierzchnia', $id);
 		$inwestycja =  wp_get_post_terms( $post->ID, 'inwestycja', array( 'fields' => 'names' ) );
