@@ -68,6 +68,11 @@
         @include breakpoint($md) {
             margin: 0;
 
+            .youtube-player {
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
             picture {
                 height: 100%;
                 width: 100%;

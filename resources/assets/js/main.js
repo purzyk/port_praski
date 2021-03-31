@@ -47,15 +47,6 @@ function initYouTubeVideos() {
 document.addEventListener("DOMContentLoaded", initYouTubeVideos);
 
 $(document).ready(function () {
-
-  if (document.querySelector("#homeImageWithVideo__copy__title")) {
-    window.addEventListener("resize", function () {
-      setPositionOfYtPlayer()
-    })
-  
-    setPositionOfYtPlayer()
-  }
-
   MicroModal.init({
     openTrigger: 'data-custom-open', // [3]
     closeTrigger: 'data-custom-close', // [4]
@@ -1018,19 +1009,3 @@ slidersWithButtons.forEach(el => {
     }
   })
 })
-
-
-
-
-const setPositionOfYtPlayer = () => {
-  const homePageTitle = document.querySelector("#homeImageWithVideo__copy__title");
-  const ytPlayer = document.querySelector(".youtube-player")
-  if(homePageTitle && window.innerWidth > 1180) {
-    // 10.5 because image has strange margin 21px
-    let top = homePageTitle.offsetTop + 10.5
-
-    ytPlayer.style.top = `${top}px`
-  } else {
-    ytPlayer.style.top = `auto`
-  }
-}
