@@ -289,7 +289,7 @@
                 font-size: 15px;
                 line-height: 20px;
                 text-transform: uppercase;
-
+                
                 color: #8F8F8F;
                 cursor: pointer;
 
@@ -297,6 +297,7 @@
                     font-size: 20px;
                     line-height: 27px;
                     margin-bottom: 30px;
+                    padding: 0;
                 }
 
                 &.active {
@@ -538,7 +539,6 @@
                         position: relative;
                         padding-bottom: 30px;
                         width: 100%;
-                        margin-left: 20px;
 
                         &:after {
                             content: '';
