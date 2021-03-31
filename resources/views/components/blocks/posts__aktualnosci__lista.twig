@@ -3,9 +3,11 @@
 		<div class="slider__header">
 			<h3 data-aos="fade-up" data-aos-duration="800" class="fnt20 home__noweInwestycje__title">Aktualności</h3>
 			<div class="slider__header__buttons">
-				<p>
-					<a href="{{options.zobacz_wiecej_aktualnosci_url}}">zobacz więcej</a>
-				</p>
+				{% if postLoop|length > 2 %}
+					<p>
+						<a href="{{options.zobacz_wiecej_aktualnosci_url}}">zobacz więcej</a>
+					</p>
+				{% endif %}
 				<button class="circle --white slider__header__button arrow__left"><img src="{{Image(options.arrow_up).src}}"></button>
 				<button class="circle --white slider__header__button arrow__right"><img src="{{Image(options.arrow_up).src}}"></button>
 			</div>
@@ -32,6 +34,9 @@
 			{% endfor %}
 
 		</div>
-		<a class="btn --mobile" href="">Zobacz więcej</a>
+
+		{% if postLoop|length > 2 %}
+			<a class="btn --mobile" href="">Zobacz więcej</a>
+		{% endif %}
 	</div>
 </section>
