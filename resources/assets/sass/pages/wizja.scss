@@ -414,7 +414,7 @@
             justify-content: space-between;
 
             p {
-                max-width: 630px;
+                
             }
         }
     }
@@ -522,11 +522,12 @@
 
                 &__slogan {
 
-                    position: relative;
+                    position: absolute;
+                    left: 20px;
+                    top: 35%;
+                    align-self: center;
 
-                    align-self: flex-end;
-
-                    width: 25%;
+                    width: 240px;
                     bottom: 200px;
 
                     p {
@@ -569,7 +570,7 @@
 
                 &__slogan {
 
-                    width: 20%;
+                    width: 240px;
 
 
 
@@ -586,15 +587,7 @@
             .js-dzielnica__images__main {
                 width: 100%;
 
-                @include breakpoint($md) {
 
-                    max-width: 75%;
-                }
-
-                @include breakpoint($xl) {
-
-                    max-width: 80%;
-                }
             }
         }
 
@@ -617,7 +610,6 @@
                 display: block;
                 background: #E9ECF3;
                 width: 100%;
-                margin-left: auto;
                 padding-bottom: 150px;
                 max-width: 75%;
 
@@ -830,7 +822,7 @@
 }
 
 .js-dzielnica__images__main img {
-    height: 65vh;
+    height: 55vh;
     object-fit: cover;
 }
 
@@ -890,3 +882,19 @@
 }
 
 
+
+.js-dzielnica__images__main {
+    width: 75%;
+}
+
+.dzielnica__images__wrapper {
+
+    @include breakpoint($md) {
+        margin-left: auto;
+        width:70%;
+    }
+}
+
+.dzielnica__images__content {
+    width: 100%;
+}
