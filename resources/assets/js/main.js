@@ -47,6 +47,10 @@ function initYouTubeVideos() {
 document.addEventListener("DOMContentLoaded", initYouTubeVideos);
 
 $(document).ready(function () {
+
+  phoneInputValidationHandler()
+
+
   MicroModal.init({
     openTrigger: 'data-custom-open', // [3]
     closeTrigger: 'data-custom-close', // [4]
@@ -1009,3 +1013,17 @@ slidersWithButtons.forEach(el => {
     }
   })
 })
+
+
+
+
+const phoneInputValidationHandler = () => {
+  const phoneInput = document.querySelector('#phone-input')
+  if(phoneInput) {
+    phoneInput.addEventListener('keyup', function() {
+      const regex = /[a-zA-Z!@#$%=^&\p{L}*]/g
+      const value = phoneInput.value
+      phoneInput.value = value.replace( regex, "" )
+    })
+  }
+}
