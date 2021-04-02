@@ -1018,12 +1018,14 @@ slidersWithButtons.forEach(el => {
 
 
 const phoneInputValidationHandler = () => {
-  const phoneInput = document.querySelector('#phone-input')
-  if(phoneInput) {
-    phoneInput.addEventListener('keyup', function() {
-      const regex = /[a-zA-Z!@#$%=^&\p{L}*]/g
-      const value = phoneInput.value
-      phoneInput.value = value.replace( regex, "" )
+  const phoneInputs = [...document.querySelectorAll('.phone-input')]
+  if(phoneInputs.length) {
+    phoneInputs.forEach(input => {
+      input.addEventListener('keyup', function() {
+        const regex = /[a-zA-Z!@#$%=^&\p{L}*]/g
+        const value = phoneInput.value
+        phoneInput.value = value.replace( regex, "" )
+      })
     })
   }
 }
