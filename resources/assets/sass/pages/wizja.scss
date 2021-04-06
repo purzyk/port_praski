@@ -470,10 +470,6 @@
     }
 
     &__copy {
-        @include breakpoint($md) {
-            margin-bottom: 67px;
-        }
-
         &.--grey {
             background: #E9ECF3;
             padding-bottom: 74px;
@@ -826,10 +822,6 @@
     object-fit: cover;
 }
 
-.dzielnica__wrapper__content {
-    min-height: 240px;
-}
-
 .wizja__dzielnice .js-dzielnica__images__main-nav-thumbnails {
 
     .slick-current {
@@ -867,7 +859,6 @@
 .dzielnica__copy .dzielnica__wrapper_description {
     @include breakpoint($md) {
         max-width: 70%;
-        min-height: 192px;
     }
 }
 
