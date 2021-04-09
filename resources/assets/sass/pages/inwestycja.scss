@@ -86,6 +86,22 @@
                 order: 2;
             }
         }
+
+        .inwestycja__header__link {
+            display: flex;
+            align-items: center;
+            margin-top: 12px;
+            
+            flex-direction: row-reverse;
+
+            figure {
+                margin-right: 12px;
+            }
+            p {
+                color: #fff;
+                margin-bottom: 0;
+            }
+        }
     }
 
     &__section {
