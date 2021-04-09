@@ -1023,8 +1023,8 @@ const phoneInputValidationHandler = () => {
     phoneInputs.forEach(input => {
       input.addEventListener('keyup', function() {
         const regex = /[a-zA-Z!@#$%=^&\p{L}*]/g
-        const value = phoneInput.value
-        phoneInput.value = value.replace( regex, "" )
+        const value = input.value
+        input.value = value.replace( regex, "" )
       })
     })
   }
