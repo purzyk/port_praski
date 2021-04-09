@@ -77,14 +77,14 @@
 
   &__biuro {
     p {
-      color: $darkBlue;
+      color: $darkGrey2;
       text-transform: uppercase;
 
       span {
         text-transform: initial;
         font-size: 15px;
         line-height: 22px;
-        color: $darkGrey2;
+        color: $darkBlue;
       }
 
       @include breakpoint($md) {
