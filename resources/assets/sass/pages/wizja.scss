@@ -314,7 +314,7 @@
             margin-bottom: 60px;
 
             @include breakpoint($md) {
-                margin-bottom: 150px;
+                margin-bottom: 0;
                 display: flex;
                 padding-top: 55px;
                 justify-content: space-between;
@@ -713,7 +713,7 @@
     }
 
     &__copyRight__wrap__images {
-        margin-bottom: 60px;
+       margin-bottom: 60px;
 
         picture,
         source,
@@ -723,7 +723,7 @@
     }
 
     &__copyLeft__wrap__images {
-        margin-bottom: 60px;
+        ///margin-bottom: 60px;
     }
 
     &__copyLeft {}
@@ -778,7 +778,7 @@
     @include breakpoint($md) {
         .twoLines {
             .lokalizacja__copyLeft__wrap__copy {
-                padding-top: 100px;
+                //padding-top: 100px;
                 position: relative;
 
                 &:before {
@@ -811,7 +811,7 @@
 
         .sliderMarginTop {
             .lokalizacja__copyLeft__wrap__images {
-                margin-top: 114px;
+                margin-top: 0;
             }
         }
     }
@@ -888,4 +888,16 @@
 
 .dzielnica__images__content {
     width: 100%;
+}
+
+.wizja__lokalizacja .wizja__lokalizacja__wrapper h2 {
+    padding: 0 20px;
+}
+
+.wizja__lokalizacja__wrapper .fnt50 {
+    margin-bottom: 16px;
+}
+
+.lokalizacja__copy.copyMarginTop {
+    margin-top: 50px;
 }
