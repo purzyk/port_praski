@@ -50,7 +50,6 @@ $(document).ready(function () {
 
   phoneInputValidationHandler()
 
-
   MicroModal.init({
     openTrigger: 'data-custom-open', // [3]
     closeTrigger: 'data-custom-close', // [4]
@@ -652,7 +651,7 @@ $(function () {
 // Hide Page Loader when DOM and images are ready
 $(window).on('load', () => $('.pageloader').removeClass('is-active'));
 $(window).on('load', () => $('body').removeClass('is-loading'));
-
+$(window).on('load', () => setTimeout(hideHeroTitle, 6000));
 
 /* Make header smaller after some height */
 $(window).scroll(function () {
@@ -1026,6 +1025,15 @@ const phoneInputValidationHandler = () => {
         const value = input.value
         input.value = value.replace( regex, "" )
       })
+    })
+  }
+}
+
+const hideHeroTitle = () => {
+  const heroTitles = document.querySelectorAll(".hero .js-hero .hero__slide__inside")
+  if(heroTitles) {
+    [...heroTitles].forEach(item => {
+      item.classList.add("hidden")
     })
   }
 }
