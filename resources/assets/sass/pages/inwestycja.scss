@@ -50,6 +50,7 @@
 
             @include breakpoint($md) {
                 flex-direction: row;
+                text-align: left;
             }
 
             &__title {
