@@ -334,3 +334,12 @@ a {
   opacity: 0;
   visibility: hidden;
 }
+
+.link-to-apartments-list {
+  transition: 0.25s all ease-in-out;
+}
+
+.link-to-apartments-list:hover  {
+  background: $darkBlue;
+  color: $white;
+}
