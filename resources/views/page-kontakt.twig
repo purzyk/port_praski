@@ -27,63 +27,65 @@
 		<div class="l-wrapper --noPaddingMobile">
 			<div class="kontakt__address">
 				<div class="kontakt__address__left kontakt__grey">
-					<div class="line double --grey"  data-aos="width" data-aos-duration="800" data-aos-delay="500"></div>
+					<div class="line double --grey" data-aos="width" data-aos-duration="800" data-aos-delay="500"></div>
 					<div class="kontakt__address__godziny" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">{{post.meta('godziny_otwarcia')}}</div>
-					<div class="line double --grey"  data-aos="width" data-aos-duration="800" data-aos-delay="500"></div>
+					<div class="line double --grey" data-aos="width" data-aos-duration="800" data-aos-delay="500"></div>
 					<figure class="--mobile" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100"><img src="{{Image(post.logo_mobile).src}}"></figure>
 				</div>
-				<div class="kontakt__address__right"  data-aos="fade-up"  data-aos-duration="800" data-aos-delay="100" data-aos-offset="200">
+				<div class="kontakt__address__right" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" data-aos-offset="200">
 					<p data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" data-aos-offset="200">{{post.meta('copy')}}</p>
 				</div>
 			</div>
 
 		</div>
-		<div class="l-wrapper --noPadding">
+		<div
+			class="l-wrapper --noPadding">
 			<!--<figure class="kontakt__map" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100"><img src="{{Image(post.mapa).src}}"></figure> -->
 			<iframe class="kontakt__map" src="https://maps.google.com/maps?q=52.2490065,21.0319879&z=17&output=embed" height="450" width="600"></iframe>
 		</div>
 
 		{# {% include 'components/blocks/posts__komunikaty__lista.twig' %} #}
 		<div class="downloads-container">
-		<div class="l-wrapper">
-			<div class="line " data-aos="width" data-aos-duration="800"></div>
-			<h3 data-aos="fade-up" data-aos-duration="800" class="home__inwestycjeLista__title fnt20 ">Dokumenty Organizacyjne Spółki</h3>
-		</div>
-		<div class="l-wrapper">
-			<div class="kontakt__pliki">
-				{% for item in post.meta('dokumenty_organizacyjne_społki') %}
-					<div class="kontakt__plik"  data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-						<p class="index">
-							0{{loop.index}}</p>
-						<p>{{item.plik.name}}</p>
-						<a class="btn" target="_blank" href="{{item.plik.url}}">Pobierz plik</a>
-					</div>
-				{% endfor %}
-
-
+			<div class="l-wrapper">
+				<div class="line " data-aos="width" data-aos-duration="800"></div>
+				<h3 data-aos="fade-up" data-aos-duration="800" class="home__inwestycjeLista__title fnt20 ">Dokumenty Organizacyjne Spółki</h3>
 			</div>
-		</div>
+			<div class="l-wrapper">
+				<div class="kontakt__pliki">
+					{% for item in post.meta('dokumenty_organizacyjne_społki') %}
+						<div class="kontakt__plik" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+							<p class="index">
+								0{{loop.index}}</p>
+							<p>{{item.plik.title}}</p>
+							<a class="btn" target="_blank" href="{{item.plik.url}}">Pobierz plik</a>
+						</div>
+					{% endfor %}
+
+
+				</div>
+			</div>
 		</div>
 
 		<div class="downloads-container">
-		<div class="l-wrapper">
-			<div class="line " data-aos="width" data-aos-duration="800"></div>
-			<h3 data-aos="fade-up" data-aos-duration="800" class="home__inwestycjeLista__title fnt20 ">Komunikaty dla Akcjonariuszy</h3>
-		</div>
-		<div class="l-wrapper">
-			<div class="kontakt__pliki">
-				{% for item in post.meta('komunikaty_dla_akcjonariuszy') %}
-					<div class="kontakt__plik"  data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-						<p class="index">
-							0{{loop.index}}</p>
-						<p>{{item.plik.name}}</p>
-						<a class="btn" target="_blank" href="{{item.plik.url}}">Pobierz plik</a>
-					</div>
-				{% endfor %}
-
-
+			<div class="l-wrapper">
+				<div class="line " data-aos="width" data-aos-duration="800"></div>
+				<h3 data-aos="fade-up" data-aos-duration="800" class="home__inwestycjeLista__title fnt20 ">Komunikaty dla Akcjonariuszy</h3>
 			</div>
-		</div>
+			<div class="l-wrapper">
+				<div class="kontakt__pliki">
+					{% for item in post.meta('komunikaty_dla_akcjonariuszy') %}
+						<div class="kontakt__plik" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+							<p class="index">
+								0{{loop.index}}</p>
+							<p>{{item.plik.title}}</p>
+							<p>{{dump(item.plik)}}</p>
+							<a class="btn" target="_blank" href="{{item.plik.url}}">Pobierz plik</a>
+						</div>
+					{% endfor %}
+
+
+				</div>
+			</div>
 		</div>
 
 	</article>

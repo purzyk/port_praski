@@ -2,31 +2,34 @@
 	<div class="znajdzLokal__item">
 		<div class="znajdzLokal__item__copy">
 			<h2 class="znajdzLokal__item__copy__title">
-				
+
 				<span class="znajdzLokal__item__inwestycja">
 					{% for termname in item.terms('inwestycja') %}
 						{{termname.name}}
 					{% endfor %}
 				</span>
 			</h2>
-			<span class="znajdzLokal__item__title">Mieszkanie nr {{item.title}}</span>
+			<span class="znajdzLokal__item__title">
+				{% if item.typ == 'Usługi' %}Lokal Usługowy nr{% else %}Mieszkanie nr
+				{% endif %}
+				{{item.title}}</span>
 			{% if item.powierzchnia %}
 				<div class="lokal__twoColumns">
 					<h3>Powierzchnia:</h3>
-					<p>{{item.powierzchnia}}
+					<p>{{item.meta('powierzchnia')}}
 						m²</p>
 				</div>
 			{% endif %}
 			{% if item.liczba_pokoi %}
 				<div class="lokal__twoColumns">
 					<h3>Liczba pokoi:</h3>
-					<p>{{item.liczba_pokoi}}</p>
+					<p>{{item.meta('liczba_pokoi')}}</p>
 				</div>
 			{% endif %}
 
 			<div class="lokal__twoColumns">
 				<h3>Piętro:</h3>
-				<p>{{item.pietro}}</p>
+				<p>{{item.meta('pietro')}}</p>
 			</div>
 
 			{% if item.meta('status') %}

@@ -618,25 +618,6 @@
             "maxlength": ""
         },
         {
-            "key": "field_6041f8ceced69",
-            "label": "lokalizacja copy",
-            "name": "lokalizacja_copy",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "br"
-        },
-        {
             "key": "field_6041f916ced6b",
             "label": "rows",
             "name": "rows",
@@ -1009,5 +990,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1615200262
+    "modified": 1618304576
 }
