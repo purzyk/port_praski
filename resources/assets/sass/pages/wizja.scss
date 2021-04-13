@@ -314,7 +314,7 @@
             margin-bottom: 60px;
 
             @include breakpoint($md) {
-                margin-bottom: 0;
+                margin-bottom: 32px;
                 display: flex;
                 padding-top: 55px;
                 justify-content: space-between;
@@ -326,7 +326,6 @@
             }
 
             p {
-                max-width: 630px;
                 font-size: 20px;
             }
         }
@@ -801,7 +800,6 @@
 
         .copyMarginTop {
             .lokalizacja__copyRight__wrap__copy {
-                margin-top: 40px;
             }
 
             .lokalizacja__copyLeft__wrap__copy {
@@ -891,7 +889,9 @@
 }
 
 .wizja__lokalizacja .wizja__lokalizacja__wrapper h2 {
-    padding: 0 20px;
+    @include breakpoint($md) {
+        padding: 0 20px;
+    }
 }
 
 .wizja__lokalizacja__wrapper .fnt50 {
@@ -900,4 +900,12 @@
 
 .lokalizacja__copy.copyMarginTop {
     margin-top: 50px;
+}
+
+.wizja__lokalizacja__wrapper p {
+    width: 100%;
+
+    @include breakpoint($md) {
+        width: 60%;
+      }
 }

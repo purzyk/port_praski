@@ -66,7 +66,15 @@
 			{% include 'components/blocks/wizja/lokalizacja_dzielnice.twig' %}
 		</div>
 		<div class="wizja__lokalizacja">
-			
+			<div class="l-wrapper">
+				<div class="line" data-aos="width" data-aos-duration="800"></div>
+				<h3 data-aos="fade-up" data-aos-duration="800" class="fnt20">{{post.lokalizacja_separator_title}}</h3>
+				<div class="wizja__lokalizacja__wrapper">
+					<h2 class="fnt50" data-aos="fade-up" data-aos-duration="800">{{post.lokalizacja_title}}
+					</h2>
+					<p data-aos="fade-up" data-aos-duration="800">{{post.lokalizacja_copy}}</p>
+				</div>
+			</div>
 			{% include 'components/blocks/wizja/lokalizacja_builder.twig' %}
 		</div>
 		<div class="wizja__nagrody">
