@@ -286,7 +286,9 @@
   align-items: center;
   padding-bottom: 0;
   margin-bottom: 4px;
-
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 16px;
 
   &:hover {
     color: inherit;
@@ -396,13 +398,15 @@
 
   .header__logo {
     position: absolute;
-
-
   }
 
   .header__logo__img {
     transition: 0.3s all;
     height: 130px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   figure {

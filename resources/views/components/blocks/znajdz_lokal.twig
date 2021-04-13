@@ -1,4 +1,4 @@
-<article class="znajdzLokal">
+<article class="znajdzLokal" id="lista-mieszkan">
 	<div class="l-wrapper">
 		<h1 class="fnt50 znajdzLokal__title">Znajdź lokal</h1>
 		<div class="znajdzLokal__main__meta__content  --mobile">
@@ -26,6 +26,7 @@
 				<h1 class="fnt50 znajdzLokal__title filtry__title">Filtry</h1>
 				<div class="line znajdzLokal__line --mobile" data-aos="width" data-aos-duration="800"></div>
 				<button type="reset" data-filter="all" class="znajdzLokal__filters__clear btn --white --mobile">Wyczyść filtry</button>
+				<button class="znajdzLokal__filters__close--wide btn --white --mobile">Zastosuj filtry</button>
 				<div class="znajdzLokal__filters__item --inwestycje">
 					<h3 class="znajdzLokal__filters__title">inwestycja</h3>
 					<div class="znajdzLokal__filters__item__wrapp">
@@ -34,7 +35,7 @@
 						<div class="controls smaller-margin" data-filter-group="inwestycje">
 							<ul class="checkboxTest">
 								{% for item in categories %}
-									<li><input type="checkbox" value=".{{item.slug}}" id="cb{{loop.index}}"/>
+									<li><input type="checkbox" checked value=".{{item.slug}}" id="cb{{loop.index}}"/>
 										<label for="cb{{loop.index}}"><img src="{{Image(item.glowne_zdjecie).src | resize(132,94)}}"/></label>
 										<span class="checkboxTest__title">{{item.title}}</span>
 									</li>
@@ -133,7 +134,12 @@
 
 				</div>
 			</aside>
+			
+	
 			<section class="znajdzLokal__main">
+			<div class="loader-container">
+				<div class="loader-container__loader"></div>
+			</div>
 				<div class="znajdzLokal__main__meta --desktop">
 					<div class="znajdzLokal__main__meta__content">
 						<span class="--blue">liczba ofert
@@ -157,6 +163,9 @@
 				</div>
 
 			</section>
+		
 		</div>
 	</div>
 </article>
+
+{% include 'components/blocks/contact_modal.twig' %}

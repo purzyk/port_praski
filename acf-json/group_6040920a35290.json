@@ -176,8 +176,8 @@
         },
         {
             "key": "field_6040925f68540",
-            "label": "pliki do pobrania",
-            "name": "pliki_do_pobrania",
+            "label": "Dokumenty organizacyjne spółki",
+            "name": "dokumenty_organizacyjne_społki",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -232,5 +232,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1614856654
+    "modified": 1617200667
 }

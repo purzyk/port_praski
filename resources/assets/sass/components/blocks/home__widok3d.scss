@@ -6,6 +6,14 @@
     margin-bottom: 90px;
   }
 
+  .offset {
+    margin-top: 0;
+
+    @include breakpoint($sm) {
+      margin-top: -80px
+    }
+  }
+
   picture {
     width: 100%;
 
@@ -23,7 +31,7 @@
 
   &__buttons {
     position: absolute;
-    top: -72px;
+    top: 0;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -41,6 +49,7 @@
 //      border-radius: 100px;
       display: inline-block;
       pointer-events: all;
+      text-transform: uppercase;
     }
   }
 }

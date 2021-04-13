@@ -184,7 +184,8 @@
 
     &.arrow__left,
     &.arrow__left__dni,
-    &.arrow__left__wyd {
+    &.arrow__left__wyd,
+    &.arrow__left__nag {
       transform: rotate(-90deg);
 
 
@@ -192,10 +193,9 @@
 
     &.arrow__right,
     &.arrow__right__dni,
-    &.arrow__right__wyd {
+    &.arrow__right__wyd,
+    &.arrow__right__nag {
       transform: rotate(90deg);
-
-
     }
   }
 }

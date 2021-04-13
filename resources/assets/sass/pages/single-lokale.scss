@@ -1,13 +1,17 @@
 .lokal {
     background: #F6F6F6;
     padding-top: 30px;
-    padding-bottom: 200px;
+    padding-bottom: 60px;
+
+    @include breakpoint($md) {
+        padding-bottom: 32px;
+    }
 
     &__wrapper {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        margin-top: 70px;
+        margin-top: 30px;
         flex-direction: column;
 
         @include breakpoint($md) {
@@ -35,10 +39,11 @@
     &__right {
         width: 100%;
 
-        .slider {
+        .slider-lokal {
             margin-bottom: 30px;
 
             .slick-slide {
+                padding: 32px;
                 >div {
                     background: #fff;
                     text-align: center;
@@ -48,81 +53,18 @@
                     }
                 }
             }
-        }
 
-        .slider-nav-thumbnails {
-            .slick-slide {
-                padding: 10px;
-                background: #fff;
-            }
-        }
-
-        @include breakpoint($md) {
-            width: 54%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-
-            .slider {
-                margin-bottom: 0;
-                height: 78%;
-
-                .slick-list {
-                    height: 100%;
-                }
-
-                .slick-track {
-                    height: 100%;
-                }
-
-                .slick-slide {
-                    background: #fff;
-
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-
-                }
-            }
-
-            .slider-nav-thumbnails {
-                height: 20%;
-
-
-                .slick-slide {
-                    background: #fff;
-
-
-                    max-height: 100%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-
-                    img {
-                        max-width: 80px;
-                        margin: 0 auto;
-                    }
-                }
-
-                .slick-list {
-                    height: 100%;
-                }
-
-                .slick-track {
-                    height: 100%;
-                }
-
-                .slick-prev,
+            .slick-prev,
                 .slick-next {
-                    height: 48px;
-                    width: 48px;
+                    height: 32px;
+                    width: 32px;
                     z-index: 100;
                     background: $darkBlue;
                     border-radius: 50%;
                 }
 
                 .slick-next {
-                    right: -10px;
+                    right: 0;
 
                     @include breakpoint($xl) {
                         right: -24px;
@@ -130,7 +72,7 @@
                 }
 
                 .slick-prev {
-                    left: -10px;
+                    left: 0;
 
                     @include breakpoint($xl) {
                         left: -24px;
@@ -155,6 +97,76 @@
                     display: block;
                     margin: 0 auto;
                     transform: rotate(90deg);
+                }
+
+        }
+
+        .slider-nav-lokal-thumbnails {
+            .slick-slide {
+                padding: 10px;
+                background: #fff;
+            }
+        }
+
+        @include breakpoint($md) {
+            width: 54%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .slider-lokal {
+                margin-bottom: 0;
+                height: 78%;
+
+                .slick-list {
+                    height: 100%;
+                }
+
+                .slick-track {
+                    height: 100%;
+                }
+
+                .slick-slide {
+                    background: #fff;
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                }
+
+                .slick-arrow {
+                    display: none !important;
+                }
+
+                
+            }
+
+            .slider-nav-lokal-thumbnails {
+                height: 20%;
+
+
+                .slick-slide {
+                    background: #fff;
+
+
+                    max-height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    img {
+                        max-width: 80px;
+                        margin: 0 auto;
+                    }
+                }
+
+                .slick-list {
+                    height: 100%;
+                }
+
+                .slick-track {
+                    height: 100%;
                 }
 
                 .slick-slide {
@@ -186,6 +198,9 @@
             margin-bottom: 44px;
 
         }
+
+        &.Reserved { background: orange; }
+        &.Zarezerwowane { background: orange; }
 
         /* WHITE */
 
@@ -328,4 +343,14 @@
             }
         }
     }
+}
+
+.contact-modal .modal__header {
+    margin-bottom: 92px;
+}
+
+.contact-modal-title {
+    margin-bottom: 0;
+    font-weight: 700;
+    font-size: 18px;
 }

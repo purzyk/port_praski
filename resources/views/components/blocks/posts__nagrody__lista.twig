@@ -8,22 +8,25 @@
 			</div>
 		</div>
 	</div>
-	<div class="wrapFullWidth --right" data-aos="fade-up" data-aos-delay="140">
-		<div class="home__noweInwestycje__wrapp js-nagrody --CustomButtons">
+
+	<div class="wrapFullWidth --right">
+		<div class="home__noweInwestycje__wrapp js-nagrody --CustomButtons" >
 			{% for item in post.meta('nagrody') %}
-				<div class="home__noweInwestycje__item">
-					<div class="home__noweInwestycje__item__inside">
+				<div class="home__noweInwestycje__item" data-aos="not-real-animation" data-aos-duration="800" data-aos-delay="300">
+					<div class="home__noweInwestycje__item__inside home__noweInwestycje__item__inside--nagrody" >
 
-						<h5 class="fnt30">{{item.tytul}}</h5>
-
-						<p>
-							{{item.opis}}
-						</p>
-						<img src="{{Image(item.zdjecie).src}}">
+						<div class="nagrody-text-container">
+							<h5 class="fnt30">{{item.tytul}}</h5>
+							<p>{{item.opis}}</p>
+						</div>
+						<div class="nagrody-image-container">
+							<img class="nagrody-image" src="{{Image(item.zdjecie).src}}">
+						</div>
 
 					</div>
 				</div>
 			{% endfor %}
 		</div>
 	</div>
+
 </section>

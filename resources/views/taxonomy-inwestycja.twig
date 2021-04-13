@@ -6,25 +6,28 @@
 			<img class="inwestycja__header__img" src="{{Image(glowne_zdjecie).src}}">
 			<div class="l-wrapper">
 				<div class="inwestycja__header__title">
-					<figure class="circle">
-						<a href="#start">
-							<svg width="12" height="17" viewbox="0 0 12 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M6.02261 1.01516L6.02261 17" stroke="#fff" stroke-width="1.5" stroke-miterlimit="10"/>
-								<path d="M0 6.58545C3.30565 6.58545 6.02261 3.91376 6.02261 0.562835" stroke="#fff" stroke-width="1.5" stroke-miterlimit="10"/>
-								<path d="M6.02261 0.562835C6.02261 3.86848 8.6943 6.58545 11.9999 6.58545" stroke="#fff" stroke-width="1.5" stroke-miterlimit="10"/>
-							</svg>
-
-						</a>
-					</figure>
+					
 					<div class="inwestycja__header__title__copy">
 						<h1 class="fnt50 inwestycja__header__title__title">{{ title}}</h1>
 						<h2 class="inwestycja__header__title__slogan">{{ slogan}}</h2>
+						<a class="inwestycja__header__link" href="#lista-mieszkan">
+							<figure class="circle inwestycja__header_circle">
+								<span>
+								<svg width="12" height="17" viewbox="0 0 12 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M6.02261 1.01516L6.02261 17" stroke="#fff" stroke-width="1.5" stroke-miterlimit="10"/>
+									<path d="M0 6.58545C3.30565 6.58545 6.02261 3.91376 6.02261 0.562835" stroke="#fff" stroke-width="1.5" stroke-miterlimit="10"/>
+									<path d="M6.02261 0.562835C6.02261 3.86848 8.6943 6.58545 11.9999 6.58545" stroke="#fff" stroke-width="1.5" stroke-miterlimit="10"/>
+								</svg>
+								</span>
+							</figure>
+						<p>Przejdź do listy mieszkań</p>
+					</a>
 					</div>
 				</div>
 			</div>
 		</header>
 		<div id="start" class="offset"></div>
-		{% include 'components/blocks/znajdz_lokal.twig' %}
+		
 		<section class="inwestycja__section">
 			<div class="l-wrapper">
 				<div class="line" data-aos="width" data-aos-duration="800"></div>
@@ -53,6 +56,10 @@
 						<div class="splide__progress">
 							<div class="splide__progress__bar"></div>
 						</div>
+						<div class="splide__autoplay">
+											<button class="splide__play">Play</button>
+											<button class="splide__pause">Pause</button>
+										</div>
 					</div>
 
 				</div>
@@ -65,5 +72,6 @@
 				</article>
 			</div>
 		</section>
+		{% include 'components/blocks/znajdz_lokal.twig' %}
 	</article>
 {% endblock %}

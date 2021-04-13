@@ -98,7 +98,14 @@
 
                 img {
                     position: relative;
-                    transition: all 0.8s ease-in-out;
+                    transition: all 0.8s ease-in-out 0.4s;
+                    height: 35vh;
+                    object-fit: cover;
+
+                    @include breakpoint($md) {
+                        height: 70vh;
+                        max-height: 720px;
+                    }
                 }
             }
 
@@ -190,13 +197,13 @@
                 }
 
                 svg {
-                    width: 25px;
-                    height: 25px;
+                    width: 20px;
+                    height: 20px;
                     transition: 0.2s all;
 
                     @include breakpoint($md) {
-                        width: 40px;
-                        height: 40px;
+                        width: 32px;
+                        height: 32px;
                     }
                 }
 
@@ -375,7 +382,7 @@
         .home__inwestycjeLista__item__footer__link {
             width: 70px;
             height: 70px;
-            margin-left: -20px;
+            // margin-left: -20px;
 
             @include breakpoint($md) {
                 width: 75px;
@@ -410,10 +417,16 @@
 
     .home__inwestycjeLista__item__modal__wrapp {
         align-items: flex-end;
+
+        p {
+            @include breakpoint($md) {
+                text-align: right;
+            }
+        }
     }
 
     @include breakpoint($md) {
-        background: linear-gradient(180deg, $white 35%, $lightBlue 35%);
+        background: linear-gradient(180deg, $white 30%, $lightBlue 30%);
     }
 }
 
@@ -515,7 +528,7 @@
         .home__inwestycjeLista__item__footer__link {
             width: 70px;
             height: 70px;
-            margin-right: -20px;
+            // margin-right: -20px;
 
             @include breakpoint($md) {
                 width: 75px;
@@ -538,7 +551,7 @@
     }
 
     @include breakpoint($md) {
-        background: linear-gradient(180deg, $lightBlue 35%, $white 35%);
+        background: linear-gradient(180deg, $lightBlue 30%, $white 30%);
     }
 }
 
@@ -550,6 +563,7 @@
     padding-top: 100px;
     top: 0;
     left: 0;
+    min-height: 480px;
     background: $white;
     transform: scale(0);
     transition-property: all;
@@ -580,9 +594,11 @@
                 transform: unset;
                 transition: transform 0.3s ease-out 1s;
                 opacity: 1;
+                color: $black;
 
                 @include breakpoint($md) {
                     margin-top: 0;
+                    color: $white;
                     transition: transform 0.2s ease-out 1s, opacity 0.2s ease-out 1s;
                 }
             }

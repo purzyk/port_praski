@@ -60,7 +60,7 @@
 							{% for item in lang %}
 								{% if item.active != 1 %}
 									<a href="{{item.url}}" class="active">
-										<img src="{{item.country_flag_url}}">
+										{{ item.language_code }}
 									</a>
 								{% endif %}
 							{% endfor %}

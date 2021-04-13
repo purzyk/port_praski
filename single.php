@@ -9,6 +9,7 @@ $inwestycja = get_the_terms( $post->ID, 'inwestycja' );
 $context['inwestycja'] = $inwestycja;
 $context['dodatkowo'] = $dodatkowo;
 $pdf = get_field('pdf');
+$base_path = dirname( __DIR__ );
 $context['pdf'] = $pdf;
 $context['cancel_link'] = get_cancel_comment_reply_link(__('Cancel reply', 'wptheme'));
 

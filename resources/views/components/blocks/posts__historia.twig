@@ -1,18 +1,18 @@
 <section class="home__noweInwestycje --dniotwarte">
-	<div class="l-wrapper">
+		<div class="l-wrapper">
+		<div class="line" data-aos="width" data-aos-duration="800"></div>
 		<div class="slider__header">
-			<h3 data-aos="fade-up" data-aos-duration="800" class="fnt20 home__noweInwestycje__title">{{post.historia_portu_title}}</h3>
+			<h3 data-aos="fade-up" data-aos-duration="800" class="fnt20">{{post.historia_portu_title}}</h3>
 			<div class="slider__header__buttons">
 				<button class="circle --white slider__header__button arrow__left__dni"><img src="{{Image(options.arrow_up).src}}"></button>
 				<button class="circle --white slider__header__button arrow__right__dni"><img src="{{Image(options.arrow_up).src}}"></button>
-
 			</div>
 		</div>
 	</div>
 	<div class="wrapFullWidth --right" data-aos="fade-up" data-aos-delay="140">
 		<div class="home__noweInwestycje__wrapp js-historia --CustomButtons">
 			{% for item in post.meta('historia') %}
-				<div class="home__noweInwestycje__item">
+				<div class="home__noweInwestycje__item"  data-aos="not-real-animation" data-aos-delay="140">
 					{% include 'components/generic/image.twig'  with { img_src:Image(item.zdjecie).src, width:580, height:440 } %}
 					<div class="home__noweInwestycje__item__inside">
 

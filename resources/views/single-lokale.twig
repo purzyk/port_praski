@@ -3,16 +3,16 @@
 {% block content %}
 	<article class="main-article lokal">
 		<div class="l-wrapper">
-			<button class="goBack">Wróć do listy</button>
+			<a href="" class="goBack">Wróć do listy</a>
 			<div class="lokal__wrapper">
 				<div class="lokal__left">
-					<div class="lokal__status">{{post.meta('status')}}</div>
+					<div class="lokal__status {{post.meta('status')}}">{{post.meta('status')}}</div>
 					<h1 class="lokal__inwestycja">
 						{% for item in inwestycja %}
 							{{item.name}}
 						{% endfor %}
 					</h1>
-					<h2 class="lokal__mieszkanie">{{post.name}}</h2>
+					<h2 class="lokal__mieszkanie">Mieszkanie nr {{post.name}}</h2>
 					<div class="line double --grey"></div>
 					{% if post.powierzchnia %}
 						<div class="lokal__twoColumns">
@@ -51,31 +51,35 @@
 					{% endif %}
 					<div class="line double --grey"></div>
 					<div class="lokal__btns">
-						<button class="btn">prośba o kontakt</button>
-						<a target="_blank" href="{{pdf}}" class="btn --lightGrey">pobierz PDF</a>
+						<button class="btn" id="contactButton">prośba o kontakt</button>
+
+						{% if pdf is empty %}
+							<a target="_blank" href="" class="btn --lightGrey" id="pdfLink">pobierz PDF</a>
+						{% else %}
+							<a target="_blank" href="{{pdf}}" class="btn --lightGrey">pobierz PDF</a>
+						{% endif %}
 					</div>
 				</div>
 
 				<div class="lokal__right">
-					<div class="slider">
+					<div class="slider-lokal">
 						{% for item in post.meta('galeria') %}
-							<a class="image-link" href="{{Image(item.zdjecie).src}}">
+							<a class="image-link " href="{{Image(item.zdjecie).src}}">
 								<img src="{{Image(item.zdjecie).src}}">
 							</a>
 						{% endfor %}
-
 					</div>
 
 					<!-- THUMBNAILS -->
-					<div class="slider-nav-thumbnails">
+					<div class="slider-nav-lokal-thumbnails">
 						{% for item in post.meta('galeria') %}
 							<div><img src="{{Image(item.zdjecie).src}}"></div>
 						{% endfor %}
-
 					</div>
 				</div>
 
 			</div>
 		</article>
 
-	{% endblock %}
+	{% include 'components/blocks/contact_modal.twig' %}
+{% endblock %}

@@ -2,13 +2,30 @@
 	<div class="l-wrapper --noPadding">
 		<div class="lokalizacja__copyLeft__wrap">
 			<div class="lokalizacja__copyLeft__wrap__images">
-				<div class="js-lokalizacjaSlider">
-					{% for item in media_item.slider %}
-						{% include 'components/generic/image.twig'  with { img_src:Image(item.image).src, width:790, height:620 } %}
-					{% endfor %}
+				<div class="js-lokalizacjaSlider" data-aos="fade-up" data-aos-duration="800">
+	
+
+					<div class="splide">
+										<div class="splide__track">
+											<ul class="splide__list">
+												{% for item in media_item.slider %}
+													<li class="splide__slide">
+														<img data-splide-lazy="{{Image(item.image).src}}">
+													</li>
+												{% endfor %}
+											</ul>
+										</div>
+										<div class="splide__progress">
+											<div class="splide__progress__bar"></div>
+										</div>
+											<div class="splide__autoplay">
+		<button class="splide__play">Play</button>
+		<button class="splide__pause">Pause</button>
+	</div>
+</div>
 				</div>
 			</div>
-			<div class="lokalizacja__copyLeft__wrap__copy">
+			<div class="lokalizacja__copyLeft__wrap__copy" data-aos="fade-up" data-aos-duration="800">
 				{{media_item.copy}}
 			</div>
 

@@ -2,7 +2,15 @@
     margin-bottom: 50px;
     margin-top: 84px;
 
+    .oferta-content {
+        @include breakpoint($md) {
+            min-height: 240px;
+        }
 
+        @include breakpoint($xl) {
+            min-height: 212px;
+        }
+    }
 
     &__header {
         height: 650px;
@@ -31,6 +39,12 @@
     }
 
     &__section {
+        margin-top: 100px;
+
+        @include breakpoint($md) {
+            margin-top: 0px;
+        }
+
         &__title {
             margin-bottom: 40px;
 
@@ -123,9 +137,10 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 32px;
-
             @include breakpoint($md) {
                 justify-content: flex-start;
+                position: absolute;
+                bottom: 0;
             }
 
             .btn {

@@ -33,10 +33,6 @@
             text-align: center;
             z-index: 1;
 
-            @include breakpoint($md) {
-                text-align: left;
-            }
-
             figure {
                 order: 2;
                 margin-top: 15px;
@@ -54,10 +50,16 @@
 
             @include breakpoint($md) {
                 flex-direction: row;
+                text-align: left;
             }
 
             &__title {
                 color: #fff;
+                text-align: center;
+
+                @include breakpoint($md) {
+                    text-align: left;
+                }
 
                 &__copy {}
             }
@@ -84,10 +86,20 @@
                 order: 2;
             }
         }
+
+        
     }
 
     &__section {
         margin-top: 100px;
+
+        &__slider {
+            img {
+                object-fit: cover;
+                height: 75vh;
+                max-height: 720px;
+            }
+        }
 
         @include breakpoint($md) {
             margin-top: 153px;
@@ -156,5 +168,21 @@
 
     .znajdzLokal__title {
         text-align: center;
+    }
+}
+
+.inwestycja__header__link {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+    
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    figure {
+        margin-right: 12px;
+    }
+    p {
+        color: #fff;
+        margin-bottom: 0;
     }
 }

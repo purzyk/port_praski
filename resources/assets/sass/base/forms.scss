@@ -41,11 +41,11 @@
     .wpcf7-list-item-label {
         font-size: 12px;
         line-height: 16px;
-        color: $darkGrey2;
+        color: $darkBlue;
         display: block;
 
         a {
-            color: $black;
+            color: $darkGrey2;
         }
     }
 
@@ -179,7 +179,7 @@ input[type="email"].form-control {
     transform: translateY(-160%);
     color: $darkGrey2;
     font-size: 12px;
-    z-index: -1;
+    z-index: 0;
 }
 
 .form-group.active {

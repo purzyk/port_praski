@@ -214,7 +214,6 @@ a {
 }
 
 
-
 .wrapFullWidth {
   width: calc(100% - 20px);
 
@@ -222,7 +221,6 @@ a {
     margin: 0 auto;
 
     @include breakpoint($md) {
-
       margin: 0 auto 0 0;
     }
 
@@ -237,13 +235,12 @@ a {
     margin: 0 auto;
 
     @include breakpoint($md) {
-
       margin: 0 0 0 auto;
     }
   }
 
   @include breakpoint($xl) {
-    width: calc(((100% - 1420px) / 2) + 1420px);
+    width: calc(((100% - 1420px) / 2) + 1440px);
   }
 
   @include breakpoint($xxl) {
@@ -306,4 +303,43 @@ a {
 
 .splide__autoplay {
   display: none;
+}
+
+.mfp-bg {
+  z-index: 999 !important;
+}
+.mfp-wrap {
+  z-index: 999 !important;
+}
+
+.contact-icon svg,
+.phone-icon svg {
+  pointer-events: none;
+}
+
+.strong {
+  font-weight: 700;
+}
+
+.hero__slide__inside {
+
+}
+
+
+.hero .js-hero .hero__slide__inside {
+  transition: .8s all ease-in-out;
+}
+
+.hero .js-hero .hero__slide__inside.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.link-to-apartments-list {
+  transition: 0.25s all ease-in-out;
+}
+
+.link-to-apartments-list:hover  {
+  background: $darkBlue;
+  color: $white;
 }

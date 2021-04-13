@@ -2,13 +2,14 @@
 	<div class="znajdzLokal__item">
 		<div class="znajdzLokal__item__copy">
 			<h2 class="znajdzLokal__item__copy__title">
-				<span class="znajdzLokal__item__title">{{item.title}}</span>
+				
 				<span class="znajdzLokal__item__inwestycja">
 					{% for termname in item.terms('inwestycja') %}
 						{{termname.name}}
 					{% endfor %}
 				</span>
 			</h2>
+			<span class="znajdzLokal__item__title">Mieszkanie nr {{item.title}}</span>
 			{% if item.powierzchnia %}
 				<div class="lokal__twoColumns">
 					<h3>Powierzchnia:</h3>
@@ -44,8 +45,8 @@
 		<div class="line --grey" data-aos="width" data-aos-duration="800"></div>
 
 		<div class="lokal__btns">
-			<button class="btn">prośba o kontakt</button>
-			<a href="{{item.link}}" class="btn --lightGrey">Karta mieszkania</a>
+			<button class="btn contact-btn" data-id="{{item.title}}">prośba o kontakt</button>
+			<a href="{{item.link}}" class="btn --lightGrey">Szczegóły mieszkania</a>
 			{% if item.meta('pdf') %}
 				<a target="_blank" href="{{item.meta('pdf')}}" class="btn --lightGrey">pobierz PDF</a>
 			{% endif %}
