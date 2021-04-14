@@ -6,7 +6,7 @@ import LazyLoad from "vanilla-lazyload"
 import BackToTop from './jq-components/backToTop';
 import SmoothScroll from './jq-components/smoothScroll';
 import Splide from '@splidejs/splide';
-import filterigIsotope from './jq-components/filterigIsotope';
+import filterigMixItUp from './jq-components/filterigMixItUp';
 import MicroModal from 'micromodal';
 
 /* Replace image vidth youtube content */
@@ -830,7 +830,7 @@ $(() => {
   new BackToTop();
   new SmoothScroll();
   if (document.querySelector(".container")) {
-    new filterigIsotope();
+    new filterigMixItUp();
   }
 });
 
