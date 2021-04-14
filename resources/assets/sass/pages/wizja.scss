@@ -314,7 +314,7 @@
             margin-bottom: 60px;
 
             @include breakpoint($md) {
-                margin-bottom: 150px;
+                margin-bottom: 32px;
                 display: flex;
                 padding-top: 55px;
                 justify-content: space-between;
@@ -326,7 +326,6 @@
             }
 
             p {
-                max-width: 630px;
                 font-size: 20px;
             }
         }
@@ -713,7 +712,7 @@
     }
 
     &__copyRight__wrap__images {
-        margin-bottom: 60px;
+       margin-bottom: 60px;
 
         picture,
         source,
@@ -723,7 +722,7 @@
     }
 
     &__copyLeft__wrap__images {
-        margin-bottom: 60px;
+        ///margin-bottom: 60px;
     }
 
     &__copyLeft {}
@@ -778,7 +777,7 @@
     @include breakpoint($md) {
         .twoLines {
             .lokalizacja__copyLeft__wrap__copy {
-                padding-top: 100px;
+                //padding-top: 100px;
                 position: relative;
 
                 &:before {
@@ -801,7 +800,6 @@
 
         .copyMarginTop {
             .lokalizacja__copyRight__wrap__copy {
-                margin-top: 40px;
             }
 
             .lokalizacja__copyLeft__wrap__copy {
@@ -811,7 +809,7 @@
 
         .sliderMarginTop {
             .lokalizacja__copyLeft__wrap__images {
-                margin-top: 114px;
+                margin-top: 0;
             }
         }
     }
@@ -888,4 +886,26 @@
 
 .dzielnica__images__content {
     width: 100%;
+}
+
+.wizja__lokalizacja .wizja__lokalizacja__wrapper h2 {
+    @include breakpoint($md) {
+        padding: 0 20px;
+    }
+}
+
+.wizja__lokalizacja__wrapper .fnt50 {
+    margin-bottom: 16px;
+}
+
+.lokalizacja__copy.copyMarginTop {
+    margin-top: 50px;
+}
+
+.wizja__lokalizacja__wrapper p {
+    width: 100%;
+
+    @include breakpoint($md) {
+        width: 60%;
+      }
 }

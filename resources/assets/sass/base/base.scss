@@ -316,3 +316,30 @@ a {
 .phone-icon svg {
   pointer-events: none;
 }
+
+.strong {
+  font-weight: 700;
+}
+
+.hero__slide__inside {
+
+}
+
+
+.hero .js-hero .hero__slide__inside {
+  transition: .8s all ease-in-out;
+}
+
+.hero .js-hero .hero__slide__inside.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.link-to-apartments-list {
+  transition: 0.25s all ease-in-out;
+}
+
+.link-to-apartments-list:hover  {
+  background: $darkBlue;
+  color: $white;
+}

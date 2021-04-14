@@ -51,6 +51,10 @@ $(document).ready(function () {
   phoneInputValidationHandler()
 
 
+  window.addEventListener('message', function(e) {
+    handleMessageFromJeff(e)
+  })
+
   MicroModal.init({
     openTrigger: 'data-custom-open', // [3]
     closeTrigger: 'data-custom-close', // [4]
@@ -66,6 +70,21 @@ $(document).ready(function () {
     }
   }
 
+  function handleMessageFromJeff(jeffEvent) {
+    if (jeffEvent.origin === "https://v3.jeff.resimo.pl") {
+      const data = jeffEvent.data
+      const dataJson = JSON.parse(data)
+      generateLinkToApartmentsList(dataJson.identifier)
+    }
+  }
+
+  function generateLinkToApartmentsList(investmentName) {
+    ///inwestycja/{nazwa}/#lista-mieszkan
+
+    const goToApartmentsListButton = document.querySelector(".link-to-apartments-list")
+    goToApartmentsListButton.href = `/inwestycja/${investmentName}/#lista-mieszkan`
+  }
+ 
   const closePhoneModalButton = document.querySelectorAll(".phone-modal .modal__close")
 
   if (closePhoneModalButton) {
@@ -208,8 +227,7 @@ $(function () {
       }
     }
     Buttons[currentIndex].classList.add("active")
-    $("body, html").animate(
-      {
+    $("body, html").animate({
         scrollTop: $(".wizja__dzielnice__title").offset().top - 42
       },
       800
@@ -261,8 +279,7 @@ $(function () {
         }
       }
 
-      $("body, html").animate(
-        {
+      $("body, html").animate({
           scrollTop: $(".wizja__dzielnice__title").offset().top
         },
         800
@@ -291,7 +308,7 @@ $(function () {
         arrows: false,
         asNavFor: '.js-dzielnica__images__main-nav-thumbnails',
       }
-    },]
+    }, ]
   });
 
   $('.js-dzielnica__images__main-nav-thumbnails').slick({
@@ -348,27 +365,27 @@ $(function () {
     arrows: true,
     focusOnSelect: true,
     responsive: [{
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 1,
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          arrows: false,
+        }
       }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        arrows: false,
-      }
-    }
       // You can unslick at a given breakpoint now by adding:
       // settings: "unslick"
       // instead of a settings object
@@ -394,27 +411,27 @@ $(function () {
     arrows: true,
     focusOnSelect: true,
     responsive: [{
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 1,
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          arrows: false,
+        }
       }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        arrows: false,
-      }
-    }
       // You can unslick at a given breakpoint now by adding:
       // settings: "unslick"
       // instead of a settings object
@@ -470,9 +487,9 @@ $(function () {
     nextArrow: '.arrow__right',
     prevArrow: '.arrow__left',
     responsive: [{
-      breakpoint: 760,
-      settings: "unslick"
-    }
+        breakpoint: 760,
+        settings: "unslick"
+      }
 
     ]
   });
@@ -488,9 +505,9 @@ $(function () {
     nextArrow: '.arrow__right__dni',
     prevArrow: '.arrow__left__dni',
     responsive: [{
-      breakpoint: 760,
-      settings: "unslick"
-    }
+        breakpoint: 760,
+        settings: "unslick"
+      }
 
     ]
   });
@@ -508,14 +525,14 @@ $(function () {
     nextArrow: '<button class="dzielnica__arrow dzielnica__arrow__next"></button>',
     prevArrow: '<button class="dzielnica__arrow dzielnica__arrow__prev"></button>',
     responsive: [{
-      breakpoint: 1180,
-      settings: {
-        slidesToShow: 3,
-        variableWidth: true,
-        nextArrow: '.arrow__right__dni',
-        prevArrow: '.arrow__left__dni',
-      },
-    }
+        breakpoint: 1180,
+        settings: {
+          slidesToShow: 3,
+          variableWidth: true,
+          nextArrow: '.arrow__right__dni',
+          prevArrow: '.arrow__left__dni',
+        },
+      }
 
     ]
   });
@@ -532,14 +549,14 @@ $(function () {
     nextArrow: '<button class="dzielnica__arrow dzielnica__arrow__next"></button>',
     prevArrow: '<button class="dzielnica__arrow dzielnica__arrow__prev"></button>',
     responsive: [{
-      breakpoint: 1180,
-      settings: {
-        slidesToShow: 3,
-        variableWidth: true,
-        nextArrow: '.arrow__right__nag',
-        prevArrow: '.arrow__left__nag',
-      },
-    }
+        breakpoint: 1180,
+        settings: {
+          slidesToShow: 3,
+          variableWidth: true,
+          nextArrow: '.arrow__right__nag',
+          prevArrow: '.arrow__left__nag',
+        },
+      }
 
     ]
   });
@@ -555,11 +572,11 @@ $(function () {
     nextArrow: '<button class="dzielnica__arrow dzielnica__arrow__next"></button>',
     prevArrow: '<button class="dzielnica__arrow dzielnica__arrow__prev"></button>',
     responsive: [{
-      breakpoint: 760,
-      settings: "unslick",
-      nextArrow: '<button class="dzielnica__arrow dzielnica__arrow__next"></button>',
-      prevArrow: '<button class="dzielnica__arrow dzielnica__arrow__prev"></button>',
-    }
+        breakpoint: 760,
+        settings: "unslick",
+        nextArrow: '<button class="dzielnica__arrow dzielnica__arrow__next"></button>',
+        prevArrow: '<button class="dzielnica__arrow dzielnica__arrow__prev"></button>',
+      }
 
     ]
   });
@@ -652,7 +669,7 @@ $(function () {
 // Hide Page Loader when DOM and images are ready
 $(window).on('load', () => $('.pageloader').removeClass('is-active'));
 $(window).on('load', () => $('body').removeClass('is-loading'));
-
+$(window).on('load', () => setTimeout(hideHeroTitle, 6000));
 
 /* Make header smaller after some height */
 $(window).scroll(function () {
@@ -674,8 +691,8 @@ $(window).scroll(function () {
 });
 $('a#back-top').click(() => {
   $('body,html').animate({
-    scrollTop: 0,
-  },
+      scrollTop: 0,
+    },
     1000,
   );
   return false;
@@ -689,8 +706,8 @@ $('.showFilters').click(function (event) {
   $('.znajdzLokal__filters').show();
   $('.znajdzLokal__main').hide();
   $('body,html').animate({
-    scrollTop: 0,
-  },
+      scrollTop: 0,
+    },
     1000,
   );
   return false;
@@ -1019,13 +1036,22 @@ slidersWithButtons.forEach(el => {
 
 const phoneInputValidationHandler = () => {
   const phoneInputs = [...document.querySelectorAll('.phone-input')]
-  if(phoneInputs.length) {
+  if (phoneInputs.length) {
     phoneInputs.forEach(input => {
-      input.addEventListener('keyup', function() {
+      input.addEventListener('keyup', function () {
         const regex = /[a-zA-Z!@#$%=^&\p{L}*]/g
         const value = input.value
-        input.value = value.replace( regex, "" )
+        input.value = value.replace(regex, "")
       })
+    })
+  }
+}
+
+const hideHeroTitle = () => {
+  const heroTitles = document.querySelectorAll(".hero .js-hero .hero__slide__inside")
+  if (heroTitles) {
+    [...heroTitles].forEach(item => {
+      item.classList.add("hidden")
     })
   }
 }
