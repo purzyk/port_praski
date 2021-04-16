@@ -1,4 +1,4 @@
-class filterigIsotope {
+class filterigMixItUp {
     constructor() {
         (function($) {
             $(document).ready(function() {
@@ -177,13 +177,14 @@ class filterigIsotope {
                     },
                     callbacks: {
                         onMixStart: function(state, futureState) {
+                            destroyPagination();
                             const loader = document.querySelector(
                                 ".loader-container"
                             );
                             loader.classList.add("loader-container--show");
                             loader.classList.remove("loader-container--hide");
 
-                            destroyPagination();
+                            
                         },
                         onMixClick: function(state, futureState) {
                             /* onMixClick not working with multifilter - github issue #386 */
@@ -193,8 +194,6 @@ class filterigIsotope {
                         },
                         onMixEnd: function(state, originalEvent) {
                             $(".counter").text(state.totalMatching);
-
-                            setPagination();
                             const loader = document.querySelector(
 								".loader-container"
 							);
@@ -202,6 +201,7 @@ class filterigIsotope {
 								"loader-container--show"
 							);
 							loader.classList.add("loader-container--hide");
+                            setPagination();
                         },
                     },
                 });
@@ -289,7 +289,10 @@ class filterigIsotope {
                     "range",
                     filterTestResult
                 );
-
+                mixer.show()
+                .then(function(state) {
+                    console.log(state.totalShow === state.totalTargets); // true
+                });
                 /* getState */
                 var state = mixer.getState();
                 $(".total").text(state.totalTargets);
@@ -304,4 +307,4 @@ class filterigIsotope {
     }
 }
 
-export default filterigIsotope;
+export default filterigMixItUp;

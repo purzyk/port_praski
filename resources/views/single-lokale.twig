@@ -12,7 +12,10 @@
 							{{item.name}}
 						{% endfor %}
 					</h1>
-					<h2 class="lokal__mieszkanie">Mieszkanie nr {{post.name}}</h2>
+					<h2 class="lokal__mieszkanie">
+						{% if post.typ == 'Usługi' %}Lokal Usługowy nr{% else %}Mieszkanie nr
+						{% endif %}
+						{{post.name}}</h2>
 					<div class="line double --grey"></div>
 					{% if post.powierzchnia %}
 						<div class="lokal__twoColumns">
@@ -81,5 +84,5 @@
 			</div>
 		</article>
 
-	{% include 'components/blocks/contact_modal.twig' %}
-{% endblock %}
+		{% include 'components/blocks/contact_modal.twig' %}
+	{% endblock %}

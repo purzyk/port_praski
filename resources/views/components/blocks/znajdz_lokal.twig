@@ -34,9 +34,9 @@
 
 						<div class="controls smaller-margin" data-filter-group="inwestycje">
 							<ul class="checkboxTest">
-								{% for item in categories %}
+								{% for item in lokaleFiltry %}
 									<li><input type="checkbox" checked value=".{{item.slug}}" id="cb{{loop.index}}"/>
-										<label for="cb{{loop.index}}"><img src="{{Image(item.glowne_zdjecie).src | resize(132,94)}}"/></label>
+										<label for="cb{{loop.index}}"><img src="{{Image(item.image).src | resize(132,94)}}"/></label>
 										<span class="checkboxTest__title">{{item.title}}</span>
 									</li>
 								{% endfor %}
@@ -57,7 +57,7 @@
 								<span class="wpcf7-list-item">
 									<label>
 										<input type="checkbox" value=".mieszkanie"/>
-										<span class="wpcf7-list-item-label">Mieszkanie lub Apartament</span>
+										<span class="wpcf7-list-item-label">Mieszkanie</span>
 									</label>
 								</span>
 							</span>
@@ -67,7 +67,7 @@
 								<span class="wpcf7-list-item">
 									<label>
 										<input type="checkbox" value=".uslugi"/>
-										<span class="wpcf7-list-item-label">Usługi</span>
+										<span class="wpcf7-list-item-label">Lokal Usługowy</span>
 									</label>
 								</span>
 							</span>
@@ -134,12 +134,12 @@
 
 				</div>
 			</aside>
-			
-	
+
+
 			<section class="znajdzLokal__main">
-			<div class="loader-container">
-				<div class="loader-container__loader"></div>
-			</div>
+				<div class="loader-container">
+					<div class="loader-container__loader"></div>
+				</div>
 				<div class="znajdzLokal__main__meta --desktop">
 					<div class="znajdzLokal__main__meta__content">
 						<span class="--blue">liczba ofert
@@ -163,7 +163,7 @@
 				</div>
 
 			</section>
-		
+
 		</div>
 	</div>
 </article>
