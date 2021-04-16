@@ -140,12 +140,6 @@ $(document).ready(function () {
     });
   }
 
-
-  /* Go back */
-
-  $(".goBack").click(function () {
-    window.history.back();
-  });
   $(".filter-simple-button").click(function () {
     var value = $(this).attr('data-filter');
     if (value === "all") {
@@ -1054,4 +1048,14 @@ const hideHeroTitle = () => {
       item.classList.add("hidden")
     })
   }
+}
+
+
+/* Single lokale page - go back to list link update */
+const goBackButton = document.querySelector('.goBack')
+if (goBackButton) {
+  const lastUrl = document.referrer
+
+  if (lastUrl.includes('inwestycja')) goBackButton.href = lastUrl
+  else goBackButton.href = `${window.location.origin}/znajdz-lokal/`
 }
