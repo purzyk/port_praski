@@ -8,9 +8,11 @@
 				<div class="lokal__left">
 					<div class="lokal__status {{post.meta('status')}}">{{post.meta('status')}}</div>
 					<h1 class="lokal__inwestycja">
-						{% for item in inwestycja %}
-							{{item.name}}
-						{% endfor %}
+						{% if inwestycja|length > 1 %}
+							{{inwestycja[1].name}}
+						{% else %}
+							{{inwestycja[0].name}}
+						{% endif %}
 					</h1>
 					<h2 class="lokal__mieszkanie">
 						{% if post.typ == 'Usługi' %}Lokal Usługowy nr{% else %}Mieszkanie nr

@@ -4,9 +4,11 @@
 			<h2 class="znajdzLokal__item__copy__title">
 
 				<span class="znajdzLokal__item__inwestycja">
-					{% for termname in item.terms('inwestycja') %}
-						{{termname.name}}
-					{% endfor %}
+					{% if item.terms('inwestycja')|length > 1 %}
+						{{item.terms('inwestycja')[1].name}}
+					{% else %}
+						{{item.terms('inwestycja')[0].name}}
+					{% endif %}
 				</span>
 			</h2>
 			<span class="znajdzLokal__item__title">
@@ -49,7 +51,9 @@
 
 		<div class="lokal__btns">
 			<button class="btn contact-btn" data-id="{{item.title}}">prośba o kontakt</button>
-			<a href="{{item.link}}" class="btn --lightGrey">Szczegóły mieszkania</a>
+			<a href="{{item.link}}" class="btn --lightGrey">
+				Szczegóły {% if item.typ == 'Usługi' %}lokalu{% else %}mieszkania{% endif %}
+			</a>
 			{% if item.meta('pdf') %}
 				<a target="_blank" href="{{item.meta('pdf')}}" class="btn --lightGrey">pobierz PDF</a>
 			{% endif %}
