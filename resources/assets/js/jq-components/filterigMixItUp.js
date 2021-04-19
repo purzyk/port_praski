@@ -162,11 +162,12 @@ class filterigMixItUp {
                     behavior: {
                         liveSort: false,
                     },
-                    load: {
-                        sort: "sort:asc",
-                    },
                     multifilter: {
                         enable: true, // enable the multifilter extension for the mixer,'
+                    },
+                    load: {
+                        sort: "sort:asc",
+                        filter: ".sierakowskiego-ii"
                     },
                     controls: {
                         enable: false,
@@ -193,6 +194,7 @@ class filterigMixItUp {
                             // loader.classList.add("loader-container--show")
                         },
                         onMixEnd: function(state, originalEvent) {
+                            
                             $(".counter").text(state.totalMatching);
                             const loader = document.querySelector(
 								".loader-container"
@@ -202,10 +204,10 @@ class filterigMixItUp {
 							);
 							loader.classList.add("loader-container--hide");
                             setPagination();
+                            $("img.lazy").lazyload();  
                         },
                     },
                 });
-
                 const sortButtons = () => {
                     const sortUp = document.querySelectorAll(".sortUp");
                     const sortDown = document.querySelectorAll(".sortDown");
@@ -302,6 +304,12 @@ class filterigMixItUp {
                     var currentValue = this.value;
                     $('button[data-value="' + currentValue + '"]').remove();
                 });
+                
+                if ($("body").hasClass("page-template-template-znajdz-lokal")) {
+                    mixer.setFilterGroupSelectors('inwestycje', ['.port', '.port-ii', '.sierakowskiego-ii', '.sierakowskiego-4', '.lokale-uslugowe']);
+                    mixer.parseFilterGroups();
+                }
+ 
             });
         })(jQuery);
     }

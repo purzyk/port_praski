@@ -1,4 +1,4 @@
-<article class="mix  {% if item.meta('typ') == 'Usługi' %}uslugi{% else %}mieszkanie{% endif %} {% for termname in item.terms('inwestycja') %}{{termname.slug}} {% endfor %} {% for termname in item.terms('dodatkowo') %}{{termname.slug}} {% endfor %}" data-sort="{{item.title}}" {% if item.meta('liczba_pokoi') %} data-a="{{item.meta('liczba_pokoi')}}" {% endif %} {% if item.meta('powierzchnia') %} data-b="{{item.meta('powierzchnia')}}" {% endif %} {% if item.meta('pietro') %} data-c="{{item.meta('pietro')}}" {% endif %}">
+<article class="mix  {% if item.meta('typ') == 'Usługi' %}uslugi{% else %}mieszkanie{% endif %} {% for termname in item.terms('inwestycja') %}{{termname.slug}} {% endfor %} {% for termname in item.terms('dodatkowo') %}{{termname.slug}} {% endfor %}" data-sort="{{item.title}}" {% if item.meta('liczba_pokoi') %} data-a="{{item.meta('liczba_pokoi')}}" {% endif %} {% if item.meta('powierzchnia') %} data-b="{{item.meta('powierzchnia')}}" {% endif %} {% if item.meta('pietro') %} data-c="{{item.meta('pietro')}}" {% endif %} ">
 	<div class="znajdzLokal__item">
 		<div class="znajdzLokal__item__copy">
 			<h2 class="znajdzLokal__item__copy__title">
@@ -42,8 +42,7 @@
 		</div>
 		<div class="line --grey" data-aos="width" data-aos-duration="800"></div>
 		<figure>
-			<img src="{{item.thumbnail | resize(150,132)}}">
-
+			<img class="lazy" data-src="{{item.thumbnail | resize(150,132)}}">
 		</figure>
 		<div class="line --grey" data-aos="width" data-aos-duration="800"></div>
 
