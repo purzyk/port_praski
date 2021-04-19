@@ -1,4 +1,4 @@
-<article class="mix  {% if item.typ == 'Usługi' %}uslugi{% else %}mieszkanie{% endif %} {% for termname in item.terms('inwestycja') %}{{termname.slug}} {% endfor %}">
+<article class="mix  {% if item.meta('typ') == 'Usługi' %}uslugi{% else %}mieszkanie{% endif %} {% for termname in item.terms('inwestycja') %}{{termname.slug}} {% endfor %} {% for termname in item.terms('dodatkowo') %}{{termname.slug}} {% endfor %}" data-sort="{{item.title}}" {% if item.meta('liczba_pokoi') %} data-a="{{item.meta('liczba_pokoi')}}" {% endif %} {% if item.meta('powierzchnia') %} data-b="{{item.meta('powierzchnia')}}" {% endif %} {% if item.meta('pietro') %} data-c="{{item.meta('pietro')}}" {% endif %}">
 	<div class="znajdzLokal__item">
 		<div class="znajdzLokal__item__copy">
 			<h2 class="znajdzLokal__item__copy__title">
@@ -10,17 +10,17 @@
 				</span>
 			</h2>
 			<span class="znajdzLokal__item__title">
-				{% if item.typ == 'Usługi' %}Lokal Usługowy nr{% else %}Mieszkanie nr
+				{% if item.meta('typ') == 'Usługi' %}Lokal Usługowy nr{% else %}Mieszkanie nr
 				{% endif %}
 				{{item.title}}</span>
-			{% if item.powierzchnia %}
+			{% if item.meta('powierzchnia') %}
 				<div class="lokal__twoColumns">
 					<h3>Powierzchnia:</h3>
 					<p>{{item.meta('powierzchnia')}}
 						m²</p>
 				</div>
 			{% endif %}
-			{% if item.liczba_pokoi %}
+			{% if item.meta('liczba_pokoi') %}
 				<div class="lokal__twoColumns">
 					<h3>Liczba pokoi:</h3>
 					<p>{{item.meta('liczba_pokoi')}}</p>
