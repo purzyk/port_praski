@@ -80,11 +80,13 @@
 					</div>
 
 					<!-- THUMBNAILS -->
-					<div class="slider-nav-lokal-thumbnails">
-						{% for item in post.meta('galeria') %}
-							<div><img src="{{Image(item.zdjecie).src}}"></div>
-						{% endfor %}
-					</div>
+					{% if post.meta('galeria')|length > 1 %}
+						<div class="slider-nav-lokal-thumbnails">
+								{% for item in post.meta('galeria') %}
+									<div><img src="{{Image(item.zdjecie).src}}"></div>
+								{% endfor %}
+						</div>
+					{% endif %}
 				</div>
 
 			</div>
