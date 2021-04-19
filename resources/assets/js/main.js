@@ -1056,6 +1056,6 @@ const goBackButton = document.querySelector('.goBack')
 if (goBackButton) {
   const lastUrl = document.referrer
 
-  if (lastUrl.includes('inwestycja')) goBackButton.href = `${lastUrl}/#lista-mieszkan`
-  else goBackButton.href = `${window.location.origin}/znajdz-lokal/#lista-mieszkan`
+  if (lastUrl.includes('inwestycja')) goBackButton.href = `${lastUrl}#lista-mieszkan`
+  else goBackButton.href = `${window.location.origin}/znajdz-lokal`
 }
