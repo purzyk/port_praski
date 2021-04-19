@@ -56,7 +56,11 @@
 					{% endif %}
 					<div class="line double --grey"></div>
 					<div class="lokal__btns">
-						<button class="btn" id="contactButton">prośba o kontakt</button>
+						<button class="btn" id="contactButton" data-investment="{% if inwestycja|length > 1 %}
+						{{inwestycja[1].name}}
+					{% else %}
+						{{inwestycja[0].name}}
+					{% endif %}">prośba o kontakt</button>
 
 						{% if pdf is empty %}
 							<a target="_blank" href="" class="btn --lightGrey" id="pdfLink">pobierz PDF</a>

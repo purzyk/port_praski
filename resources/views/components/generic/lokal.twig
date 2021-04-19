@@ -50,7 +50,11 @@
 		<div class="line --grey" data-aos="width" data-aos-duration="800"></div>
 
 		<div class="lokal__btns">
-			<button class="btn contact-btn" data-id="{{item.title}}">prośba o kontakt</button>
+			<button class="btn contact-btn" data-id="{{item.title}}" data-investment="{% if item.terms('inwestycja')|length > 1 %}
+						{{item.terms('inwestycja')[1].name}}
+					{% else %}
+						{{item.terms('inwestycja')[0].name}}
+					{% endif %}">prośba o kontakt</button>
 			<a href="{{item.link}}" class="btn --lightGrey">
 				Szczegóły {% if item.typ == 'Usługi' %}lokalu{% else %}mieszkania{% endif %}
 			</a>
