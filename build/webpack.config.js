@@ -8,7 +8,7 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 const config = require('./config');
 const inProduction = process.env.NODE_ENV === 'production';
-
+const { VueLoaderPlugin } = require('vue-loader')
 // LOADER HELPERS
 const extractCss = {
   loader: MiniCssExtractPlugin.loader,
@@ -131,6 +131,10 @@ module.exports = {
           publicPath: `${config.assetsPath}static/fonts/`,
         },
       },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      }
     ],
   },
 
@@ -185,6 +189,7 @@ module.exports = {
       reload: false,
       injectCss: true,
     }, ),
+    new VueLoaderPlugin()
   ],
 };
 

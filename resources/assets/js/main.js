@@ -8,7 +8,7 @@ import SmoothScroll from './jq-components/smoothScroll';
 import Splide from '@splidejs/splide';
 import filterigMixItUp from './jq-components/filterigMixItUp';
 import MicroModal from 'micromodal';
-
+import Vue from "vue"
 /* Replace image vidth youtube content */
 function labnolIframe(div) {
   var iframe = document.createElement("iframe");
@@ -1075,4 +1075,15 @@ if (goBackButton) {
   else goBackButton.href = `${window.location.origin}/znajdz-lokal`
 }
 
+import ApartmentsList from "./components/ApartmentsList.vue"
 
+const apartmentsListContainer = document.querySelector("#apartments-list-container")
+if (apartmentsListContainer) {
+    const app = new Vue({
+        el: apartmentsListContainer,
+        components: {
+            TableApartments
+        },
+        render: h => h(ApartmentsList),
+    })
+}
