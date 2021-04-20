@@ -712,3 +712,58 @@ function custom_api_get_uslugowe_callback( $request ) {
     return $lokale;
 }
 /* end uslugowe*/ 
+
+
+/* sierakowskiego 5*/ 
+add_action( 'rest_api_init', 'custom_api_get_sierakowskiego5' );
+
+function custom_api_get_sierakowskiego5() {
+    register_rest_route( 'custom/v1', '/sierakowskiego5', array(
+        'methods' => 'GET',
+        'callback' => 'custom_api_get_sierakowskiego5_callback'
+    ));
+}
+function custom_api_get_sierakowskiego5_callback( $request ) {
+    $posts_data = array();
+    $paged = $request->get_param( 'page' );
+    $paged = ( isset( $paged ) || ! ( empty( $paged ) ) ) ? $paged : 1;
+    $posts = get_posts( array(
+            'paged' => $paged,
+            'posts_per_page' => -1,
+			'post_type' => 'lokale',
+			'tax_query' => array(
+				array(
+				  'taxonomy' => 'inwestycja',
+				  'field' => 'term_id',
+				  'terms' => 12
+				)
+			  )
+        )
+    );
+
+    foreach( $posts as $post ) {
+        $id = $post->ID;
+		$permalink = substr(get_permalink( $post->ID ), 0, -1);
+        $post_thumbnail = ( has_post_thumbnail( $id ) ) ? get_the_post_thumbnail_url( $id, array(800,577)) : null;
+		$powierzchnia = get_field('powierzchnia', $id);
+		$inwestycja =  wp_get_post_terms( $post->ID, 'inwestycja', array( 'fields' => 'names' ) );
+		$typ = get_field('typ', $id);
+		$liczba_pokoi = get_field('liczba_pokoi', $id);
+		$pietro = get_field('pietro', $id);
+		$status = get_field('status', $id);
+		
+		$lokale[] = array(
+            'status' => $status,
+			'url' => $permalink,
+            'nr_lokalu' => get_the_title( $id ),
+            'rzut_3D' => $post_thumbnail,
+			'powierzchnia' => $powierzchnia,
+			'inwestycja' => $inwestycja[0],
+			'typ' => $typ,
+			'liczba_pokoi' => $liczba_pokoi,
+			'pietro' => $pietro,
+        );
+    }
+    return $lokale;
+}
+/* end port2*/ 
