@@ -189,6 +189,17 @@ $(document).ready(function () {
     c = currentScrollTop;
   });
 
+
+
+  if(document.body.classList.contains("single-lokale")) {
+    const thumbnails = document.querySelector(".slider-nav-lokal-thumbnails")
+    const apartmentMainSlider = document.querySelector(".slider-lokal")
+    if(!thumbnails) {
+      apartmentMainSlider.style.height = "auto"
+    }
+  }
+  
+
 });
 
 $(function () {
@@ -1063,3 +1074,5 @@ if (goBackButton) {
   if (lastUrl.includes('inwestycja')) goBackButton.href = `${lastUrl}#lista-mieszkan`
   else goBackButton.href = `${window.location.origin}/znajdz-lokal`
 }
+
+
