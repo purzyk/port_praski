@@ -140,6 +140,12 @@ $(document).ready(function () {
     });
   }
 
+
+  /* Go back */
+
+  $(".goBack").click(function () {
+    window.history.back();
+  });
   $(".filter-simple-button").click(function () {
     var value = $(this).attr('data-filter');
     if (value === "all") {
@@ -931,12 +937,11 @@ const addListenersToContactButtons = () => {
     allAskToContactButtons[i].addEventListener('click', function (e) {
       e.stopPropagation()
       const id = allAskToContactButtons[i].dataset.id
-      const investment = allAskToContactButtons[i].dataset.investment.trim()
       MicroModal.show('contact-modal');
       if (document.querySelector('#contact-modal input[name="text-wiadomosc"]')) {
         const messageInput = document.querySelector('#contact-modal input[name="text-wiadomosc"]')
         messageInput.parentNode.parentNode.classList.add("active")
-        messageInput.value = `Interesuje mnie oferta ${investment} - mieszkanie nr ${id}`
+        messageInput.value = `Interesuje mnie oferta mieszkania nr ${id}`
       }
 
     })
@@ -974,16 +979,13 @@ if (document.querySelector("#wyszukiwarka3d")) {
 }
 
 
-const goToContact = (el) => {
+const goToContact = () => {
   const urlArray = window.location.href.split("/")
   const apartmentId = urlArray[urlArray.length - 2].toUpperCase().replaceAll("-", ".")
   const messageInput = document.querySelector('#contact-modal input[name="text-wiadomosc"]')
 
-  console.log(el)
-  console.log(el.currentTarget)
-  const investment = el.currentTarget.dataset.investment.trim()
   messageInput.parentNode.parentNode.classList.add("active")
-  messageInput.value = `Interesuje mnie oferta ${investment} - mieszkanie nr ${apartmentId}`
+  messageInput.value = `Interesuje mnie oferta mieszkania nr ${apartmentId}`
 
   //   $("body, html").animate(
   //       {
@@ -997,8 +999,8 @@ const goToContact = (el) => {
 if (document.querySelector('#contactButton')) {
   const contactButton = document.querySelector('#contactButton');
 
-  contactButton.addEventListener('click', function (el) {
-    goToContact(el)
+  contactButton.addEventListener('click', function () {
+    goToContact()
   })
 
   const pdfLink = document.querySelector("#pdfLink");
@@ -1052,14 +1054,4 @@ const hideHeroTitle = () => {
       item.classList.add("hidden")
     })
   }
-}
-
-
-/* Single lokale page - go back to list link update */
-const goBackButton = document.querySelector('.goBack')
-if (goBackButton) {
-  const lastUrl = document.referrer
-
-  if (lastUrl.includes('inwestycja')) goBackButton.href = `${lastUrl}#lista-mieszkan`
-  else goBackButton.href = `${window.location.origin}/znajdz-lokal`
 }
