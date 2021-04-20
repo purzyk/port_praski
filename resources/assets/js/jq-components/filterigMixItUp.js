@@ -167,7 +167,6 @@ class filterigMixItUp {
                     },
                     load: {
                         sort: "sort:asc",
-                        filter: ".sierakowskiego-ii"
                     },
                     controls: {
                         enable: false,
