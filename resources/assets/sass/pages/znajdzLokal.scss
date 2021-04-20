@@ -7,8 +7,7 @@
         text-align: left;
         font-size: 18px;
         line-height: 18px;
-        margin-bottom: 10px;
-        ;
+        margin-bottom: 10px;;
 
         @include breakpoint($md) {
             font-size: 50px;
@@ -94,10 +93,6 @@
                 line-height: 38px;
                 color: #262359;
             }
-
-            span {
-                display: block;
-            }
         }
 
         &__copy {
@@ -145,7 +140,6 @@
     &__main {
         width: 100%;
         position: relative;
-
         &__meta {
             @include breakpoint($md) {
                 display: flex;
@@ -184,7 +178,8 @@
                         content: "";
                         width: 12px;
                         height: 6px;
-                        background: url("../images/sort.svg") right center no-repeat;
+                        background: url("../images/sort.svg") right center
+                            no-repeat;
                         display: block;
                         right: 0;
                         top: 6px;
@@ -258,7 +253,8 @@
         }
 
         &__item {
-            &.--inwestycje {}
+            &.--inwestycje {
+            }
 
             &__singleZdjecie {
                 @include breakpoint($md) {
@@ -448,17 +444,17 @@ ul.checkboxTest {
         width: 100%;
     }
 
-    :checked+label {
+    :checked + label {
         border-color: #ddd;
     }
 
-    :checked+label::before {
+    :checked + label::before {
         content: "";
         background: $darkBlue url("../images/check_mark.svg") center no-repeat;
         transform: scale(1);
     }
 
-    :checked+label img {
+    :checked + label img {
         border: 2px solid $darkBlue;
         z-index: -1;
         opacity: 1;
@@ -495,7 +491,6 @@ ul.checkboxTest {
     padding: 0 20px;
     display: flex;
     justify-content: center;
-
     @include breakpoint($md) {
         padding: 0;
     }
@@ -534,12 +529,12 @@ ul.checkboxTest {
 
 .loader-container--show {
     animation: showLoader 0.3s ease-in-out;
-    animation-fill-mode: forwards;
+    animation-fill-mode: forwards ;
 }
 
 .loader-container--hide {
     animation: hideLoader 0.3s ease-in-out;
-    animation-fill-mode: forwards;
+    animation-fill-mode: forwards ;
 }
 
 .loader-container__loader {
