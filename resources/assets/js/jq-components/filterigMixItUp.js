@@ -302,6 +302,12 @@ class filterigMixItUp {
                     var currentValue = this.value;
                     $('button[data-value="' + currentValue + '"]').remove();
                 });
+                /*
+                if ($("body").hasClass("page-template-template-znajdz-lokal")) {
+                    mixer.setFilterGroupSelectors('inwestycje', ['.port', '.port-ii', '.sierakowskiego-ii', '.sierakowskiego-4', '.lokale-uslugowe']);
+                    mixer.parseFilterGroups();
+                }
+                */
             });
         })(jQuery);
     }
