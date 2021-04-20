@@ -1,14 +1,14 @@
-<article class="mix  {% if item.meta('typ') == 'Usługi' %}uslugi{% else %}mieszkanie{% endif %} {% for termname in item.terms('inwestycja') %}{{termname.slug}} {% endfor %} {% for termname in item.terms('dodatkowo') %}{{termname.slug}} {% endfor %}" data-sort="{{item.title}}" {% if item.meta('liczba_pokoi') %} data-a="{{item.meta('liczba_pokoi')}}" {% endif %} {% if item.meta('powierzchnia') %} data-b="{{item.meta('powierzchnia')}}" {% endif %} {% if item.meta('pietro') %} data-c="{{item.meta('pietro')}}" {% endif %} ">
+<article class="mix  {% if item.meta('typ') == 'Usługi' %}uslugi{% else %}mieszkanie{% endif %} {% for termname in item.terms('inwestycja') %}{{termname.slug}} {% endfor %} {% for termname in item.terms('dodatkowo') %}{{termname.slug}} {% endfor %}" data-sort="{{item.title}}" {% if item.meta('liczba_pokoi') %} data-a="{{item.meta('liczba_pokoi')}}" {% endif %} {% if item.meta('powierzchnia') %} data-b="{{item.meta('powierzchnia')}}" {% endif %} {% if item.meta('pietro') %} data-c="{{item.meta('pietro')}}" {% endif %}>
 	<div class="znajdzLokal__item">
 		<div class="znajdzLokal__item__copy">
 			<h2 class="znajdzLokal__item__copy__title">
 
 				<span class="znajdzLokal__item__inwestycja">
-					{% if item.terms('inwestycja')|length > 1 %}
-						{{item.terms('inwestycja')[1].name}}
-					{% else %}
-						{{item.terms('inwestycja')[0].name}}
-					{% endif %}
+					{% for item in item.terms('inwestycja') %}
+						<span>{{item.name}}
+						</span>
+
+					{% endfor %}
 				</span>
 			</h2>
 			<span class="znajdzLokal__item__title">
@@ -49,13 +49,11 @@
 		<div class="line --grey" data-aos="width" data-aos-duration="800"></div>
 
 		<div class="lokal__btns">
-			<button class="btn contact-btn" data-id="{{item.title}}" data-investment="{% if item.terms('inwestycja')|length > 1 %}
-						{{item.terms('inwestycja')[1].name}}
-					{% else %}
-						{{item.terms('inwestycja')[0].name}}
-					{% endif %}">prośba o kontakt</button>
+			<button class="btn contact-btn" data-id="{{item.title}}" data-investment="{% if item.terms('inwestycja')|length > 1 %} {{item.terms('inwestycja')[1].name}} {% else %} {{item.terms('inwestycja')[0].name}} {% endif %}">prośba o kontakt</button>
 			<a href="{{item.link}}" class="btn --lightGrey">
-				Szczegóły {% if item.typ == 'Usługi' %}lokalu{% else %}mieszkania{% endif %}
+				Szczegóły
+				{% if item.typ == 'Usługi' %}lokalu{% else %}mieszkania
+				{% endif %}
 			</a>
 			{% if item.meta('pdf') %}
 				<a target="_blank" href="{{item.meta('pdf')}}" class="btn --lightGrey">pobierz PDF</a>
