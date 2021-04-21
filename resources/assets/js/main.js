@@ -1081,9 +1081,6 @@ const apartmentsListContainer = document.querySelector("#apartments-list-contain
 if (apartmentsListContainer) {
     const app = new Vue({
         el: apartmentsListContainer,
-        components: {
-            TableApartments
-        },
         render: h => h(ApartmentsList),
     })
 }
