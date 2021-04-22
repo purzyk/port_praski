@@ -395,9 +395,9 @@ ul.checkboxTest {
         margin-bottom: 10px;
     }
 
-    input[type="checkbox"][id^="cb"] {
-        display: none;
-    }
+    // input[type="checkbox"][id^="cb"] {
+    //     display: none;
+    // }
 
     &__title {
         font-size: 14px;
@@ -450,7 +450,7 @@ ul.checkboxTest {
 
     :checked + label::before {
         content: "";
-        background: $darkBlue url("../images/check_mark.svg") center no-repeat;
+        background: $darkBlue url("https://port-praski.resimo.tech/wp-content/themes/wptheme/static/images/check-checked.svg") center no-repeat;
         transform: scale(1);
     }
 

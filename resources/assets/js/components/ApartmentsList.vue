@@ -1,17 +1,121 @@
 <template>
-    <div class="l-wrapper">
-        <h1 class="fnt50 znajdzLokal__title">Znajdź lokal</h1>
-        <div
-            class="line znajdzLokal__line --mobile"
-            data-aos="width"
-            data-aos-duration="800"
-        ></div>
-        <div class="znajdzLokal__wrapper">
-            <ApartmentsListFilters />
-            <section class="znajdzLokal__main">
-                <ApartmentsListItem v-for="item in apartments" :apartment="item" :key="item.id" />
-                <ApartmentsListPagination  @page-changed="page => currentPage = page"/>
-            </section>
+    <div>
+        <div class="l-wrapper">
+            <h1 class="fnt50 znajdzLokal__title">Znajdź lokal</h1>
+
+            <div class="znajdzLokal__main__meta__content --mobile">
+                <span class="--blue"
+                    >liczba ofert
+                    <span class="counter">{{ allFilteredApartments }}</span>
+                </span>
+                <span
+                    >(<span class="total">{{ allApartmentsCount }}</span
+                    >)</span
+                >
+            </div>
+            <div
+                class="line znajdzLokal__line --mobile"
+                data-aos="width"
+                data-aos-duration="800"
+            ></div>
+            <button
+                class="btn --mobile --filtry"
+                @click="showFiltersMobile = true"
+            >
+                <span>pokaż filtry</span>
+            </button>
+            <div class="znajdzLokal__main__meta__content --mobile">
+                <span>sortuj:</span>
+                <button
+                    data-sort="sort:asc"
+                    class="--sort sortUp"
+                    v-if="!sortAsc"
+                    @click="sortApartments"
+                >
+                    nazwa
+                </button>
+                <button
+                    v-else
+                    @click="sortApartments"
+                    data-sort="sort:desc"
+                    class="--sort sortDown"
+                >
+                    nazwa
+                </button>
+            </div>
+        </div>
+        <div class="l-wrapper --noPadding --noRelative">
+            <div class="znajdzLokal__wrapper">
+                <ApartmentsListFilters
+                    :filters="filters"
+                    :investments="investments"
+                    :extra="extra"
+                    :maxArea="maxArea"
+                    :maxFloor="maxFloor"
+                    :maxRooms="maxRooms"
+                    :showFiltersMobile="showFiltersMobile"
+                    @reset-filters="resetFilters"
+                    @close-filters="closeFilters"
+                />
+                <section class="znajdzLokal__main">
+                    <div class="znajdzLokal__main__meta ">
+                        <div class="znajdzLokal__main__meta__content --desktop">
+                            <span class="--blue"
+                                >liczba ofert
+                                <span class="counter">{{
+                                    allFilteredApartments
+                                }}</span>
+                            </span>
+                            <span
+                                >(<span class="total">{{
+                                    allApartmentsCount
+                                }}</span
+                                >)</span
+                            >
+                        </div>
+
+                        <div class="znajdzLokal__main__meta__content --desktop">
+                            <span>sortuj:</span>
+                            <button
+                                data-sort="sort:asc"
+                                class="--sort sortUp"
+                                v-if="!sortAsc"
+                                @click="sortApartments"
+                            >
+                                nazwa
+                            </button>
+                            <button
+                                v-else
+                                @click="sortApartments"
+                                data-sort="sort:desc"
+                                class="--sort sortDown"
+                            >
+                                nazwa
+                            </button>
+                        </div>
+                    </div>
+                        <ApartmentsListItem
+                            v-for="item in paginatedApartments"
+                            :apartment="item"
+                            :key="item.id"
+                            :investment="
+                                getInvestmentName(item._primary_term_inwestycja)
+                            "
+                        />
+                    <ApartmentsListPagination
+                        :maxPage="maxPage"
+                        :currentPage="currentPage"
+                        @page-changed="setCurrentPage"
+                        v-if="filteredApartments.length"
+                    />
+
+                    <div v-else>
+                        <p class="text-center">
+                            Brak mieszkań o wybranych parametrach
+                        </p>
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
 </template>
@@ -30,431 +134,220 @@ export default {
     data() {
         return {
             apartments: [],
-            currentPage: 0
+            filteredApartments: [],
+            currentPage: null,
+            investments: [],
+            extra: [],
+            filters: {
+                rooms: [],
+                area: [],
+                floor: [],
+                extra: [],
+                type: ["Usługi", "Mieszkanie lub Apartament"],
+                investments: [],
+            },
+            perPage: 2,
+
+            maxFloor: 0,
+            maxRooms: 0,
+            maxArea: 0,
+            allApartmentsCount: null,
+            sortAsc: true,
+            showFiltersMobile: false,
         };
     },
-    mounted() {
-        const values = document.querySelector("#apartmentsListValues").value;
-        let parsedApartments = []
-        fake.forEach(item => parsedApartments = [...parsedApartments, ...item.apartments])
-        this.apartments = parsedApartments
+    computed: {
+        allFilteredApartments() {
+            return this.filteredApartments.length;
+        },
+        paginatedApartments() {
+            return this.filteredApartments.slice(
+                this.currentPage * this.perPage - this.perPage,
+                this.currentPage * this.perPage
+            );
+        },
+        maxPage() {
+            return Math.ceil(this.filteredApartments.length / this.perPage);
+        },
+    },
+    methods: {
+        prepareInitialValues() {
+            const minRooms = 0;
+            const maxRooms = Math.max.apply(
+                Math,
+                this.apartments.map(function(item) {
+                    return item.liczba_pokoi;
+                })
+            );
+            this.maxRooms = maxRooms;
+            this.filters.rooms = [minRooms, maxRooms];
+
+            const minArea = 1;
+            const maxArea = Math.max.apply(
+                Math,
+                this.apartments.map(function(item) {
+                    return item.powierzchnia;
+                })
+            );
+
+            this.filters.area = [minArea, maxArea];
+            this.maxArea = maxArea;
+            const minFloor = 0;
+            const maxFloor = Math.max.apply(
+                Math,
+                this.apartments.map(function(item) {
+                    return item.pietro;
+                })
+            );
+
+            this.filters.floor = [minFloor, maxFloor];
+            this.maxFloor = maxFloor;
+            if (this.investments !== null) {
+                this.filters.investments = this.investments.map(
+                    (item) => item.id
+                );
+            }
+
+            this.allApartmentsCount = this.apartments.length;
+            this.currentPage = 1;
+        },
+        getInvestmentName(id) {
+            if (this.investments) {
+                const numberID = Number(id);
+                const investment = this.investments.find(
+                    (item) => item.id === numberID
+                );
+                return investment ? investment.title : "";
+            } else {
+                return "";
+            }
+        },
+        filterApartments() {
+            this.filteredApartments = this.apartments;
+
+            // rooms filter
+
+            this.filteredApartments = this.filteredApartments.filter((item) => {
+                if (
+                    item.liczba_pokoi >= this.filters.rooms[0] &&
+                    item.liczba_pokoi <= this.filters.rooms[1]
+                ) {
+                    return item;
+                }
+            });
+
+            // area filter
+
+            this.filteredApartments = this.filteredApartments.filter((item) => {
+                if (
+                    item.powierzchnia >= this.filters.area[0] &&
+                    item.powierzchnia <= this.filters.area[1]
+                ) {
+                    return item;
+                }
+            });
+
+            // investments filter
+
+            this.filteredApartments = this.filteredApartments.filter((item) => {
+                if (!this.filters.investments.length) {
+                    return item;
+                } else if (
+                    this.filters.investments.length &&
+                    this.filters.investments.includes(
+                        Number(item.custom._primary_term_inwestycja)
+                    )
+                ) {
+                    return item;
+                }
+            });
+
+            // floor filter
+
+            this.filteredApartments = this.filteredApartments.filter((item) => {
+                if (
+                    item.custom.pietro >= this.filters.floor[0] &&
+                    item.custom.pietro <= this.filters.floor[1]
+                ) {
+                    return item;
+                }
+            });
+
+            // extra filter
+
+            this.filteredApartments = this.filteredApartments.filter((item) => {
+                if (!this.filters.extra.length) {
+                    return item;
+                } else if (
+                    this.filters.extra.length &&
+                    this.filters.extra.includes(Number(item.custom.dodatkowo))
+                ) {
+                    return item;
+                }
+            });
+
+            // type filter
+
+            this.filteredApartments = this.filteredApartments.filter((item) => {
+                if (!this.filters.type.length) {
+                    return item;
+                } else if (
+                    this.filters.type.length &&
+                    this.filters.type.includes(item.typ)
+                ) {
+                    return item;
+                }
+            });
+        },
+        sortApartments() {
+            if (this.sortAsc) {
+                this.filteredApartments = this.filteredApartments.sort((a, b) =>
+                    a.post_title > b.post_title ? -1 : 1
+                );
+            } else {
+                this.filteredApartments = this.filteredApartments.sort((a, b) =>
+                    a.post_title < b.post_title ? -1 : 1
+                );
+            }
+            this.sortAsc = !this.sortAsc;
+            this.setCurrentPage(1);
+        },
+        setCurrentPage(page) {
+            this.currentPage = page;
+            console.log(this.currentPage * this.perPage - this.perPage);
+            console.log(this.currentPage * this.perPage);
+        },
+        closeFilters() {
+            this.showFiltersMobile = false;
+        },
+        resetFilters() {
+            console.log("trigger");
+        },
+    },
+    watch: {
+        filters: {
+            deep: true,
+            immediate: true,
+            handler: function(val) {
+                this.filterApartments();
+            },
+        },
+    },
+    beforeMount() {
+        const apartmentsValues = document.querySelector("#apartmentsListValues")
+            .value;
+        const investmentsValues = document.querySelector("#investmentsValues")
+            .value;
+        const extraValues = document.querySelector("#extraValues").value;
+        const parsedApartments = JSON.parse(apartmentsValues);
+        const parsedInvestments = JSON.parse(investmentsValues);
+        const parsedExtraValues = JSON.parse(extraValues);
+        this.apartments = parsedApartments;
+        this.investments = parsedInvestments;
+        this.extra = parsedExtraValues;
+        this.prepareInitialValues();
+
+        this.filterApartments();
     },
 };
-
-const fake = [
-        {
-            number: "B1B2",
-            id: "B1.07",
-            name: "B1.07",
-            apartments: [
-                {
-                    id: "Port II_B1.07",
-                    name: "B1.07",
-                    price: null,
-                    pricePerSquareMeter: null,
-                    floor: 4,
-                    rooms: 3,
-                    status: "available",
-                    area: "70.14",
-                    buildingId: null,
-                    buildingNumber: "B1",
-                    additionalElements: null,
-                    symbol: "B1.07",
-                    stageName: "Port II",
-                    internalNumber: "B1-B1.07",
-                    cardUrl: "https://port-praski.resimo.tech/lokale/b1-7",
-                    pdfUrl: null,
-                    imageUrl:
-                        "https://port-praski.resimo.tech/wp-content/uploads/2021/03/b1_4_p-ii-b1-7_1.jpg",
-                },
-                {
-                    id: "Port II_B1.06",
-                    name: "B1.06",
-                    price: null,
-                    pricePerSquareMeter: null,
-                    floor: 3,
-                    rooms: 3,
-                    status: "available",
-                    area: "74.08",
-                    buildingId: null,
-                    buildingNumber: "B1",
-                    additionalElements: null,
-                    symbol: "B1.06",
-                    stageName: "Port II",
-                    internalNumber: "B1-B1.06",
-                    cardUrl: "https://port-praski.resimo.tech/lokale/b1-6",
-                    pdfUrl: null,
-                    imageUrl:
-                        "https://port-praski.resimo.tech/wp-content/uploads/2021/03/b1_3_p-ii-b1-6_1.jpg",
-                },
-                {
-                    id: "Port II_B1.04",
-                    name: "B1.04",
-                    price: null,
-                    pricePerSquareMeter: null,
-                    floor: 2,
-                    rooms: 3,
-                    status: "available",
-                    area: "73.96",
-                    buildingId: null,
-                    buildingNumber: "B1",
-                    additionalElements: null,
-                    symbol: "B1.04",
-                    stageName: "Port II",
-                    internalNumber: "B1-B1.04",
-                    cardUrl: "https://port-praski.resimo.tech/lokale/b1-4",
-                    pdfUrl: null,
-                    imageUrl:
-                        "https://port-praski.resimo.tech/wp-content/uploads/2021/03/b1_2_p-ii-b1-4_1.jpg",
-                },
-                {
-                    id: "Port II_B1.03",
-                    name: "B1.03",
-                    price: null,
-                    pricePerSquareMeter: null,
-                    floor: 2,
-                    rooms: 3,
-                    status: "available",
-                    area: "70.06",
-                    buildingId: null,
-                    buildingNumber: "B1",
-                    additionalElements: null,
-                    symbol: "B1.03",
-                    stageName: "Port II",
-                    internalNumber: "B1-B1.03",
-                    cardUrl: "https://port-praski.resimo.tech/lokale/b1-3",
-                    pdfUrl: null,
-                    imageUrl:
-                        "https://port-praski.resimo.tech/wp-content/uploads/2021/03/b1_2_p-ii-b1-3_1.jpg",
-                },
-                {
-                    id: "Port II_B1.02",
-                    name: "B1.02",
-                    price: null,
-                    pricePerSquareMeter: null,
-                    floor: 1,
-                    rooms: 3,
-                    status: "available",
-                    area: "73.99",
-                    buildingId: null,
-                    buildingNumber: "B1",
-                    additionalElements: null,
-                    symbol: "B1.02",
-                    stageName: "Port II",
-                    internalNumber: "B1-B1.02",
-                    cardUrl: "https://port-praski.resimo.tech/lokale/b1-2",
-                    pdfUrl: null,
-                    imageUrl:
-                        "https://port-praski.resimo.tech/wp-content/uploads/2021/03/b1_1_p-ii-b1-2_1.jpg",
-                },
-                {
-                    id: "Port II_B1.01",
-                    name: "B1.01",
-                    price: null,
-                    pricePerSquareMeter: null,
-                    floor: 1,
-                    rooms: 3,
-                    status: "available",
-                    area: "70.10",
-                    buildingId: null,
-                    buildingNumber: "B1",
-                    additionalElements: null,
-                    symbol: "B1.01",
-                    stageName: "Port II",
-                    internalNumber: "B1-B1.01",
-                    cardUrl: "https://port-praski.resimo.tech/lokale/a-002",
-                    pdfUrl: null,
-                    imageUrl:
-                        "https://port-praski.resimo.tech/wp-content/uploads/2021/03/b1_1_p-ii-b1-1_1-1.jpg",
-                },
-                {
-                    id: "Port II_B1.U4_08",
-                    name: "B1.U4_08",
-                    price: null,
-                    pricePerSquareMeter: null,
-                    floor: 0,
-                    rooms: 2,
-                    status: "available",
-                    area: "101.62",
-                    buildingId: null,
-                    buildingNumber: "B1",
-                    additionalElements: null,
-                    symbol: "B1.U4_08",
-                    stageName: "Port II",
-                    internalNumber: "B1-B1.U4_08",
-                    cardUrl: "https://port-praski.resimo.tech/lokale/u4_08",
-                    pdfUrl: null,
-                    imageUrl:
-                        "https://port-praski.resimo.tech/wp-content/uploads/2021/04/u4_o8-1-scaled.jpg",
-                },
-                {
-                    id: "Port II_B1.U3_08",
-                    name: "B1.U3_08",
-                    price: null,
-                    pricePerSquareMeter: null,
-                    floor: 0,
-                    rooms: 1,
-                    status: "available",
-                    area: "77.63",
-                    buildingId: null,
-                    buildingNumber: "B1",
-                    additionalElements: null,
-                    symbol: "B1.U3_08",
-                    stageName: "Port II",
-                    internalNumber: "B1-B1.U3_08",
-                    cardUrl: "https://port-praski.resimo.tech/lokale/u3_08",
-                    pdfUrl: null,
-                    imageUrl:
-                        "https://port-praski.resimo.tech/wp-content/uploads/2021/04/u3_o8-1-scaled.jpg",
-                },
-                {
-                    id: "Port II_B1.U2_08",
-                    name: "B1.U2_08",
-                    price: null,
-                    pricePerSquareMeter: null,
-                    floor: 0,
-                    rooms: 1,
-                    status: "available",
-                    area: "41.18",
-                    buildingId: null,
-                    buildingNumber: "B1",
-                    additionalElements: null,
-                    symbol: "B1.U2_08",
-                    stageName: "Port II",
-                    internalNumber: "B1-B1.U2_08",
-                    cardUrl: "https://port-praski.resimo.tech/lokale/u2_08",
-                    pdfUrl: null,
-                    imageUrl:
-                        "https://port-praski.resimo.tech/wp-content/uploads/2021/04/u2_o8-1-scaled.jpg",
-                },
-                {
-                    id: "Port II_B1.82",
-                    name: "B1.82",
-                    price: null,
-                    pricePerSquareMeter: null,
-                    floor: 7,
-                    rooms: 2,
-                    status: "reserved",
-                    area: "138.51",
-                    buildingId: null,
-                    buildingNumber: "B1",
-                    additionalElements: null,
-                    symbol: "B1.82",
-                    stageName: "Port II",
-                    internalNumber: "B1-B1.82",
-                    cardUrl: "https://port-praski.resimo.tech/lokale/b1-82-2",
-                    pdfUrl: null,
-                    imageUrl:
-                        "https://port-praski.resimo.tech/wp-content/uploads/2021/03/b1_6_p-ii-b1-82_1-floor-0-1.jpg",
-                },
-            ],
-        },
-        {
-            number: "S21",
-            id: "U.08_S4A",
-            name: "U.08_S4A",
-            apartments: [
-                {
-                    id: "Sierakowskiego II_U.08_S4A",
-                    name: "U.08_S4A",
-                    price: null,
-                    pricePerSquareMeter: null,
-                    floor: 0,
-                    rooms: 1,
-                    status: "available",
-                    area: "53.02",
-                    buildingId: null,
-                    buildingNumber: "S21",
-                    additionalElements: null,
-                    symbol: "U.08_S4A",
-                    stageName: "Sierakowskiego II",
-                    internalNumber: "S21-U.08_S4A",
-                    cardUrl: "https://port-praski.resimo.tech/lokale/u-08_s4a",
-                    pdfUrl: null,
-                    imageUrl:
-                        "https://port-praski.resimo.tech/wp-content/uploads/2021/04/u.08_s4a-1-scaled.jpg",
-                },
-                {
-                    id: "Sierakowskiego II_U.06_S4A",
-                    name: "U.06_S4A",
-                    price: null,
-                    pricePerSquareMeter: null,
-                    floor: 0,
-                    rooms: 1,
-                    status: "available",
-                    area: "29.71",
-                    buildingId: null,
-                    buildingNumber: "S21",
-                    additionalElements: null,
-                    symbol: "U.06_S4A",
-                    stageName: "Sierakowskiego II",
-                    internalNumber: "S21-U.06_S4A",
-                    cardUrl: "https://port-praski.resimo.tech/lokale/u-06_s4a",
-                    pdfUrl: null,
-                    imageUrl:
-                        "https://port-praski.resimo.tech/wp-content/uploads/2021/04/u.06_s4a-1-1-scaled.jpg",
-                },
-                {
-                    id: "Sierakowskiego II_U.05_S4A",
-                    name: "U.05_S4A",
-                    price: null,
-                    pricePerSquareMeter: null,
-                    floor: 0,
-                    rooms: 1,
-                    status: "available",
-                    area: "48.44",
-                    buildingId: null,
-                    buildingNumber: "S21",
-                    additionalElements: null,
-                    symbol: "U.05_S4A",
-                    stageName: "Sierakowskiego II",
-                    internalNumber: "S21-U.05_S4A",
-                    cardUrl: "https://port-praski.resimo.tech/lokale/u-05_s4a",
-                    pdfUrl: null,
-                    imageUrl:
-                        "https://port-praski.resimo.tech/wp-content/uploads/2021/04/u.05_s4a-1-1-scaled.jpg",
-                },
-                {
-                    id: "Sierakowskiego II_U.04_S4A",
-                    name: "U.04_S4A",
-                    price: null,
-                    pricePerSquareMeter: null,
-                    floor: 0,
-                    rooms: 1,
-                    status: "available",
-                    area: "82.57",
-                    buildingId: null,
-                    buildingNumber: "S21",
-                    additionalElements: null,
-                    symbol: "U.04_S4A",
-                    stageName: "Sierakowskiego II",
-                    internalNumber: "S21-U.04_S4A",
-                    cardUrl: "https://port-praski.resimo.tech/lokale/u-04_s4a",
-                    pdfUrl: null,
-                    imageUrl:
-                        "https://port-praski.resimo.tech/wp-content/uploads/2021/04/u.04_s4a-1-1-scaled.jpg",
-                },
-                {
-                    id: "Sierakowskiego II_U.03_S4A",
-                    name: "U.03_S4A",
-                    price: null,
-                    pricePerSquareMeter: null,
-                    floor: 0,
-                    rooms: 1,
-                    status: "available",
-                    area: "88.96",
-                    buildingId: null,
-                    buildingNumber: "S21",
-                    additionalElements: null,
-                    symbol: "U.03_S4A",
-                    stageName: "Sierakowskiego II",
-                    internalNumber: "S21-U.03_S4A",
-                    cardUrl: "https://port-praski.resimo.tech/lokale/3856",
-                    pdfUrl: null,
-                    imageUrl:
-                        "https://port-praski.resimo.tech/wp-content/uploads/2021/04/u.03_s4a-1-scaled.jpg",
-                },
-                {
-                    id: "Sierakowskiego II_U.02_S4A",
-                    name: "U.02_S4A",
-                    price: null,
-                    pricePerSquareMeter: null,
-                    floor: 1,
-                    rooms: 0,
-                    status: "available",
-                    area: "40.03",
-                    buildingId: null,
-                    buildingNumber: "S21",
-                    additionalElements: null,
-                    symbol: "U.02_S4A",
-                    stageName: "Sierakowskiego II",
-                    internalNumber: "S21-U.02_S4A",
-                    cardUrl:
-                        "https://port-praski.resimo.tech/lokale/u-02_s4a-1",
-                    pdfUrl: null,
-                    imageUrl:
-                        "https://port-praski.resimo.tech/wp-content/uploads/2021/04/u.02_s4a-1-scaled.jpg",
-                },
-                {
-                    id: "Sierakowskiego II_U.01_S4A",
-                    name: "U.01_S4A",
-                    price: null,
-                    pricePerSquareMeter: null,
-                    floor: 0,
-                    rooms: 1,
-                    status: "available",
-                    area: "146.99",
-                    buildingId: null,
-                    buildingNumber: "S21",
-                    additionalElements: null,
-                    symbol: "U.01_S4A",
-                    stageName: "Sierakowskiego II",
-                    internalNumber: "S21-U.01_S4A",
-                    cardUrl: "https://port-praski.resimo.tech/lokale/u-01_s4a",
-                    pdfUrl: null,
-                    imageUrl:
-                        "https://port-praski.resimo.tech/wp-content/uploads/2021/04/u.01_s4a-1-scaled.jpg",
-                },
-                {
-                    id: "Sierakowskiego II_85",
-                    name: "85",
-                    price: null,
-                    pricePerSquareMeter: null,
-                    floor: 6,
-                    rooms: 3,
-                    status: "available",
-                    area: "91.75",
-                    buildingId: null,
-                    buildingNumber: "S21",
-                    additionalElements: null,
-                    symbol: "85",
-                    stageName: "Sierakowskiego II",
-                    internalNumber: "S21-85",
-                    cardUrl: "https://port-praski.resimo.tech/lokale/85",
-                    pdfUrl: null,
-                    imageUrl: null,
-                },
-                {
-                    id: "Sierakowskiego II_78",
-                    name: "78",
-                    price: null,
-                    pricePerSquareMeter: null,
-                    floor: 5,
-                    rooms: 2,
-                    status: "available",
-                    area: "61.74",
-                    buildingId: null,
-                    buildingNumber: "S21",
-                    additionalElements: null,
-                    symbol: "78",
-                    stageName: "Sierakowskiego II",
-                    internalNumber: "S21-78",
-                    cardUrl: "https://port-praski.resimo.tech/lokale/78",
-                    pdfUrl: null,
-                    imageUrl:
-                        "https://port-praski.resimo.tech/wp-content/uploads/2021/03/1_5_s-ii-1-78_1.jpg",
-                },
-                {
-                    id: "Sierakowskiego II_74",
-                    name: "74",
-                    price: null,
-                    pricePerSquareMeter: null,
-                    floor: 4,
-                    rooms: 2,
-                    status: "available",
-                    area: "61.75",
-                    buildingId: null,
-                    buildingNumber: "S21",
-                    additionalElements: null,
-                    symbol: "74",
-                    stageName: "Sierakowskiego II",
-                    internalNumber: "S21-74",
-                    cardUrl: "https://port-praski.resimo.tech/lokale/74",
-                    pdfUrl: null,
-                    imageUrl:
-                        "https://port-praski.resimo.tech/wp-content/uploads/2021/03/1_4_s-ii-1-74_1.jpg",
-                },
-            ],
-        }
-]
 </script>

@@ -331,8 +331,14 @@ a {
 
 // NEW STYLES FOR FILTERS
 
+.vue-slider {
+    width: 95% !important;
+    margin: 0 auto;
+}
+
 .vue-slider .vue-slider-rail {
   background: #dadada;
+  cursor: pointer;
 }
 
 .vue-slider .vue-slider-process {
@@ -356,6 +362,6 @@ a {
   color: #8f8f8f;
 }
 
-.znajdzLokal__filters__item {
-  margin: 24px 0;
+.znajdzLokal__filters__item.--sliders .znajdzLokal__filters__title {
+   margin-top: 40px
 }

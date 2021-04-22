@@ -1,6 +1,6 @@
 <template>
-    <aside class="znajdzLokal__filters">
-        <button class="znajdzLokal__filters__close --mobile"></button>
+    <aside class="znajdzLokal__filters" :style="styleObject">
+        <button class="znajdzLokal__filters__close --mobile" @click="closeFilters"></button>
         <h1 class="fnt50 znajdzLokal__title filtry__title">Filtry</h1>
         <div
             class="line znajdzLokal__line --mobile aos-init aos-animate"
@@ -11,10 +11,11 @@
             type="reset"
             data-filter="all"
             class="znajdzLokal__filters__clear btn --white --mobile"
+						@click="resetFilters"
         >
             Wyczyść filtry
         </button>
-        <button class="znajdzLokal__filters__close--wide btn --white --mobile">
+        <button class="znajdzLokal__filters__close--wide btn --white --mobile" @click="closeFilters">
             Zastosuj filtry
         </button>
         <div class="znajdzLokal__filters__item --inwestycje">
@@ -25,15 +26,20 @@
                     data-filter-group="inwestycje"
                 >
                     <ul class="checkboxTest">
-                        <li>
-                            <input type="checkbox" value=".port" id="cb1" />
-                            <label for="cb1"><img src=""/></label>
-                            <span class="checkboxTest__title">Port</span>
-                        </li>
-                        <li>
-                            <input type="checkbox" value=".port-ii" id="cb2" />
-                            <label for="cb2"><img src=""/></label>
-                            <span class="checkboxTest__title">Port II</span>
+                        <li v-for="item in investments" :key="item.id">
+                            <input
+                                type="checkbox"
+                                :value="item.id"
+                                :id="item.id"
+                                v-model="localFilters.investments"
+																style="display: none"
+                            />
+                            <label :for="item.id"
+                                ><img src="https://port-praski.resimo.tech/wp-content/uploads/2021/03/sierakowskiego-2-strona-glowna-min-1-e1615207542295-132x94-c-default.jpg"
+                            /></label>
+                            <span class="checkboxTest__title">{{
+                                item.title
+                            }}</span>
                         </li>
                     </ul>
                 </div>
@@ -47,7 +53,11 @@
                     <span class="wpcf7-form-control wpcf7-acceptance">
                         <span class="wpcf7-list-item">
                             <label>
-                                <input type="checkbox" value=".mieszkanie" />
+                                <input
+                                    type="checkbox"
+                                    value="Mieszkanie lub Apartament"
+                                    v-model="localFilters.type"
+                                />
                                 <span class="wpcf7-list-item-label"
                                     >Mieszkanie</span
                                 >
@@ -59,7 +69,11 @@
                     <span class="wpcf7-form-control wpcf7-acceptance">
                         <span class="wpcf7-list-item">
                             <label>
-                                <input type="checkbox" value=".uslugi" />
+                                <input
+                                    type="checkbox"
+                                    value="Usługi"
+                                    v-model="localFilters.type"
+                                />
                                 <span class="wpcf7-list-item-label"
                                     >Lokal Usługowy</span
                                 >
@@ -69,44 +83,62 @@
                 </span>
             </div>
         </div>
-        <div class="znajdzLokal__filters__item">
+        <div class="znajdzLokal__filters__item --sliders">
             <h3 class="znajdzLokal__filters__title">Liczba pokoi</h3>
 
-            <VueSlider  v-model="rooms" :enable-cross="false" :min="0" :max="4" :marks="[0, 4]"/>
+            <VueSlider
+                v-model="localFilters.rooms"
+                :enable-cross="false"
+                :min="1"
+                :max="maxRooms"
+                :marks="localFilters.rooms"
+                tooltip="none"
+            />
         </div>
-        <div class="znajdzLokal__filters__item">
+        <div class="znajdzLokal__filters__item --sliders">
             <h3 class="znajdzLokal__filters__title">Powierzchnia</h3>
 
-            <VueSlider v-model="area" :enable-cross="false" :min="0" :max="100" :marks="[0, 100]"/>
+            <VueSlider
+                v-model="localFilters.area"
+                :enable-cross="false"
+                :min="1"
+                :max="maxArea"
+                :marks="localFilters.area"
+                tooltip="none"
+            />
         </div>
-        <div class="znajdzLokal__filters__item">
-            <h3 class="znajdzLokal__filters__title">Powierzchnia</h3>
+        <div class="znajdzLokal__filters__item --sliders">
+            <h3 class="znajdzLokal__filters__title">Piętro</h3>
 
-            <VueSlider v-model="floor" :enable-cross="false" :min="0" :max="10" :marks="[0, 10]"/>
+            <VueSlider
+                v-model="localFilters.floor"
+                :enable-cross="false"
+                :min="1"
+                :max="maxFloor"
+                :marks="localFilters.floor"
+                tooltip="none"
+            />
         </div>
-        <div class="znajdzLokal__filters__item">
+        <div class="znajdzLokal__filters__item --sliders">
             <h3 class="znajdzLokal__filters__title">Cechy dodatkowe</h3>
 
             <div class="controls dodatkowe" data-filter-group="cechy">
-                <span class="wpcf7-form-control-wrap acceptance-1">
+                <span
+                    class="wpcf7-form-control-wrap acceptance-1"
+                    v-for="item in extra"
+                    :key="item.term_id"
+                >
                     <span class="wpcf7-form-control wpcf7-acceptance">
                         <span class="wpcf7-list-item">
                             <label>
-                                <input type="checkbox" value=".balkon" />
-                                <span class="wpcf7-list-item-label"
-                                    >balkon</span
-                                >
-                            </label>
-                        </span>
-                    </span>
-                </span>
-
-                <span class="wpcf7-form-control-wrap acceptance-1">
-                    <span class="wpcf7-form-control wpcf7-acceptance">
-                        <span class="wpcf7-list-item">
-                            <label>
-                                <input type="checkbox" value=".taras" />
-                                <span class="wpcf7-list-item-label">taras</span>
+                                <input
+                                    type="checkbox"
+                                    :value="item.term_id"
+                                    v-model="localFilters.extra"
+                                />
+                                <span class="wpcf7-list-item-label">{{
+                                    item.name
+                                }}</span>
                             </label>
                         </span>
                     </span>
@@ -123,12 +155,35 @@ export default {
     components: {
         VueSlider,
     },
+    props: [
+        "filters",
+        "investments",
+        "extra",
+        "maxRooms",
+        "maxArea",
+        "maxFloor",
+        "showFiltersMobile",
+    ],
     data() {
         return {
-            rooms: [0, 4],
-            area: [0,100],
-            floor: [0,10]
-        }
-    }
+            localFilters: [],
+        };
+    },
+    computed: {
+        styleObject() {
+            return this.showFiltersMobile ? { display: "block" } : {};
+        },
+    },
+    methods: {
+			closeFilters() {
+				this.$emit("close-filters")
+			},
+			resetFilters() {
+				this.$emit("reset-filters")
+			}
+		},
+    mounted() {
+        this.localFilters = this.filters;
+    },
 };
 </script>
