@@ -10,7 +10,7 @@
             <ApartmentsListFilters />
             <section class="znajdzLokal__main">
                 <ApartmentsListItem v-for="item in apartments" :apartment="item" :key="item.id" />
-                <ApartmentsListPagination  />
+                <ApartmentsListPagination  @page-changed="page => currentPage = page"/>
             </section>
         </div>
     </div>
@@ -30,6 +30,7 @@ export default {
     data() {
         return {
             apartments: [],
+            currentPage: 0
         };
     },
     mounted() {

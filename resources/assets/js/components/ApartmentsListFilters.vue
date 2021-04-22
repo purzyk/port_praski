@@ -72,166 +72,17 @@
         <div class="znajdzLokal__filters__item">
             <h3 class="znajdzLokal__filters__title">Liczba pokoi</h3>
 
-            <div class="range-sliderrr">
-                <span class="irs irs--round js-irs-0"
-                    ><span class="irs"
-                        ><span class="irs-line" tabindex="0"></span
-                        ><span class="irs-min" style="visibility: hidden;"
-                            >0</span
-                        ><span class="irs-max" style="visibility: hidden;"
-                            >10</span
-                        ><span
-                            class="irs-from"
-                            style="visibility: visible; left: 1.66295%;"
-                            >0</span
-                        ><span
-                            class="irs-to"
-                            style="visibility: visible; left: 94.7573%;"
-                            >10</span
-                        ><span
-                            class="irs-single"
-                            style="visibility: hidden; left: 43.6844%;"
-                            >0 — 10</span
-                        ></span
-                    ><span class="irs-grid"></span
-                    ><span
-                        class="irs-bar"
-                        style="left: 2.85714%; width: 94.2857%;"
-                    ></span
-                    ><span
-                        class="irs-shadow shadow-from"
-                        style="display: none;"
-                    ></span
-                    ><span
-                        class="irs-shadow shadow-to"
-                        style="display: none;"
-                    ></span
-                    ><span class="irs-handle from" style="left: 0%;"
-                        ><i></i><i></i><i></i></span
-                    ><span class="irs-handle to" style="left: 94.2857%;"
-                        ><i></i><i></i><i></i></span></span
-                ><input
-                    type="text"
-                    class="js-range-slider irs-hidden-input"
-                    data-ref="range-slider-a"
-                    value=""
-                    tabindex="-1"
-                    readonly=""
-                />
-            </div>
-            <div class="extra-controls">
-                <input type="text" class="js-input-from-a" value="0" />
-                <input type="text" class="js-input-to-a" value="0" />
-            </div>
+            <VueSlider  v-model="rooms" :enable-cross="false" :min="0" :max="4" :marks="[0, 4]"/>
         </div>
         <div class="znajdzLokal__filters__item">
             <h3 class="znajdzLokal__filters__title">Powierzchnia</h3>
 
-            <div class="range-sliderrr">
-                <span class="irs irs--round js-irs-1"
-                    ><span class="irs"
-                        ><span class="irs-line" tabindex="0"></span
-                        ><span class="irs-min" style="visibility: hidden;"
-                            >0</span
-                        ><span class="irs-max" style="visibility: hidden;"
-                            >300</span
-                        ><span
-                            class="irs-from"
-                            style="visibility: visible; left: 1.66295%;"
-                            >0</span
-                        ><span
-                            class="irs-to"
-                            style="visibility: visible; left: 93.5659%;"
-                            >300</span
-                        ><span
-                            class="irs-single"
-                            style="visibility: hidden; left: 43.0887%;"
-                            >0 — 300</span
-                        ></span
-                    ><span class="irs-grid"></span
-                    ><span
-                        class="irs-bar"
-                        style="left: 2.85714%; width: 94.2857%;"
-                    ></span
-                    ><span
-                        class="irs-shadow shadow-from"
-                        style="display: none;"
-                    ></span
-                    ><span
-                        class="irs-shadow shadow-to"
-                        style="display: none;"
-                    ></span
-                    ><span class="irs-handle from" style="left: 0%;"
-                        ><i></i><i></i><i></i></span
-                    ><span class="irs-handle to" style="left: 94.2857%;"
-                        ><i></i><i></i><i></i></span></span
-                ><input
-                    type="text"
-                    class="js-range-slider irs-hidden-input"
-                    data-ref="range-slider-b"
-                    value=""
-                    tabindex="-1"
-                    readonly=""
-                />
-            </div>
-            <div class="extra-controls">
-                <input type="text" class="js-input-from-b" value="0" />
-                <input type="text" class="js-input-to-b" value="0" />
-            </div>
+            <VueSlider v-model="area" :enable-cross="false" :min="0" :max="100" :marks="[0, 100]"/>
         </div>
         <div class="znajdzLokal__filters__item">
-            <h3 class="znajdzLokal__filters__title">piętro</h3>
-            <div class="range-sliderrr">
-                <span class="irs irs--round js-irs-2"
-                    ><span class="irs"
-                        ><span class="irs-line" tabindex="0"></span
-                        ><span class="irs-min" style="visibility: hidden;"
-                            >0</span
-                        ><span class="irs-max" style="visibility: hidden;"
-                            >10</span
-                        ><span
-                            class="irs-from"
-                            style="visibility: visible; left: 1.66295%;"
-                            >0</span
-                        ><span
-                            class="irs-to"
-                            style="visibility: visible; left: 94.7573%;"
-                            >10</span
-                        ><span
-                            class="irs-single"
-                            style="visibility: hidden; left: 43.6844%;"
-                            >0 — 10</span
-                        ></span
-                    ><span class="irs-grid"></span
-                    ><span
-                        class="irs-bar"
-                        style="left: 2.85714%; width: 94.2857%;"
-                    ></span
-                    ><span
-                        class="irs-shadow shadow-from"
-                        style="display: none;"
-                    ></span
-                    ><span
-                        class="irs-shadow shadow-to"
-                        style="display: none;"
-                    ></span
-                    ><span class="irs-handle from" style="left: 0%;"
-                        ><i></i><i></i><i></i></span
-                    ><span class="irs-handle to" style="left: 94.2857%;"
-                        ><i></i><i></i><i></i></span></span
-                ><input
-                    type="text"
-                    class="js-range-slider irs-hidden-input"
-                    data-ref="range-slider-c"
-                    value=""
-                    tabindex="-1"
-                    readonly=""
-                />
-            </div>
-            <div class="extra-controls">
-                <input type="text" class="js-input-from-c" value="0" />
-                <input type="text" class="js-input-to-c" value="0" />
-            </div>
+            <h3 class="znajdzLokal__filters__title">Powierzchnia</h3>
+
+            <VueSlider v-model="floor" :enable-cross="false" :min="0" :max="10" :marks="[0, 10]"/>
         </div>
         <div class="znajdzLokal__filters__item">
             <h3 class="znajdzLokal__filters__title">Cechy dodatkowe</h3>
@@ -264,3 +115,20 @@
         </div>
     </aside>
 </template>
+
+<script>
+import VueSlider from "vue-slider-component";
+import "vue-slider-component/theme/default.css";
+export default {
+    components: {
+        VueSlider,
+    },
+    data() {
+        return {
+            rooms: [0, 4],
+            area: [0,100],
+            floor: [0,10]
+        }
+    }
+};
+</script>

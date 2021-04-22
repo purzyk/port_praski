@@ -55,6 +55,8 @@
     "nouislider": "^14.6.3",
     "slick-carousel": "^1.8.1",
     "vanilla-lazyload": "^17.3.1",
-    "vue": "^2.6.12"
+    "vue": "^2.6.12",
+    "vue-range-component": "^1.0.3",
+    "vue-slider-component": "^3.2.11"
   }
 }
