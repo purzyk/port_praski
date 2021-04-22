@@ -1041,6 +1041,14 @@ slidersWithButtons.forEach(el => {
 })
 
 
+const headerContactButton = document.querySelector(".header .contact-icon")
+if(headerContactButton) {
+  headerContactButton.addEventListener('click', function() {
+    MicroModal.show('contact-modal', {
+      openTrigger: 'data-custom-open'
+    })
+  })
+}
 
 
 const phoneInputValidationHandler = () => {
