@@ -765,6 +765,24 @@ $('.home__inwestycjeLista__item__footer__link').click(function (event) {
   }
 });
 
+$('.investment-expand-button').click(function (event) {
+  event.preventDefault();
+  const wrapper = $(this).closest(".investment-list-item");
+  wrapper.toggleClass("active");
+  wrapper.addClass("expanding")
+  setTimeout(() => { wrapper.removeClass("expanding") }, 850)
+});
+
+$('.investment-shrink-button').click(function (event) {
+  event.preventDefault()
+
+  const wrapper = $(this).closest(".investment-list-item")
+
+  wrapper.toggleClass("active")
+  wrapper.addClass("shrinking")
+  setTimeout(() => { wrapper.removeClass("shrinking") }, 850)
+});
+
 // /*Lang switcher */
 // $('.lang__switch').on("click", function () {
 //   $('.lang__area').slideToggle(300);
