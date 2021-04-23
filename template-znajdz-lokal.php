@@ -39,13 +39,10 @@ $lokale = Timber::get_posts(array('orderby' => 'title', 'post_type' => 'lokale',
   ),));
   
 
-<<<<<<< HEAD
-=======
   foreach($lokale as $lokal) {
     $lokal->rzut_3D = get_the_post_thumbnail_url($lokal->ID, 'full'); ;
   }
 
->>>>>>> origin/master
 
 $context['postsLoop'] = $lokale;
 $context['slogan'] = $slogan;

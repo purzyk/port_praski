@@ -42,7 +42,8 @@
             ></div>
             <figure>
                 <img
-                    src="https://port-praski.resimo.tech/wp-content/uploads/2021/03/1_1_s-ii-1-1_1-150x132-c-default.jpg"
+                class="apartment-list-item-image"
+                    :src="apartment.rzut_3D"
                 />
             </figure>
             <div
