@@ -94,14 +94,14 @@
                             </button>
                         </div>
                     </div>
-                        <ApartmentsListItem
-                            v-for="item in paginatedApartments"
-                            :apartment="item"
-                            :key="item.id"
-                            :investment="
-                                getInvestmentName(item._primary_term_inwestycja)
-                            "
-                        />
+                    <ApartmentsListItem
+                        v-for="item in paginatedApartments"
+                        :apartment="item"
+                        :key="item.id"
+                        :investment="
+                            getInvestmentName(item._primary_term_inwestycja)
+                        "
+                    />
                     <ApartmentsListPagination
                         :maxPage="maxPage"
                         :currentPage="currentPage"
@@ -146,8 +146,7 @@ export default {
                 type: ["Usługi", "Mieszkanie lub Apartament"],
                 investments: [],
             },
-            perPage: 2,
-
+            perPage: 10,
             maxFloor: 0,
             maxRooms: 0,
             maxArea: 0,
@@ -199,6 +198,8 @@ export default {
                     return item.pietro;
                 })
             );
+
+            console.log(maxFloor);
 
             this.filters.floor = [minFloor, maxFloor];
             this.maxFloor = maxFloor;
@@ -298,6 +299,7 @@ export default {
                     return item;
                 }
             });
+            this.setCurrentPage(1);
         },
         sortApartments() {
             if (this.sortAsc) {
@@ -321,7 +323,7 @@ export default {
             this.showFiltersMobile = false;
         },
         resetFilters() {
-            console.log("trigger");
+            this.filters = this.initalFilters;
         },
     },
     watch: {
@@ -333,7 +335,7 @@ export default {
             },
         },
     },
-    beforeMount() {
+    mounted() {
         const apartmentsValues = document.querySelector("#apartmentsListValues")
             .value;
         const investmentsValues = document.querySelector("#investmentsValues")

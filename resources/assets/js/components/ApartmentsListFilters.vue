@@ -1,6 +1,9 @@
 <template>
     <aside class="znajdzLokal__filters" :style="styleObject">
-        <button class="znajdzLokal__filters__close --mobile" @click="closeFilters"></button>
+        <button
+            class="znajdzLokal__filters__close --mobile"
+            @click="closeFilters"
+        ></button>
         <h1 class="fnt50 znajdzLokal__title filtry__title">Filtry</h1>
         <div
             class="line znajdzLokal__line --mobile aos-init aos-animate"
@@ -11,11 +14,14 @@
             type="reset"
             data-filter="all"
             class="znajdzLokal__filters__clear btn --white --mobile"
-						@click="resetFilters"
+            @click="resetFilters"
         >
             Wyczyść filtry
         </button>
-        <button class="znajdzLokal__filters__close--wide btn --white --mobile" @click="closeFilters">
+        <button
+            class="znajdzLokal__filters__close--wide btn --white --mobile"
+            @click="closeFilters"
+        >
             Zastosuj filtry
         </button>
         <div class="znajdzLokal__filters__item --inwestycje">
@@ -32,10 +38,12 @@
                                 :value="item.id"
                                 :id="item.id"
                                 v-model="localFilters.investments"
-																style="display: none"
+                                style="display: none"
                             />
                             <label :for="item.id"
-                                ><img src="https://port-praski.resimo.tech/wp-content/uploads/2021/03/sierakowskiego-2-strona-glowna-min-1-e1615207542295-132x94-c-default.jpg"
+                                ><img
+                                    class="filters-investment-image"
+                                    :src="item.image.sizes.thumbnail"
                             /></label>
                             <span class="checkboxTest__title">{{
                                 item.title
@@ -101,9 +109,10 @@
             <VueSlider
                 v-model="localFilters.area"
                 :enable-cross="false"
-                :min="1"
+                :min="0"
                 :max="maxArea"
                 :marks="localFilters.area"
+                :interval="0.01"
                 tooltip="none"
             />
         </div>
@@ -113,7 +122,7 @@
             <VueSlider
                 v-model="localFilters.floor"
                 :enable-cross="false"
-                :min="1"
+                :min="0"
                 :max="maxFloor"
                 :marks="localFilters.floor"
                 tooltip="none"
@@ -155,15 +164,36 @@ export default {
     components: {
         VueSlider,
     },
-    props: [
-        "filters",
-        "investments",
-        "extra",
-        "maxRooms",
-        "maxArea",
-        "maxFloor",
-        "showFiltersMobile",
-    ],
+    props: {
+        filters: {
+            type: Object,
+            required: true,
+        },
+        investments: {
+            type: Array,
+            required: false,
+        },
+        extra: {
+            type: Array,
+            required: true,
+        },
+        maxFloor: {
+            type: Number,
+            required: true,
+        },
+        maxArea: {
+            type: Number,
+            required: true,
+        },
+        maxRooms: {
+            type: Number,
+            required: true,
+        },
+        showFiltersMobile: {
+            type: Boolean,
+            default: false,
+        },
+    },
     data() {
         return {
             localFilters: [],
@@ -175,13 +205,13 @@ export default {
         },
     },
     methods: {
-			closeFilters() {
-				this.$emit("close-filters")
-			},
-			resetFilters() {
-				this.$emit("reset-filters")
-			}
-		},
+        closeFilters() {
+            this.$emit("close-filters");
+        },
+        resetFilters() {
+            this.$emit("reset-filters");
+        },
+    },
     mounted() {
         this.localFilters = this.filters;
     },

@@ -4,32 +4,35 @@
             <div class="znajdzLokal__item__copy">
                 <h2 class="znajdzLokal__item__copy__title">
                     <span class="znajdzLokal__item__inwestycja">
-                        {{investment}}
+                        {{ investment }}
                     </span>
                 </h2>
-                <span class="znajdzLokal__item__title" v-if="apartment.typ === 'Usługi'">
-                    Lokal nr {{apartment.post_title}}</span
+                <span
+                    class="znajdzLokal__item__title"
+                    v-if="apartment.typ === 'Usługi'"
+                >
+                    Lokal nr {{ apartment.post_title }}</span
                 >
                 <span class="znajdzLokal__item__title" v-else>
-                    Mieszkanie nr {{apartment.post_title}}</span
+                    Mieszkanie nr {{ apartment.post_title }}</span
                 >
                 <div class="lokal__twoColumns">
                     <h3>Powierzchnia:</h3>
-                    <p>{{apartment.custom.powierzchnia}} m²</p>
+                    <p>{{ apartment.custom.powierzchnia }} m²</p>
                 </div>
                 <div class="lokal__twoColumns">
                     <h3>Liczba pokoi:</h3>
-                    <p>{{apartment.custom.liczba_pokoi}}</p>
+                    <p>{{ apartment.custom.liczba_pokoi }}</p>
                 </div>
 
                 <div class="lokal__twoColumns">
                     <h3>Piętro:</h3>
-                    <p>{{apartment.custom.pietro}}</p>
+                    <p>{{ apartment.custom.pietro }}</p>
                 </div>
 
                 <div class="lokal__twoColumns">
                     <h3>Status:</h3>
-                    <p>{{apartment.custom.status}}</p>
+                    <p>{{ apartment.custom.status }}</p>
                 </div>
             </div>
             <div
@@ -38,7 +41,9 @@
                 data-aos-duration="800"
             ></div>
             <figure>
-                <img src="https://port-praski.resimo.tech/wp-content/uploads/2021/03/1_1_s-ii-1-1_1-150x132-c-default.jpg" />
+                <img
+                    src="https://port-praski.resimo.tech/wp-content/uploads/2021/03/1_1_s-ii-1-1_1-150x132-c-default.jpg"
+                />
             </figure>
             <div
                 class="line --grey "
@@ -50,15 +55,11 @@
                 <button
                     class="btn contact-btn"
                     data-id="B.4.1"
-                    data-investment="						Port II
-					"
+                    data-investment="Port II"
                 >
                     prośba o kontakt
                 </button>
-                <a
-                    :href="apartmentUrl"
-                    class="btn --lightGrey"
-                >
+                <a :href="apartmentUrl" class="btn --lightGrey">
                     Szczegóły mieszkania
                 </a>
             </div>
@@ -66,22 +67,21 @@
     </article>
 </template>
 
-
 <script>
 export default {
     props: {
         apartment: {
-            type: Object
+            type: Object,
         },
         investment: {
             type: String,
-            required: true
-        }
+            required: true,
+        },
     },
     computed: {
         apartmentUrl() {
-            return `${window. location. href}${this.apartment.post_title}`
-        }
-    }
-}
+            return `https://port-praski.resimo.tech/lokale/${this.apartment.post_title}`;
+        },
+    },
+};
 </script>
