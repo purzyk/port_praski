@@ -41,6 +41,7 @@ $lokale = Timber::get_posts(array('orderby' => 'title', 'post_type' => 'lokale',
 
   foreach($lokale as $lokal) {
     $lokal->rzut_3D = get_the_post_thumbnail_url($lokal->ID, 'full'); ;
+    $lokal->inwestycje =  wp_get_post_terms( $lokal->ID, 'inwestycja', array( 'fields' => 'names' ) );
   }
 
 
