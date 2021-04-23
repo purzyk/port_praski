@@ -371,6 +371,12 @@ a {
     object-fit: cover;
 }
 
+.vue-slider-marks .vue-slider-mark:first-child .vue-slider-mark-label{
+    margin-left: -7px !important;
+    transform: translateX(0) !important
+}
+
 .vue-slider-marks .vue-slider-mark:last-child .vue-slider-mark-label{
+    margin-right: 7px !important;
     transform: translateX(-100%) !important
 }
