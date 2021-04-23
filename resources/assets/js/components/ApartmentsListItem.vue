@@ -59,7 +59,10 @@
                 >
                     prośba o kontakt
                 </button>
-                <a :href="apartmentUrl" class="btn --lightGrey">
+                <a :href="apartmentUrl" class="btn --lightGrey" v-if="apartment.typ === 'Usługi'">
+                    Szczegóły lokalu
+                </a>
+                <a :href="apartmentUrl" class="btn --lightGrey" v-else>
                     Szczegóły mieszkania
                 </a>
             </div>
@@ -80,7 +83,7 @@ export default {
     },
     computed: {
         apartmentUrl() {
-            return `https://port-praski.resimo.tech/lokale/${this.apartment.post_title}`;
+            return `https://port-praski.resimo.tech/lokale/${this.apartment.slug}`;
         },
     },
 };
