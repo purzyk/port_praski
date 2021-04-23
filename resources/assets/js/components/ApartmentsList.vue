@@ -1,12 +1,12 @@
 <template>
     <div>
         <div class="l-wrapper">
-            <h1 class="fnt50 znajdzLokal__title">Znajdź lokal</h1>
+            <h1 class="fnt50 znajdzLokal__title text-center">Znajdź lokal</h1>
 
             <div class="znajdzLokal__main__meta__content --mobile">
                 <span class="--blue"
                     >liczba ofert
-                    <span class="counter">{{ allFilteredApartments }}</span>
+                    <span class="counter" style="padding-right: 1px">{{ allFilteredApartments }}</span>
                 </span>
                 <span
                     >(<span class="total">{{ allApartmentsCount }}</span
@@ -65,11 +65,11 @@
                         <div class="znajdzLokal__main__meta__content --desktop">
                             <span class="--blue"
                                 >liczba ofert
-                                <span class="counter">{{
+                                <span class="counter" >{{
                                     allFilteredApartments
                                 }}</span>
                             </span>
-                            <span
+                            <span style="margin-left: 5px;"
                                 >(<span class="total">{{
                                     allApartmentsCount
                                 }}</span
