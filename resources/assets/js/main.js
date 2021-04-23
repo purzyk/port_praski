@@ -966,7 +966,7 @@ function set3DViewButtonsPostition() {
 
 const addListenersToContactButtons = () => {
   const allAskToContactButtons = $(".contact-btn")
-
+  console.log(allAskToContactButtons)
   for (let i = 0; i < allAskToContactButtons.length; i++) {
     allAskToContactButtons[i].addEventListener('click', function (e) {
       e.stopPropagation()
@@ -1074,7 +1074,12 @@ const headerContactButton = document.querySelector(".header .contact-icon")
 if(headerContactButton) {
   headerContactButton.addEventListener('click', function() {
     MicroModal.show('contact-modal', {
-      openTrigger: 'data-custom-open'
+      openTrigger: 'data-custom-open',
+      onShow: modal => {
+        const messageInput = document.querySelector('#contact-modal input[name="text-wiadomosc"]')
+        messageInput.value = ""
+        messageInput.parentNode.parentNode.classList.remove("active")
+      }
     })
   })
 }

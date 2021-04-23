@@ -35,13 +35,14 @@
                         <li v-for="item in investments" :key="item.id">
                             <input
                                 type="checkbox"
+                                class="filters-checkbox"
                                 :value="item.id"
                                 :id="item.id"
                                 v-model="localFilters.investments"
                                 style="display: none"
                             />
-                            <label :for="item.id"
-                                ><img class="filters-investment-image"
+                            <label :for="item.id"                  
+                                ><img  class="filters-investment-image"
                             /></label>
                             <span class="checkboxTest__title">{{
                                 item.title
@@ -61,6 +62,7 @@
                             <label>
                                 <input
                                     type="checkbox"
+                                    class="filters-checkbox"
                                     value="Mieszkanie lub Apartament"
                                     v-model="localFilters.type"
                                 />
@@ -77,6 +79,7 @@
                             <label>
                                 <input
                                     type="checkbox"
+                                    class="filters-checkbox"
                                     value="Usługi"
                                     v-model="localFilters.type"
                                 />
@@ -140,6 +143,7 @@
                             <label>
                                 <input
                                     type="checkbox"
+                                    class="filters-checkbox"
                                     :value="item.term_id"
                                     v-model="localFilters.extra"
                                 />
@@ -212,7 +216,7 @@ export default {
     computed: {
         styleObject() {
             return this.showFiltersMobile ? { display: "block" } : {};
-        },
+        }
     },
     methods: {
         closeFilters() {
@@ -220,7 +224,7 @@ export default {
         },
         resetFilters() {
             this.$emit("reset-filters");
-        },
+        }
     },
     mounted() {
         this.localFilters = this.filters;

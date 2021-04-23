@@ -56,6 +56,7 @@
                     class="btn contact-btn"
                     data-id="B.4.1"
                     data-investment="Port II"
+                    @click="openContactModal"
                 >
                     prośba o kontakt
                 </button>
@@ -71,6 +72,7 @@
 </template>
 
 <script>
+import MicroModal from 'micromodal'
 export default {
     props: {
         apartment: {
@@ -85,6 +87,17 @@ export default {
         apartmentUrl() {
             return `https://port-praski.resimo.tech/lokale/${this.apartment.slug}`;
         },
+        apartmentNameForModal() {
+            return this.apartment.post_title.replace("-", ".").toUpperCase()
+        }
     },
+    methods: {
+        openContactModal() {
+            MicroModal.show('contact-modal')
+            const messageInput = document.querySelector('#contact-modal input[name="text-wiadomosc"]')
+            messageInput.parentNode.parentNode.classList.add("active")
+            messageInput.value = `Interesuje mnie oferta ${this.investment} - mieszkanie nr ${this.apartmentNameForModal}`
+        }
+    }
 };
 </script>

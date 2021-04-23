@@ -20,7 +20,7 @@
             ></div>
             <button
                 class="btn --mobile --filtry"
-                @click="showFiltersMobile = true"
+                @click="showFilters"
             >
                 <span>pokaż filtry</span>
             </button>
@@ -120,6 +120,7 @@
                 </section>
             </div>
         </div>
+        
     </div>
 </template>
 
@@ -146,7 +147,7 @@ export default {
                 area: [],
                 floor: [],
                 extra: [],
-                type: ["Usługi", "Mieszkanie lub Apartament"],
+                type: [],
                 investments: [],
             },
             perPage: 10,
@@ -159,6 +160,7 @@ export default {
             allApartmentsCount: null,
             sortAsc: true,
             showFiltersMobile: false,
+            initalFilters: null
         };
     },
     computed: {
@@ -177,6 +179,9 @@ export default {
     },
     methods: {
         prepareInitialValues() {
+            this.filters.investments = []
+            this.filters.type = []
+            this.filters.extra = []
             const minRooms = Math.min.apply(
                 Math,
                 this.apartments.map(function(item) {
@@ -222,16 +227,14 @@ export default {
                 })
             );
 
-            console.log(maxFloor);
-
             this.filters.floor = [minFloor, maxFloor];
             this.maxFloor = maxFloor;
             this.minFloor = minFloor
-            if (this.investments !== null) {
-                this.filters.investments = this.investments.map(
-                    (item) => item.id
-                );
-            }
+            // if (this.investments !== null) {
+            //     this.filters.investments = this.investments.map(
+            //         (item) => item.id
+            //     );
+            // }
 
             this.allApartmentsCount = this.apartments.length;
             this.currentPage = 1;
@@ -324,6 +327,7 @@ export default {
                 }
             });
 
+            console.log(this.filteredApartments)
             this.setCurrentPage(1);
         },
         sortApartments() {
@@ -341,15 +345,40 @@ export default {
         },
         setCurrentPage(page) {
             this.currentPage = page;
-            console.log(this.currentPage * this.perPage - this.perPage);
-            console.log(this.currentPage * this.perPage);
         },
         closeFilters() {
             this.showFiltersMobile = false;
+            this.filterApartments()
+            const apartmentsList = document.querySelector('.znajdzLokal__main')
+            const footer = document.querySelector('.wSprawieOferty')
+            if(this.showFiltersMobile) {
+                apartmentsList.style.display = "none"
+                footer.style.display = "none"
+            } else {
+                apartmentsList.style.display = "block"
+                footer.style.display = "block"
+            }
         },
         resetFilters() {
-            this.filters = this.initalFilters;
+            const investmntsCheckbox = document.querySelectorAll(".filters-checkbox")
+            Array.from(investmntsCheckbox).forEach(item => {
+                item.checked = false
+            })
+            this.prepareInitialValues()
+            this.filterApartments()
         },
+        showFilters() {
+            this.showFiltersMobile = !this.showFiltersMobile
+            const apartmentsList = document.querySelector('.znajdzLokal__main')
+            const footer = document.querySelector('.wSprawieOferty')
+            if(this.showFiltersMobile) {
+                apartmentsList.style.display = "none"
+                footer.style.display = "none"
+            } else {
+                apartmentsList.style.display = "block"
+                footer.style.display = "block"
+            }
+        }
     },
     watch: {
         filters: {
@@ -360,7 +389,7 @@ export default {
             },
         },
     },
-    beforeMount() {
+    mounted() {
         const apartmentsValues = document.querySelector("#apartmentsListValues")
             .value;
         const investmentsValues = document.querySelector("#investmentsValues")
@@ -375,6 +404,6 @@ export default {
         this.prepareInitialValues();
 
         this.filterApartments();
-    },
+    }
 };
 </script>
