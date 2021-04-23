@@ -4,7 +4,7 @@
             <div class="znajdzLokal__item__copy">
                 <h2 class="znajdzLokal__item__copy__title">
                     <span class="znajdzLokal__item__inwestycja">
-                        {{ investment }}
+                        {{ investmentName }}
                     </span>
                 </h2>
                 <span
@@ -79,10 +79,6 @@ export default {
         apartment: {
             type: Object,
         },
-        investment: {
-            type: String,
-            required: true,
-        },
     },
     computed: {
         apartmentUrl() {
@@ -90,6 +86,13 @@ export default {
         },
         apartmentNameForModal() {
             return this.apartment.post_title.replace("-", ".").toUpperCase()
+        },
+        investmentName() {
+            if(this.apartment.inwestycje.length === 1) {
+                return this.apartment.inwestycje[0]
+            } else {
+                return this.apartment.inwestycje[1]
+            }
         }
     },
     methods: {
