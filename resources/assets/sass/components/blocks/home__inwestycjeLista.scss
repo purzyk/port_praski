@@ -802,6 +802,8 @@ $lgrey: #f6f6f6;
         align-items: flex-end;
 
         p {
+            color: $darkBlue;
+
             @include breakpoint($md) {
                 text-align: right;
             }
@@ -977,7 +979,7 @@ $lgrey: #f6f6f6;
                 transform: unset;
                 transition: transform 0.3s ease-out 1s;
                 opacity: 1;
-                color: $black;
+                color: $darkBlue;
 
                 @include breakpoint($md) {
                     margin-top: 0;
