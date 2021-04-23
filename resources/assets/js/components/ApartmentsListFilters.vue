@@ -41,9 +41,7 @@
                                 style="display: none"
                             />
                             <label :for="item.id"
-                                ><img
-                                    class="filters-investment-image"
-                                    :src="item.image.sizes.thumbnail"
+                                ><img class="filters-investment-image"
                             /></label>
                             <span class="checkboxTest__title">{{
                                 item.title
@@ -97,7 +95,7 @@
             <VueSlider
                 v-model="localFilters.rooms"
                 :enable-cross="false"
-                :min="1"
+                :min="minRooms"
                 :max="maxRooms"
                 :marks="localFilters.rooms"
                 tooltip="none"
@@ -109,7 +107,7 @@
             <VueSlider
                 v-model="localFilters.area"
                 :enable-cross="false"
-                :min="0"
+                :min="minArea"
                 :max="maxArea"
                 :marks="localFilters.area"
                 :interval="0.01"
@@ -122,7 +120,7 @@
             <VueSlider
                 v-model="localFilters.floor"
                 :enable-cross="false"
-                :min="0"
+                :min="minFloor"
                 :max="maxFloor"
                 :marks="localFilters.floor"
                 tooltip="none"
@@ -186,6 +184,18 @@ export default {
             required: true,
         },
         maxRooms: {
+            type: Number,
+            required: true,
+        },
+        minArea: {
+            type: Number,
+            required: true,
+        },
+        minRooms: {
+            type: Number,
+            required: true,
+        },
+        minFloor: {
             type: Number,
             required: true,
         },

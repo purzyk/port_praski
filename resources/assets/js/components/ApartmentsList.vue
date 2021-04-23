@@ -53,6 +53,9 @@
                     :maxArea="maxArea"
                     :maxFloor="maxFloor"
                     :maxRooms="maxRooms"
+                    :minArea="minArea"
+                    :minFloor="minFloor"
+                    :minRooms="minRooms"
                     :showFiltersMobile="showFiltersMobile"
                     @reset-filters="resetFilters"
                     @close-filters="closeFilters"
@@ -148,8 +151,11 @@ export default {
             },
             perPage: 10,
             maxFloor: 0,
+            minFloor: 0,
             maxRooms: 0,
+            minRooms: 0,
             maxArea: 0,
+            minArea: 0,
             allApartmentsCount: null,
             sortAsc: true,
             showFiltersMobile: false,
@@ -171,7 +177,12 @@ export default {
     },
     methods: {
         prepareInitialValues() {
-            const minRooms = 0;
+            const minRooms = Math.min.apply(
+                Math,
+                this.apartments.map(function(item) {
+                    return item.liczba_pokoi;
+                })
+            );
             const maxRooms = Math.max.apply(
                 Math,
                 this.apartments.map(function(item) {
@@ -179,9 +190,15 @@ export default {
                 })
             );
             this.maxRooms = maxRooms;
+            this.minRooms = minRooms
             this.filters.rooms = [minRooms, maxRooms];
 
-            const minArea = 1;
+            const minArea = Math.min.apply(
+                Math,
+                this.apartments.map(function(item) {
+                    return item.powierzchnia;
+                })
+            );
             const maxArea = Math.max.apply(
                 Math,
                 this.apartments.map(function(item) {
@@ -191,7 +208,13 @@ export default {
 
             this.filters.area = [minArea, maxArea];
             this.maxArea = maxArea;
-            const minFloor = 0;
+            this.minArea = minArea
+            const minFloor = Math.min.apply(
+                Math,
+                this.apartments.map(function(item) {
+                    return item.pietro;
+                })
+            );
             const maxFloor = Math.max.apply(
                 Math,
                 this.apartments.map(function(item) {
@@ -203,6 +226,7 @@ export default {
 
             this.filters.floor = [minFloor, maxFloor];
             this.maxFloor = maxFloor;
+            this.minFloor = minFloor
             if (this.investments !== null) {
                 this.filters.investments = this.investments.map(
                     (item) => item.id
@@ -299,6 +323,7 @@ export default {
                     return item;
                 }
             });
+
             this.setCurrentPage(1);
         },
         sortApartments() {
@@ -329,13 +354,13 @@ export default {
     watch: {
         filters: {
             deep: true,
-            immediate: true,
+            immediate: false,
             handler: function(val) {
                 this.filterApartments();
             },
         },
     },
-    mounted() {
+    beforeMount() {
         const apartmentsValues = document.querySelector("#apartmentsListValues")
             .value;
         const investmentsValues = document.querySelector("#investmentsValues")
