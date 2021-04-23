@@ -94,6 +94,25 @@ $lgrey: #f6f6f6;
         transition: color 0.7s ease-out,
                     margin 0.7s ease-out,
                     font-size 0.7s ease-out;
+
+        @media (min-width: $md) {
+            &.fnt82 {
+                font-size: 40px;
+                line-height: 60px;
+            }
+        }
+        @media (min-width: $xl) {
+            &.fnt82 {
+                font-size: 58px;
+                line-height: 112px;
+            }
+        }
+        @media (min-width: $xxl) {
+            &.fnt82 {
+                font-size: 62px;
+                line-height: 112px;
+            }
+        }
     }
 
     .investment-slogan {
@@ -283,7 +302,11 @@ $lgrey: #f6f6f6;
 
             .investment-name {
                 color: $darkBlue;
-                font-size: 42px;
+                font-size: 36px;
+
+                @media (min-width: $lg) {
+                    font-size: 42px;
+                }
             }
 
             .investment-animatable-background {
