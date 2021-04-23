@@ -42,7 +42,7 @@
                                 style="display: none"
                             />
                             <label :for="item.id"                  
-                                ><img :src="item.image.sizes.thumbnail" class="filters-investment-image"
+                                ><img class="filters-investment-image"
                             /></label>
                             <span class="checkboxTest__title">{{
                                 item.title

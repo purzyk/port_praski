@@ -371,6 +371,6 @@ a {
     object-fit: cover;
 }
 
-.vue-slider-marks .vue-slider-ltr .vue-slider-mark-label:first-of-type{
+.vue-slider-marks .vue-slider-mark:last-child .vue-slider-mark-label{
     transform: translateX(-100%) !important
 }
