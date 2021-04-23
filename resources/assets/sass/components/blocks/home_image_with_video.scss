@@ -186,8 +186,12 @@
 }
 
 .homeImageWithVideo__copy__icon {
-    width: 10rem;
+    width: 120px;
     height: auto;
+
+    @media (min-width: $md) {
+        width: 150px;
+    }
 }
 
 .youtube-player .play {
