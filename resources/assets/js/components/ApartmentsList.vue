@@ -61,7 +61,7 @@
                     @close-filters="closeFilters"
                 />
                 <section class="znajdzLokal__main">
-                    <div class="znajdzLokal__main__meta ">
+                    <div class="znajdzLokal__main__meta">
                         <div class="znajdzLokal__main__meta__content --desktop">
                             <span class="--blue"
                                 >liczba ofert

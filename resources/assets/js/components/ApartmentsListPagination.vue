@@ -49,6 +49,9 @@ export default {
     },
     methods: {
         setPage(page) {
+            if (document.querySelector('#lista-mieszkan')) {
+                document.querySelector('#lista-mieszkan').scrollIntoView()
+            }
             this.$emit("page-changed", page);
         },
     },
