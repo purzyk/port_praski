@@ -26,6 +26,31 @@ $lokale = Timber::get_posts(array('orderby' => 'title', 'post_type' => 'lokale',
       'terms'    => $cat,
     ),
   ),));
-$context['postsLoop'] = $lokale;
+
+  foreach( $lokale as $post ) {
+    $id = $post->ID;
+		$permalink = substr(get_permalink( $post->ID ), 0, -1);
+        $post_thumbnail = ( has_post_thumbnail( $id ) ) ? get_the_post_thumbnail_url( $id, array(800,577)) : null;
+		$powierzchnia = get_field('powierzchnia', $id);
+		$inwestycja =  wp_get_post_terms( $post->ID, 'inwestycja', array( 'fields' => 'names' ) );
+		$typ = get_field('typ', $id);
+		$liczba_pokoi = get_field('liczba_pokoi', $id);
+		$pietro = get_field('pietro', $id);
+		$status = get_field('status', $id);
+		
+		$lokaleNew[] = array(
+            'status' => $status,
+			'url' => $permalink,
+            'nr_lokalu' => get_the_title( $id ),
+            'rzut_3D' => $post_thumbnail,
+			'powierzchnia' => $powierzchnia,
+			'inwestycja' => $inwestycja,
+			'typ' => $typ,
+			'liczba_pokoi' => $liczba_pokoi,
+			'pietro' => $pietro,
+        );
+}
+
+$context['postsLoop'] = $lokaleNew;
 $context['cat'] = $cat;
 Timber::render($templates, $context);
