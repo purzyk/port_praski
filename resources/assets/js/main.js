@@ -179,29 +179,6 @@ $(document).ready(function () {
   })
 
 
-  /* SHow menu on scroll up */
-  'use strict';
-  var c, currentScrollTop = 0,
-    navbar = $('.header');
-  $(window).scroll(function () {
-    var a = $(window).scrollTop();
-    var b = navbar.height();
-    currentScrollTop = a;
-
-    if (c < currentScrollTop && a > b + b) {
-      navbar.addClass("scrollUp");
-    } else if (c > currentScrollTop && !(a <= b)) {
-      navbar.removeClass("scrollUp");
-    }
-    if (Math.abs(document.body.offsetHeight - window.innerHeight - window.pageYOffset) <= 3) {
-      navbar.removeClass("scrollUp");
-    }
-
-    c = currentScrollTop;
-  });
-
-
-
   if(document.body.classList.contains("single-lokale")) {
     const thumbnails = document.querySelector(".slider-nav-lokal-thumbnails")
     const apartmentMainSlider = document.querySelector(".slider-lokal")
@@ -248,8 +225,6 @@ $(function () {
       },
       800
     );
-    const navbar = $('.header');
-    navbar.removeClass("scrollUp");
   });
 
 
@@ -300,8 +275,6 @@ $(function () {
         },
         800
       );
-      const navbar = $('.header');
-      navbar.removeClass("scrollUp");
     });
   }
 
