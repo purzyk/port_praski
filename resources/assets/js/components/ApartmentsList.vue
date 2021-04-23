@@ -241,13 +241,20 @@ export default {
         },
         getInvestmentName(id) {
             if (this.investments) {
+                console.log('LALALA')
                 const numberID = Number(id);
                 const investment = this.investments.find(
                     (item) => item.id === numberID
                 );
                 return investment ? investment.title : "";
             } else {
-                return "";
+                console.log('LALALA2')
+                const numberID = Number(id);
+                const investment = investmentsNames.find(
+                    (item) => item.id === numberID
+                );
+                console.log(numberID)
+                return investment ? investment.title : "";
             }
         },
         filterApartments() {
@@ -399,6 +406,7 @@ export default {
         const parsedInvestments = JSON.parse(investmentsValues);
         const parsedExtraValues = JSON.parse(extraValues);
         this.apartments = parsedApartments;
+        console.log(parsedInvestments)
         this.investments = parsedInvestments;
         this.extra = parsedExtraValues;
         this.prepareInitialValues();
@@ -406,4 +414,31 @@ export default {
         this.filterApartments();
     }
 };
+
+const investmentsNames = [
+    {
+        id: 7,
+        title: "Port II"
+    },
+    {
+        id: 11,
+        title: "Sierakowskiego II"
+    },
+    {
+        id: 6,
+        title: "Port"
+    },
+    {
+        id: 10,
+        title: "Sierakowskiego 4"
+    },
+    {
+        id: 12,
+        title: "Sierakowskiego 5"
+    },
+    {
+        id: 13,
+        title: "Lokale usługowe"
+    }
+]
 </script>

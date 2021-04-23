@@ -371,10 +371,6 @@ a {
     object-fit: cover;
 }
 
-.vue-slider-mark-step:first-child {
-    padding-left: 12px;
-}
-
-.vue-slider-mark-step:first-child {
-    padding-right: 12px;
+.vue-slider-marks .vue-slider-ltr .vue-slider-mark-label:first-of-type{
+    transform: translateX(-100%) !important
 }
