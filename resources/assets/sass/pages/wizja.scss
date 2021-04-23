@@ -815,6 +815,12 @@
     }
 }
 
+.lokalizacja__copyLeft__wrap__images {
+    @media (max-width: $md) {
+        margin-bottom: 60px;
+    }
+}
+
 .js-dzielnica__images__main img {
     height: 55vh;
     object-fit: cover;
