@@ -9,6 +9,9 @@ import Splide from '@splidejs/splide';
 import filterigMixItUp from './jq-components/filterigMixItUp';
 import MicroModal from 'micromodal';
 import Vue from "vue"
+
+import ApartmentsList from "./components/ApartmentsList.vue"
+
 /* Replace image vidth youtube content */
 function labnolIframe(div) {
   var iframe = document.createElement("iframe");
@@ -47,7 +50,15 @@ function initYouTubeVideos() {
 document.addEventListener("DOMContentLoaded", initYouTubeVideos);
 
 $(document).ready(function () {
+  
 
+  const apartmentsListContainer = document.querySelector("#apartments-list-container")
+  if (apartmentsListContainer) {
+      const app = new Vue({
+          el: apartmentsListContainer,
+          render: h => h(ApartmentsList),
+      })
+  }
   phoneInputValidationHandler()
 
 
@@ -1081,17 +1092,4 @@ if (goBackButton) {
 
   if (lastUrl.includes('inwestycja')) goBackButton.href = `${lastUrl}#lista-mieszkan`
   else goBackButton.href = `${window.location.origin}/znajdz-lokal`
-}
-
-import ApartmentsList from "./components/ApartmentsList.vue"
-
-const apartmentsListContainer = document.querySelector("#apartments-list-container")
-if (apartmentsListContainer) {
-    const app = new Vue({
-        el: apartmentsListContainer,
-        components: {
-            TableApartments
-        },
-        render: h => h(ApartmentsList),
-    })
 }
