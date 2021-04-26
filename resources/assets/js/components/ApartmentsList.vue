@@ -6,7 +6,9 @@
             <div class="znajdzLokal__main__meta__content --mobile">
                 <span class="--blue"
                     >liczba ofert
-                    <span class="counter" style="padding-right: 1px">{{ allFilteredApartments }}</span>
+                    <span class="counter" style="padding-right: 1px">{{
+                        allFilteredApartments
+                    }}</span>
                 </span>
                 <span
                     >(<span class="total">{{ allApartmentsCount }}</span
@@ -18,10 +20,7 @@
                 data-aos="width"
                 data-aos-duration="800"
             ></div>
-            <button
-                class="btn --mobile --filtry"
-                @click="showFilters"
-            >
+            <button class="btn --mobile --filtry" @click="showFilters">
                 <span>pokaż filtry</span>
             </button>
             <div class="znajdzLokal__main__meta__content --mobile">
@@ -65,7 +64,7 @@
                         <div class="znajdzLokal__main__meta__content --desktop">
                             <span class="--blue"
                                 >liczba ofert
-                                <span class="counter" >{{
+                                <span class="counter">{{
                                     allFilteredApartments
                                 }}</span>
                             </span>
@@ -120,7 +119,6 @@
                 </section>
             </div>
         </div>
-        
     </div>
 </template>
 
@@ -160,7 +158,7 @@ export default {
             allApartmentsCount: null,
             sortAsc: true,
             showFiltersMobile: false,
-            initalFilters: null
+            initalFilters: null,
         };
     },
     computed: {
@@ -179,9 +177,9 @@ export default {
     },
     methods: {
         prepareInitialValues() {
-            this.filters.investments = []
-            this.filters.type = []
-            this.filters.extra = []
+            this.filters.investments = [];
+            this.filters.type = [];
+            this.filters.extra = [];
             const minRooms = Math.min.apply(
                 Math,
                 this.apartments.map(function(item) {
@@ -195,7 +193,7 @@ export default {
                 })
             );
             this.maxRooms = maxRooms;
-            this.minRooms = minRooms
+            this.minRooms = minRooms;
             this.filters.rooms = [minRooms, maxRooms];
 
             const minArea = Math.min.apply(
@@ -213,7 +211,7 @@ export default {
 
             this.filters.area = [minArea, maxArea];
             this.maxArea = maxArea;
-            this.minArea = minArea
+            this.minArea = minArea;
             const minFloor = Math.min.apply(
                 Math,
                 this.apartments.map(function(item) {
@@ -229,7 +227,7 @@ export default {
 
             this.filters.floor = [minFloor, maxFloor];
             this.maxFloor = maxFloor;
-            this.minFloor = minFloor
+            this.minFloor = minFloor;
             // if (this.investments !== null) {
             //     this.filters.investments = this.investments.map(
             //         (item) => item.id
@@ -241,19 +239,18 @@ export default {
         },
         getInvestmentName(id) {
             if (this.investments) {
-                console.log('LALALA')
                 const numberID = Number(id);
                 const investment = this.investments.find(
                     (item) => item.id === numberID
                 );
                 return investment ? investment.title : "";
             } else {
-                console.log('LALALA2')
+
                 const numberID = Number(id);
                 const investment = investmentsNames.find(
                     (item) => item.id === numberID
                 );
-                console.log(numberID)
+                console.log(numberID);
                 return investment ? investment.title : "";
             }
         },
@@ -289,8 +286,8 @@ export default {
                     return item;
                 } else if (
                     this.filters.investments.length &&
-                    this.filters.investments.some(
-                       v =>  item.inwestycje.includes(v)
+                    this.filters.investments.some((v) =>
+                        item.inwestycje.includes(v)
                     )
                 ) {
                     return item;
@@ -334,72 +331,116 @@ export default {
                 }
             });
 
-            console.log(this.filteredApartments)
+            this.defaultSort();
             this.setCurrentPage(1);
         },
         sortApartments() {
             if (this.sortAsc) {
-                this.filteredApartments = this.filteredApartments.sort((a, b) =>
-                    a.post_title > b.post_title ? -1 : 1
+                this.filteredApartments = this.filteredApartments.sort(
+                    (a, b) => {
+                        let x =
+                            a.inwestycje.length > 1
+                                ? a.inwestycje[1]
+                                : a.inwestycje[0];
+                        let y =
+                            b.inwestycje.length > 1
+                                ? b.inwestycje[1]
+                                : b.inwestycje[0];
+                        console.log(x)
+                        return x > y ? -1 : 1;
+                    }
                 );
             } else {
-                this.filteredApartments = this.filteredApartments.sort((a, b) =>
-                    a.post_title < b.post_title ? -1 : 1
+                this.filteredApartments = this.filteredApartments.sort(
+                    (a, b) => {
+                        let x =
+                            a.inwestycje.length > 1
+                                ? a.inwestycje[1]
+                                : a.inwestycje[0];
+                        let y =
+                            b.inwestycje.length > 1
+                                ? b.inwestycje[1]
+                                : b.inwestycje[0];
+                        console.log(x)
+                        return x.inwestycje < y.inwestycje ? 1 : -1;
+                    }
                 );
             }
             this.sortAsc = !this.sortAsc;
             this.setCurrentPage(1);
+        },
+        defaultSort() {
+            this.filteredApartments = this.filteredApartments.sort(
+                    (a, b) => {
+                        let x =
+                            a.inwestycje.length > 1
+                                ? a.inwestycje[1]
+                                : a.inwestycje[0];
+                        let y =
+                            b.inwestycje.length > 1
+                                ? b.inwestycje[1]
+                                : b.inwestycje[0];
+                        console.log(x)
+                        return x > y ? -1 : 1;
+                    }
+                )
         },
         setCurrentPage(page) {
             this.currentPage = page;
         },
         closeFilters() {
             this.showFiltersMobile = false;
-            this.filterApartments()
-            const apartmentsList = document.querySelector('.znajdzLokal__main')
-            const footer = document.querySelector('.wSprawieOferty')
-            const investmentSection = document.querySelector(".inwestycja__section")
-            if(this.showFiltersMobile) {
-                apartmentsList.style.display = "none"
-                footer.style.display = "none"
-                if(investmentSection) {
-                    investmentSection.style.display = "none"
+            this.filterApartments();
+            const apartmentsList = document.querySelector(".znajdzLokal__main");
+            const footer = document.querySelector(".wSprawieOferty");
+            const investmentSection = document.querySelector(
+                ".inwestycja__section"
+            );
+            if (this.showFiltersMobile) {
+                apartmentsList.style.display = "none";
+                footer.style.display = "none";
+                if (investmentSection) {
+                    investmentSection.style.display = "none";
                 }
             } else {
-                apartmentsList.style.display = "block"
-                footer.style.display = "block"
-                if(investmentSection) {
-                    investmentSection.style.display = "block"
+                apartmentsList.style.display = "block";
+                footer.style.display = "block";
+                if (investmentSection) {
+                    investmentSection.style.display = "block";
                 }
             }
         },
         resetFilters() {
-            const investmntsCheckbox = document.querySelectorAll(".filters-checkbox")
-            Array.from(investmntsCheckbox).forEach(item => {
-                item.checked = false
-            })
-            this.prepareInitialValues()
-            this.filterApartments()
+            const investmntsCheckbox = document.querySelectorAll(
+                ".filters-checkbox"
+            );
+            Array.from(investmntsCheckbox).forEach((item) => {
+                item.checked = false;
+            });
+            this.prepareInitialValues();
+            this.filterApartments();
         },
         showFilters() {
-            this.showFiltersMobile = !this.showFiltersMobile
-            const apartmentsList = document.querySelector('.znajdzLokal__main')
-            const footer = document.querySelector('.wSprawieOferty')
-            const investmentSection = document.querySelector(".inwestycja__section")
-            if(this.showFiltersMobile) {
-                apartmentsList.style.display = "none"
-                footer.style.display = "none"
-                if(investmentSection) {
-                    investmentSection.style.display = "none"
+            this.showFiltersMobile = !this.showFiltersMobile;
+            const apartmentsList = document.querySelector(".znajdzLokal__main");
+            const footer = document.querySelector(".wSprawieOferty");
+            const investmentSection = document.querySelector(
+                ".inwestycja__section"
+            );
+            if (this.showFiltersMobile) {
+                apartmentsList.style.display = "none";
+                footer.style.display = "none";
+                if (investmentSection) {
+                    investmentSection.style.display = "none";
                 }
             } else {
-                apartmentsList.style.display = "block"
-                footer.style.display = "block"
-                if(investmentSection) {
-                    investmentSection.style.display = "block"
+                apartmentsList.style.display = "block";
+                footer.style.display = "block";
+                if (investmentSection) {
+                    investmentSection.style.display = "block";
                 }
             }
-        }
+        },
     },
     watch: {
         filters: {
@@ -420,45 +461,45 @@ export default {
         const parsedInvestments = JSON.parse(investmentsValues);
         const parsedExtraValues = JSON.parse(extraValues);
         this.apartments = parsedApartments;
-        console.log(parsedInvestments)
+        console.log(parsedInvestments);
         this.investments = parsedInvestments;
         this.extra = parsedExtraValues;
         this.prepareInitialValues();
 
         this.filterApartments();
 
-        if(window.location.href.includes('inwestycja')) {
-            this.perPage = 5
+        if (window.location.href.includes("inwestycja")) {
+            this.perPage = 5;
         } else {
-            this.perPage = 10
+            this.perPage = 10;
         }
-    }
+    },
 };
 
 const investmentsNames = [
     {
         id: 7,
-        title: "Port II"
+        title: "Port II",
     },
     {
         id: 11,
-        title: "Sierakowskiego II"
+        title: "Sierakowskiego II",
     },
     {
         id: 6,
-        title: "Port"
+        title: "Port",
     },
     {
         id: 10,
-        title: "Sierakowskiego 4"
+        title: "Sierakowskiego 4",
     },
     {
         id: 12,
-        title: "Sierakowskiego 5"
+        title: "Sierakowskiego 5",
     },
     {
         id: 13,
-        title: "Lokale usługowe"
-    }
-]
+        title: "Lokale usługowe",
+    },
+];
 </script>
