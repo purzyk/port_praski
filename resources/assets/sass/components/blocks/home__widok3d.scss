@@ -1,3 +1,11 @@
+.home_widok3d-wrapper {
+  background: linear-gradient(180deg, $lightBlue 30%, transparent 30%);
+
+  @media (min-width: 500px) {
+    background: linear-gradient(180deg, $lightBlue 20%, transparent 20%);
+  } 
+}
+
 .home__widok3d {
   position: relative;
   max-width: $xxl;

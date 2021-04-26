@@ -1,8 +1,8 @@
 .homeImageWithVideo {
-    margin-bottom: 100px;
+    padding-bottom: 100px;
 
     @include breakpoint($md) {
-        margin-bottom: 150px;
+        padding-bottom: 150px;
     }
 
     &__wrap {
