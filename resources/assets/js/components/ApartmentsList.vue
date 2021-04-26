@@ -250,7 +250,6 @@ export default {
                 const investment = investmentsNames.find(
                     (item) => item.id === numberID
                 );
-                console.log(numberID);
                 return investment ? investment.title : "";
             }
         },
@@ -346,7 +345,6 @@ export default {
                             b.inwestycje.length > 1
                                 ? b.inwestycje[1]
                                 : b.inwestycje[0];
-                        console.log(x)
                         return x > y ? -1 : 1;
                     }
                 );
@@ -361,7 +359,6 @@ export default {
                             b.inwestycje.length > 1
                                 ? b.inwestycje[1]
                                 : b.inwestycje[0];
-                        console.log(x)
                         return x.inwestycje < y.inwestycje ? 1 : -1;
                     }
                 );
@@ -380,7 +377,6 @@ export default {
                             b.inwestycje.length > 1
                                 ? b.inwestycje[1]
                                 : b.inwestycje[0];
-                        console.log(x)
                         return x > y ? -1 : 1;
                     }
                 )
@@ -455,7 +451,6 @@ export default {
         const parsedInvestments = JSON.parse(investmentsValues);
         const parsedExtraValues = JSON.parse(extraValues);
         this.apartments = parsedApartments;
-        console.log(parsedInvestments);
         this.investments = parsedInvestments;
         this.extra = parsedExtraValues;
         this.prepareInitialValues();

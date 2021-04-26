@@ -1,7 +1,6 @@
 (function ($) {
   $.fn.dropdowns = function (options) {
     let width = 0;
-    console.log("menu")
     function updateWindowSize() {
       if (document.body && document.body.offsetWidth) {
         width = document.body.offsetWidth;
