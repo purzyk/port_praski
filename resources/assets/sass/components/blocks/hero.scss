@@ -44,9 +44,7 @@
 
       h1 {
         font-weight: 800;
-
         text-transform: uppercase;
-        color: $white;
         font-size: 80px;
         line-height: 80px;
 
@@ -62,7 +60,6 @@
       font-size: 130px;
       line-height: 177px;
       text-transform: uppercase;
-      color: $white;
       text-align: center;
       margin-bottom: 24px;
 
@@ -75,13 +72,12 @@
 
       font-size: 20px;
       line-height: 27px;
-      color: $white;
       text-align: center;
 
       @include breakpoint($md) {
         text-align: left;
 
-        font-size: 30px;
+        font-size: 38px;
         line-height: 41px;
       }
     }
