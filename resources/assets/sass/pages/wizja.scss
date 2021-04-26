@@ -694,11 +694,14 @@
         }
 
         p {
-            margin-bottom: 42px;
+            padding-bottom: 42px;
+            margin-bottom: 0;
 
             @include breakpoint($md) {
                 font-size: 20px;
                 line-height: 32px;
+                margin-bottom: 42px;
+                padding-bottom: 0;
             }
         }
     }
@@ -905,7 +908,11 @@
 }
 
 .lokalizacja__copy.copyMarginTop {
-    margin-top: 50px;
+    margin-top: 0;
+
+    @media (min-width: $md) {
+        margin-top: 50px;
+    }
 }
 
 .wizja__lokalizacja__wrapper p {
@@ -918,7 +925,9 @@
 
 
 .lokalizacja__copyLeft {
-    background: linear-gradient(
-        180deg
-        ,#fff 28%,#e9ecf3 0);
+    background: #e9ecf3;
+    
+    @media (min-width: $md) {
+        background: linear-gradient(180deg,#fff 28%,#e9ecf3 0);
+    }
 }
