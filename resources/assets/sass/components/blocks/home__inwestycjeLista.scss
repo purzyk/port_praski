@@ -90,7 +90,8 @@ $lgrey: #f6f6f6;
 
     .investment-name {
         pointer-events: none;
-        margin-bottom: 50px;
+        margin-bottom: 25px;
+        margin-top: 35px;
         transition: color 0.7s ease-out,
                     margin 0.7s ease-out,
                     font-size 0.7s ease-out;
@@ -102,6 +103,8 @@ $lgrey: #f6f6f6;
             }
         }
         @media (min-width: $xl) {
+            margin-top: 15px;
+
             &.fnt82 {
                 font-size: 58px;
                 line-height: 112px;
