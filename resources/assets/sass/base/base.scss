@@ -304,6 +304,26 @@ a {
     pointer-events: none;
 }
 
+.phone-icon {
+    display: none !important;
+
+    @media (min-width: $md) {
+        display: flex !important;
+    }
+}
+
+.phone-icon-for-mobile {
+    display: flex !important;
+
+    svg {
+        pointer-events: none;
+    }
+
+    @media (min-width: $md) {
+        display: none !important;
+    }
+}
+
 .strong {
     font-weight: 700;
 }
