@@ -13,7 +13,7 @@
 
 			</div>
 			<div class="gallery row">
-				{% for item in galeriaLoop %}
+				{% for item in galeriaLoop|reverse %}
 					{% if (loop.index == 2) or (loop.index == 4) %}
 						<div class="grid-item bigger filter-simple-item {% for termname in item.terms('kategoria_zdjec') %}{{termname.slug}}  {% endfor %}">
 							<a href="{{item.thumbnail}}">
