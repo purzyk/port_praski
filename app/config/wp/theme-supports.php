@@ -483,7 +483,7 @@ function custom_api_get_sierakowskiego4_callback( $request ) {
             'nr_lokalu' => get_the_title( $id ),
             'rzut_3D' => $post_thumbnail,
 			'powierzchnia' => $powierzchnia,
-			'inwestycja' => $inwestycja,
+			'inwestycja' => $inwestycja[0],
 			'typ' => $typ,
 			'liczba_pokoi' => $liczba_pokoi,
 			'pietro' => $pietro,

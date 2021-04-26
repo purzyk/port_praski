@@ -716,7 +716,10 @@ $('.znajdzLokal__filters__close--wide').click(function (event) {
 const localsListHandler = () => {
   if ($(window).width() > 1180) {
     $('.znajdzLokal__main').show();
+    $('.inwestycja__section').show();
   }
+
+
 }
 
 $(window).on('resize', localsListHandler);

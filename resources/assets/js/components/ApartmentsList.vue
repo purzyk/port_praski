@@ -289,8 +289,8 @@ export default {
                     return item;
                 } else if (
                     this.filters.investments.length &&
-                    this.filters.investments.includes(
-                        Number(item.custom._primary_term_inwestycja)
+                    this.filters.investments.some(
+                       v =>  item.inwestycje.includes(v)
                     )
                 ) {
                     return item;
@@ -358,12 +358,19 @@ export default {
             this.filterApartments()
             const apartmentsList = document.querySelector('.znajdzLokal__main')
             const footer = document.querySelector('.wSprawieOferty')
+            const investmentSection = document.querySelector(".inwestycja__section")
             if(this.showFiltersMobile) {
                 apartmentsList.style.display = "none"
                 footer.style.display = "none"
+                if(investmentSection) {
+                    investmentSection.style.display = "none"
+                }
             } else {
                 apartmentsList.style.display = "block"
                 footer.style.display = "block"
+                if(investmentSection) {
+                    investmentSection.style.display = "block"
+                }
             }
         },
         resetFilters() {
@@ -378,12 +385,19 @@ export default {
             this.showFiltersMobile = !this.showFiltersMobile
             const apartmentsList = document.querySelector('.znajdzLokal__main')
             const footer = document.querySelector('.wSprawieOferty')
+            const investmentSection = document.querySelector(".inwestycja__section")
             if(this.showFiltersMobile) {
                 apartmentsList.style.display = "none"
                 footer.style.display = "none"
+                if(investmentSection) {
+                    investmentSection.style.display = "none"
+                }
             } else {
                 apartmentsList.style.display = "block"
                 footer.style.display = "block"
+                if(investmentSection) {
+                    investmentSection.style.display = "block"
+                }
             }
         }
     },
@@ -412,6 +426,12 @@ export default {
         this.prepareInitialValues();
 
         this.filterApartments();
+
+        if(window.location.href.includes('inwestycja')) {
+            this.perPage = 5
+        } else {
+            this.perPage = 10
+        }
     }
 };
 

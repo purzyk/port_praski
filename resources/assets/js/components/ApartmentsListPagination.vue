@@ -31,7 +31,7 @@
             >{{ currentPage + 2 }}</a
         >
         <span v-if="currentPage < maxPage - 1">...</span>
-        <a v-if="currentPage !== maxPage" @click="setPage(maxPage)">{{
+        <a v-if="currentPage < maxPage - 1" @click="setPage(maxPage)">{{
             maxPage
         }}</a>
         <a v-if="currentPage < maxPage" @click="setPage(currentPage + 1)"
