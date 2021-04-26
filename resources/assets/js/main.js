@@ -717,6 +717,9 @@ const localsListHandler = () => {
   if ($(window).width() > 1180) {
     $('.znajdzLokal__main').show();
     $('.inwestycja__section').show();
+    $('.wSprawieOferty').show();
+    $('.footer').show();
+    $('#filters-header').show();
   }
 
 
