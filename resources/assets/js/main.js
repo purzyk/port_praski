@@ -448,7 +448,7 @@ $(function () {
     arrows: false,
     dots: true,
     autoplay: true,
-    autoplaySpeed: 8000,
+    autoplaySpeed: 5000,
     fade: true,
     speed: 2000,
     cssEase: "linear"
@@ -658,7 +658,7 @@ $(function () {
 // Hide Page Loader when DOM and images are ready
 $(window).on('load', () => $('.pageloader').removeClass('is-active'));
 $(window).on('load', () => $('body').removeClass('is-loading'));
-$(window).on('load', () => setTimeout(hideHeroTitle, 6000));
+$(window).on('load', () => setTimeout(hideHeroTitle, 3000));
 
 /* Make header smaller after some height */
 $(window).scroll(function () {
