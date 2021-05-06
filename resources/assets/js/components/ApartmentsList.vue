@@ -126,6 +126,7 @@
 import ApartmentsListItem from "./ApartmentsListItem.vue";
 import ApartmentsListFilters from "./ApartmentsListFilters.vue";
 import ApartmentsListPagination from "./ApartmentsListPagination.vue";
+
 export default {
     name: "ApartmentsList",
     components: {
@@ -137,7 +138,7 @@ export default {
         return {
             apartments: [],
             filteredApartments: [],
-            currentPage: null,
+            currentPage: 1,
             investments: [],
             extra: [],
             filters: {
@@ -159,6 +160,7 @@ export default {
             sortAsc: true,
             showFiltersMobile: false,
             initalFilters: null,
+            filtersLoadFromsessionStorage: false
         };
     },
     computed: {
@@ -235,7 +237,8 @@ export default {
             // }
 
             this.allApartmentsCount = this.apartments.length;
-            this.currentPage = 1;
+            this.getFiltersFromsessionStorage();
+            
         },
         getInvestmentName(id) {
             if (this.investments) {
@@ -245,7 +248,6 @@ export default {
                 );
                 return investment ? investment.title : "";
             } else {
-
                 const numberID = Number(id);
                 const investment = investmentsNames.find(
                     (item) => item.id === numberID
@@ -331,7 +333,12 @@ export default {
             });
 
             this.defaultSort();
-            this.setCurrentPage(1);
+
+            if(!this.filtersLoadFromsessionStorage) {
+                this.currentPage = 1
+            }
+
+            this.filtersLoadFromsessionStorage = false
         },
         sortApartments() {
             if (this.sortAsc) {
@@ -367,19 +374,13 @@ export default {
             this.setCurrentPage(1);
         },
         defaultSort() {
-            this.filteredApartments = this.filteredApartments.sort(
-                    (a, b) => {
-                        let x =
-                            a.inwestycje.length > 1
-                                ? a.inwestycje[1]
-                                : a.inwestycje[0];
-                        let y =
-                            b.inwestycje.length > 1
-                                ? b.inwestycje[1]
-                                : b.inwestycje[0];
-                        return x > y ? -1 : 1;
-                    }
-                )
+            this.filteredApartments = this.filteredApartments.sort((a, b) => {
+                let x =
+                    a.inwestycje.length > 1 ? a.inwestycje[1] : a.inwestycje[0];
+                let y =
+                    b.inwestycje.length > 1 ? b.inwestycje[1] : b.inwestycje[0];
+                return x > y ? -1 : 1;
+            });
         },
         setCurrentPage(page) {
             this.currentPage = page;
@@ -387,13 +388,13 @@ export default {
         closeFilters() {
             this.showFiltersMobile = false;
             this.filterApartments();
-            this.handleFiltersOpenMobile()
+            this.handleFiltersOpenMobile();
         },
         handleFiltersOpenMobile() {
-  const apartmentsList = document.querySelector(".znajdzLokal__main");
+            const apartmentsList = document.querySelector(".znajdzLokal__main");
             const footer = document.querySelector(".wSprawieOferty");
-            const mainFooter = document.querySelector(".footer")
-            const filtersHeader = document.querySelector("#filters-header")
+            const mainFooter = document.querySelector(".footer");
+            const filtersHeader = document.querySelector("#filters-header");
             const investmentSection = document.querySelector(
                 ".inwestycja__section"
             );
@@ -401,17 +402,17 @@ export default {
                 apartmentsList.style.display = "none";
                 footer.style.display = "none";
                 if (investmentSection) {
-                    filtersHeader.style.display = "none"
-                    investmentSection.style.display = "none"
+                    filtersHeader.style.display = "none";
+                    investmentSection.style.display = "none";
                     mainFooter.style.display = "none";
                     footer.style.display = "none";
                 }
             } else {
                 apartmentsList.style.display = "block";
                 footer.style.display = "block";
-                filtersHeader.style.display = "block"
+                filtersHeader.style.display = "block";
                 if (investmentSection) {
-                    investmentSection.style.display = "block"
+                    investmentSection.style.display = "block";
                     mainFooter.style.display = "block";
                     investmentSection.style.display = "block";
                 }
@@ -424,12 +425,32 @@ export default {
             Array.from(investmntsCheckbox).forEach((item) => {
                 item.checked = false;
             });
+            sessionStorage.removeItem("filters");
             this.prepareInitialValues();
             this.filterApartments();
         },
         showFilters() {
             this.showFiltersMobile = !this.showFiltersMobile;
-            this.handleFiltersOpenMobile()
+            this.handleFiltersOpenMobile();
+        },
+        saveFiltersTosessionStorage() {
+            const filters = this.filters;
+            const currentPage = this.currentPage
+            const preparedFilter = {
+                filters,
+                currentPage
+            }
+            sessionStorage.setItem("filters", JSON.stringify(preparedFilter));
+        },
+        getFiltersFromsessionStorage() {
+            if (sessionStorage.getItem("filters")) {
+                const storageFillters = JSON.parse(
+                    sessionStorage.getItem("filters")
+                );
+                this.filters = storageFillters.filters;
+                this.currentPage = storageFillters.currentPage
+                this.filtersLoadFromsessionStorage = true
+            }
         },
     },
     watch: {
@@ -438,10 +459,14 @@ export default {
             immediate: false,
             handler: function(val) {
                 this.filterApartments();
+                this.saveFiltersTosessionStorage();
             },
         },
+        currentPage() {
+            this.saveFiltersTosessionStorage();
+        }
     },
-    mounted() {
+    beforeMount() {
         const apartmentsValues = document.querySelector("#apartmentsListValues")
             .value;
         const investmentsValues = document.querySelector("#investmentsValues")
@@ -454,15 +479,13 @@ export default {
         this.investments = parsedInvestments;
         this.extra = parsedExtraValues;
         this.prepareInitialValues();
-
-        this.filterApartments();
-
+        
         if (window.location.href.includes("inwestycja")) {
             this.perPage = 5;
         } else {
             this.perPage = 10;
         }
-    },
+    }
 };
 
 const investmentsNames = [

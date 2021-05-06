@@ -51,6 +51,7 @@ document.addEventListener("DOMContentLoaded", initYouTubeVideos);
 
 $(document).ready(function () {
   
+  //if(window.location.href.includes(""))
 
   const apartmentsListContainer = document.querySelector("#apartments-list-container")
   if (apartmentsListContainer) {
@@ -61,6 +62,12 @@ $(document).ready(function () {
   }
   phoneInputValidationHandler()
 
+
+  if(!window.location.href.includes("znajdz-lokal") && !window.location.href.includes("lokale")  &&  !window.location.href.includes("inwestycja")) {
+    if (sessionStorage.getItem("filters")) {
+        sessionStorage.removeItem("filters")
+    }
+  }
 
   window.addEventListener('message', function(e) {
     handleMessageFromJeff(e)
@@ -265,7 +272,7 @@ $(function () {
 
           // $(".js-dzielnica__images__main-nav-thumbnails").slick("refresh");
         } else {
-          console.log(content)
+
           content.style.display = "none"
         }
       }
@@ -793,7 +800,7 @@ $('.gallery').each(function () {
     },
     callbacks: {
       change: function () {
-        console.log(this.st)
+
       }
     }
   });
@@ -945,7 +952,6 @@ function set3DViewButtonsPostition() {
 
 const addListenersToContactButtons = () => {
   const allAskToContactButtons = $(".contact-btn")
-  console.log(allAskToContactButtons)
   for (let i = 0; i < allAskToContactButtons.length; i++) {
     allAskToContactButtons[i].addEventListener('click', function (e) {
       e.stopPropagation()
@@ -998,8 +1004,6 @@ const goToContact = (el) => {
   const apartmentId = urlArray[urlArray.length - 2].toUpperCase().replaceAll("-", ".")
   const messageInput = document.querySelector('#contact-modal input[name="text-wiadomosc"]')
 
-  console.log(el)
-  console.log(el.currentTarget)
   const investment = el.currentTarget.dataset.investment.trim()
   messageInput.parentNode.parentNode.classList.add("active")
   messageInput.value = `Interesuje mnie oferta ${investment} - mieszkanie nr ${apartmentId}`

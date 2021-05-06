@@ -412,3 +412,14 @@ a {
 .bg-light-blue {
     background: $lightBlue;
 }
+
+.clear-filters--desktop {
+    display: none;
+    font-size: 13px;
+    line-height: 18px;
+    cursor: pointer;
+    margin-left: auto;
+    @include breakpoint($md) {
+        display: block;
+      }
+}

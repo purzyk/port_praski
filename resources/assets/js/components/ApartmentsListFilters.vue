@@ -13,7 +13,7 @@
         <button
             type="reset"
             data-filter="all"
-            class="znajdzLokal__filters__clear btn --white --mobile"
+            class="znajdzLokal__filters__clear btn --white --mobile "
             @click="resetFilters"
         >
             Wyczyść filtry
@@ -25,7 +25,10 @@
             Zastosuj filtry
         </button>
         <div class="znajdzLokal__filters__item --inwestycje">
-            <h3 class="znajdzLokal__filters__title">inwestycja</h3>
+            <div style="display: flex">
+                <h3 class="znajdzLokal__filters__title">inwestycja</h3>
+                <p style="margin-left: auto; font-size: 13px;cursor:pointer" class="clear-filters--desktop" @click="resetFilters">Wyczyść filtry</p>
+            </div>
             <div class="znajdzLokal__filters__item__wrapp">
                 <div
                     class="controls smaller-margin"
@@ -96,6 +99,7 @@
             <h3 class="znajdzLokal__filters__title">Liczba pokoi</h3>
 
             <VueSlider
+                v-if="minRooms"
                 v-model="localFilters.rooms"
                 :enable-cross="false"
                 :min="minRooms"
@@ -108,6 +112,7 @@
             <h3 class="znajdzLokal__filters__title">Powierzchnia</h3>
 
             <VueSlider
+                v-if="minArea"
                 v-model="localFilters.area"
                 :enable-cross="false"
                 :min="minArea"
@@ -121,6 +126,7 @@
             <h3 class="znajdzLokal__filters__title">Piętro</h3>
 
             <VueSlider
+                v-if="minFloor"
                 v-model="localFilters.floor"
                 :enable-cross="false"
                 :min="minFloor"
@@ -226,8 +232,8 @@ export default {
             this.$emit("reset-filters");
         }
     },
-    mounted() {
+    beforeMount() {
         this.localFilters = this.filters;
-    },
+    }
 };
 </script>

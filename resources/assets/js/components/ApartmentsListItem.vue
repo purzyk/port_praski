@@ -67,6 +67,9 @@
                 <a :href="apartmentUrl" class="btn --lightGrey" v-else>
                     Szczegóły mieszkania
                 </a>
+                <!-- <a :href="apartmentUrl" class="btn">
+                    Pobierz pdf
+                </a> -->
             </div>
         </div>
     </article>
@@ -82,7 +85,8 @@ export default {
     },
     computed: {
         apartmentUrl() {
-            return `https://port-praski.resimo.tech/lokale/${this.apartment.slug}`;
+            let baseUrl = window.location.hostname === "localhost" ?  `${window.location.origin}/port-praski/lokal` : `${window.location.origin}/lokal`
+            return `${baseUrl}/${this.apartment.slug}`;
         },
         apartmentNameForModal() {
             return this.apartment.post_title.replace("-", ".").toUpperCase()

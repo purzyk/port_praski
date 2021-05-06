@@ -283,7 +283,7 @@ class filterigMixItUp {
                     ) {
                         testResult = false;
                     }
-                    console.log("filtered");
+;
                     return testResult;
                 }
 
@@ -294,7 +294,7 @@ class filterigMixItUp {
                 );
                 mixer.show()
                 .then(function(state) {
-                    console.log(state.totalShow === state.totalTargets); // true
+                 
                 });
                 /* getState */
                 var state = mixer.getState();
