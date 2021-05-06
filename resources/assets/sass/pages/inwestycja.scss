@@ -201,6 +201,10 @@
     opacity: .9;
 }
 
+.splide-investment .splide__arrow:hover {
+    opacity: 1
+}
+
 .splide-investment .splide__arrow--prev:before {
     content: "";
     background: url(https://port-praski.resimo.tech/wp-content/themes/wptheme/static/images/arrow_white.svg) 50% no-repeat;
@@ -219,19 +223,31 @@
     height: 17px;
     display: block;
     margin: 0 auto;
-    -webkit-transform: rotate(90deg);
     transform: rotate(90deg);
 }
 
 
 .splide-investment .splide__arrow--prev {
-    left: -16px
+    left: 4px;
+
+    @include breakpoint($xl) {
+        left: -16px;
+    }
 }
 
 .splide-investment .splide__arrow--next {
-    right: -16px
+    right: 4px;
+
+    @include breakpoint($xl) {
+        right: -16px
+    }
 }
 
+
 .splide-investment.splide--draggable>.splide__track>.splide__list>.splide__slide:not(:first-child) {
-    margin-right: 48px;
+    margin-right: 42px;
+    margin-left: 42px;;
+    @include breakpoint($sm) {
+       margin-left: 0;
+    }
 }

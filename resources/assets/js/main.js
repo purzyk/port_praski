@@ -632,16 +632,16 @@ $(function () {
    startedSplidesInvestment.push(0);
    $(elmsInvestment[i]).find(".splide__pause")[0].click()
  }
-//  document.addEventListener("scroll", function () {
-//    for (let i = 0, len = elmsInvestment.length; i < len; i++) {
-//      if (startedSplidesInvestment[i] === 0) {
-//        if (isElementInViewport(elmsInvestment[i])) {
-//          $(elmsInvestment[i]).find(".splide__play")[0].click()
-//          startedSplidesInvestment[i] = 1;
-//        }
-//      }
-//    }
-//  });
+ document.addEventListener("scroll", function () {
+   for (let i = 0, len = elmsInvestment.length; i < len; i++) {
+     if (startedSplidesInvestment[i] === 0) {
+       if (isElementInViewport(elmsInvestment[i])) {
+         $(elmsInvestment[i]).find(".splide__play")[0].click()
+         startedSplidesInvestment[i] = 1;
+       }
+     }
+   }
+ });
 
 
 
