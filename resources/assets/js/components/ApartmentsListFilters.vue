@@ -45,7 +45,7 @@
                                 style="display: none"
                             />
                             <label :for="item.id"                  
-                                ><img :src="item.image.sizes.thumbnail"  class="filters-investment-image"
+                                ><img :src="item.image.sizes.thumbnail"    class="filters-investment-image"
                             /></label>
                             <span class="checkboxTest__title">{{
                                 item.title
@@ -56,8 +56,10 @@
             </div>
         </div>
         <div class="znajdzLokal__filters__item --typ">
+             <div style="display: flex">
             <h3 class="znajdzLokal__filters__title">Typ</h3>
-
+            <p style="margin-left: auto; font-size: 13px;cursor:pointer" class="clear-filters--desktop" @click="resetFilters" v-if="showClearButton">Wyczyść filtry</p>
+             </div>
             <div class="controls" data-filter-group="typ">
                 <span class="wpcf7-form-control-wrap acceptance-1">
                     <span class="wpcf7-form-control wpcf7-acceptance">
@@ -95,11 +97,10 @@
                 </span>
             </div>
         </div>
-        <div class="znajdzLokal__filters__item --sliders">
+        <div class="znajdzLokal__filters__item --sliders" v-show="localFilters.rooms">
             <h3 class="znajdzLokal__filters__title">Liczba pokoi</h3>
 
             <VueSlider
-                v-if="minRooms"
                 v-model="localFilters.rooms"
                 :enable-cross="false"
                 :min="minRooms"
@@ -108,11 +109,10 @@
                 tooltip="none"
             />
         </div>
-        <div class="znajdzLokal__filters__item --sliders">
+        <div class="znajdzLokal__filters__item --sliders"  v-show="localFilters.area">
             <h3 class="znajdzLokal__filters__title">Powierzchnia</h3>
 
             <VueSlider
-                v-if="minArea"
                 v-model="localFilters.area"
                 :enable-cross="false"
                 :min="minArea"
@@ -122,11 +122,10 @@
                 tooltip="none"
             />
         </div>
-        <div class="znajdzLokal__filters__item --sliders">
+        <div class="znajdzLokal__filters__item --sliders" v-show="localFilters.floor">
             <h3 class="znajdzLokal__filters__title">Piętro</h3>
 
             <VueSlider
-                v-if="minFloor"
                 v-model="localFilters.floor"
                 :enable-cross="false"
                 :min="minFloor"
@@ -222,6 +221,9 @@ export default {
     computed: {
         styleObject() {
             return this.showFiltersMobile ? { display: "block" } : {};
+        },
+        showClearButton() {
+            return window.location.href.includes("inwestycja")
         }
     },
     methods: {
