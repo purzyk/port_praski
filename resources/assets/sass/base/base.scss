@@ -431,3 +431,108 @@ a {
 // .splide-investment .splide__slide {
 //     text-align: left;
 // }
+
+
+
+.goverlay--custom {
+    background: #fff !important;
+}
+
+.glightbox-clean .gslide-media {
+    box-shadow: none !important;;
+}
+
+.glightbox-clean .gcontainer .gnext, .glightbox-clean .gcontainer .gprev {
+    height: 32px;
+    width: 32px;
+    z-index: 100;
+    background: $darkBlue;
+    border-radius: 50%;
+    position: absolute;
+    top: 48%;
+    z-index: 9999;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    transition: .25s opacity ease-in-out;
+    &:hover {
+        opacity: 1;
+    }
+
+    &:before {
+        content: "";
+        background: url("https://port-praski.resimo.tech/wp-content/themes/wptheme/static/images/arrow_white.svg") center no-repeat;
+        width: 12px;
+        height: 17px;
+        display: block;
+        margin: 0 auto;
+        transform: rotate(90deg);
+    }
+}
+
+.glightbox-clean .gcontainer .gprev {
+    transform: rotate(180deg);
+}
+
+.glightbox-clean .gcontainer .gclose {
+    background: $darkBlue;
+    opacity: 0.9;
+    transition: .25s opacity ease-in-out;
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.glightbox-clean .gcontainer  .gclose svg {
+    width: 10px;;
+}
+
+.zoom-in {
+    height: 32px;
+    width: 32px;
+    z-index: 100;
+    background: $darkBlue;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 1%;
+    left: 45%;
+    z-index: 9999;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    opacity: 0.9;
+    font-size: 22px;
+    transition: .25s opacity ease-in-out;
+    &:hover {
+        opacity: 1;
+    }
+
+    @include breakpoint($md) {
+        left: 48%;
+    }
+}
+
+.zoom-out {
+    height: 32px;
+    width: 32px;
+    z-index: 100;
+    background: $darkBlue;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 1%;
+    font-size: 22px;
+    left: 55%;
+    color: #fff;
+    z-index: 9999;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    transition: .25s opacity ease-in-out;
+    &:hover {
+        opacity: 1;
+    }
+
+    @include breakpoint($md) {
+        left: 52%;
+    }
+}

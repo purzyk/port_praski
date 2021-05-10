@@ -47,8 +47,10 @@
     "webpack-manifest-plugin": "^2.2.0"
   },
   "dependencies": {
+    "@panzoom/panzoom": "^4.4.0",
     "@splidejs/splide": "^2.4.21",
     "aos": "^2.3.4",
+    "glightbox": "^3.0.8",
     "jquery": "^3.4.1",
     "jquery-zoom": "^1.7.21",
     "magnific-popup": "^1.1.0",
