@@ -616,32 +616,31 @@ $(function () {
    let splide = new Splide(elmsInvestment[i], {
      type: "loop",
      lazyLoad: "nearby",
-     pagination: true,
      arrows: true,
-     autoplay: true,
+     autoplay: false,
      pauseOnHover: false,
      pauseOnFocus: false,
      interval: 8000,
      arrowPath: 'a',
      autoWidth: true,
      perPage: 1,
-
+     pagination: false
    }).mount()
 
-   splidesInvestment.push(splidesInvestment);
-   startedSplidesInvestment.push(0);
-   $(elmsInvestment[i]).find(".splide__pause")[0].click()
+  //  splidesInvestment.push(splidesInvestment);
+  //  startedSplidesInvestment.push(0);
+  //  $(elmsInvestment[i]).find(".splide__pause")[0].click()
  }
- document.addEventListener("scroll", function () {
-   for (let i = 0, len = elmsInvestment.length; i < len; i++) {
-     if (startedSplidesInvestment[i] === 0) {
-       if (isElementInViewport(elmsInvestment[i])) {
-         $(elmsInvestment[i]).find(".splide__play")[0].click()
-         startedSplidesInvestment[i] = 1;
-       }
-     }
-   }
- });
+//  document.addEventListener("scroll", function () {
+//    for (let i = 0, len = elmsInvestment.length; i < len; i++) {
+//      if (startedSplidesInvestment[i] === 0) {
+//        if (isElementInViewport(elmsInvestment[i])) {
+//          $(elmsInvestment[i]).find(".splide__play")[0].click()
+//          startedSplidesInvestment[i] = 1;
+//        }
+//      }
+//    }
+//  });
 
 
 
@@ -857,6 +856,28 @@ $('.image-link').magnificPopup({
     }
   }
 });
+
+/*
+
+$('.image-link').on('click', function(e) {
+  e.preventDefault();
+
+  $(this).magnificPopup({
+    type: 'image',
+    removalDelay: 400,
+    fixedContentPos: true,
+    gallery: {
+      enabled: true,
+      arrowMarkup: '<button title="%title%" type="button" class="custom-arrow custom-arrow-%dir%"></button>'
+    },
+    callbacks: {
+      beforeOpen: function () {
+        this.st.mainClass = this.st.el.attr('data-effect');
+      }
+    }
+  }).magnificPopup('open');
+})
+*/
 
 /* Open and close nav */
 $('.nav-trigger').click(function (event) {
