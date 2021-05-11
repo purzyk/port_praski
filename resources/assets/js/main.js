@@ -702,6 +702,7 @@ $(function() {
     /* Lazy load images*/
     var lazyLoadInstance = new LazyLoad({
         elements_selector: ".lazy",
+        threshold: 2000
     });
     if (lazyLoadInstance) {
         lazyLoadInstance.update();
