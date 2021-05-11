@@ -23,7 +23,9 @@
             <button class="btn --mobile --filtry" @click="showFilters">
                 <span>pokaż filtry</span>
             </button>
-            <div class="znajdzLokal__main__meta__content znajdzLokal__main__meta__content--flex --mobile">
+            <div
+                class="znajdzLokal__main__meta__content znajdzLokal__main__meta__content--flex --mobile"
+            >
                 <span style="padding-top: 1px;">sortuj:</span>
                 <vSelect
                     class="style-chooser"
@@ -392,9 +394,7 @@ export default {
             this.filterApartments();
             this.handleFiltersOpenMobile();
         },
-        selectedSortChange() {
-
-        },
+        selectedSortChange() {},
         handleFiltersOpenMobile() {
             const apartmentsList = document.querySelector(".znajdzLokal__main");
             const footer = document.querySelector(".wSprawieOferty");
@@ -499,6 +499,13 @@ export default {
             this.perPage = 5;
         } else {
             this.perPage = 10;
+        }
+    },
+    beforeCreate() {
+        if (document.referrer.includes("inwestycja")) {
+            if (sessionStorage.getItem("filters")) {
+                sessionStorage.removeItem("filters");
+            }
         }
     },
 };
