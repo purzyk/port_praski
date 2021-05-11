@@ -536,3 +536,62 @@ a {
         left: 52%;
     }
 }
+
+.style-chooser .vs__search::placeholder,
+.style-chooser .vs__dropdown-toggle,
+.style-chooser .vs__dropdown-menu {
+  background: #e5e5e5;
+  border: none;
+  color: #394066;
+  width: 92px;
+}
+
+.style-chooser .vs__clear,
+.style-chooser .vs__open-indicator {
+  fill: #394066;
+}
+
+.style-chooser .vs__selected {
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 19px;
+    text-transform: uppercase;
+    color: #394066;
+    align-items: flex-start;
+    padding-top:0;
+    margin-top: 0;
+}
+
+.style-chooser .vs__actions {
+    padding-top: 0;
+    display: none;
+}
+
+.style-chooser .vs__dropdown-option--highlight {
+    background: $darkBlue;
+}
+
+.style-chooser .vs__dropdown-menu {
+    min-width: 124px;
+}
+
+.sort-asc-button {
+    display: block;
+    width: 18px;
+    height: 18px;;
+    background: url("https://port-praski.resimo.tech/wp-content/themes/wptheme/static/images/sort.svg") center no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.sort-asc-button--rotate {
+    transform: rotate(180deg);
+}
+
+.znajdzLokal__main__meta__content--flex {
+    display: flex;
+
+    @include breakpoint($md) {
+        display: none;
+    }
+}

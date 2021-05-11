@@ -23,24 +23,23 @@
             <button class="btn --mobile --filtry" @click="showFilters">
                 <span>pokaż filtry</span>
             </button>
-            <div class="znajdzLokal__main__meta__content --mobile">
-                <span>sortuj:</span>
-                <button
-                    data-sort="sort:asc"
-                    class="--sort sortUp"
-                    v-if="!sortAsc"
-                    @click="sortApartments"
-                >
-                    nazwa
-                </button>
-                <button
-                    v-else
-                    @click="sortApartments"
-                    data-sort="sort:desc"
-                    class="--sort sortDown"
-                >
-                    nazwa
-                </button>
+            <div class="znajdzLokal__main__meta__content znajdzLokal__main__meta__content--flex --mobile">
+                <span style="padding-top: 1px;">sortuj:</span>
+                <vSelect
+                    class="style-chooser"
+                    label="name"
+                    :searchable="false"
+                    :clearable="false"
+                    :options="sortOptions"
+                    v-model="selectedSort"
+                    @input="selectedSortChange"
+                />
+                <span
+                    @click="changeSortOrder"
+                    class="sort-asc-button"
+                    style="margin-top: 2px;"
+                    :class="{ 'sort-asc-button--rotate': sortAsc }"
+                ></span>
             </div>
         </div>
         <div class="l-wrapper --noPadding --noRelative">
@@ -77,25 +76,25 @@
                         </div>
 
                         <div class="znajdzLokal__main__meta__content --desktop">
-                            <span>sortuj:</span>
-                            <button
-                                data-sort="sort:asc"
-                                class="--sort sortUp"
-                                v-if="!sortAsc"
-                                @click="sortApartments"
-                            >
-                                nazwa
-                            </button>
-                            <button
-                                v-else
-                                @click="sortApartments"
-                                data-sort="sort:desc"
-                                class="--sort sortDown"
-                            >
-                                nazwa
-                            </button>
+                            <span style="padding-top: 1px;">sortuj:</span>
+                            <vSelect
+                                class="style-chooser"
+                                label="name"
+                                :searchable="false"
+                                :clearable="false"
+                                :options="sortOptions"
+                                v-model="selectedSort"
+                                @input="selectedSortChange"
+                            />
+                            <div
+                                @click="changeSortOrder"
+                                class="sort-asc-button"
+                                style="margin-top: 2px;"
+                                :class="{ 'sort-asc-button--rotate': sortAsc }"
+                            ></div>
                         </div>
                     </div>
+
                     <ApartmentsListItem
                         v-for="item in paginatedApartments"
                         :apartment="item"
@@ -126,13 +125,15 @@
 import ApartmentsListItem from "./ApartmentsListItem.vue";
 import ApartmentsListFilters from "./ApartmentsListFilters.vue";
 import ApartmentsListPagination from "./ApartmentsListPagination.vue";
-
+import vSelect from "vue-select";
+import { sortByInvestmentName, sortFunction } from "./utils/sort-functions";
 export default {
     name: "ApartmentsList",
     components: {
         ApartmentsListItem,
         ApartmentsListFilters,
         ApartmentsListPagination,
+        vSelect,
     },
     data() {
         return {
@@ -160,7 +161,29 @@ export default {
             sortAsc: true,
             showFiltersMobile: false,
             initalFilters: null,
-            filtersLoadFromsessionStorage: false
+            filtersLoadFromsessionStorage: false,
+            sortOptions: [
+                {
+                    name: "Nazwa",
+                    value: "name",
+                },
+                {
+                    name: "Metraż",
+                    value: "powierzchnia",
+                },
+                {
+                    name: "Pokoje",
+                    value: "liczba_pokoi",
+                },
+                {
+                    name: "Piętro",
+                    value: "pietro",
+                },
+            ],
+            selectedSort: {
+                name: "Nazwa",
+                value: "name",
+            },
         };
     },
     computed: {
@@ -238,7 +261,6 @@ export default {
 
             this.allApartmentsCount = this.apartments.length;
             this.getFiltersFromsessionStorage();
-            
         },
         getInvestmentName(id) {
             if (this.investments) {
@@ -334,53 +356,33 @@ export default {
 
             this.defaultSort();
 
-            if(!this.filtersLoadFromsessionStorage) {
-                this.currentPage = 1
+            if (!this.filtersLoadFromsessionStorage) {
+                this.currentPage = 1;
             }
 
-            this.filtersLoadFromsessionStorage = false
+            this.filtersLoadFromsessionStorage = false;
         },
         sortApartments() {
-            if (this.sortAsc) {
-                this.filteredApartments = this.filteredApartments.sort(
-                    (a, b) => {
-                        let x =
-                            a.inwestycje.length > 1
-                                ? a.inwestycje[1]
-                                : a.inwestycje[0];
-                        let y =
-                            b.inwestycje.length > 1
-                                ? b.inwestycje[1]
-                                : b.inwestycje[0];
-                        return x > y ? -1 : 1;
-                    }
+            if (this.selectedSort.value === "name") {
+                this.filteredApartments = sortByInvestmentName(
+                    this.filteredApartments,
+                    this.sortAsc
                 );
             } else {
-                this.filteredApartments = this.filteredApartments.sort(
-                    (a, b) => {
-                        let x =
-                            a.inwestycje.length > 1
-                                ? a.inwestycje[1]
-                                : a.inwestycje[0];
-                        let y =
-                            b.inwestycje.length > 1
-                                ? b.inwestycje[1]
-                                : b.inwestycje[0];
-                        return x.inwestycje < y.inwestycje ? 1 : -1;
-                    }
+                this.filteredApartments = sortFunction(
+                    this.filteredApartments,
+                    this.sortAsc,
+                    this.selectedSort.value
                 );
             }
-            this.sortAsc = !this.sortAsc;
             this.setCurrentPage(1);
         },
         defaultSort() {
-            this.filteredApartments = this.filteredApartments.sort((a, b) => {
-                let x =
-                    a.inwestycje.length > 1 ? a.inwestycje[1] : a.inwestycje[0];
-                let y =
-                    b.inwestycje.length > 1 ? b.inwestycje[1] : b.inwestycje[0];
-                return x > y ? -1 : 1;
-            });
+            this.selectedSort = {
+                name: "Nazwa",
+                value: "name",
+            };
+            sortByInvestmentName(this.filteredApartments, true);
         },
         setCurrentPage(page) {
             this.currentPage = page;
@@ -389,6 +391,9 @@ export default {
             this.showFiltersMobile = false;
             this.filterApartments();
             this.handleFiltersOpenMobile();
+        },
+        selectedSortChange() {
+            console.log("222");
         },
         handleFiltersOpenMobile() {
             const apartmentsList = document.querySelector(".znajdzLokal__main");
@@ -425,9 +430,11 @@ export default {
             Array.from(investmntsCheckbox).forEach((item) => {
                 item.checked = false;
             });
+            this.filteredApartments = this.apartments;
             sessionStorage.removeItem("filters");
             this.prepareInitialValues();
             this.filterApartments();
+            this.sortApartments();
         },
         showFilters() {
             this.showFiltersMobile = !this.showFiltersMobile;
@@ -435,11 +442,11 @@ export default {
         },
         saveFiltersTosessionStorage() {
             const filters = this.filters;
-            const currentPage = this.currentPage
+            const currentPage = this.currentPage;
             const preparedFilter = {
                 filters,
-                currentPage
-            }
+                currentPage,
+            };
             sessionStorage.setItem("filters", JSON.stringify(preparedFilter));
         },
         getFiltersFromsessionStorage() {
@@ -448,9 +455,13 @@ export default {
                     sessionStorage.getItem("filters")
                 );
                 this.filters = storageFillters.filters;
-                this.currentPage = storageFillters.currentPage
-                this.filtersLoadFromsessionStorage = true
+                this.currentPage = storageFillters.currentPage;
+                this.filtersLoadFromsessionStorage = true;
             }
+        },
+        changeSortOrder() {
+            this.sortAsc = !this.sortAsc;
+            this.sortApartments();
         },
     },
     watch: {
@@ -464,7 +475,11 @@ export default {
         },
         currentPage() {
             this.saveFiltersTosessionStorage();
-        }
+        },
+        selectedSort(val) {
+            this.sortAsc = true;
+            this.sortApartments();
+        },
     },
     beforeMount() {
         const apartmentsValues = document.querySelector("#apartmentsListValues")
@@ -479,13 +494,13 @@ export default {
         this.investments = parsedInvestments;
         this.extra = parsedExtraValues;
         this.prepareInitialValues();
-        
+        this.filteredApartments = this.apartments;
         if (window.location.href.includes("inwestycja")) {
             this.perPage = 5;
         } else {
             this.perPage = 10;
         }
-    }
+    },
 };
 
 const investmentsNames = [

@@ -61,6 +61,7 @@
     "vanilla-lazyload": "^17.3.1",
     "vue": "^2.6.12",
     "vue-range-component": "^1.0.3",
+    "vue-select": "^3.11.2",
     "vue-slider-component": "^3.2.11"
   }
 }
