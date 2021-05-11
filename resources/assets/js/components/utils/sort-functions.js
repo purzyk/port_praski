@@ -23,7 +23,6 @@ export const sortFunction = (apartments, sortAsc= true, field) => {
             return parseFloat(a[field]) < parseFloat(b[field]) ? -1 : 1;
         });
     } else {
-        console.log(field)
         return apartments.sort((a, b) => {
             return parseFloat(a[field]) > parseFloat(b[field])  ? -1 : 1;
         });

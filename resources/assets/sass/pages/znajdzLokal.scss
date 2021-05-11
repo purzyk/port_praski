@@ -451,7 +451,7 @@ ul.checkboxTest {
 
     :checked + label::before {
         content: "";
-        background: $darkBlue url("https://port-praski.resimo.tech/wp-content/themes/wptheme/static/images/check-checked.svg") center no-repeat;
+        background: $darkBlue url("../images/check-checked.svg") center no-repeat;
         transform: scale(1);
     }
 

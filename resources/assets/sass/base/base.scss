@@ -461,7 +461,7 @@ a {
 
     &:before {
         content: "";
-        background: url("https://port-praski.resimo.tech/wp-content/themes/wptheme/static/images/arrow_white.svg") center no-repeat;
+        background: url("../images/arrow_white.svg") center no-repeat;
         width: 12px;
         height: 17px;
         display: block;
@@ -579,7 +579,7 @@ a {
     display: block;
     width: 18px;
     height: 18px;;
-    background: url("https://port-praski.resimo.tech/wp-content/themes/wptheme/static/images/sort.svg") center no-repeat;
+    background: url("../images/sort.svg") center no-repeat;
     background-size: contain;
     cursor: pointer;
 }

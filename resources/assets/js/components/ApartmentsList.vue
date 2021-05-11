@@ -393,7 +393,7 @@ export default {
             this.handleFiltersOpenMobile();
         },
         selectedSortChange() {
-            console.log("222");
+
         },
         handleFiltersOpenMobile() {
             const apartmentsList = document.querySelector(".znajdzLokal__main");

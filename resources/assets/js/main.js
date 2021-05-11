@@ -957,8 +957,7 @@ const basicLightbox = GLightbox({
 });
 
 lightbox.on("open", () => {
-    const images = document.querySelectorAll(".gslide-media");
-    console.log(images);
+    const images = document.querySelectorAll(".gslide-media");;
     Array.from(images).forEach((item) => {
         const panzoom = Panzoom(item, {
             maxScale: 2.2,
