@@ -642,7 +642,7 @@ $(function() {
             autoplay: true,
             pauseOnHover: false,
             pauseOnFocus: false,
-            interval: 8000,
+            interval: 4000,
         }).mount();
 
         splides.push(splide);
