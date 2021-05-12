@@ -1263,6 +1263,23 @@ slidersWithButtons.forEach((el) => {
 });
 
 const headerContactButton = document.querySelector(".header .contact-icon");
+const headerPhoneModalButton = document.querySelector(".header .phone-modal-button")
+
+if (headerPhoneModalButton) {
+    headerPhoneModalButton.addEventListener("click", function() {
+        MicroModal.show("phone-modal", {
+            openTrigger: "data-custom-open",
+            onShow: (modal) => {
+                // const messageInput = document.querySelector(
+                //     '#contact-modal input[name="text-wiadomosc"]'
+                // );
+                // messageInput.value = "";
+                // messageInput.parentNode.parentNode.classList.remove("active");
+            },
+        });
+    });
+}
+
 if (headerContactButton) {
     headerContactButton.addEventListener("click", function() {
         MicroModal.show("contact-modal", {
