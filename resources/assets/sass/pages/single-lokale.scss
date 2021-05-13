@@ -324,7 +324,7 @@
 
     &__btns {
         display: flex;
-
+        flex-wrap: wrap;
         flex-direction: column;
 
         @include breakpoint($md) {
