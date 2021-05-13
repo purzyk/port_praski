@@ -1324,7 +1324,11 @@ const goBackButton = document.querySelector(".goBack");
 if (goBackButton) {
     const lastUrl = document.referrer;
 
-    if (lastUrl.includes("inwestycja"))
+    if (lastUrl.includes("v3.jeff.resimo.pl")) {
+        goBackButton.href = `${window.location.origin}/#wyszukiwarka3d`
+        goBackButton.innerText = 'Wróć do wyszukiwarki 3D'
+    }
+    else if (lastUrl.includes("inwestycja"))
         goBackButton.href = `${lastUrl}#lista-mieszkan`;
     else goBackButton.href = `${window.location.origin}/znajdz-lokal`;
 }
