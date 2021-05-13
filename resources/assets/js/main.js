@@ -944,7 +944,7 @@ const lightbox = GLightbox({
     lightboxHTML: customLightboxHTML,
     slideHTML: customSlideHTML,
     closeOnOutsideClick: false,
-    loop: true,
+    loop: false,
     draggable: false,
     zoomable: false,
     preload: false,
@@ -954,7 +954,7 @@ const basicLightbox = GLightbox({
     selector: ".basic-glightbox",
     lightboxHTML: customLightboxHTMLBASIC,
     zoomable: false,
-    loop: true,
+    loop: false,
 });
 
 lightbox.on("open", () => {
