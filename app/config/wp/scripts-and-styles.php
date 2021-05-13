@@ -35,3 +35,40 @@ function base_camp_scripts_and_styles()
 }
 
 add_action('wp_enqueue_scripts', 'base_camp_scripts_and_styles', 999);
+
+add_filter("wpcf7_validate", "alter_wpcf7_validate");
+
+function alter_wpcf7_validate( $result ) {
+
+	$email = $_POST['your-email'];
+	$telephone = $_POST['your-phone'];
+    $email_acceptance = $_POST['acceptance-2'];
+    $phone_acceptance = $_POST['acceptance-3'];
+        if(empty($email) && empty($telephone) ) {
+            $result->invalidate('your-telephone', 'Wymagane jest podanie adresu email lub numeru telefonu.' );
+            $result->invalidate('your-email', 'Wymagane jest podanie adresu email lub numeru telefonu.' );
+        }
+        
+        if(!empty($email) && !empty($telephone)) {
+            if($email_acceptance !== "1") {
+                $result->invalidate('acceptance-2', 'Wymagana zgoda' );
+            }
+            if($phone_acceptance !== "1") {
+                $result->invalidate('acceptance-3', 'Wymagana zgoda' );
+            }
+        }
+
+        else if(!empty($email)) {
+            if($email_acceptance !== "1") {
+                $result->invalidate('acceptance-2', 'Wymagana zgoda' );
+            }
+        }
+
+        else if(!empty($telephone)) {
+            if($phone_acceptance !== "1") {
+                $result->invalidate('acceptance-3', 'Wymagana zgoda' );
+            }
+        }
+
+        return $result;
+}
