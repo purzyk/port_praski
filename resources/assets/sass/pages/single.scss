@@ -121,6 +121,10 @@
     &:hover {
         opacity: 1;
     }
+
+    &.disabled {
+        display: none;
+    }
 }
 
 .custom-arrow:before {
