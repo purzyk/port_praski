@@ -56,7 +56,7 @@
 					{% endif %}
 					<div class="line double --grey"></div>
 					<div class="lokal__btns">
-							<a target="_blank" href="https://apartments3d.resimo.pl/client/1/a80420eef88d11f77532f1b9cb467fa3/?number={{post.name}}" class="btn --lightGrey">Mieszkanie 3D 360°</a>
+							<a id="apartments360Button" data-symbol={{post.name}}  class="btn --lightGrey">Mieszkanie 3D 360°</a>
 						{% if pdf is empty %}
 							<a target="_blank" href="" class="btn --lightGrey" id="pdfLink">pobierz PDF</a>
 						{% else %}
@@ -91,6 +91,19 @@
 
 			</div>
 		</article>
-
+	<div class="modal micromodal-slide apartments360-modal" id="apartments360-modal" aria-hidden="true">
+			<div class="modal__overlay" tabindex="-1" data-micromodal-close>
+				<div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="apartments360-modal-title">
+				<div class="modal__header">
+					<button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+				</div>
+				<div class="modal__content" id="apartments360-content">
+					{# <iframe src="https://apartments3d.resimo.pl/client/1/a80420eef88d11f77532f1b9cb467fa3/?number={{post.name}}" allowfullscreen="true" /> #}
+				</div>
+				</div>
+			</div>
+		</div>
 		{% include 'components/blocks/contact_modal.twig' %}
+	
 	{% endblock %}
+	

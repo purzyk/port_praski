@@ -624,3 +624,42 @@ a {
 .acceptance-1, .acceptance-2, .acceptance-3 {
     margin-bottom: 12px;
 }
+
+.apartments360-modal .modal__container {
+    width: 100%;
+    height: 100%;
+    background: #f7f7f7;
+    padding: 0;
+}
+
+.apartments360-modal .modal__close {
+    top: 18px;
+    right: 18px;
+    background: $darkBlue;
+    color: $white;
+    width: 34px;
+    height: 34px;
+    border-radius: 4px;
+    opacity: .9;
+    transition: .25s opacity ease;
+    padding-bottom: 2px;
+}
+
+.apartments360-modal .modal__close:hover {
+    opacity: 1;
+}
+
+.apartments360Iframe {
+    width: 100%;
+    height: 100%;
+}
+
+#apartments360-content {
+    height: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.modal-is-open {
+    overflow: hidden;
+}
