@@ -54,6 +54,34 @@ document.addEventListener("DOMContentLoaded", initYouTubeVideos);
 $(document).ready(function() {
     //if(window.location.href.includes(""))
 
+    const apartments360Button = document.querySelector("#apartments360Button")
+
+    if(apartments360Button) {
+        const body = document.querySelector("body")
+        apartments360Button.addEventListener("click", function() {
+            MicroModal.show("apartments360-modal", {
+                openTrigger: "data-custom-open",
+                onShow: () => {
+                    const modalContent = document.querySelector("#apartments360-content");
+                    const existedIframe = modalContent.querySelector(".apartments360Iframe")
+                    body.classList.add("modal-is-open")
+                    if(!existedIframe) {
+                        const iframe = document.createElement("iframe");
+                        const apartmentSymbol = apartments360Button.dataset.symbol;
+                        // iframe.src = `https://apartments3d.resimo.pl/client/25/5e70b28901d21a5c135574695278952f/?number=${apartmentSymbol}`
+                        iframe.src= `https://apartments3d.resimo.pl/client/25/5e70b28901d21a5c135574695278952f/?number=L.06`
+                        iframe.allowFullscreen = true
+                        iframe.classList.add("apartments360Iframe")
+                        modalContent.appendChild(iframe)
+                    } 
+                },
+                onClose: () => {
+                    body.classList.remove("modal-is-open")
+                }
+            });
+        })
+    }
+    
     const apartmentsListContainer = document.querySelector(
         "#apartments-list-container"
     );
@@ -1166,11 +1194,11 @@ const addListenersToContactButtons = () => {
             MicroModal.show("contact-modal");
             if (
                 document.querySelector(
-                    '#contact-modal input[name="text-wiadomosc"]'
+                    '#contact-modal input[name="your-message"]'
                 )
             ) {
                 const messageInput = document.querySelector(
-                    '#contact-modal input[name="text-wiadomosc"]'
+                    '#contact-modal input[name="your-message"]'
                 );
                 messageInput.parentNode.parentNode.classList.add("active");
                 messageInput.value = `Interesuje mnie oferta ${investment} - mieszkanie nr ${id}`;
@@ -1209,7 +1237,7 @@ const goToContact = (el) => {
         .toUpperCase()
         .replaceAll("-", ".");
     const messageInput = document.querySelector(
-        '#contact-modal input[name="text-wiadomosc"]'
+        '#contact-modal input[name="your-message"]'
     );
 
     const investment = el.currentTarget.dataset.investment.trim();
@@ -1271,7 +1299,7 @@ if (headerPhoneModalButton) {
             openTrigger: "data-custom-open",
             onShow: (modal) => {
                 // const messageInput = document.querySelector(
-                //     '#contact-modal input[name="text-wiadomosc"]'
+                //     '#contact-modal input[name="your-message"]'
                 // );
                 // messageInput.value = "";
                 // messageInput.parentNode.parentNode.classList.remove("active");
@@ -1286,10 +1314,12 @@ if (headerContactButton) {
             openTrigger: "data-custom-open",
             onShow: (modal) => {
                 const messageInput = document.querySelector(
-                    '#contact-modal input[name="text-wiadomosc"]'
+                    '#contact-modal input[name="your-message"]'
                 );
-                messageInput.value = "";
-                messageInput.parentNode.parentNode.classList.remove("active");
+                if(messageInput) {
+                    messageInput.value = "";
+                    messageInput.parentNode.parentNode.classList.remove("active");
+                }
             },
         });
     });
@@ -1318,6 +1348,7 @@ const hideHeroTitle = () => {
         });
     }
 };
+
 
 /* Single lokale page - go back to list link update */
 const goBackButton = document.querySelector(".goBack");
