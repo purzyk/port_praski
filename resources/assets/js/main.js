@@ -51,6 +51,10 @@ function initYouTubeVideos() {
 
 document.addEventListener("DOMContentLoaded", initYouTubeVideos);
 
+const closeApartments360Modal = () => {
+    MicroModal.close("apartments360-modal")
+}
+
 $(document).ready(function() {
     //if(window.location.href.includes(""))
 
@@ -64,7 +68,11 @@ $(document).ready(function() {
                 onShow: () => {
                     const modalContent = document.querySelector("#apartments360-content");
                     const existedIframe = modalContent.querySelector(".apartments360Iframe")
+                    const closeButton = document.querySelector(".apartments360-modal .modal__close")
                     body.classList.add("modal-is-open")
+                    closeButton.addEventListener("click", closeApartments360Modal)
+
+
                     if(!existedIframe) {
                         const iframe = document.createElement("iframe");
                         const apartmentSymbol = apartments360Button.dataset.symbol;
@@ -76,6 +84,8 @@ $(document).ready(function() {
                     } 
                 },
                 onClose: () => {
+                    const closeButton = document.querySelector(".apartments360-modal .modal__close");
+                    closeButton.removeEventListener("click", closeApartments360Modal)
                     body.classList.remove("modal-is-open")
                 }
             });
@@ -110,8 +120,8 @@ $(document).ready(function() {
     MicroModal.init({
         openTrigger: "data-custom-open", // [3]
         closeTrigger: "data-custom-close", // [4]
+        awaitCloseAnimation: true
     });
-
     const closeContactModalButton = document.querySelectorAll(
         ".contact-modal .modal__close"
     );

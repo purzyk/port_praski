@@ -238,3 +238,6 @@ modal {
 .acceptance-modal .modal__content li {
     margin-bottom: 20px;
 }
+
+
+[data-micromodal-close] * { pointer-events: none; }
