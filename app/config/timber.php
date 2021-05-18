@@ -44,8 +44,8 @@ Timber::$dirname = ['resources/views'];
  */
 function add_to_context($data)
 {
-    $data['lang'] 						= icl_get_languages('skip_missing=0&orderby=code');
-    $data['curr_lang'] 					= ICL_LANGUAGE_CODE;
+    //$data['lang'] 						= icl_get_languages('skip_missing=0&orderby=code');
+    //$data['curr_lang'] 					= ICL_LANGUAGE_CODE;
     // Add Main Menu to Timber context object
     $data['mainMenu'] = new TimberMenu('main_menu');
     $data['footerMenu'] = new TimberMenu('footer_menu');
