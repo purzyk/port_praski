@@ -57,7 +57,7 @@ const closeApartments360Modal = () => {
 
 $(document).ready(function() {
     //if(window.location.href.includes(""))
-
+    languageSwitch()
     const apartments360Button = document.querySelector("#apartments360Button")
 
     if(apartments360Button) {
@@ -112,7 +112,8 @@ $(document).ready(function() {
             sessionStorage.removeItem("filters");
         }
     }
-
+    
+    console.log(window.location)
     window.addEventListener("message", function(e) {
         handleMessageFromJeff(e);
     });
@@ -995,14 +996,16 @@ const basicLightbox = GLightbox({
     loop: false,
 });
 
-lightbox.on("open", () => {
+lightbox.once("open", () => {
     const images = document.querySelectorAll(".gslide-media");;
     Array.from(images).forEach((item) => {
         const panzoom = Panzoom(item, {
             maxScale: 2.2,
             minScale: 1,
             animate: true,
+            pinchSpeed: 1.5
         });
+        let panzoomWasReset = false;
         item.parentElement.addEventListener("wheel", panzoom.zoomWithWheel);
         //item.addEventListener('click', panzoom.zoomIn)
         const buttonZoomIn = document.querySelector(".zoom-in");
@@ -1012,9 +1015,13 @@ lightbox.on("open", () => {
         buttonZoomOut.addEventListener("click", function() {
             panzoom.zoomOut();
         });
+       
         item.addEventListener("panzoomchange", function(event) {
-            if (event.detail.scale === 1) {
-                panzoom.reset();
+            if (event.detail.scale === 1 && !panzoomWasReset) {
+                panzoom.reset()
+                panzoomWasReset = true;
+            } else if (event.detail.scale !== 1) {
+                panzoomWasReset = false
             }
         });
 
@@ -1372,4 +1379,29 @@ if (goBackButton) {
     else if (lastUrl.includes("inwestycja"))
         goBackButton.href = `${lastUrl}#lista-mieszkan`;
     else goBackButton.href = `${window.location.origin}/znajdz-lokal`;
+}
+
+
+const languageSwitch = () => {
+    const languageSwitcher = document.querySelector(".language-switcher");
+    if(languageSwitcher.dataset.language === 'pl') {
+        const url = window.location.href
+        const newUrl = url.replace(/en\//g,'')
+        languageSwitcher.addEventListener("click", function() {
+            window.location.href = newUrl
+        })
+
+    } else {
+        const url = window.location.href
+        const arrayOfUrl = url.split("/");
+        const domainIndex = arrayOfUrl.findIndex(item => item === "port-praski")
+        arrayOfUrl.splice(domainIndex + 1, 0, "en")
+        const newUrl = arrayOfUrl.join("/");
+
+        languageSwitcher.addEventListener("click", function() {
+            window.location.href = newUrl
+        })
+    }
+
+    console.log(languageSwitcher)
 }

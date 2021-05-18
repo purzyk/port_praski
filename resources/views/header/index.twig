@@ -134,17 +134,27 @@
 							</svg>
 						</a>
 					</figure> #}
-					<!--<figure class="lang circle">
+					<figure class="lang circle">
 						<div class="lang__switch">
-							{% for item in lang %}
+							{# {% for item in lang %}
 								{% if item.active != 1 %}
 									<a href="{{item.url}}" class="active">
 										{{ item.language_code }}
 									</a>
 								{% endif %}
-								{% endfor %}
+								{% endfor %} #}
+								{% if site.language_attributes == 'lang="pl-PL"' %}
+								<span   data-language="en" class="language-switcher active">
+									EN
+								</span>
+
+								{% else %}
+								<span  data-language="pl" class="language-switcher active">
+									PL
+								</span>
+								{% endif %}
 						</div>
-					</figure>-->
+					</figure>
 				</div>
 
 
