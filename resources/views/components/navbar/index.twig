@@ -54,18 +54,23 @@
 			{% endif %}
 		{% endfor %}
 
-		<!-- <li>
-			<figure class="lang circle navbar-item menu-item">
+		<li>
+
+					<figure class="lang circle navbar-item menu-item">
 						<div class="lang__switch">
-							{% for item in lang %}
-								{% if item.active != 1 %}
-									<a href="{{item.url}}" class="active">
-										{{ item.language_code }}
-									</a>
+				
+								{% if site.language_attributes == 'lang="pl-PL"' %}
+								<span   data-language="en" class="language-switcher active">
+									EN
+								</span>
+
+								{% else %}
+								<span  data-language="pl" class="language-switcher active">
+									PL
+								</span>
 								{% endif %}
-							{% endfor %}
 						</div>
 					</figure>
-		</li> -->
+		</li>
 	</ul>
 </nav>

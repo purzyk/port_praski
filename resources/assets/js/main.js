@@ -1430,25 +1430,32 @@ if (goBackButton) {
 }
 
 const languageSwitch = () => {
-    const languageSwitcher = document.querySelector(".language-switcher");
-    if (languageSwitcher.dataset.language === "pl") {
-        const url = window.location.href;
-        const newUrl = url.replace(/en\//g, "");
-        languageSwitcher.addEventListener("click", function() {
-            window.location.href = newUrl;
-        });
-    } else {
-        const url = window.location.href;
-        const arrayOfUrl = url.split("/");
-        const domainIndex = arrayOfUrl.findIndex(
-            (item) => item === "port-praski"
-        );
-        arrayOfUrl.splice(domainIndex + 1, 0, "en");
-        const newUrl = arrayOfUrl.join("/");
-
-        languageSwitcher.addEventListener("click", function() {
-            window.location.href = newUrl;
-        });
+    const languageSwitchers = document.querySelectorAll(".language-switcher");
+    const switchersArray = Array.from(languageSwitchers);
+    if(switchersArray.length) {
+        switchersArray.forEach(switcher => {
+            if (switcher.dataset.language === "pl") {
+                const url = window.location.href;
+                const newUrl = url.replace(/en\//g, "");
+                console.log(newUrl)
+                switcher.addEventListener("click", function() {
+                    window.location.replace(newUrl)
+                });
+            } else {
+                const url = window.location.href;
+                const arrayOfUrl = url.split("/");
+                const domainIndex = arrayOfUrl.findIndex(
+                    (item) => item === "port-praski.resimo.tech"
+                );
+                arrayOfUrl.splice(domainIndex + 1, 0, "en");
+                const newUrl = arrayOfUrl.join("/");
+                console.log(newUrl)
+                switcher.addEventListener("click", function() {
+                    window.location.replace(newUrl)
+                });
+            }
+        })
+        
     }
 
     console.log(languageSwitcher);

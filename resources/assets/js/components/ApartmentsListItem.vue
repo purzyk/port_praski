@@ -107,7 +107,7 @@ export default {
     methods: {
         openContactModal() {
             MicroModal.show('contact-modal')
-            const messageInput = document.querySelector('#contact-modal input[name="text-wiadomosc"]')
+            const messageInput = document.querySelector('#contact-modal input[name="your-message"]')
             messageInput.parentNode.parentNode.classList.add("active")
             messageInput.value = `Interesuje mnie oferta ${this.investmentName} - mieszkanie nr ${this.apartmentNameForModal}`
         }
