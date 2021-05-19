@@ -1,11 +1,11 @@
 <template>
     <div>
         <div id="filters-header" class="l-wrapper">
-            <h1 class="fnt50 znajdzLokal__title text-center">Znajdź lokal</h1>
+            <h1 class="fnt50 znajdzLokal__title text-center">{{locale.findApartment}}</h1>
 
             <div class="znajdzLokal__main__meta__content --mobile">
                 <span class="--blue"
-                    >liczba ofert
+                    >{{locale.offersCount}}
                     <span class="counter" style="padding-right: 1px">{{
                         allFilteredApartments
                     }}</span>
@@ -21,12 +21,12 @@
                 data-aos-duration="800"
             ></div>
             <button class="btn --mobile --filtry" @click="showFilters">
-                <span>pokaż filtry</span>
+                <span>{{locale.showFilters}}</span>
             </button>
             <div
                 class="znajdzLokal__main__meta__content znajdzLokal__main__meta__content--flex --mobile"
             >
-                <span style="padding-top: 1px;">sortuj:</span>
+                <span style="padding-top: 1px;">{{locale.sort}}:</span>
                 <vSelect
                     class="style-chooser"
                     label="name"
@@ -59,12 +59,13 @@
                     :showFiltersMobile="showFiltersMobile"
                     @reset-filters="resetFilters"
                     @close-filters="closeFilters"
+                    :locale="locale"
                 />
                 <section class="znajdzLokal__main">
                     <div class="znajdzLokal__main__meta">
                         <div class="znajdzLokal__main__meta__content --desktop">
                             <span class="--blue"
-                                >liczba ofert
+                                >{{locale.offersCount}}
                                 <span class="counter">{{
                                     allFilteredApartments
                                 }}</span>
@@ -78,7 +79,7 @@
                         </div>
 
                         <div class="znajdzLokal__main__meta__content --desktop">
-                            <span style="padding-top: 1px;">sortuj:</span>
+                            <span style="padding-top: 1px;">{{locale.sort}}:</span>
                             <vSelect
                                 class="style-chooser"
                                 label="name"
@@ -101,6 +102,7 @@
                         v-for="item in paginatedApartments"
                         :apartment="item"
                         :key="item.id"
+                        :locale="locale"
                         :investment="
                             getInvestmentName(item._primary_term_inwestycja)
                         "
@@ -110,11 +112,12 @@
                         :currentPage="currentPage"
                         @page-changed="setCurrentPage"
                         v-if="filteredApartments.length"
+                        :locale="locale"
                     />
 
                     <div v-else>
                         <p class="text-center">
-                            Brak mieszkań o wybranych parametrach
+                            {{locale.noData}}
                         </p>
                     </div>
                 </section>
@@ -129,6 +132,8 @@ import ApartmentsListFilters from "./ApartmentsListFilters.vue";
 import ApartmentsListPagination from "./ApartmentsListPagination.vue";
 import vSelect from "vue-select";
 import { sortByInvestmentName, sortFunction } from "./utils/sort-functions";
+import {LOCALE_EN} from "./lang/en";
+import {LOCALE_PL} from "./lang/pl"
 export default {
     name: "ApartmentsList",
     components: {
@@ -164,7 +169,7 @@ export default {
             showFiltersMobile: false,
             initalFilters: null,
             filtersLoadFromsessionStorage: false,
-            sortOptions: [
+            sortOptionsPL: [
                 {
                     name: "Nazwa",
                     value: "name",
@@ -182,10 +187,34 @@ export default {
                     value: "pietro",
                 },
             ],
-            selectedSort: {
+            sortOptionsEN: [
+                {
+                    name: "Name",
+                    value: "name",
+                },
+                {
+                    name: "Area",
+                    value: "powierzchnia",
+                },
+                {
+                    name: "Rooms",
+                    value: "liczba_pokoi",
+                },
+                {
+                    name: "Floor",
+                    value: "pietro",
+                },
+            ],
+            selectedSortPL: {
                 name: "Nazwa",
                 value: "name",
             },
+            selectedSortEN: {
+                name: "Name",
+                value: "name",
+            },
+            locale: null,
+            en: false
         };
     },
     computed: {
@@ -201,6 +230,12 @@ export default {
         maxPage() {
             return Math.ceil(this.filteredApartments.length / this.perPage);
         },
+        sortOptions() {
+            return this.en? this.sortOptionsEN : this.sortOptionsPL
+        },
+        selectedSort() {
+            return this.en ? this.selectedSortEN : this.selectedSortPL
+        }
     },
     methods: {
         prepareInitialValues() {
@@ -500,6 +535,15 @@ export default {
         } else {
             this.perPage = 10;
         }
+
+        if(window.location.href.includes("/en/")){
+            this.locale = LOCALE_EN
+            this.en = true
+        } else {
+            this.locale = LOCALE_PL
+            this.en = false
+        }
+
     },
     beforeCreate() {
         if (document.referrer.includes("inwestycja")) {

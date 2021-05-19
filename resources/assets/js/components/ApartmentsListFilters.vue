@@ -4,7 +4,9 @@
             class="znajdzLokal__filters__close --mobile"
             @click="closeFilters"
         ></button>
-        <h1 class="fnt50 znajdzLokal__title filtry__title">Filtry</h1>
+        <h1 class="fnt50 znajdzLokal__title filtry__title">
+            {{ locale.filters }}
+        </h1>
         <div
             class="line znajdzLokal__line --mobile aos-init aos-animate"
             data-aos="width"
@@ -16,18 +18,26 @@
             class="znajdzLokal__filters__clear btn --white --mobile "
             @click="resetFilters"
         >
-            Wyczyść filtry
+            {{ locale.clearFilters }}
         </button>
         <button
             class="znajdzLokal__filters__close--wide btn --white --mobile"
             @click="closeFilters"
         >
-            Zastosuj filtry
+            {{ locale.applyFilters }}
         </button>
         <div class="znajdzLokal__filters__item --inwestycje">
             <div style="display: flex">
-                <h3 class="znajdzLokal__filters__title">inwestycja</h3>
-                <p style="margin-left: auto; font-size: 13px;cursor:pointer" class="clear-filters--desktop" @click="resetFilters">Wyczyść filtry</p>
+                <h3 class="znajdzLokal__filters__title">
+                    {{ locale.investment }}
+                </h3>
+                <p
+                    style="margin-left: auto; font-size: 13px;cursor:pointer"
+                    class="clear-filters--desktop"
+                    @click="resetFilters"
+                >
+                    {{ locale.clearFilters }}
+                </p>
             </div>
             <div class="znajdzLokal__filters__item__wrapp">
                 <div
@@ -44,8 +54,10 @@
                                 v-model="localFilters.investments"
                                 style="display: none"
                             />
-                            <label :for="item.id"                  
-                                ><img  :src="item.image.sizes.thumbnail"   class="filters-investment-image"
+                            <label :for="item.id"
+                                ><img
+                                    :src="item.image.sizes.thumbnail"
+                                    class="filters-investment-image"
                             /></label>
                             <span class="checkboxTest__title">{{
                                 item.title
@@ -56,10 +68,17 @@
             </div>
         </div>
         <div class="znajdzLokal__filters__item --typ">
-             <div style="display: flex">
-            <h3 class="znajdzLokal__filters__title">Typ</h3>
-            <p style="margin-left: auto; font-size: 13px;cursor:pointer" class="clear-filters--desktop" @click="resetFilters" v-if="showClearButton">Wyczyść filtry</p>
-             </div>
+            <div style="display: flex">
+                <h3 class="znajdzLokal__filters__title">{{ locale.type }}</h3>
+                <p
+                    style="margin-left: auto; font-size: 13px;cursor:pointer"
+                    class="clear-filters--desktop"
+                    @click="resetFilters"
+                    v-if="showClearButton"
+                >
+                    {{ locale.clearFilters }}
+                </p>
+            </div>
             <div class="controls" data-filter-group="typ">
                 <span class="wpcf7-form-control-wrap acceptance-1">
                     <span class="wpcf7-form-control wpcf7-acceptance">
@@ -71,9 +90,9 @@
                                     value="Mieszkanie lub Apartament"
                                     v-model="localFilters.type"
                                 />
-                                <span class="wpcf7-list-item-label"
-                                    >Mieszkanie</span
-                                >
+                                <span class="wpcf7-list-item-label">{{
+                                    locale.flat
+                                }}</span>
                             </label>
                         </span>
                     </span>
@@ -88,17 +107,20 @@
                                     value="Usługi"
                                     v-model="localFilters.type"
                                 />
-                                <span class="wpcf7-list-item-label"
-                                    >Lokal Usługowy</span
-                                >
+                                <span class="wpcf7-list-item-label">{{
+                                    locale.commercial
+                                }}</span>
                             </label>
                         </span>
                     </span>
                 </span>
             </div>
         </div>
-        <div class="znajdzLokal__filters__item --sliders" v-show="localFilters.rooms">
-            <h3 class="znajdzLokal__filters__title">Liczba pokoi</h3>
+        <div
+            class="znajdzLokal__filters__item --sliders"
+            v-show="localFilters.rooms"
+        >
+            <h3 class="znajdzLokal__filters__title">{{ locale.roomsCount }}</h3>
 
             <VueSlider
                 v-model="localFilters.rooms"
@@ -109,8 +131,11 @@
                 tooltip="none"
             />
         </div>
-        <div class="znajdzLokal__filters__item --sliders"  v-show="localFilters.area">
-            <h3 class="znajdzLokal__filters__title">Powierzchnia</h3>
+        <div
+            class="znajdzLokal__filters__item --sliders"
+            v-show="localFilters.area"
+        >
+            <h3 class="znajdzLokal__filters__title">{{ locale.area }}</h3>
 
             <VueSlider
                 v-model="localFilters.area"
@@ -122,8 +147,11 @@
                 tooltip="none"
             />
         </div>
-        <div class="znajdzLokal__filters__item --sliders" v-show="localFilters.floor">
-            <h3 class="znajdzLokal__filters__title">Piętro</h3>
+        <div
+            class="znajdzLokal__filters__item --sliders"
+            v-show="localFilters.floor"
+        >
+            <h3 class="znajdzLokal__filters__title">{{ locale.floor }}</h3>
 
             <VueSlider
                 v-model="localFilters.floor"
@@ -135,7 +163,9 @@
             />
         </div>
         <div class="znajdzLokal__filters__item --sliders">
-            <h3 class="znajdzLokal__filters__title">Cechy dodatkowe</h3>
+            <h3 class="znajdzLokal__filters__title">
+                {{ locale.additionalFeatures }}
+            </h3>
 
             <div class="controls dodatkowe" data-filter-group="cechy">
                 <span
@@ -153,7 +183,7 @@
                                     v-model="localFilters.extra"
                                 />
                                 <span class="wpcf7-list-item-label">{{
-                                    item.name
+                                    locale[item.name]
                                 }}</span>
                             </label>
                         </span>
@@ -167,6 +197,7 @@
 <script>
 import VueSlider from "vue-slider-component";
 import "vue-slider-component/theme/default.css";
+
 export default {
     components: {
         VueSlider,
@@ -212,6 +243,10 @@ export default {
             type: Boolean,
             default: false,
         },
+        locale: {
+            type: Object,
+            required: true,
+        },
     },
     data() {
         return {
@@ -223,8 +258,8 @@ export default {
             return this.showFiltersMobile ? { display: "block" } : {};
         },
         showClearButton() {
-            return window.location.href.includes("inwestycja")
-        }
+            return window.location.href.includes("inwestycja");
+        },
     },
     methods: {
         closeFilters() {
@@ -232,10 +267,10 @@ export default {
         },
         resetFilters() {
             this.$emit("reset-filters");
-        }
+        },
     },
     beforeMount() {
         this.localFilters = this.filters;
-    }
+    },
 };
 </script>

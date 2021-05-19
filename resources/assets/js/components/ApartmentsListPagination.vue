@@ -1,7 +1,7 @@
 <template>
     <div class="pagination">
         <a v-if="currentPage > 1" @click="setPage(currentPage - 1)"
-            >poprzednia</a
+            >{{locale.prev}}</a
         >
   
         <a v-if="currentPage >= 2" @click="setPage(1)">1</a>
@@ -35,7 +35,7 @@
             maxPage
         }}</a>
         <a v-if="currentPage < maxPage" @click="setPage(currentPage + 1)"
-            >następna</a
+            >{{locale.next}}</a
         >
     </div>
 </template>
@@ -43,7 +43,18 @@
 <script>
 export default {
     name: "ApartmentsListPagination",
-    props: ["maxPage", "currentPage"],
+    props: {
+        maxPage: {
+            type: Number
+        },
+        currentPage: {
+            type: Number
+        },
+        locale: {
+            type: Object,
+            required: true
+        }
+    },
     data() {
         return {};
     },

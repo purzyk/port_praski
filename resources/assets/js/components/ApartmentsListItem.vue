@@ -11,28 +11,28 @@
                     class="znajdzLokal__item__title"
                     v-if="apartment.typ === 'Usługi'"
                 >
-                    Lokal nr {{ apartment.post_title }}</span
+                    {{locale.singularCommercial}} {{locale.no}} {{ apartment.post_title }}</span
                 >
                 <span class="znajdzLokal__item__title" v-else>
-                    Mieszkanie nr {{ apartment.post_title }}</span
+                    {{locale.flat}} {{locale.no}} {{ apartment.post_title }}</span
                 >
                 <div class="lokal__twoColumns">
-                    <h3>Powierzchnia:</h3>
+                    <h3>{{locale.area}}:</h3>
                     <p>{{ apartment.custom.powierzchnia }} m²</p>
                 </div>
                 <div class="lokal__twoColumns">
-                    <h3>Liczba pokoi:</h3>
+                    <h3>{{locale.roomsCount}}:</h3>
                     <p>{{ apartment.custom.liczba_pokoi }}</p>
                 </div>
 
                 <div class="lokal__twoColumns">
-                    <h3>Piętro:</h3>
+                    <h3>{{locale.floor}}:</h3>
                     <p>{{ apartment.custom.pietro }}</p>
                 </div>
 
                 <div class="lokal__twoColumns">
                     <h3>Status:</h3>
-                    <p>{{ apartment.custom.status }}</p>
+                    <p>{{ locale[apartment.custom.status] }}</p>
                 </div>
             </div>
             <div
@@ -59,13 +59,13 @@
                     data-investment="Port II"
                     @click="openContactModal"
                 >
-                    prośba o kontakt
+                    {{locale.askContact}}
                 </button>
                 <a :href="apartmentUrl" class="btn --lightGrey" v-if="apartment.typ === 'Usługi'">
-                    Szczegóły lokalu
+                    {{locale.commercialDetails}}
                 </a>
                 <a :href="apartmentUrl" class="btn --lightGrey" v-else>
-                    Szczegóły mieszkania
+                   {{locale.flatDetails}}
                 </a>
                 <!-- <a :href="apartmentUrl" class="btn">
                     Pobierz pdf
@@ -77,11 +77,16 @@
 
 <script>
 import MicroModal from 'micromodal'
+
 export default {
     props: {
         apartment: {
             type: Object,
         },
+        locale: {
+            type: Object,
+            required: true
+        }
     },
     computed: {
         apartmentUrl() {
