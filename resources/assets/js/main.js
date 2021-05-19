@@ -52,46 +52,60 @@ function initYouTubeVideos() {
 document.addEventListener("DOMContentLoaded", initYouTubeVideos);
 
 const closeApartments360Modal = () => {
-    MicroModal.close("apartments360-modal")
-}
+    MicroModal.close("apartments360-modal");
+};
 
 $(document).ready(function() {
     //if(window.location.href.includes(""))
-    languageSwitch()
-    const apartments360Button = document.querySelector("#apartments360Button")
+    languageSwitch();
+    const apartments360Button = document.querySelector("#apartments360Button");
 
-    if(apartments360Button) {
-        const body = document.querySelector("body")
+    if (apartments360Button) {
+        const body = document.querySelector("body");
         apartments360Button.addEventListener("click", function() {
             MicroModal.show("apartments360-modal", {
                 openTrigger: "data-custom-open",
                 onShow: () => {
-                    const modalContent = document.querySelector("#apartments360-content");
-                    const existedIframe = modalContent.querySelector(".apartments360Iframe")
-                    const closeButton = document.querySelector(".apartments360-modal .modal__close")
-                    body.classList.add("modal-is-open")
-                    closeButton.addEventListener("click", closeApartments360Modal)
+                    const modalContent = document.querySelector(
+                        "#apartments360-content"
+                    );
+                    const existedIframe = modalContent.querySelector(
+                        ".apartments360Iframe"
+                    );
+                    const closeButton = document.querySelector(
+                        ".apartments360-modal .modal__close"
+                    );
+                    body.classList.add("modal-is-open");
+                    closeButton.addEventListener(
+                        "click",
+                        closeApartments360Modal
+                    );
 
-
-                    if(!existedIframe) {
+                    if (!existedIframe) {
                         const iframe = document.createElement("iframe");
-                        const apartmentSymbol = apartments360Button.dataset.symbol;
+                        const apartmentSymbol =
+                            apartments360Button.dataset.symbol;
                         // iframe.src = `https://apartments3d.resimo.pl/client/25/5e70b28901d21a5c135574695278952f/?number=${apartmentSymbol}`
-                        iframe.src= `https://apartments3d.resimo.pl/client/25/5e70b28901d21a5c135574695278952f/?number=L.06`
-                        iframe.allowFullscreen = true
-                        iframe.classList.add("apartments360Iframe")
-                        modalContent.appendChild(iframe)
-                    } 
+                        iframe.src = `https://apartments3d.resimo.pl/client/25/5e70b28901d21a5c135574695278952f/?number=L.06`;
+                        iframe.allowFullscreen = true;
+                        iframe.classList.add("apartments360Iframe");
+                        modalContent.appendChild(iframe);
+                    }
                 },
                 onClose: () => {
-                    const closeButton = document.querySelector(".apartments360-modal .modal__close");
-                    closeButton.removeEventListener("click", closeApartments360Modal)
-                    body.classList.remove("modal-is-open")
-                }
+                    const closeButton = document.querySelector(
+                        ".apartments360-modal .modal__close"
+                    );
+                    closeButton.removeEventListener(
+                        "click",
+                        closeApartments360Modal
+                    );
+                    body.classList.remove("modal-is-open");
+                },
             });
-        })
+        });
     }
-    
+
     const apartmentsListContainer = document.querySelector(
         "#apartments-list-container"
     );
@@ -112,8 +126,8 @@ $(document).ready(function() {
             sessionStorage.removeItem("filters");
         }
     }
-    
-    console.log(window.location)
+
+    console.log(window.location);
     window.addEventListener("message", function(e) {
         handleMessageFromJeff(e);
     });
@@ -121,7 +135,7 @@ $(document).ready(function() {
     MicroModal.init({
         openTrigger: "data-custom-open", // [3]
         closeTrigger: "data-custom-close", // [4]
-        awaitCloseAnimation: true
+        awaitCloseAnimation: true,
     });
     const closeContactModalButton = document.querySelectorAll(
         ".contact-modal .modal__close"
@@ -741,7 +755,7 @@ $(function() {
     /* Lazy load images*/
     var lazyLoadInstance = new LazyLoad({
         elements_selector: ".lazy",
-        threshold: 2000
+        threshold: 2000,
     });
     if (lazyLoadInstance) {
         lazyLoadInstance.update();
@@ -758,6 +772,10 @@ $(function() {
             source.addEventListener("load", () => AOS.refresh())
         );
 
+    const closeAcceptanceModal = (name) => {
+        MicroModal.close(name);
+    };
+    const ToTopLogo = document.querySelector("#ToTopLogo");
     const formAcceptances = () => {
         const acceptance1 = document.querySelectorAll(
             ".acceptance-1 .wpcf7-acceptance a"
@@ -767,6 +785,14 @@ $(function() {
                 e.preventDefault();
                 MicroModal.show("marketing-info-modal", {
                     openTrigger: "data-custom-open",
+                    onShow: () => {
+                        ToTopLogo.style["pointer-events"] = "none";
+                    },
+                    onClose: () => {
+                        window.setTimeout(() => {
+                            ToTopLogo.style["pointer-events"] = "all";
+                        }, 1000);
+                    },
                 });
             });
         }
@@ -776,7 +802,17 @@ $(function() {
         for (let i = 0; i < acceptance2.length; i++) {
             acceptance2[i].addEventListener("click", function(e) {
                 e.preventDefault();
-                MicroModal.show("email-info-modal");
+                MicroModal.show("email-info-modal", {
+                    openTrigger: "data-custom-open",
+                    onShow: () => {
+                        ToTopLogo.style["pointer-events"] = "none";
+                    },
+                    onClose: () => {
+                        window.setTimeout(() => {
+                            ToTopLogo.style["pointer-events"] = "all";
+                        }, 1000);
+                    },
+                });
             });
         }
 
@@ -786,7 +822,17 @@ $(function() {
         for (let i = 0; i < acceptance3.length; i++) {
             acceptance3[i].addEventListener("click", function(e) {
                 e.preventDefault();
-                MicroModal.show("phone-info-modal");
+                MicroModal.show("phone-info-modal", {
+                    openTrigger: "data-custom-open",
+                    onShow: () => {
+                        ToTopLogo.style["pointer-events"] = "none";
+                    },
+                    onClose: () => {
+                        window.setTimeout(() => {
+                            ToTopLogo.style["pointer-events"] = "all";
+                        }, 1000);
+                    },
+                });
             });
         }
     };
@@ -997,13 +1043,13 @@ const basicLightbox = GLightbox({
 });
 
 lightbox.once("open", () => {
-    const images = document.querySelectorAll(".gslide-media");;
+    const images = document.querySelectorAll(".gslide-media");
     Array.from(images).forEach((item) => {
         const panzoom = Panzoom(item, {
             maxScale: 2.2,
             minScale: 1,
             animate: true,
-            pinchSpeed: 1.5
+            pinchSpeed: 1.5,
         });
         let panzoomWasReset = false;
         item.parentElement.addEventListener("wheel", panzoom.zoomWithWheel);
@@ -1015,13 +1061,13 @@ lightbox.once("open", () => {
         buttonZoomOut.addEventListener("click", function() {
             panzoom.zoomOut();
         });
-       
+
         item.addEventListener("panzoomchange", function(event) {
             if (event.detail.scale === 1 && !panzoomWasReset) {
-                panzoom.reset()
+                panzoom.reset();
                 panzoomWasReset = true;
             } else if (event.detail.scale !== 1) {
-                panzoomWasReset = false
+                panzoomWasReset = false;
             }
         });
 
@@ -1116,7 +1162,7 @@ function isElementInViewport(el) {
             (window.innerHeight ||
                 document.documentElement
                     .clientHeight) /* or $(window).height() */ &&
-            rect.bottom >= 0 &&
+        rect.bottom >= 0 &&
         rect.right <=
             (window.innerWidth ||
                 document.documentElement.clientWidth) /* or $(window).width() */
@@ -1308,7 +1354,9 @@ slidersWithButtons.forEach((el) => {
 });
 
 const headerContactButton = document.querySelector(".header .contact-icon");
-const headerPhoneModalButton = document.querySelector(".header .phone-modal-button")
+const headerPhoneModalButton = document.querySelector(
+    ".header .phone-modal-button"
+);
 
 if (headerPhoneModalButton) {
     headerPhoneModalButton.addEventListener("click", function() {
@@ -1333,9 +1381,11 @@ if (headerContactButton) {
                 const messageInput = document.querySelector(
                     '#contact-modal input[name="your-message"]'
                 );
-                if(messageInput) {
+                if (messageInput) {
                     messageInput.value = "";
-                    messageInput.parentNode.parentNode.classList.remove("active");
+                    messageInput.parentNode.parentNode.classList.remove(
+                        "active"
+                    );
                 }
             },
         });
@@ -1366,42 +1416,40 @@ const hideHeroTitle = () => {
     }
 };
 
-
 /* Single lokale page - go back to list link update */
 const goBackButton = document.querySelector(".goBack");
 if (goBackButton) {
     const lastUrl = document.referrer;
 
     if (lastUrl.includes("v3.jeff.resimo.pl")) {
-        goBackButton.href = `${window.location.origin}/#wyszukiwarka3d`
-        goBackButton.innerText = 'Wróć do wyszukiwarki 3D'
-    }
-    else if (lastUrl.includes("inwestycja"))
+        goBackButton.href = `${window.location.origin}/#wyszukiwarka3d`;
+        goBackButton.innerText = "Wróć do wyszukiwarki 3D";
+    } else if (lastUrl.includes("inwestycja"))
         goBackButton.href = `${lastUrl}#lista-mieszkan`;
     else goBackButton.href = `${window.location.origin}/znajdz-lokal`;
 }
 
-
 const languageSwitch = () => {
     const languageSwitcher = document.querySelector(".language-switcher");
-    if(languageSwitcher.dataset.language === 'pl') {
-        const url = window.location.href
-        const newUrl = url.replace(/en\//g,'')
+    if (languageSwitcher.dataset.language === "pl") {
+        const url = window.location.href;
+        const newUrl = url.replace(/en\//g, "");
         languageSwitcher.addEventListener("click", function() {
-            window.location.href = newUrl
-        })
-
+            window.location.href = newUrl;
+        });
     } else {
-        const url = window.location.href
+        const url = window.location.href;
         const arrayOfUrl = url.split("/");
-        const domainIndex = arrayOfUrl.findIndex(item => item === "port-praski")
-        arrayOfUrl.splice(domainIndex + 1, 0, "en")
+        const domainIndex = arrayOfUrl.findIndex(
+            (item) => item === "port-praski"
+        );
+        arrayOfUrl.splice(domainIndex + 1, 0, "en");
         const newUrl = arrayOfUrl.join("/");
 
         languageSwitcher.addEventListener("click", function() {
-            window.location.href = newUrl
-        })
+            window.location.href = newUrl;
+        });
     }
 
-    console.log(languageSwitcher)
-}
+    console.log(languageSwitcher);
+};

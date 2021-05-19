@@ -27,6 +27,7 @@ modal {
     overflow-y: auto;
     box-sizing: border-box;
     position: fixed;
+    pointer-events: all;
 }
 
 .modal__container.white-circle::before {
@@ -216,6 +217,7 @@ modal {
 .acceptance-modal .modal__close {
     position: fixed;
     right: 16px;
+    
     @include breakpoint(640px) {
         position: absolute;
         right: 0;
@@ -240,4 +242,10 @@ modal {
 }
 
 
-[data-micromodal-close] * { pointer-events: none; }
+[data-micromodal-close] { 
+    pointer-events: none;
+ }
+
+ [data-micromodal-close] * {
+     pointer-events: all;
+ }
