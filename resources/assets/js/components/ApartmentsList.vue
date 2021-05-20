@@ -103,6 +103,7 @@
                         :apartment="item"
                         :key="item.id"
                         :locale="locale"
+                        :en="en"
                         :investment="
                             getInvestmentName(item._primary_term_inwestycja)
                         "

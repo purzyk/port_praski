@@ -58,6 +58,7 @@ const closeApartments360Modal = () => {
 $(document).ready(function() {
     //if(window.location.href.includes(""))
     languageSwitch();
+    console.log(window.location);
     const apartments360Button = document.querySelector("#apartments360Button");
 
     if (apartments360Button) {
@@ -1420,26 +1421,36 @@ const hideHeroTitle = () => {
 const goBackButton = document.querySelector(".goBack");
 if (goBackButton) {
     const lastUrl = document.referrer;
-
+    const body = document.querySelector("body");
     if (lastUrl.includes("v3.jeff.resimo.pl")) {
-        goBackButton.href = `${window.location.origin}/#wyszukiwarka3d`;
-        goBackButton.innerText = "Wróć do wyszukiwarki 3D";
-    } else if (lastUrl.includes("inwestycja"))
+        if (body.classList.contains("translatepress-pl_PL")) {
+            goBackButton.href = `${window.location.origin}/#wyszukiwarka3d`;
+            goBackButton.innerText = "Wróć do wyszukiwarki 3D";
+        } else {
+            goBackButton.href = `${window.location.origin}/en/#wyszukiwarka3d`;
+            goBackButton.innerText = "Back to 3D app";
+        }
+    } else if (lastUrl.includes("inwestycja")) {
         goBackButton.href = `${lastUrl}#lista-mieszkan`;
-    else goBackButton.href = `${window.location.origin}/znajdz-lokal`;
+    } else {
+        if (body.classList.contains("translatepress-pl_PL")) {
+            goBackButton.href = `${window.location.origin}/znajdz-lokal`;
+        } else {
+            goBackButton.href = `${window.location.origin}/en/znajdz-lokal`;
+        }
+    }
 }
 
 const languageSwitch = () => {
     const languageSwitchers = document.querySelectorAll(".language-switcher");
     const switchersArray = Array.from(languageSwitchers);
-    if(switchersArray.length) {
-        switchersArray.forEach(switcher => {
+    if (switchersArray.length) {
+        switchersArray.forEach((switcher) => {
             if (switcher.dataset.language === "pl") {
                 const url = window.location.href;
                 const newUrl = url.replace(/en\//g, "");
-                console.log(newUrl)
                 switcher.addEventListener("click", function() {
-                    window.location.replace(newUrl)
+                    window.location.replace(newUrl);
                 });
             } else {
                 const url = window.location.href;
@@ -1449,14 +1460,11 @@ const languageSwitch = () => {
                 );
                 arrayOfUrl.splice(domainIndex + 1, 0, "en");
                 const newUrl = arrayOfUrl.join("/");
-                console.log(newUrl)
+                console.log(newUrl);
                 switcher.addEventListener("click", function() {
-                    window.location.replace(newUrl)
+                    window.location.replace(newUrl);
                 });
             }
-        })
-        
+        });
     }
-
-    console.log(languageSwitcher);
 };

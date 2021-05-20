@@ -86,11 +86,15 @@ export default {
         locale: {
             type: Object,
             required: true
+        },
+        en: {
+            type: Boolean,
+            default: false
         }
     },
     computed: {
         apartmentUrl() {
-            let baseUrl = window.location.hostname === "localhost" ?  `${window.location.origin}/port-praski/lokal` : `${window.location.origin}/lokale`
+            let baseUrl = this.en ? `${window.location.origin}/en/lokale` : `${window.location.origin}/lokale`
             return `${baseUrl}/${this.apartment.slug}`;
         },
         apartmentNameForModal() {
