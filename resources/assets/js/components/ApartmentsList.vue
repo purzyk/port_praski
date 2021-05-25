@@ -34,7 +34,6 @@
                     :clearable="false"
                     :options="sortOptions"
                     v-model="selectedSort"
-                    @input="selectedSortChange"
                 />
                 <span
                     @click="changeSortOrder"
@@ -87,7 +86,6 @@
                                 :clearable="false"
                                 :options="sortOptions"
                                 v-model="selectedSort"
-                                @input="selectedSortChange"
                             />
                             <div
                                 @click="changeSortOrder"
@@ -206,12 +204,8 @@ export default {
                     value: "pietro",
                 },
             ],
-            selectedSortPL: {
+            selectedSort: {
                 name: "Nazwa",
-                value: "name",
-            },
-            selectedSortEN: {
-                name: "Name",
                 value: "name",
             },
             locale: null,
@@ -233,9 +227,6 @@ export default {
         },
         sortOptions() {
             return this.en? this.sortOptionsEN : this.sortOptionsPL
-        },
-        selectedSort() {
-            return this.en ? this.selectedSortEN : this.selectedSortPL
         }
     },
     methods: {
@@ -430,7 +421,6 @@ export default {
             this.filterApartments();
             this.handleFiltersOpenMobile();
         },
-        selectedSortChange() {},
         handleFiltersOpenMobile() {
             const apartmentsList = document.querySelector(".znajdzLokal__main");
             const footer = document.querySelector(".wSprawieOferty");
@@ -539,9 +529,17 @@ export default {
 
         if(window.location.href.includes("/en/")){
             this.locale = LOCALE_EN
+            this.selectedSort = {
+                name: "Name",
+                value: "name",
+            }
             this.en = true
         } else {
             this.locale = LOCALE_PL
+            this.selectedSort = {
+                name: "Nazwa",
+                value: "name",
+            }
             this.en = false
         }
 
