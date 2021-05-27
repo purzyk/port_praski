@@ -205,8 +205,7 @@ export default {
                 },
             ],
             selectedSort: {
-                name: "Nazwa",
-                value: "name",
+             
             },
             locale: null,
             en: false

@@ -57,10 +57,9 @@
 					<div class="line double --grey"></div>
 					<div class="lokal__btns">
 					{% if post.typ != 'Usługi' %}
-							<a id="apartments360Button" data-symbol={{post.name}}  class="btn --lightGrey">Mieszkanie 3D 360°</a>
+							<a id="apartments360Button" data-symbol={{post.name}} data-building="{{inwestycja[0].name}}"  class="btn --lightGrey">Mieszkanie 3D 360°</a>
 					{% endif %}
 						{% if pdf is empty %}
-					
 							<a target="_blank" href="" class="btn --lightGrey" id="pdfLink">pobierz PDF</a>
 						{% else %}
 							<a target="_blank" href="{{pdf}}" class="btn --lightGrey">pobierz PDF</a>

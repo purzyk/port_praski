@@ -86,8 +86,29 @@ $(document).ready(function() {
                         const iframe = document.createElement("iframe");
                         const apartmentSymbol =
                             apartments360Button.dataset.symbol;
-                        // iframe.src = `https://apartments3d.resimo.pl/client/25/5e70b28901d21a5c135574695278952f/?number=${apartmentSymbol}`
-                        iframe.src = `https://apartments3d.resimo.pl/client/25/5e70b28901d21a5c135574695278952f/?number=L.06`;
+                        const buildingName =
+                            apartments360Button.dataset.building;
+
+                        let buildingNumber;
+
+                        switch (buildingName) {
+                            case "Port II":
+                                buildingNumber = "B1";
+                                break;
+                            case "Sierakowskiego 4":
+                                buildingNumber = "S41";
+                                break;
+                            case "Sierakowskiego II":
+                                buildingNumber = "S21";
+                                break;
+                            case "Port":
+                                buildingNumber = "P1";
+                                break;
+                            default:
+                                buildingName = ""
+                        }
+
+                        iframe.src = `https://apartments3d.resimo.pl/client/25/5e70b28901d21a5c135574695278952f/?number=${buildingNumber}-${apartmentSymbol}`;
                         iframe.allowFullscreen = true;
                         iframe.classList.add("apartments360Iframe");
                         modalContent.appendChild(iframe);
