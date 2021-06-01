@@ -1,18 +1,19 @@
-import $ from "jquery";
-import "slick-carousel";
-import "magnific-popup";
-import MicroModal from "micromodal";
-import AOS from "aos";
-import Vue from "vue";
-import GLightbox from "glightbox";
-import LazyLoad from "vanilla-lazyload";
-import Splide from "@splidejs/splide";
-import Panzoom from "@panzoom/panzoom";
-import BackToTop from "./jq-components/backToTop";
-import SmoothScroll from "./jq-components/smoothScroll";
-import filterigMixItUp from "./jq-components/filterigMixItUp";
-import './jq-components/languageSwitcher'
-import ApartmentsList from "./components/ApartmentsList.vue";
+import $ from 'jquery';
+import 'slick-carousel';
+import 'magnific-popup';
+import MicroModal from 'micromodal';
+import AOS from 'aos';
+import Vue from 'vue';
+import GLightbox from 'glightbox';
+import LazyLoad from 'vanilla-lazyload';
+import Splide from '@splidejs/splide';
+import Panzoom from '@panzoom/panzoom';
+import SmoothScroll from './jq-components/smoothScroll';
+import filterigMixItUp from './jq-components/filterigMixItUp';
+import './jq-components/backToTop';
+import './jq-components/languageSwitcher';
+import './jq-components/goBackToListFromSingleFlat';
+import ApartmentsList from './components/ApartmentsList.vue';
 
 /* Replace image vidth youtube content */
 function labnolIframe(div) {
@@ -1161,7 +1162,6 @@ $(".btnVideoReadMore").click(function(event) {
 
 // jQuery-based initialisations
 $(() => {
-    new BackToTop();
     new SmoothScroll();
     if (document.querySelector(".container")) {
         new filterigMixItUp();
@@ -1435,29 +1435,3 @@ const hideHeroTitle = () => {
         });
     }
 };
-
-/* Single lokale page - go back to list link update */
-const goBackButton = document.querySelector(".goBack");
-if (goBackButton) {
-    const lastUrl = document.referrer;
-    const body = document.querySelector("body");
-    if (lastUrl.includes("v3.jeff.resimo.pl")) {
-        if (body.classList.contains("translatepress-pl_PL")) {
-            goBackButton.href = `${window.location.origin}/#wyszukiwarka3d`;
-            goBackButton.innerText = "Wróć do wyszukiwarki 3D";
-        } else {
-            goBackButton.href = `${window.location.origin}/en/#wyszukiwarka3d`;
-            goBackButton.innerText = "Back to 3D app";
-        }
-    } else if (lastUrl.includes("inwestycja")) {
-        goBackButton.href = `${lastUrl}#lista-mieszkan`;
-    } else {
-        if (body.classList.contains("translatepress-pl_PL")) {
-            goBackButton.href = `${window.location.origin}/znajdz-lokal`;
-        } else {
-            goBackButton.href = `${window.location.origin}/en/znajdz-lokal`;
-        }
-    }
-}
-
-
