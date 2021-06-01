@@ -259,14 +259,14 @@ $(document).ready(function() {
     $(".filter-simple-button").click(function() {
         var value = $(this).attr("data-filter");
         if (value === "all") {
-            $(".filter-simple-item").show("1000");
+            $(".filter-simple-item").show();
         } else {
             $(".filter-simple-item")
                 .not("." + value)
-                .hide("3000");
+                .hide();
             $(".filter-simple-item")
                 .filter("." + value)
-                .show("3000");
+                .show();
         }
     });
 

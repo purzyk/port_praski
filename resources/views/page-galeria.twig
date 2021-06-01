@@ -14,7 +14,7 @@
 			</div>
 			<div class="gallery row">
 				{% for item in galeriaLoop|reverse %}
-					{% if (loop.index == 2) or (loop.index == 4) %}
+					{% if (loop.index % 2 == 0) and (loop.index % 3 != 0) %}
 						<div class="grid-item bigger filter-simple-item {% for termname in item.terms('kategoria_zdjec') %}{{termname.slug}}  {% endfor %}">
 							<a href="{{item.thumbnail}}">
 								{% include 'components/generic/image.twig'  with { img_src:Image(item.thumbnail).src, width:976, height:644 } %}
