@@ -20,15 +20,16 @@
 		<div class="home__noweInwestycje__wrapp js-nagrody --CustomButtons">
 			{% for item in wydarzeniaLoop %}
 				<div class="home__noweInwestycje__item">
+				{% include 'components/generic/image.twig'  with { img_src:Image(item.thumbnail).src, width:580, height:440 } %}
 					<div class="home__noweInwestycje__item__inside">
 						<a href="{{item.link}}">
 							<h4 class="fnt12">
 								{{item.date | date('d.m.Y')}}
 							</h4>
-							<h5 class="fnt30">{{item.title}}</h5>
+							<h5 class="fnt30 events-event-title">{{item.title}}</h5>
 						</a>
-						<p>
-							<a href="{{item.link}}">{{item.preview.read_more('')}}</a>
+						<p class="events-read-more">
+							<a href="{{item.link}}" class="btn btn--force-visible --lightGrey" >Czytaj więcej</a>
 						</p>
 
 					</div>

@@ -146,7 +146,7 @@ function cptui_register_my_cpts() {
 		"hierarchical" => false,
 		"rewrite" => [ "slug" => "wydarzenia", "with_front" => true ],
 		"query_var" => true,
-		"supports" => [ "title", "editor", "excerpt" ],
+		"supports" => [ "title", "editor", "excerpt", "thumbnail" ],
 	];
 
 	register_post_type( "wydarzenia", $args );

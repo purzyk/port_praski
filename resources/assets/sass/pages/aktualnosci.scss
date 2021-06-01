@@ -27,7 +27,7 @@
         }
     }
 
-    .btn {
+    .btn:not(.btn--force-visible) {
         text-align: center;
         width: 100%;
 
@@ -40,4 +40,20 @@
         padding-bottom: 46px;
 
     }
+}
+
+.home__noweInwestycje__item__inside .events-read-more {
+    text-align: right;
+}
+
+.aktualnosci  .slider__header__buttons p {
+    display: none;
+}
+
+.aktualnosci .btn.--mobile {
+    display: none;
+}
+
+.aktualnosci .dzielnica__arrow {
+    bottom: -64px;
 }

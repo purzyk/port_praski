@@ -147,17 +147,17 @@
 
     &.--wydarzenia {
         .home__noweInwestycje__item__inside {
-            color: $darkBlue;
-            position: relative;
+            color: $white;
             border: 1px solid #262359;
             padding-bottom: 20px;
+            background: rgba(0,0,0, .4);
 
-            a {
-                color: $darkBlue;
+            a:not(.--lightGrey) {
+                color: $white;
             }
 
-            p a {
-                color: $black;
+            p a:not(.--lightGrey) {
+                color: $white;
             }
 
         }
@@ -175,18 +175,40 @@
         }
     }
 
-    &.--wydarzenia,
     &.--aktualnosci,
     &.--dniotwarte {
         .home__noweInwestycje__item__inside {
             min-height: 400px;
         }
     }
+
+    // &.--wydarzenia {
+    //     .home__noweInwestycje__item__inside {
+    //         min-height: 240px;
+    //     }
+    // }
 }
 
 .home__noweInwestycje .wrapFullWidth {
     @media screen and (max-width: $sm) {
         width: 90%;
         margin: 0 auto;
+    }
+}
+
+.home__noweInwestycje.--wydarzenia {
+
+    .home__noweInwestycje__item {
+        img {
+            height: 400px;
+            object-fit: cover;
+        }
+    }
+
+    .events-event-title {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;  
+        overflow: hidden;
     }
 }
