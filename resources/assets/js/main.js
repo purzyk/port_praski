@@ -1477,7 +1477,7 @@ const languageSwitch = () => {
                 const url = window.location.href;
                 const arrayOfUrl = url.split("/");
                 const domainIndex = arrayOfUrl.findIndex(
-                    (item) => item === "port-praski.resimo.tech"
+                    (item) => item === window.location.host
                 );
                 arrayOfUrl.splice(domainIndex + 1, 0, "en");
                 const newUrl = arrayOfUrl.join("/");

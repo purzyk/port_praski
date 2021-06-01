@@ -1,39 +1,32 @@
-import $ from "jquery";
+import $ from "jquery"
 
 class BackToTop {
   constructor() {
-    $(window).scroll(function() {
+    $(window).on('scroll', () => {
       if ($(this).scrollTop() > 0) {
-        $("#ToTop").fadeIn();
-      } else {
-        $("#ToTop").fadeOut();
+        $("#ToTop").fadeIn()
+        return
       }
-    });
 
-    $("#ToTop").click(function() {
-      $("body, html").animate(
-        {
-          scrollTop: 0,
-        },
-        800
-      );
-      return false;
-    });
+      $("#ToTop").fadeOut()
+    })
 
-    $(".header__logo").click(function() {
-      if (document.location.pathname !== '/') {
-        document.location.href="/";
-      } else {
-        $("body, html").animate(
-          {
-            scrollTop: 0,
-          },
-          800
-        );
-        return false;
+    $("#ToTop").on('click', () => {
+      $("body, html").animate({ scrollTop: 0 }, 800)
+    })
+
+    $(".header__logo").on('click', () => {
+      const path = document.location.pathname
+
+      if (path !== '/' && path !== '/en/') {
+        if (path.includes('/en/')) document.location.href="/en"
+        else document.location.href="/"
+        return
       }
-    });
+
+      $("body, html").animate({ scrollTop: 0, }, 800)
+    })
   }
 }
 
-export default BackToTop;
+export default BackToTop
