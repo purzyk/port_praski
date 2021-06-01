@@ -146,7 +146,7 @@
     }
 
     &.--wydarzenia {
-        .home__noweInwestycje__item__inside {
+        .home__noweInwestycje__item__inside:not(.home__noweInwestycje__item__inside--nagrody) {
             color: $white;
             border: 1px solid #262359;
             padding-bottom: 20px;
@@ -161,6 +161,23 @@
             }
 
         }
+
+        .home__noweInwestycje__item__inside--nagrody {
+            color: $darkBlue;
+            position: relative;
+            border: 1px solid #262359;
+            padding-bottom: 20px;
+
+            a {
+                color: $darkBlue;
+            }
+
+            p a {
+                color: $black;
+            }
+
+        }
+
 
         .fnt30 {
             margin-bottom: 60px;
@@ -196,7 +213,11 @@
     }
 }
 
-.home__noweInwestycje.--wydarzenia {
+
+
+
+
+.home__noweInwestycje.--wydarzenia:not(.--nagrody) {
 
     .home__noweInwestycje__item {
         img {
@@ -211,4 +232,9 @@
         -webkit-box-orient: vertical;  
         overflow: hidden;
     }
+}
+
+
+.home__noweInwestycje__item__inside.home__noweInwestycje__item__inside--nagrody {
+    min-height: 400px;
 }
