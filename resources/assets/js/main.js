@@ -1,17 +1,18 @@
 import $ from "jquery";
 import "slick-carousel";
 import "magnific-popup";
-import AOS from "aos";
-import LazyLoad from "vanilla-lazyload";
-import BackToTop from "./jq-components/backToTop";
-import SmoothScroll from "./jq-components/smoothScroll";
-import Splide from "@splidejs/splide";
-import filterigMixItUp from "./jq-components/filterigMixItUp";
 import MicroModal from "micromodal";
+import AOS from "aos";
 import Vue from "vue";
 import GLightbox from "glightbox";
-import ApartmentsList from "./components/ApartmentsList.vue";
+import LazyLoad from "vanilla-lazyload";
+import Splide from "@splidejs/splide";
 import Panzoom from "@panzoom/panzoom";
+import BackToTop from "./jq-components/backToTop";
+import SmoothScroll from "./jq-components/smoothScroll";
+import filterigMixItUp from "./jq-components/filterigMixItUp";
+import './jq-components/languageSwitcher'
+import ApartmentsList from "./components/ApartmentsList.vue";
 
 /* Replace image vidth youtube content */
 function labnolIframe(div) {
@@ -56,9 +57,6 @@ const closeApartments360Modal = () => {
 };
 
 $(document).ready(function() {
-    //if(window.location.href.includes(""))
-    languageSwitch();
-    console.log(window.location);
     const apartments360Button = document.querySelector("#apartments360Button");
 
     if (apartments360Button) {
@@ -1462,30 +1460,4 @@ if (goBackButton) {
     }
 }
 
-const languageSwitch = () => {
-    const languageSwitchers = document.querySelectorAll(".language-switcher");
-    const switchersArray = Array.from(languageSwitchers);
-    if (switchersArray.length) {
-        switchersArray.forEach((switcher) => {
-            if (switcher.dataset.language === "pl") {
-                const url = window.location.href;
-                const newUrl = url.replace(/en\//g, "");
-                switcher.addEventListener("click", function() {
-                    window.location.replace(newUrl);
-                });
-            } else {
-                const url = window.location.href;
-                const arrayOfUrl = url.split("/");
-                const domainIndex = arrayOfUrl.findIndex(
-                    (item) => item === window.location.host
-                );
-                arrayOfUrl.splice(domainIndex + 1, 0, "en");
-                const newUrl = arrayOfUrl.join("/");
-                console.log(newUrl);
-                switcher.addEventListener("click", function() {
-                    window.location.replace(newUrl);
-                });
-            }
-        });
-    }
-};
+
