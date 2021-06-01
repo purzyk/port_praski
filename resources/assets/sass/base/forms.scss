@@ -60,7 +60,7 @@
 
     label span::before {
         content: "";
-        background: url('/https://port-praski.resimo.tech/wp-content/themes/wptheme/static/images/check-empty.svg)') left top no-repeat;
+        background: url('../images/check-empty.svg)') left top no-repeat;
         font-weight: normal;
         font-size: 22px;
         line-height: 22px;
@@ -77,7 +77,7 @@
 
     label span::after {
         content: "";
-        background: url('https://port-praski.resimo.tech/wp-content/themes/wptheme/static/images/check-empty.svg') left top no-repeat;
+        background: url('../images/check-empty.svg') left top no-repeat;
         font-weight: normal;
         font-size: 22px;
         line-height: 22px;
@@ -101,7 +101,7 @@
     }
 
     label input[type="checkbox"]:checked+span::after {
-        background: url('https://port-praski.resimo.tech/wp-content/themes/wptheme/static/images/check-checked.svg') left top no-repeat;
+        background: url('../images/check-checked.svg') left top no-repeat;
         background-size: 22px;
     }
 }
