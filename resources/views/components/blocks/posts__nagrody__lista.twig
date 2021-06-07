@@ -16,9 +16,9 @@
 			{% for item in post.meta('nagrody') %}
 				<div class="home__noweInwestycje__item" data-aos="not-real-animation" data-aos-duration="800" data-aos-delay="300">
 					<div class="home__noweInwestycje__item__inside home__noweInwestycje__item__inside--nagrody" >
-
+						<h5 class="fnt30 --mobile">{{item.tytul}}</h5>
 						<div class="nagrody-text-container">
-							<h5 class="fnt30">{{item.tytul}}</h5>
+							<h5 class="fnt30 --desktop">{{item.tytul}}</h5>
 							<p>{{item.opis}}</p>
 						</div>
 						<div class="nagrody-image-container">
