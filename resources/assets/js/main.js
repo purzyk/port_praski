@@ -596,7 +596,7 @@ $(function() {
     $(".js-sliderNew").slick({
         infinite: true,
         variableWidth: true,
-        slidesToShow: 1,
+        slidesToShow: 4,
         slidesToScroll: 1,
         dots: false,
         autoplay: false,
