@@ -123,6 +123,13 @@
             line-height: 41px;
             color: $darkBlue;
 
+            @media (max-width: 400px) {
+                font-size: 28px;
+            }
+
+            @media (max-width: 365px) {
+                font-size: 22px;
+            }
         }
 
         &__copy {
