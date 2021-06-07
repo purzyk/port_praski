@@ -429,6 +429,7 @@ $lgrey: #f6f6f6;
 
     &__item {
         padding-bottom: 20px;
+        transition: padding-bottom 1.2s ease;
 
         @include breakpoint($md) {
             padding-bottom: 120px;
@@ -996,6 +997,10 @@ $lgrey: #f6f6f6;
     position: relative;
 
     &.active {
+        .home__inwestycjeLista__item {
+            padding-bottom: 250px;
+        }
+
         .home__inwestycjeLista__item__modal__wrapp {
             opacity: 1;
             transition-delay: 1s;
