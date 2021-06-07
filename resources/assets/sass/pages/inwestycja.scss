@@ -60,8 +60,6 @@
                 @include breakpoint($md) {
                     text-align: left;
                 }
-
-                &__copy {}
             }
 
             &__slogan {
@@ -245,9 +243,14 @@
 
 
 .splide-investment.splide--draggable>.splide__track>.splide__list>.splide__slide:not(:first-child) {
-    margin-right: 42px;
-    margin-left: 42px;;
+    padding-right: 42px;
+    padding-left: 42px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+
     @include breakpoint($sm) {
-       margin-left: 0;
+        padding-left: 0;
+        width: unset;
     }
 }
