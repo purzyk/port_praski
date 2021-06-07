@@ -23,6 +23,17 @@
     }
   }
 
+  // position 3rd picture to show PKIN... i know it's weird
+  // should be removed when third slide picture will be changed
+  @media (max-width: $sm) {
+    .slick-slide:nth-child(3) picture {
+      source,
+      img {
+        object-position: 80%;
+      }
+    }
+  }
+
   &__slide {
     position: relative;
     height: calc(100vh - 80px);
