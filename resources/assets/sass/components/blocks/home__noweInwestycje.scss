@@ -147,17 +147,19 @@
 
     &.--wydarzenia {
         .home__noweInwestycje__item__inside:not(.home__noweInwestycje__item__inside--nagrody) {
-            color: $darkBlue;
-            border: 1px solid #262359;
-            padding-bottom: 20px;
-           
-
+            color: $white;
+            border: none;
+            padding-bottom: 32px;
+            background: rgba(0,0,0, .3);
+            display: flex;
+            flex-flow: column;
+            justify-content: space-between;
             a:not(.--lightGrey) {
-                color: $darkBlue;
+                color: $white;
             }
 
             p a:not(.--lightGrey) {
-                color: $darkBlue;
+                color: $white;
             }
 
         }
@@ -240,3 +242,10 @@
     min-height: 400px;
 }
 
+.home__noweInwestycje.--wydarzenia .home__noweInwestycje__item {
+    width: 420px !important;
+}
+
+.home__noweInwestycje.--wydarzenia .home__noweInwestycje__item img {
+   height: 320px !important;
+}
