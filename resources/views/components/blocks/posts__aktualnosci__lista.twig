@@ -21,7 +21,7 @@
 					{% include 'components/generic/image.twig'  with { img_src:Image(item.thumbnail).src, width:580, height:440 } %}
 
 					<div class="home__noweInwestycje__item__inside">
-						<h4>
+						<h4 class="fnt20">
 								{{ item.post_date | date('d.m.Y') }}
 						</h4>
 						<a href="{{item.link}}">
@@ -29,7 +29,7 @@
 						</a>
 
 						<p>
-							<a href="{{item.link}}">{{item.preview.read_more('')}}</a>
+							<!-- <a href="{{item.link}}">{{item.lead}}</a> -->
 						</p>
 					</div>
 
