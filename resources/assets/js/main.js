@@ -1439,7 +1439,7 @@ const hideHeroTitle = () => {
 
 
 const hideOneOfEventsHeader = () => {
-    const str = "wydarzenia/targi-nieruchomosci-cee-shopping-center-forum";
+    const str = "wydarzenia/";
     console.log("HIDE")
     console.log(location.href.includes(str))
     if(location.href.includes(str)) {
