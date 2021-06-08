@@ -59,7 +59,7 @@ const closeApartments360Modal = () => {
 
 $(document).ready(function() {
     const apartments360Button = document.querySelector("#apartments360Button");
-
+    hideOneOfEventsHeader()
     if (apartments360Button) {
         const body = document.querySelector("body");
         apartments360Button.addEventListener("click", function() {
@@ -865,6 +865,7 @@ $(function() {
 $(window).on("load", () => $(".pageloader").removeClass("is-active"));
 $(window).on("load", () => $("body").removeClass("is-loading"));
 $(window).on("load", () => setTimeout(hideHeroTitle, 3000));
+$(window).on("load", () => hideOneOfEventsHeader())
 
 /* Make header smaller after some height */
 $(window).scroll(function() {
@@ -1435,3 +1436,16 @@ const hideHeroTitle = () => {
         });
     }
 };
+
+
+const hideOneOfEventsHeader = () => {
+    const str = "wydarzenia/targi-nieruchomosci-cee-shopping-center-forum";
+    console.log("HIDE")
+    console.log(location.href.includes(str))
+    if(location.href.includes(str)) {
+        const el = document.querySelector(".single__article__figure")
+       
+        el.style.display = "none";
+ 
+    }
+}
