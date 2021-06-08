@@ -162,6 +162,10 @@
                 color: $white;
             }
 
+            @media all and(min-width: $sm) {
+                padding-bottom: 32px;
+            }
+
         }
 
         .home__noweInwestycje__item__inside--nagrody {
@@ -204,6 +208,10 @@
     &.--wydarzenia {
         .home__noweInwestycje__item__inside {
             min-height: 292px;
+
+            @media all and (max-width: $sm) {
+                padding: 32px;
+            }
         }
     }
 }
