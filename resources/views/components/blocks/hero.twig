@@ -2,7 +2,7 @@
 	<div class="js-hero">
 		{% for item in media_item.slider %}
 			<div class="hero__slide">
-				{% include 'components/generic/image.twig'  with { img_src:Image(item.background_image).src, width:1600, height:780 } %}
+				{% include 'components/generic/image.twig'  with { img_src:Image(item.background_image).src } %}
 				<div class="hero__slide__inside">
 					<h1 class="hero__slide__title">{{item.title}}</h1>
 					<h2 class="hero__slide__copy">{{item.copy}}</h2>
