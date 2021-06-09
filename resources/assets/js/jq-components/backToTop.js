@@ -1,18 +1,37 @@
 import $ from 'jquery'
 
 $(() => {
+  const toTop = document.querySelectorAll(".backToTop");
+  const YOffset = window.pageYOffset;
+
+  [...toTop].forEach(item => {
+    item.addEventListener("click", () => {
+      $('body, html').animate({ scrollTop: 0 }, 800)
+    })
+  })
   $(window).on('scroll', () => {
-    if ($(this).scrollTop() > 0) {
-      $('#ToTop').fadeIn()
-      return
+  //   if ($(this).scrollTop() > 0) {
+  //     console.log("SCROLL TOP VISIBLE")
+  //     $('#ToTop').fadeIn()
+  //     return
+  //   }
+
+  //  // $('#ToTop').fadeOut()
+
+
+    if(YOffset > window.innerHeight / 2) {
+      [...toTop].forEach(item => {
+        item.classList.add("--show")
+      })
+    } else {
+      [...toTop].forEach(item => {
+  
+        item.classList.remove("--show")
+      })
     }
 
-    $('#ToTop').fadeOut()
   })
 
-  $('#ToTop').on('click', () => {
-    $('body, html').animate({ scrollTop: 0 }, 800)
-  })
 
   $('.header__logo').on('click', () => {
     const path = document.location.pathname

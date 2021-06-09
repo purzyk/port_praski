@@ -1,10 +1,33 @@
-.backToTop {
+.backToTop.--desktop {
+  font-size: 40px;
+  position: static;
+  right: 0px;
+  bottom: 0px;
+  cursor: pointer;
+  // @media all and (min-width: $md) {
+  //   position: static;
+  // }
+}
+
+.backToTop.--mobile {
   font-size: 40px;
   position: fixed;
-  right: 100px;
-  bottom: 50px;
+  right: 40px;
+  bottom: 20px;
   cursor: pointer;
+  background: $white;
+  z-index: 999;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: .3s opacity linear;
 }
+
+.backToTop.--show {
+  visibility: visible;
+  opacity: 1;
+}
+
 
 .footer {
   &__top {

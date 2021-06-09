@@ -16,8 +16,8 @@
 						</a>
 					</figure>
 				{% endfor %}
-				<figure class="circle">
-					<a id="ToTop" href="{{item.social.url}}">
+				<figure class="circle backToTop --desktop">
+					<a id="ToTop">
 						<img src="{{Image(options.arrow_up).src}}">
 					</a>
 				</figure>
@@ -35,6 +35,11 @@
 		</div>
 
 	</div>
+	<figure class="circle backToTop --mobile">
+					<a id="ToTop">
+						<img src="{{Image(options.arrow_up).src}}">
+					</a>
+				</figure>
 </footer>
 {# end <div id="app"> #}
 
