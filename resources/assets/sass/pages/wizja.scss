@@ -941,9 +941,7 @@
 }
 
 .wizja__nagrody .home__noweInwestycje__item__inside--nagrody {
-    @media (max-width: $md) {
-        flex-wrap: wrap;
-    }
+    flex-wrap: wrap;
 }
 
 .events-event-desc {
@@ -952,4 +950,10 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;  
     overflow: hidden;
+}
+
+.wizja__nagrody .home__noweInwestycje__item {
+   @media all and (max-width: $md) {
+    margin-right: unset;
+   }
 }

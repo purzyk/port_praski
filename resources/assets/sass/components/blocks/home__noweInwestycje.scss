@@ -239,14 +239,18 @@
 
 
 .wizja .home__noweInwestycje__item__inside.home__noweInwestycje__item__inside--nagrody {
-    min-height: 400px;
+    min-height: 420px;
 }
 
 .home__noweInwestycje.--wydarzenia .home__noweInwestycje__item {
     width: 420px !important;
+
+    @media all and (max-width: $sm) {
+        width: auto !important;
+    }
 }
 
-.home__noweInwestycje.--wydarzenia .home__noweInwestycje__item img {
+.home__noweInwestycje.--wydarzenia:not(.--nagrody) .home__noweInwestycje__item img {
    height: 320px !important;
 }
 
