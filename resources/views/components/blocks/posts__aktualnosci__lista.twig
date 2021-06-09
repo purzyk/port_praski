@@ -21,9 +21,12 @@
 					{% include 'components/generic/image.twig'  with { img_src:Image(item.thumbnail).src, width:580, height:440 } %}
 
 					<div class="home__noweInwestycje__item__inside">
-						<h4 class="fnt20">
+					{% if (loop.index != 1) %}
+						<h4 class="fnt20 news-date">
 								{{ item.post_date | date('d.m.Y') }}
 						</h4>
+
+						{% endif %}
 						<a href="{{item.link}}">
 							<h5 class="fnt30">{{item.title}}</h5>
 						</a>
