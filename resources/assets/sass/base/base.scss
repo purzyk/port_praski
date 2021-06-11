@@ -163,6 +163,7 @@ a {
     pointer-events: none;
     &.is-active {
         opacity: 1;
+        pointer-events: all;
     }
 }
 
