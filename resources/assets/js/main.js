@@ -148,7 +148,6 @@ $(document).ready(function() {
         }
     }
 
-    console.log(window.location);
     window.addEventListener("message", function(e) {
         handleMessageFromJeff(e);
     });
@@ -595,18 +594,24 @@ $(function() {
 
     $(".js-sliderNew").slick({
         infinite: true,
-        variableWidth: true,
+        variableWidth: false,
         slidesToShow: 1,
         slidesToScroll: 1,
         dots: false,
         autoplay: false,
         arrows: true,
-        nextArrow: ".arrow__right",
-        prevArrow: ".arrow__left",
+        mobileFirst: true,
+        nextArrow:  '<button class="dzielnica__arrow arrow__right__wyd"></button>',
+        prevArrow: '<button class="dzielnica__arrow arrow__left__wyd"></button>',
         responsive: [
             {
-                breakpoint: 760,
-                settings: "unslick",
+                breakpoint: 1180,
+                settings: {
+                    slidesToShow: 3,
+                    variableWidth: true,
+                    nextArrow: ".arrow__right",
+                    prevArrow: ".arrow__left",
+                },
             },
         ],
     });
@@ -1440,8 +1445,6 @@ const hideHeroTitle = () => {
 
 const hideOneOfEventsHeader = () => {
     const str = "wydarzenia/";
-    console.log("HIDE")
-    console.log(location.href.includes(str))
     if(location.href.includes(str)) {
         const el = document.querySelector(".single__article__figure")
        

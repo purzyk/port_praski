@@ -70,3 +70,12 @@
 .page-template-template-aktualnosci h5 {
     word-break: break-word;
 }
+
+
+.page-template-template-aktualnosci .home__noweInwestycje.--wydarzenia {
+    margin-top: 64px;
+
+    @media all and(min-width: $md) {
+        margin-top: 0;
+    }
+}

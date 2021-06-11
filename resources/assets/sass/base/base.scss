@@ -684,3 +684,15 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.arrow__left__wyd  {
+    left: 0;
+}
+
+.arrow__left__wyd:before {
+    transform: rotate(180deg);
+}
+
+.arrow__right__wyd {
+    right: 0;
+}
