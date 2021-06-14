@@ -489,6 +489,11 @@ a {
 }
 
 .zoom-in {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:0;
+    margin: 0;
     height: 32px;
     width: 32px;
     z-index: 100;
@@ -514,6 +519,11 @@ a {
 }
 
 .zoom-out {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:0;
+    margin: 0;
     height: 32px;
     width: 32px;
     z-index: 100;

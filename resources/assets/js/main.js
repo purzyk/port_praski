@@ -1021,8 +1021,19 @@ const customLightboxHTML = `<div id="glightbox-body" class="glightbox-container"
     <button class="custom-arrow custom-arrow-right gnext" tabindex="0" aria-label="Next" data-customattribute="example"></button>
     <button class="custom-arrow custom-arrow-left gprev" tabindex="1" aria-label="Previous"></button>
     <button class="gclose gbtn" tabindex="2" aria-label="Close">{closeSVG}</button>
-    <button class="zoom-in">+</button>
-    <button class="zoom-out">-</button>
+    <button class="zoom-in">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <line x1="12" y1="5" x2="12" y2="19"></line>
+    <line x1="5" y1="12" x2="19" y2="12"></line>
+ </svg>
+    </button>
+    <button class="zoom-out">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <line x1="5" y1="12" x2="19" y2="12"></line>
+ </svg>
+    </button>
 </div>
 </div>`;
 
