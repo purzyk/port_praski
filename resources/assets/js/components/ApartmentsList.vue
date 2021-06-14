@@ -515,7 +515,8 @@ export default {
         const parsedApartments = JSON.parse(apartmentsValues);
         const parsedInvestments = JSON.parse(investmentsValues);
         const parsedExtraValues = JSON.parse(extraValues);
-        this.apartments = parsedApartments;
+        this.apartments = parsedApartments.filter(item => item.custom.status !== "Zajęte")
+        
         this.investments = parsedInvestments;
         this.extra = parsedExtraValues;
         this.prepareInitialValues();

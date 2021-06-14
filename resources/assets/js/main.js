@@ -92,8 +92,12 @@ $(document).ready(function() {
 
                         switch (buildingName) {
                             case "Port II":
-                                buildingNumber = "B1";
-                                break;
+                                if(apartmentSymbol.includes("B1")) {
+                                    buildingNumber = "B1";
+                                } else {
+                                    buildingNumber = "B2";
+                                }
+                                break;  
                             case "Sierakowskiego 4":
                                 buildingNumber = "S41";
                                 break;
