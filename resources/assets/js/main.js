@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import $, { type } from 'jquery';
 import 'slick-carousel';
 import 'magnific-popup';
 import MicroModal from 'micromodal';
@@ -60,8 +60,23 @@ const closeApartments360Modal = () => {
 $(document).ready(function() {
     const apartments360Button = document.querySelector("#apartments360Button");
     hideOneOfEventsHeader()
+    const body = document.querySelector("body");
+
+    if(body.classList.contains("single-lokale") && body.classList.contains("translatepress-en_US")) {
+        const typeOfLokal = document.querySelector(".lokal__mieszkanie")
+
+        let str = typeOfLokal.textContent.trim()
+
+        //no idea im hungry
+        let final = str.replace(/Mieszkanie/, "Apartment NO. ")
+        let final2 = final.replace(/Lokal Usługowy nr/, "Commercial NO. ")
+        typeOfLokal.textContent = final2
+    }
+
+
+
+
     if (apartments360Button) {
-        const body = document.querySelector("body");
         apartments360Button.addEventListener("click", function() {
             MicroModal.show("apartments360-modal", {
                 openTrigger: "data-custom-open",
