@@ -68,7 +68,7 @@ $(document).ready(function() {
         let str = typeOfLokal.textContent.trim()
 
         //no idea im hungry
-        let final = str.replace(/Mieszkanie/, "Apartment NO. ")
+        let final = str.replace(/Mieszkanie nr/, "Apartment NO. ")
         let final2 = final.replace(/Lokal Usługowy nr/, "Commercial NO. ")
         typeOfLokal.textContent = final2
     }
@@ -1361,7 +1361,12 @@ const goToContact = (el) => {
 
     const investment = el.currentTarget.dataset.investment.trim();
     messageInput.parentNode.parentNode.classList.add("active");
-    messageInput.value = `Interesuje mnie oferta ${investment} - mieszkanie nr ${apartmentId}`;
+    const body = document.querySelector("body")
+    if(body.classList.contains("translatepress-en_US")){
+        messageInput.value = `I am interested in an offer ${investment} - apartment no. ${apartmentId}`;
+    } else {
+        messageInput.value = `Interesuje mnie oferta ${investment} - mieszkanie nr ${apartmentId}`;
+    }
 
     //   $("body, html").animate(
     //       {
