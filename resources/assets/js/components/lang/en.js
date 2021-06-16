@@ -1,5 +1,6 @@
 export const LOCALE_EN = {
     findApartment: "Search apartments",
+    findCommercial: "Search commercials",
     investment: "Investment",
     clearFilters: "Clear filters",
     showFilters: "Show filters",

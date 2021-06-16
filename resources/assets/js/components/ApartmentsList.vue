@@ -1,11 +1,13 @@
 <template>
     <div>
         <div id="filters-header" class="l-wrapper">
-            <h1 class="fnt50 znajdzLokal__title text-center">{{locale.findApartment}}</h1>
+            <h1 class="fnt50 znajdzLokal__title text-center">
+                {{ mainTitle }}
+            </h1>
 
             <div class="znajdzLokal__main__meta__content --mobile">
                 <span class="--blue"
-                    >{{locale.offersCount}}
+                    >{{ locale.offersCount }}
                     <span class="counter" style="padding-right: 1px">{{
                         allFilteredApartments
                     }}</span>
@@ -21,12 +23,12 @@
                 data-aos-duration="800"
             ></div>
             <button class="btn --mobile --filtry" @click="showFilters">
-                <span>{{locale.showFilters}}</span>
+                <span>{{ locale.showFilters }}</span>
             </button>
             <div
                 class="znajdzLokal__main__meta__content znajdzLokal__main__meta__content--flex --mobile"
             >
-                <span style="padding-top: 1px;">{{locale.sort}}:</span>
+                <span style="padding-top: 1px;">{{ locale.sort }}:</span>
                 <vSelect
                     class="style-chooser"
                     label="name"
@@ -64,7 +66,7 @@
                     <div class="znajdzLokal__main__meta">
                         <div class="znajdzLokal__main__meta__content --desktop">
                             <span class="--blue"
-                                >{{locale.offersCount}}
+                                >{{ locale.offersCount }}
                                 <span class="counter">{{
                                     allFilteredApartments
                                 }}</span>
@@ -78,7 +80,9 @@
                         </div>
 
                         <div class="znajdzLokal__main__meta__content --desktop">
-                            <span style="padding-top: 1px;">{{locale.sort}}:</span>
+                            <span style="padding-top: 1px;"
+                                >{{ locale.sort }}:</span
+                            >
                             <vSelect
                                 class="style-chooser"
                                 label="name"
@@ -116,7 +120,7 @@
 
                     <div v-else>
                         <p class="text-center">
-                            {{locale.noData}}
+                            {{ locale.noData }}
                         </p>
                     </div>
                 </section>
@@ -131,8 +135,8 @@ import ApartmentsListFilters from "./ApartmentsListFilters.vue";
 import ApartmentsListPagination from "./ApartmentsListPagination.vue";
 import vSelect from "vue-select";
 import { sortByInvestmentName, sortFunction } from "./utils/sort-functions";
-import {LOCALE_EN} from "./lang/en";
-import {LOCALE_PL} from "./lang/pl"
+import { LOCALE_EN } from "./lang/en";
+import { LOCALE_PL } from "./lang/pl";
 export default {
     name: "ApartmentsList",
     components: {
@@ -204,11 +208,10 @@ export default {
                     value: "pietro",
                 },
             ],
-            selectedSort: {
-             
-            },
+            selectedSort: {},
             locale: null,
-            en: false
+            en: false,
+            mainTitle: "",
         };
     },
     computed: {
@@ -225,8 +228,8 @@ export default {
             return Math.ceil(this.filteredApartments.length / this.perPage);
         },
         sortOptions() {
-            return this.en? this.sortOptionsEN : this.sortOptionsPL
-        }
+            return this.en ? this.sortOptionsEN : this.sortOptionsPL;
+        },
     },
     methods: {
         prepareInitialValues() {
@@ -488,6 +491,19 @@ export default {
             this.sortAsc = !this.sortAsc;
             this.sortApartments();
         },
+        getMainTitle() {
+            const body = document.querySelector("body");
+
+            if (body.classList.contains("translatepress-en_US")) {
+                if (body.classList.contains("term-lokale-uslugowe")) {
+                    this.mainTitle = LOCALE_EN.findCommercial
+                } else {
+                    this.mainTitle = LOCALE_EN.findApartment
+                }
+            } else {
+                 this.mainTitle = LOCALE_PL.findApartment
+            }
+        },
     },
     watch: {
         filters: {
@@ -506,6 +522,11 @@ export default {
             this.sortApartments();
         },
     },
+    mounted() {
+        this.$nextTick(()=> {
+            this.getMainTitle()
+        })
+    },
     beforeMount() {
         const apartmentsValues = document.querySelector("#apartmentsListValues")
             .value;
@@ -515,8 +536,10 @@ export default {
         const parsedApartments = JSON.parse(apartmentsValues);
         const parsedInvestments = JSON.parse(investmentsValues);
         const parsedExtraValues = JSON.parse(extraValues);
-        this.apartments = parsedApartments.filter(item => item.custom.status !== "Zajęte")
-        
+        this.apartments = parsedApartments.filter(
+            (item) => item.custom.status !== "Zajęte"
+        );
+
         this.investments = parsedInvestments;
         this.extra = parsedExtraValues;
         this.prepareInitialValues();
@@ -527,22 +550,21 @@ export default {
             this.perPage = 10;
         }
 
-        if(window.location.href.includes("/en/")){
-            this.locale = LOCALE_EN
+        if (window.location.href.includes("/en/")) {
+            this.locale = LOCALE_EN;
             this.selectedSort = {
                 name: "Name",
                 value: "name",
-            }
-            this.en = true
+            };
+            this.en = true;
         } else {
-            this.locale = LOCALE_PL
+            this.locale = LOCALE_PL;
             this.selectedSort = {
                 name: "Nazwa",
                 value: "name",
-            }
-            this.en = false
+            };
+            this.en = false;
         }
-
     },
     beforeCreate() {
         if (document.referrer.includes("inwestycja")) {
