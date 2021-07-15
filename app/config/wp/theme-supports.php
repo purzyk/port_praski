@@ -78,7 +78,7 @@ function cptui_register_my_cpts() {
 		"hierarchical" => false,
 		"rewrite" => [ "slug" => "lokale", "with_front" => true ],
 		"query_var" => true,
-		"supports" => [ "title", "thumbnail" ],
+		"supports" => [ "title", "thumbnail", "revisions"],
 	];
 
 	register_post_type( "lokale", $args );
@@ -112,7 +112,7 @@ function cptui_register_my_cpts() {
 		"hierarchical" => false,
 		"rewrite" => [ "slug" => "dni_otwarte", "with_front" => true ],
 		"query_var" => true,
-		"supports" => [ "title", "editor", "thumbnail", "excerpt" ],
+		"supports" => [ "title", "editor", "thumbnail", "excerpt", "revisions" ],
 	];
 
 	register_post_type( "dni_otwarte", $args );
@@ -146,7 +146,7 @@ function cptui_register_my_cpts() {
 		"hierarchical" => false,
 		"rewrite" => [ "slug" => "wydarzenia", "with_front" => true ],
 		"query_var" => true,
-		"supports" => [ "title", "editor", "excerpt", "thumbnail" ],
+		"supports" => [ "title", "editor", "excerpt", "thumbnail", "revisions" ],
 	];
 
 	register_post_type( "wydarzenia", $args );
@@ -180,7 +180,7 @@ function cptui_register_my_cpts() {
 		"hierarchical" => false,
 		"rewrite" => [ "slug" => "komunikaty", "with_front" => true ],
 		"query_var" => true,
-		"supports" => [ "title", "editor", "excerpt" ],
+		"supports" => [ "title", "editor", "excerpt", "revisions" ],
 	];
 
 	register_post_type( "komunikaty", $args );
@@ -297,7 +297,7 @@ function cptui_register_my_cpts_galeria() {
 		"rewrite" => [ "slug" => "galeria", "with_front" => true ],
 		"query_var" => true,
 		"menu_icon" => "dashicons-format-gallery",
-		"supports" => [ "title", "thumbnail" ],
+		"supports" => [ "title", "thumbnail", "revisions" ],
 	];
 
 	register_post_type( "galeria", $args );
